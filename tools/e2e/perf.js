@@ -8,7 +8,9 @@ const fs = require('fs');
 const { pathToFileURL } = require('url');
 
 const CHROME = process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
-const URL = pathToFileURL(path.join(__dirname, '..', '..', 'public', 'index.html')).href;
+const PUB = path.join(__dirname, '..', '..', 'public');
+const URL = pathToFileURL(path.join(PUB, 'ru', 'app', 'index.html')).href;
+const HOME = pathToFileURL(path.join(PUB, 'ru', 'index.html')).href;
 const OUT = path.join(__dirname, 'shots');
 fs.mkdirSync(OUT, { recursive: true });
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -54,9 +56,12 @@ async function drag(page, x0, y0, dx, dy, steps, touch) {
     userAgent: 'Mozilla/5.0 (Linux; Android 6.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0 Mobile Safari/537.36' });
   const cdp = await phone.target().createCDPSession();
   await cdp.send('Emulation.setCPUThrottlingRate', { rate: 10 });
-  const t0 = Date.now();
+  let t0 = Date.now();
+  await phone.goto(HOME, { waitUntil: 'load' });
+  console.log('Телефон (CPU ×10): главная страница', Date.now() - t0, 'мс');
+  t0 = Date.now();
   await phone.goto(URL + '?fps', { waitUntil: 'load' });
-  console.log('Телефон (CPU ×10): загрузка', Date.now() - t0, 'мс');
+  console.log('Телефон (CPU ×10): загрузка карты', Date.now() - t0, 'мс');
   await wait(1500);
   await drag(phone, 180, 200, 140, 60, 40, true);
   await wait(400);

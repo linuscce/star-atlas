@@ -116,8 +116,8 @@ def main(src, dst):
         flat_stars += [r(ra, 3), r(dec, 3), r(mag, 2), r(bv, 2)]
         hips.append(hip)
         n = names_json.get(str(hip))
-        if n and (n.get('bayer') or n.get('ru') or n.get('flam')):
-            names[i] = [n.get('bayer', ''), n.get('c', ''), n.get('ru', ''), n.get('flam', '')]
+        if n and (n.get('bayer') or n.get('ru') or n.get('flam') or n.get('name')):
+            names[i] = [n.get('bayer', ''), n.get('c', ''), n.get('ru', ''), n.get('flam', ''), n.get('name', '')]
 
     cons = {}
     for f in load(src, 'constellations.json')['features']:

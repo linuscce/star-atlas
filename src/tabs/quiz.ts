@@ -1,22 +1,18 @@
-import { app, applyToggles, banner, each, save, setOf, shuffle, starTitle, state, toggles } from './app';
-import type { TabController } from './app';
-import { LESSONS } from './lessons';
-import { angDist, clamp } from './math';
-import type { MapClick } from './skymap';
-import type { Lesson, View } from './types';
+import { angDist, clamp } from '../core/math';
+import type { Lesson, QPool, QType, View } from '../core/types';
+import { setOf, shuffle } from '../core/util';
+import { LESSONS } from '../data/lessons';
+import { T, fill } from '../i18n';
+import type { MapClick } from '../map/skymap';
+import { app, applyToggles, starTitle } from '../ui/app';
+import type { TabController } from '../ui/app';
+import { each } from '../ui/dom';
+import { banner } from '../ui/overlay';
+import { save, state, toggles } from '../ui/state';
 
-type QType = 'conId' | 'findStar' | 'nameStar' | 'findCon';
-const TYPES: [QType, string][] = [
-  ['conId', 'Узнай созвездие по звёздам'],
-  ['findCon', 'Покажи созвездие на карте'],
-  ['findStar', 'Найди звезду'],
-  ['nameStar', 'Назови отмеченную звезду'],
-];
-const POOLS: [string, string][] = [
-  ['learned', 'Изученные уроки'],
-  ['north', 'Небо, видимое из России'],
-  ['all', 'Все 88 созвездий'],
-];
+const TYPES: QType[] = ['conId', 'findCon', 'findStar', 'nameStar'];
+// north — всё, кроме южного неба (блок south): то, что видно из средних северных широт.
+const POOLS: QPool[] = ['learned', 'north', 'all'];
 
 interface Question {
   type: QType;
@@ -82,7 +78,7 @@ function jitter(v: { ra: number; dec: number }, maxDeg: number) {
 function newQuestion() {
   const sky = app.sky;
   const { cons, stars } = pools();
-  const types = (state.quizTypes as QType[]).filter((t) => (t === 'findStar' || t === 'nameStar') ? stars.length >= 4 : cons.length >= (t === 'conId' ? 1 : 1));
+  const types = state.quizTypes.filter((t) => (t === 'findStar' || t === 'nameStar') ? stars.length >= 4 : cons.length >= (t === 'conId' ? 1 : 1));
   banner(null);
   if (!cons.length || !types.length) { q = null; renderPanel(); render(); return; }
   const type = types[Math.floor(Math.random() * types.length)];
@@ -115,8 +111,8 @@ function newQuestion() {
   render();
   app.map.flyTo(nq.view, 500);
   renderPanel();
-  if (type === 'findStar') banner(`Найди звезду: <b>${starTitle(nq.star!)}</b>`);
-  if (type === 'findCon') banner(`Покажи созвездие: <b>${sky.conName(nq.con!)}</b>`);
+  if (type === 'findStar') banner(fill(T.ui.bannerFindStar, { star: starTitle(nq.star!) }));
+  if (type === 'findCon') banner(fill(T.ui.bannerFindCon, { con: sky.conName(nq.con!) }));
 }
 
 function answer(correct: boolean) {
@@ -130,7 +126,7 @@ function answer(correct: boolean) {
   save();
   render();
   renderPanel();
-  banner(correct ? 'Верно!' : 'Не совсем — смотри правильный ответ', correct ? 'good' : 'bad');
+  banner(correct ? T.ui.right : T.ui.quizWrongBanner, correct ? 'good' : 'bad');
 }
 
 function render() {
@@ -168,18 +164,18 @@ function render() {
 }
 
 function renderPanel() {
-  const sky = app.sky, { cons, stars } = pools();
-  let h = '<h1>Тренировка</h1><p class="muted">Вопросы по созвездиям из выбранного набора. То, в чём ошибаешься, спрашивается чаще.</p>';
+  const sky = app.sky, ui = T.ui, { cons, stars } = pools();
+  let h = `<h1>${ui.quizTitle}</h1><p class="muted">${ui.quizIntro}</p>`;
   h += '<div class="q-area" id="q-area">';
   if (!q) {
-    h += cons.length ? '<p>Выбери хотя бы один тип вопросов.</p>'
-      : '<p>Пока нечего спрашивать: ты ещё не прошёл ни одного урока.</p><button class="btn primary" id="q-north">Спрашивать по всему небу, видимому из России</button>';
+    h += cons.length ? `<p>${ui.quizNoTypes}</p>`
+      : `<p>${ui.quizNothing}</p><button class="btn primary" id="q-north">${ui.quizAskNorth}</button>`;
   } else {
     const prompts: Record<QType, string> = {
-      conId: 'Какое созвездие внутри жёлтой границы?',
-      findCon: `Нажми на карте внутри созвездия <b>${q.con ? sky.conName(q.con) : ''}</b>`,
-      findStar: `Нажми на звезду <b>${q.star !== undefined ? starTitle(q.star) : ''}</b>`,
-      nameStar: 'Как называется звезда в жёлтом кружке?',
+      conId: ui.qConId,
+      findCon: fill(ui.qFindCon, { con: q.con ? sky.conName(q.con) : '' }),
+      findStar: fill(ui.qFindStar, { star: q.star !== undefined ? starTitle(q.star) : '' }),
+      nameStar: ui.qNameStar,
     };
     h += `<div class="q-prompt">${prompts[q.type]}</div>`;
     if (q.options) {
@@ -192,27 +188,27 @@ function renderPanel() {
     }
     if (q.answered) {
       let extra = '';
-      if (q.con) extra = `${sky.conName(q.con)} · <i>${sky.conLatin(q.con)}</i> (${q.con})`;
+      if (q.con) extra = `${sky.conName(q.con)} · <i>${sky.conAlt(q.con)}</i> (${q.con})`;
       else if (q.star !== undefined) extra = `${starTitle(q.star)} · ${sky.starDesig(q.star)}`;
-      h += `<div class="q-feedback ${q.correct ? 'good' : 'bad'}">${q.correct ? 'Верно!' : 'Неверно.'} ${extra}</div>`;
-      h += '<button class="btn primary" id="q-next">Следующий вопрос →</button>';
+      h += `<div class="q-feedback ${q.correct ? 'good' : 'bad'}">${q.correct ? ui.right : ui.wrong} ${extra}</div>`;
+      h += `<button class="btn primary" id="q-next">${ui.nextQuestion}</button>`;
     } else if (!q.options) {
-      h += '<button class="btn" id="q-skip">Не знаю — показать</button>';
+      h += `<button class="btn" id="q-skip">${ui.dontKnow}</button>`;
     }
   }
   h += '</div>';
-  h += `<div class="q-score">Верно ${score.ok} из ${score.n}${score.streak > 1 ? ` · серия ${score.streak}` : ''}</div>`;
-  h += '<details class="q-settings"' + (q ? '' : ' open') + '><summary>Настройки</summary>';
-  h += '<div class="opt-title">Что спрашивать</div>' + TYPES.map(([id, label]) =>
-    `<label class="chk"><input type="checkbox" value="${id}"${state.quizTypes.indexOf(id) >= 0 ? ' checked' : ''}> ${label}</label>`).join('');
-  h += '<div class="opt-title">Из чего</div>' + POOLS.map(([id, label]) =>
-    `<label class="chk"><input type="radio" name="pool" value="${id}"${state.quizPool === id ? ' checked' : ''}> ${label}</label>`).join('');
-  h += `<div class="muted small">Сейчас в наборе: ${cons.length} созвездий, ${stars.length} звёзд.</div>`;
+  h += `<div class="q-score">${fill(ui.quizScore, { ok: score.ok, n: score.n })}${score.streak > 1 ? ' · ' + fill(ui.quizStreak, { streak: score.streak }) : ''}</div>`;
+  h += `<details class="q-settings"${q ? '' : ' open'}><summary>${ui.settings}</summary>`;
+  h += `<div class="opt-title">${ui.whatToAsk}</div>` + TYPES.map((id) =>
+    `<label class="chk"><input type="checkbox" value="${id}"${state.quizTypes.indexOf(id) >= 0 ? ' checked' : ''}> ${ui.qTypes[id]}</label>`).join('');
+  h += `<div class="opt-title">${ui.askFrom}</div>` + POOLS.map((id) =>
+    `<label class="chk"><input type="radio" name="pool" value="${id}"${state.quizPool === id ? ' checked' : ''}> ${ui.qPools[id]}</label>`).join('');
+  h += `<div class="muted small">${fill(ui.poolSize, { cons: cons.length, stars: stars.length })}</div>`;
   h += '</details>';
   const weak = Object.keys(state.stats).filter((k) => state.stats[k].bad > state.stats[k].ok)
     .sort((a, b) => state.stats[b].bad - state.stats[a].bad).slice(0, 8);
   if (weak.length) {
-    h += '<div class="opt-title">Чаще всего ошибаешься</div><div class="weak">' + weak.map((k) => {
+    h += `<div class="opt-title">${ui.weakTitle}</div><div class="weak">` + weak.map((k) => {
       const [, id] = k.split(':');
       if (k.indexOf('Star') > 0) {
         const i = sky.starIndex('HIP' + id);
@@ -226,7 +222,7 @@ function renderPanel() {
   panel.innerHTML = h;
   each(panel.querySelectorAll('.opt'), (b) => b.addEventListener('click', () => {
     if (!q || q.answered) return;
-    const o = (b as HTMLElement).dataset.o!;
+    const o = b.dataset.o!;
     answer(q.type === 'conId' ? o === q.con : +o === q.star);
     if (!q.correct) (panel.querySelector(`.opt[data-o="${o}"]`) as HTMLElement | null)?.classList.add('wrong');
   }));
@@ -241,8 +237,8 @@ function renderPanel() {
   });
   each(panel.querySelectorAll('.q-settings input'), (inp) => inp.addEventListener('change', () => {
     const el = inp as HTMLInputElement;
-    if (el.type === 'radio') state.quizPool = el.value;
-    else state.quizTypes = Array.prototype.slice.call(panel.querySelectorAll('.q-settings input[type=checkbox]:checked')).map((x: HTMLInputElement) => x.value);
+    if (el.type === 'radio') state.quizPool = el.value as QPool;
+    else state.quizTypes = Array.prototype.slice.call(panel.querySelectorAll('.q-settings input[type=checkbox]:checked')).map((x: HTMLInputElement) => x.value as QType);
     save();
     newQuestion();
   }));
@@ -259,7 +255,7 @@ function click(c: MapClick) {
     answer(ok);
   } else if (q.type === 'findCon') {
     const got = sky.conAt(c.ra, c.dec);
-    map.marks = [{ ra: c.ra, dec: c.dec, kind: got === q.con ? 'good' : 'bad', label: got && got !== q.con ? `Это ${sky.conName(got)}` : undefined }];
+    map.marks = [{ ra: c.ra, dec: c.dec, kind: got === q.con ? 'good' : 'bad', label: got && got !== q.con ? fill(T.ui.itIs, { con: sky.conName(got) }) : undefined }];
     answer(got === q.con);
   }
 }

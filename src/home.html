@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10172e">
+<meta name="description" content="{{page.description}}">
+<title>{{page.title}}</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2310172e'/%3E%3Cpath d='M16 5l2.6 7.4L26 15l-7.4 2.6L16 25l-2.6-7.4L6 15l7.4-2.6z' fill='%236cc4ff'/%3E%3C/svg%3E">
+{{alternates}}
+<!-- Пока читают главную, браузер в фоне загружает карту — переход в приложение будет быстрым. -->
+<link rel="prefetch" href="../sky.js">
+<link rel="prefetch" href="../app.js">
+<link rel="prefetch" href="../style.css">
+<link rel="prefetch" href="app/text.js">
+<style>
+/* Главная страница — без внешних файлов, чтобы открывалась сразу. Ограничения те же, что в style.css:
+   Chrome 37+, без CSS-переменных, grid и flex-gap. Палитра — как в style.css. */
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #0b1020; color: #e7ecff; font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; -webkit-text-size-adjust: 100%; }
+a { color: #6cc4ff; }
+.top { display: flex; align-items: center; height: 52px; padding: 0 18px; background: #10172e; border-bottom: 1px solid #243057; }
+.brand { font-weight: 700; color: #e7ecff; text-decoration: none; }
+.brand span { font-weight: 400; color: #97a3c8; }
+.lang { margin-left: auto; padding: 3px 9px; border: 1px solid #243057; border-radius: 6px; color: #97a3c8; font-size: 13px; text-decoration: none; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+.hero { display: flex; align-items: center; padding: 40px 0 28px; }
+.hero-text { flex: 1; min-width: 0; padding-right: 36px; }
+h1 { margin: 0 0 14px; font-size: 34px; line-height: 1.2; }
+.lead { margin: 0 0 24px; color: #c4cbe6; font-size: 17px; }
+.btn { display: inline-block; padding: 12px 22px; border-radius: 10px; background: #2a6fdb; color: #fff; font-weight: 600; text-decoration: none; }
+.btn:hover { background: #3a7ff0; }
+.prog { margin-top: 12px; color: #97a3c8; font-size: 14px; min-height: 22px; }
+.fig { flex: none; width: 420px; margin: 0; padding: 12px 14px 14px; background: #080c1d; border: 1px solid #243057; border-radius: 14px; }
+.fig svg { display: block; width: 100%; height: auto; }
+.fig figcaption { margin-top: 8px; color: #97a3c8; font-size: 13px; line-height: 1.45; }
+.cards { display: flex; flex-wrap: wrap; margin: 0 -8px; padding: 8px 0 18px; }
+.card { display: flex; width: 25%; padding: 0 8px 16px; color: inherit; text-decoration: none; }
+.card div { flex: 1; min-width: 0; padding: 16px 16px 18px; background: #10172e; border: 1px solid #243057; border-radius: 12px; }
+.card:hover div { border-color: #3f78bd; }
+.card svg { width: 28px; height: 28px; fill: none; stroke: #6cc4ff; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
+.card h2 { margin: 8px 0 6px; font-size: 18px; }
+.card p { margin: 0; color: #97a3c8; font-size: 14px; line-height: 1.45; }
+.offline { margin: 0 0 18px; padding: 16px 18px; background: #10172e; border: 1px solid #243057; border-radius: 12px; color: #c4cbe6; font-size: 15px; }
+.offline a { white-space: nowrap; }
+.credits { padding: 4px 0 32px; color: #6f7aa0; font-size: 13px; }
+@media (max-width: 899px) {
+  .hero { display: block; padding: 24px 0 18px; }
+  .hero-text { padding-right: 0; }
+  h1 { font-size: 27px; }
+  .lead { font-size: 16px; }
+  .fig { width: auto; max-width: 440px; margin-top: 26px; }
+  .card { width: 50%; }
+}
+@media (max-width: 520px) {
+  .wrap { padding: 0 14px; }
+  .brand span { display: none; }
+  .card { width: 100%; }
+  .btn { display: block; text-align: center; }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="./">{{page.brand}}<span> · {{page.brandSub}}</span></a>
+  <a class="lang" href="{{otherLangHref}}" hreflang="{{otherLangCode}}" title="{{page.otherLangTitle}}">{{page.otherLang}}</a>
+</header>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="hero-text">
+      <h1>{{page.title}}</h1>
+      <p class="lead">{{home.lead}}</p>
+      <a class="btn" id="go" href="app/#lesson/{{firstLesson}}" data-continue="{{home.continue}}">{{home.start}}</a>
+      <div class="prog" id="prog" data-text="{{home.progress}}"></div>
+    </div>
+    <figure class="fig">{{figure}}<figcaption>{{home.figure}}</figcaption></figure>
+  </section>
+
+  <section class="cards">
+    <a class="card" href="app/#learn"><div>{{icon.learn}}<h2>{{page.tabs.learn}}</h2><p>{{home.learn}}</p></div></a>
+    <a class="card" href="app/#quiz"><div>{{icon.quiz}}<h2>{{page.tabs.quiz}}</h2><p>{{home.quiz}}</p></div></a>
+    <a class="card" href="app/#atlas"><div>{{icon.atlas}}<h2>{{page.tabs.atlas}}</h2><p>{{home.atlas}}</p></div></a>
+    <a class="card" href="app/#ref"><div>{{icon.ref}}<h2>{{page.tabs.ref}}</h2><p>{{home.ref}}</p></div></a>
+  </section>
+
+  <p class="offline">{{home.offline}} <a href="{{offlineHref}}" download>{{offlineLink}}</a></p>
+  <p class="credits">{{ui.credits}}</p>
+</div>
+
+<script>
+// Кнопка «Продолжить» и прогресс — из того же localStorage, что у приложения (ключи sa.*).
+(function () {
+  var LESSONS = {{lessons}}; // [id, название] по порядку
+  function get(k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
+  try { localStorage.setItem('sa.lang', JSON.stringify('{{lang}}')); } catch (e) { /* нет localStorage */ }
+  var done = get('sa.done', {}), cur = get('sa.lesson', 0), n = 0, i;
+  for (i = 0; i < LESSONS.length; i++) if (done[LESSONS[i][0]]) n++;
+  var go = document.getElementById('go'), prog = document.getElementById('prog');
+  if (n > 0 || cur > 0) {
+    var k = Math.max(0, Math.min(LESSONS.length - 1, cur));
+    go.href = 'app/#lesson/' + LESSONS[k][0];
+    go.textContent = go.getAttribute('data-continue').replace('{n}', k + 1).replace('{title}', LESSONS[k][1]);
+    prog.textContent = prog.getAttribute('data-text').replace('{done}', n).replace('{total}', LESSONS.length);
+  }
+  // Без сервера (file://) папка сама не открывается — дописываем index.html.
+  if (location.protocol === 'file:') {
+    var a = document.getElementsByTagName('a');
+    for (i = 0; i < a.length; i++) {
+      var h = a[i].getAttribute('href') || '', m = /^([^:#]*\/)(#.*)?$/.exec(h);
+      if (m) a[i].setAttribute('href', m[1] + 'index.html' + (m[2] || ''));
+    }
+  }
+})();
+</script>
+</body>
+</html>

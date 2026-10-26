@@ -1,6 +1,7 @@
-import { D2R, R2D, clamp, eclToEq, norm360, sunLongitude, toRaDec, unit, vec, dot, cross, MONTH_SHORT } from './math';
-import type { Sky } from './sky';
-import type { DsoItem, MapOptions, RaDec, View } from './types';
+import { D2R, R2D, clamp, eclToEq, norm360, sunLongitude, toRaDec, unit, vec, dot, cross } from '../core/math';
+import type { Sky } from '../core/sky';
+import type { DsoItem, MapOptions, RaDec, View } from '../core/types';
+import { T } from '../i18n';
 
 // Карта неба на canvas. Стереографическая проекция, север сверху, восток слева.
 // Сделано так, чтобы не тормозить на слабых телефонах:
@@ -369,7 +370,7 @@ export class SkyMap {
     const labDec = Math.abs(d0) > 55 ? clamp(Math.round(d0 / 10) * 10, -70, 70) : 0;
     for (let h = 0; h < 24; h++) {
       const [x, y, c] = this.project(h * 15, labDec + 2);
-      if (c > 0.2 && this.inView(x, y, -12)) this.labels.push({ text: `${h}ч`, x, y, prio: 6, style: 'grid', center: true });
+      if (c > 0.2 && this.inView(x, y, -12)) this.labels.push({ text: `${h}${T.hour}`, x, y, prio: 6, style: 'grid', center: true });
     }
     const labRa = Math.round(this.view.ra / 15) * 15 + 4;
     for (let dec = -80; dec <= 80; dec += 10) {
@@ -395,7 +396,7 @@ export class SkyMap {
       const [x, y, c] = this.project(e.ra, e.dec);
       if (c < 0 || !this.inView(x, y, 0)) continue;
       ctx.beginPath(); ctx.arc(x, y, 3.2, 0, Math.PI * 2); ctx.fill();
-      this.labels.push({ text: `1 ${MONTH_SHORT[mo]}`, x, y: y + 13, prio: 1, style: 'month', center: true });
+      this.labels.push({ text: `1 ${T.months[mo]}`, x, y: y + 13, prio: 1, style: 'month', center: true });
     }
   }
 

@@ -1,8 +1,9 @@
 // Эмуляция встроенного Chrome 37–50 (Android 5–6) в headless Chrome: перед загрузкой удаляем новые API
-// (Pointer Events, Set/Map, NodeList.forEach, .fill и др.), проходим урок касаниями пальца,
-// проверяем щипок, тренировку, шпаргалку и заливку Млечного Пути с 400 точек обзора.
+// (Pointer Events, Set/Map, NodeList.forEach, .fill и др.), открываем урок по адресу и проходим его касаниями,
+// проверяем адреса разделов и «назад», щипок, тренировку, шпаргалку, заливку Млечного Пути с 400 точек обзора
+// и главную страницу.
 //
-// Запуск: npm run e2e  (или node tools/e2e/old-browser.js [--dist])
+// Запуск: npm run e2e  (или node tools/e2e/old-browser.js [--dist] [--lang=en])
 // Chrome: переменная CHROME_PATH или стандартный путь установки.
 const puppeteer = require('puppeteer-core');
 const path = require('path');
@@ -12,7 +13,11 @@ const { pathToFileURL } = require('url');
 const CHROME = process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 const ROOT = path.join(__dirname, '..', '..');
 const useDist = process.argv.indexOf('--dist') >= 0;
-const FILE = pathToFileURL(path.join(ROOT, useDist ? 'dist/star-atlas.html' : 'public/index.html')).href;
+const langArg = process.argv.filter((a) => /^--lang=/.test(a))[0];
+const LANG = langArg ? langArg.slice(7) : 'ru';
+const REL = useDist ? `dist/star-atlas-${LANG}.html` : `public/${LANG}/app/index.html`;
+const FILE = pathToFileURL(path.join(ROOT, REL)).href;
+const HOME = pathToFileURL(path.join(ROOT, 'public', LANG, 'index.html')).href;
 const OUT = path.join(__dirname, 'shots');
 fs.mkdirSync(OUT, { recursive: true });
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -43,10 +48,13 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms));
     viewport: { width: 400, height: 760, deviceScaleFactor: 2, isMobile: true, hasTouch: true },
     userAgent: 'Mozilla/5.0 (Linux; Android 5.1; SM-J320F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0 Mobile Safari/537.36',
   });
-  await page.goto(FILE + '?debug', { waitUntil: 'load' });
+  // 1. Урок «Волопас» по адресу #lesson/Boo.
+  await page.goto(FILE + '?debug#lesson/Boo', { waitUntil: 'load' });
   await wait(800);
-  console.log(`Файл: ${useDist ? 'dist/star-atlas.html' : 'public/index.html'}`);
+  console.log(`Файл: ${REL}`);
   if (!(await page.evaluate(() => window.__oldEnv))) failures.push('не удалось удалить новые API');
+  const title = await page.evaluate(() => [document.querySelector('#panel h1').textContent, window.TEXT.cons.Boo.name]);
+  if (title[0] !== title[1]) failures.push(`по адресу #lesson/Boo открылся урок «${title[0]}»`);
 
   const cdp = await page.target().createCDPSession();
   const tap = async (x, y) => {
@@ -60,20 +68,15 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms));
     await tap(b.x + p[0], b.y + p[1]);
   };
 
-  // 1. Урок «Волопас» + «Проверь себя» касаниями (все ответы правильные).
-  await page.evaluate(() => document.querySelector('#btn-menu').click());
-  await wait(400);
-  await page.evaluate(() => {
-    const l = document.querySelectorAll('.li');
-    for (let i = 0; i < l.length; i++) if (l[i].textContent.indexOf('Волопас') >= 0) l[i].click();
-  });
-  await wait(900);
+  // 2. «Проверь себя» касаниями (все ответы правильные).
   await page.evaluate(() => document.querySelector('#l-check').click());
   await wait(900);
   for (let k = 0; k < 8; k++) {
-    const task = await page.evaluate(() => document.querySelector('#banner').textContent);
-    if (!/Найди/.test(task)) break;
-    const name = task.replace('Найди: ', '').replace(/\s*\d+ \/ \d+$/, '').trim();
+    const name = await page.evaluate(() => {
+      const b = document.querySelector('#banner.show b');
+      return b && document.querySelector('#banner .cnt') ? b.textContent : null;
+    });
+    if (!name) break;
     const t = await page.evaluate((name) => {
       const s = window.__app.sky;
       for (let i = 0; i < s.n; i++) if (s.curatedName(i) === name || s.starDesig(i) === name) return [s.ra[i], s.dec[i]];
@@ -85,10 +88,10 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms));
   }
   await wait(400);
   const score = await page.evaluate(() => JSON.parse(localStorage.getItem('sa.done') || '{}').Boo);
-  console.log('Самопроверка «Волопас» касаниями:', score);
+  console.log('Самопроверка «Boo» касаниями:', score);
   if (score !== '4/4') failures.push(`самопроверка: ${score}, ожидалось 4/4`);
 
-  // 2. Перетаскивание и щипок пальцами.
+  // 3. Перетаскивание и щипок пальцами.
   const b = await box();
   const view = () => page.evaluate(() => window.__app.map.view);
   const v0 = await view();
@@ -107,7 +110,7 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms));
   if (!moved) failures.push('перетаскивание пальцем не двигает карту');
   if (!zoomed) failures.push('щипок не приближает карту');
 
-  // 3. Млечный Путь: с 400 точек обзора полоса должна быть залита, а галактические полюса и т. п. — нет.
+  // 4. Млечный Путь: с 400 точек обзора полоса должна быть залита, а галактические полюса и т. п. — нет.
   const mw = await page.evaluate(() => {
     const map = window.__app.map;
     map.opt.mw = true;
@@ -133,30 +136,57 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms));
   console.log(`Млечный Путь: ${mw.checks} проверок, ошибок ${mw.bad} ${mw.fails.join(' | ')}`);
   if (mw.bad) failures.push(`Млечный Путь залит неправильно в ${mw.bad} проверках`);
 
-  // 4. Скриншот южного неба (там раньше «выворачивалась» заливка).
+  // 5. Адреса: атлас → #atlas, «назад» возвращает урок; ссылка на другой язык ведёт в тот же раздел.
+  await page.evaluate(() => document.querySelector('.bottom-tabs [data-tab="atlas"]').click());
+  await wait(500);
+  const atlasHash = await page.evaluate(() => location.hash);
+  await page.evaluate(() => history.back());
+  await wait(700);
+  const back = await page.evaluate(() => [location.hash, document.body.className, document.querySelector('#lang').getAttribute('href')]);
+  console.log(`Адреса: атлас ${atlasHash}, после «назад» ${back[0]}, ссылка на другой язык ${back[2]}`);
+  if (atlasHash !== '#atlas') failures.push(`вкладка «Атлас» дала адрес ${atlasHash}`);
+  if (back[0] !== '#lesson/Boo' || !/\btab-learn\b/.test(back[1])) failures.push(`«назад» из атласа: ${back[0]}, ${back[1]}`);
+  if (!/#lesson\/Boo$/.test(back[2])) failures.push(`ссылка на другой язык не ведёт в тот же раздел: ${back[2]}`);
+
+  // 6. Скриншот южного неба (там раньше «выворачивалась» заливка).
   await page.evaluate(() => document.querySelector('.bottom-tabs [data-tab="atlas"]').click());
   await wait(500);
   await page.evaluate(() => window.__app.map.setView({ ra: 190, dec: -68, fov: 120 }));
   await wait(400);
-  await page.screenshot({ path: path.join(OUT, 'old-south.png') });
+  await page.screenshot({ path: path.join(OUT, `old-south-${LANG}.png`) });
 
-  // 5. Тренировка и шпаргалка открываются.
+  // 7. Тренировка и шпаргалка открываются.
   await page.evaluate(() => document.querySelector('.bottom-tabs [data-tab="quiz"]').click());
   await wait(800);
   await page.evaluate(() => { const o = document.querySelector('.opt') || document.querySelector('#q-skip') || document.querySelector('#q-north'); if (o) o.click(); });
   await wait(400);
   const fb = await page.evaluate(() => { const f = document.querySelector('.q-feedback'); return f ? f.textContent : ''; });
   console.log('Тренировка:', fb || 'вопрос не задан');
-  const rows = await (async () => {
-    await page.evaluate(() => document.querySelector('.bottom-tabs [data-tab="ref"]').click());
-    await wait(500);
-    return page.evaluate(() => document.querySelectorAll('.tbl tr').length);
-  })();
+  await page.evaluate(() => document.querySelector('.bottom-tabs [data-tab="ref"]').click());
+  await wait(500);
+  const rows = await page.evaluate(() => document.querySelectorAll('.tbl tr').length);
   console.log('Шпаргалка, строк в таблицах:', rows);
   if (rows < 100) failures.push('шпаргалка не построилась');
+  await page.screenshot({ path: path.join(OUT, `old-ref-${LANG}.png`) });
+
+  // 8. Главная страница: «Продолжить» с прогрессом, переход в атлас по карточке.
+  if (!useDist) {
+    await page.goto(HOME, { waitUntil: 'load' });
+    await wait(300);
+    const home = await page.evaluate(() => [document.getElementById('go').textContent, document.getElementById('go').getAttribute('href'),
+      document.getElementById('prog').textContent, !!document.querySelector('.fig svg polyline')]);
+    console.log(`Главная: «${home[0]}» → ${home[1]}; ${home[2]}`);
+    if (!/index\.html#lesson\/Boo$/.test(home[1])) failures.push(`«Продолжить» ведёт на ${home[1]}`);
+    if (!home[3]) failures.push('на главной нет картинки');
+    await page.screenshot({ path: path.join(OUT, `old-home-${LANG}.png`), fullPage: true });
+    await page.evaluate(() => document.querySelector('.card[href*="#atlas"]').click());
+    await wait(1200);
+    const atlas = await page.evaluate(() => [location.hash, document.body.className]);
+    if (atlas[0] !== '#atlas' || !/\btab-atlas\b/.test(atlas[1])) failures.push(`карточка «Атлас» открыла ${atlas.join(' ')}`);
+  }
 
   if (errors.length) failures.push('ошибки в консоли:\n  ' + errors.join('\n  '));
   await browser.close();
-  console.log(failures.length ? `\nПРОВАЛ:\n- ${failures.join('\n- ')}` : '\nВсё работает. Скриншот: tools/e2e/shots/old-south.png');
+  console.log(failures.length ? `\nПРОВАЛ:\n- ${failures.join('\n- ')}` : `\nВсё работает. Скриншоты: tools/e2e/shots/*-${LANG}.png`);
   process.exitCode = failures.length ? 1 : 0;
 })().catch((e) => { console.error(e); process.exit(1); });

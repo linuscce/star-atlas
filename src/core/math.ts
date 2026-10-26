@@ -62,37 +62,7 @@ export function sunLongitude(date: Date): number {
   return norm360(L + 1.915 * Math.sin(g) + 0.02 * Math.sin(2 * g));
 }
 
-// ---------- форматирование ----------
-
 export const pad2 = (n: number) => (n < 10 ? '0' : '') + n;
-const minus = (x: number) => (x < 0 ? '−' : '');
-
-export function fmtNum(x: number, digits = 1): string {
-  const s = Math.abs(x).toFixed(digits);
-  return (+s === 0 ? '' : minus(x)) + s.replace('.', ',');
-}
-
-export function fmtMag(m: number, digits = 1): string {
-  return fmtNum(m, digits) + '<sup>m</sup>';
-}
-
-export function fmtRA(ra: number): string {
-  const tm = Math.round(norm360(ra) / 15 * 60);
-  return `${Math.floor(tm / 60) % 24}ч${pad2(tm % 60)}м`;
-}
-
-export function fmtDec(dec: number): string {
-  const t = Math.round(Math.abs(dec) * 60);
-  return `${dec < 0 ? '−' : '+'}${Math.floor(t / 60)}°${pad2(t % 60)}′`;
-}
-
-export function fmtDeg(x: number): string {
-  return `${minus(x)}${Math.round(Math.abs(x))}°`;
-}
-
-const MONTHS_GEN = ['янв', 'фев', 'мар', 'апр', 'мая', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
-export const fmtDayMonth = (d: Date) => `${d.getUTCDate()} ${MONTHS_GEN[d.getUTCMonth()]}`;
-export const MONTH_SHORT = MONTHS_GEN;
 
 // Видимость звезды со склонением dec на широте lat.
 export function visibility(dec: number, lat: number): { kind: 'never-sets' | 'rises' | 'never-rises'; hmax: number } {
@@ -101,5 +71,3 @@ export function visibility(dec: number, lat: number): { kind: 'never-sets' | 'ri
   if (hmax < 0) return { kind: 'never-rises', hmax };
   return { kind: 'rises', hmax };
 }
-
-export const escapeHtml = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' } as Record<string, string>)[c]);

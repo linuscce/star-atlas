@@ -1,0 +1,182 @@
+﻿key;ru;en
+lang;ru;en
+locale;ru;en
+defaultLat;55.75;51.5
+decimal;,;.
+hour;ч;h
+minute;м;m
+months.1;янв;Jan
+months.2;фев;Feb
+months.3;мар;Mar
+months.4;апр;Apr
+months.5;мая;May
+months.6;июн;Jun
+months.7;июл;Jul
+months.8;авг;Aug
+months.9;сен;Sep
+months.10;окт;Oct
+months.11;ноя;Nov
+months.12;дек;Dec
+page.title;Звёздное небо — шаг за шагом;Starry Sky — Step by Step
+page.description;Учебник звёздного неба: созвездие за созвездием, с картой, указателями и тренировкой для олимпиады по астрономии.;A textbook of the night sky: constellation by constellation, with a map, star-hopping pointers and practice for astronomy olympiads.
+page.brand;Звёздное небо;Starry Sky
+page.brandSub;шаг за шагом;step by step
+page.menu;Список уроков;Lesson list
+page.progress;Пройдено уроков;Lessons completed
+page.tabs.learn;Уроки;Lessons
+page.tabs.quiz;Тренировка;Practice
+page.tabs.atlas;Атлас;Atlas
+page.tabs.ref;Шпаргалка;Reference
+page.zoomIn;Приблизить;Zoom in
+page.zoomOut;Отдалить;Zoom out
+page.zoomHome;Вернуть вид;Reset view
+page.noscript;Для работы сайта нужен JavaScript.;This site needs JavaScript.
+page.otherLang;EN;RU
+page.otherLangTitle;English;Русский
+home.lead;Учебник звёздного неба для подготовки к олимпиаде по астрономии: 53 урока и все 88 созвездий — по одному за раз. Каждое новое созвездие ищется от уже знакомых по жёлтым указателям, начиная с Большого Ковша.;A textbook of the night sky for astronomy olympiad preparation: 53 lessons and all 88 constellations, one at a time. Each new constellation is found from ones you already know by following yellow pointers, starting from the Big Dipper.
+home.start;Начать с первого урока;Start with the first lesson
+home.continue;Продолжить: урок {n} · {title};Continue: lesson {n} · {title}
+home.progress;Пройдено уроков: {done} из {total};Lessons completed: {done} of {total}
+home.figure;Линия через две крайние звезды Ковша, продолженная в 5 раз, приводит к Полярной. Так, от знакомых звёзд, находится каждое новое созвездие.;The line through the two end stars of the Dipper’s bowl, extended 5 times, leads to Polaris. Every new constellation is found like this, from stars you already know.
+home.learn;Карта с новым созвездием, как его найти, главные звёзды и объекты, факты для олимпиады и «Проверь себя».;A map with the new constellation, how to find it, its main stars and objects, olympiad facts and a self-test.
+home.quiz;Четыре типа вопросов: узнать созвездие, показать его на карте, найти и назвать звезду. Ошибки повторяются чаще.;Four kinds of questions: recognize a constellation, show it on the map, find and name a star. Mistakes come up more often.
+home.atlas;Всё небо с поиском. Нажми на звезду — увидишь координаты и видимость на своей широте.;The whole sky with search. Tap a star to see its coordinates and visibility at your latitude.
+home.ref;Греческий алфавит, ярчайшие звёзды, Солнце в созвездиях, формулы видимости, все 88 созвездий.;The Greek alphabet, the brightest stars, the Sun in the constellations, visibility formulas, all 88 constellations.
+home.offline;Без интернета: сохрани сайт одним файлом и открой его в браузере телефона. Работает и на старых Android.;No internet? Save the site as a single file and open it in your phone’s browser. Works on old Android phones too.
+home.download;Скачать файл ({size} МБ);Download the file ({size} MB)
+ui.right;Верно!;Correct!
+ui.itIs;Это {con};This is {con}
+ui.gen;род. п.;gen.
+ui.atLat;На широте {lat}°;At latitude {lat}°
+ui.myLat;Моя широта;My latitude
+ui.firstHint;Карту можно двигать пальцем или мышью и приближать;Drag the map with a finger or the mouse, and zoom in
+ui.fps;кадр {ms} мс · DPR {dpr} · звёзды {mag};frame {ms} ms · DPR {dpr} · stars {mag}
+ui.toggle.names;Подписи;Labels
+ui.toggle.bounds;Границы;Boundaries
+ui.toggle.grid;Сетка;Grid
+ui.toggle.ecliptic;Эклиптика;Ecliptic
+ui.toggle.mw;Млечный Путь;Milky Way
+ui.toggle.dso;Объекты;Objects
+ui.toggleLines.learn;Все линии;All lines
+ui.toggleLines.quiz;Подсказка: линии;Hint: lines
+ui.toggleLines.atlas;Линии;Lines
+ui.lessonCrumb;Урок {n} из {total} · {block};Lesson {n} of {total} · {block}
+ui.done;Пройдено;Completed
+ui.find;Как найти;How to find it
+ui.look;Как выглядит;What it looks like
+ui.keyStars;Главные звёзды;Main stars
+ui.objects;Интересные объекты;Interesting objects
+ui.facts;Полезно знать;Good to know
+ui.gotIt;Понятно ✓;Got it ✓
+ui.check;Проверь себя;Test yourself
+ui.prev;← Назад;← Back
+ui.next;Дальше →;Next →
+ui.hereCon;Здесь созвездие <b>{con}</b>;This is <b>{con}</b>
+ui.checkTitle;Найди на карте;Find it on the map
+ui.checkIntro;Линии и подписи нового созвездия спрятаны. Нажимай на карте туда, где, по-твоему, находится нужная звезда или созвездие. Карту можно двигать и приближать.;The lines and labels of the new constellation are hidden. Tap the map where you think the star or constellation is. You can drag and zoom the map.
+ui.checkStop;Прервать;Stop
+ui.taskCon;созвездие {con};constellation {con}
+ui.taskFind;Найди: <b>{what}</b>;Find: <b>{what}</b>
+ui.checkWrong;Не то — правильный ответ отмечен зелёным;Not quite — the right answer is marked in green
+ui.checkPassed;Отлично: {score}! Урок пройден ✓;Excellent: {score}! Lesson complete ✓
+ui.checkFailed;{score} — повтори урок и попробуй ещё раз;{score} — review the lesson and try again
+ui.quizTitle;Тренировка;Practice
+ui.quizIntro;Вопросы по созвездиям из выбранного набора. То, в чём ошибаешься, спрашивается чаще.;Questions about the constellations in the chosen set. The ones you get wrong come up more often.
+ui.quizNoTypes;Выбери хотя бы один тип вопросов.;Choose at least one type of question.
+ui.quizNothing;Пока нечего спрашивать: ты ещё не прошёл ни одного урока.;Nothing to ask yet: no lessons are completed.
+ui.quizAskNorth;Спрашивать по всему небу, видимому из России;Ask about the sky seen from mid-northern latitudes
+ui.qTypes.conId;Узнай созвездие по звёздам;Name the constellation from its stars
+ui.qTypes.findCon;Покажи созвездие на карте;Show a constellation on the map
+ui.qTypes.findStar;Найди звезду;Find a star
+ui.qTypes.nameStar;Назови отмеченную звезду;Name the marked star
+ui.qPools.learned;Изученные уроки;Lessons studied
+ui.qPools.north;Небо, видимое из России;Sky seen from mid-northern latitudes
+ui.qPools.all;Все 88 созвездий;All 88 constellations
+ui.qConId;Какое созвездие внутри жёлтой границы?;Which constellation is inside the yellow boundary?
+ui.qFindCon;Нажми на карте внутри созвездия <b>{con}</b>;Tap the map inside <b>{con}</b>
+ui.qFindStar;Нажми на звезду <b>{star}</b>;Tap the star <b>{star}</b>
+ui.qNameStar;Как называется звезда в жёлтом кружке?;What is the star in the yellow circle called?
+ui.bannerFindStar;Найди звезду: <b>{star}</b>;Find the star: <b>{star}</b>
+ui.bannerFindCon;Покажи созвездие: <b>{con}</b>;Show the constellation: <b>{con}</b>
+ui.quizWrongBanner;Не совсем — смотри правильный ответ;Not quite — see the right answer
+ui.wrong;Неверно.;Wrong.
+ui.nextQuestion;Следующий вопрос →;Next question →
+ui.dontKnow;Не знаю — показать;I don’t know — show me
+ui.quizScore;Верно {ok} из {n};{ok} of {n} correct
+ui.quizStreak;серия {streak};streak {streak}
+ui.settings;Настройки;Settings
+ui.whatToAsk;Что спрашивать;What to ask
+ui.askFrom;Из чего;Ask from
+ui.poolSize;Сейчас в наборе: {cons} {cons:созвездие|созвездия|созвездий}, {stars} {stars:звезда|звезды|звёзд}.;In the set now: {cons} {cons:constellation|constellations}, {stars} {stars:star|stars}.
+ui.weakTitle;Чаще всего ошибаешься;Most frequent mistakes
+ui.atlasTitle;Атлас;Atlas
+ui.atlasIntro;Всё небо. Нажми на звезду, объект или пустое место — увидишь название, созвездие и координаты.;The whole sky. Tap a star, an object or an empty spot to see its name, constellation and coordinates.
+ui.searchPlaceholder;Найти: Вега, Орион, α Lyr, M31…;Search: Vega, Orion, α Lyr, M31…
+ui.latExamples;Москва 55,8 · Петербург 59,9 · Сочи 43,6;London 51.5 · New York 40.7 · Sydney −33.9
+ui.nothingSelected;Ничего не выбрано.;Nothing selected.
+ui.legendTitle;Обозначения;Legend
+ui.legend.gal;галактика;galaxy
+ui.legend.gc;шаровое скопление;globular cluster
+ui.legend.oc;рассеянное скопление;open cluster
+ui.legend.neb;туманность;nebula
+ui.legend.ecl;эклиптика (точки — Солнце 1-го числа месяца);ecliptic (dots: the Sun on the 1st of each month)
+ui.colors.1;голубая;blue
+ui.colors.2;бело-голубая;blue-white
+ui.colors.3;белая;white
+ui.colors.4;жёлтая;yellow
+ui.colors.5;оранжевая;orange
+ui.colors.6;красно-оранжевая;red-orange
+ui.visNeverSets;не заходит, наибольшая высота {h};never sets, highest altitude {h}
+ui.visNeverRises;не восходит;never rises
+ui.visRises;восходит и заходит, наибольшая высота {h};rises and sets, highest altitude {h}
+ui.rowCon;Созвездие;Constellation
+ui.rowMag;Блеск;Magnitude
+ui.rowColor;Цвет;Color
+ui.rowRA;Прямое восхождение α;Right ascension α
+ui.rowDec;Склонение δ;Declination δ
+ui.skyPoint;Точка неба;Point in the sky
+ui.pointRA;α точки;α of the point
+ui.pointDec;δ точки;δ of the point
+ui.lessonBtn;Урок {n}: {title};Lesson {n}: {title}
+ui.subCon;созвездие · {alt};constellation · {alt}
+ui.subStar;звезда · {desig};star · {desig}
+ui.refTitle;Шпаргалка;Reference
+ui.greekTitle;Греческий алфавит;Greek alphabet
+ui.brightTitle;Ярчайшие звёзды;Brightest stars
+ui.brightHead.1;№;#
+ui.brightHead.2;Звезда;Star
+ui.brightHead.3;Обозначение;Designation
+ui.brightHead.4;m;m
+ui.brightHead.5;α;α
+ui.brightHead.6;δ;δ
+ui.brightNote;Координаты на эпоху J2000. В скобках — наибольшая высота над горизонтом.;Coordinates for epoch J2000. In brackets: the highest altitude above the horizon.
+ui.sunTitle;Солнце в созвездиях ({year});The Sun in the constellations ({year})
+ui.sunHead.1;Созвездие;Constellation
+ui.sunHead.2;Солнце;Sun
+ui.sunHead.3;дней;days
+ui.sunNote;Посчитано по настоящим границам созвездий. Это не астрологические «знаки».;Computed from the real constellation boundaries. These are not the astrological “signs”.
+ui.formulasTitle;Формулы видимости;Visibility formulas
+ui.formulas.1;"Не заходит: <b>δ &gt; 90° − φ</b>. Не восходит: <b>δ &lt; −(90° − φ)</b>.";"Never sets: <b>δ &gt; 90° − φ</b>. Never rises: <b>δ &lt; −(90° − φ)</b>."
+ui.formulas.2;Высота в верхней кульминации: <b>h = 90° − |φ − δ|</b> (для звёзд южнее зенита — 90° − φ + δ).;Altitude at upper culmination: <b>h = 90° − |φ − δ|</b> (for stars south of the zenith, 90° − φ + δ).
+ui.formulas.3;Высота Полярной ≈ широте места φ.;The altitude of Polaris ≈ the latitude φ.
+ui.formulas.4;α Солнца ≈ 0ч 21 марта, 6ч 22 июня, 12ч 23 сентября, 18ч 22 декабря (+2ч в месяц).;α of the Sun ≈ 0h on March 21, 6h on June 22, 12h on September 23, 18h on December 22 (+2h per month).
+ui.formulas.5;В полночь на юге звёзды с α ≈ α Солнца + 12ч. Полная Луна — напротив Солнца.;At midnight the stars with α ≈ α of the Sun + 12h are in the south. The full Moon is opposite the Sun.
+ui.formulas.6;Звёздные сутки = 23ч 56м 4с: каждый день звёзды восходят на ~4 минуты раньше.;A sidereal day is 23h 56m 4s: the stars rise about 4 minutes earlier every day.
+ui.formulas.7;"Разница в 5<sup>m</sup> — в 100 раз по яркости; 1<sup>m</sup> — в 2,512 раза.";"A difference of 5<sup>m</sup> is a factor of 100 in brightness; 1<sup>m</sup> is a factor of 2.512."
+ui.asterismsTitle;Астеризмы;Asterisms
+ui.allConsTitle;Все 88 созвездий;All 88 constellations
+ui.consHead.1;Созвездие;Constellation
+ui.consHead.2;Латынь;Meaning
+ui.consHead.3;Род. падеж;Genitive
+ui.consHead.4;Сокр.;Abbr.
+ui.consHead.5;Урок;Lesson
+ui.objectsTitle;Объекты;Objects
+ui.dsoHead.1;Объект;Object
+ui.dsoHead.2;Что это;What it is
+ui.dsoHead.3;Созвездие;Constellation
+ui.dsoHead.4;α;α
+ui.dsoHead.5;δ;δ
+ui.visShortNeverSets;не заходит ({h});never sets ({h})
+ui.visShortNeverRises;не восходит;never rises
+ui.visShortRises;до {h};up to {h}
+ui.credits;Данные о звёздах, линиях и границах созвездий: проект d3-celestial (Olaf Frohn), каталоги Hipparcos и IAU.;Data on stars, constellation lines and boundaries: the d3-celestial project (Olaf Frohn), the Hipparcos and IAU catalogues.

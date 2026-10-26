@@ -1,0 +1,503 @@
+﻿key;ru;en
+blocks.start;Начало;Getting started
+blocks.north;Вокруг Полярной;Around Polaris
+blocks.dipper;От Ковша на юг;South from the Dipper
+blocks.vega;Вега, Денеб, Альтаир;Vega, Deneb, Altair
+blocks.pegasus;Пегас и Андромеда;Pegasus and Andromeda
+blocks.orion;Орион и его соседи;Orion and its neighbors
+blocks.south;Южное небо;The southern sky
+blocks.theory;Небо как система;The sky as a system
+lessons.intro.title;Как читать звёздную карту;How to read a star map
+lessons.intro.html;"<p>Перед тобой настоящая карта неба: 5000 звёзд, которые видно глазом. Её можно двигать (мышью или пальцем) и приближать (колесом мыши, двумя пальцами или кнопками +/−).</p>
+<h3>Север сверху, восток — слева</h3>
+<p>На земных картах восток справа, а на звёздных — <b>слева</b>. Почему? Карта Земли — вид сверху, а на небо мы смотрим снизу, изнутри. Ляг на спину головой на север — и восток окажется по левую руку. Все олимпиадные карты нарисованы именно так.</p>
+<h3>Размер кружка — яркость</h3>
+<p>Яркость звёзд измеряют <b>звёздной величиной</b> (m). Чем <b>меньше</b> число, тем ярче звезда: Сириус −1,5<sup>m</sup>, Полярная 2<sup>m</sup>, а самые слабые звёзды, которые видны глазом в тёмном месте, — около 6<sup>m</sup>. Разница в 5<sup>m</sup> — это ровно в 100 раз по яркости.</p>
+<h3>Как называют звёзды</h3>
+<p>Яркие звёзды имеют собственные имена (Вега, Ригель), но в задачах их чаще пишут по <b>Байеру</b>: греческая буква + созвездие в родительном падеже — <b>α Лиры</b> = Вега, <b>β Ориона</b> = Ригель. Обычно α — самая яркая звезда созвездия, β — вторая и так далее, но бывают исключения. Греческий алфавит есть в «Шпаргалке» — выучи его в первую очередь.</p>
+<h3>Координаты</h3>
+<p>Сетка на карте — <b>экваториальные координаты</b>: склонение δ (от −90° до +90°, как широта) и прямое восхождение α (от 0ч до 24ч, растёт к востоку — влево). Яркая линия — небесный экватор (δ = 0°).</p>
+<h3>Как устроены уроки</h3>
+<p>Каждый урок — одно созвездие (или несколько маленьких). Новое созвездие нарисовано <span class=""c-focus"">голубым</span>, пройденные — <span class=""c-known"">серым</span>, а <span class=""c-ptr"">жёлтые стрелки</span> показывают, как найти новое от уже знакомых звёзд. Так небо складывается в одну сеть, которая начинается с Большого Ковша.</p>
+<p>В конце урока нажми <b>«Проверь себя»</b>: линии и подписи исчезнут, и нужно будет найти звёзды самому. Раз в несколько уроков заходи в «Тренировку» — там вопросы по всем пройденным созвездиям.</p>";"<p>This is a real map of the sky: the 5,000 stars visible to the naked eye. You can drag it (with the mouse or a finger) and zoom in (with the mouse wheel, two fingers or the +/− buttons).</p>
+<h3>North is up, east is on the left</h3>
+<p>On maps of the Earth east is on the right, but on star maps it is on the <b>left</b>. Why? A map of the Earth is a view from above, while we look at the sky from below, from the inside. Lie on your back with your head to the north, and east will be on your left. All olympiad star maps are drawn this way.</p>
+<h3>The size of a dot is brightness</h3>
+<p>The brightness of stars is measured in <b>magnitudes</b> (m). The <b>smaller</b> the number, the brighter the star: Sirius is −1.5<sup>m</sup>, Polaris 2<sup>m</sup>, and the faintest stars visible to the naked eye in a dark place are about 6<sup>m</sup>. A difference of 5<sup>m</sup> is exactly a factor of 100 in brightness.</p>
+<h3>How stars are named</h3>
+<p>Bright stars have proper names (Vega, Rigel), but in problems they are more often written in <b>Bayer</b> form: a Greek letter plus the Latin genitive of the constellation — <b>α Lyrae</b> = Vega, <b>β Orionis</b> = Rigel. Usually α is the brightest star of the constellation, β the second and so on, but there are exceptions. The Greek alphabet is in the “Reference” tab — learn it first.</p>
+<h3>Coordinates</h3>
+<p>The grid on the map shows <b>equatorial coordinates</b>: declination δ (from −90° to +90°, like latitude) and right ascension α (from 0h to 24h, increasing to the east — to the left). The bright line is the celestial equator (δ = 0°).</p>
+<h3>How the lessons work</h3>
+<p>Each lesson is one constellation (or several small ones). The new constellation is drawn in <span class=""c-focus"">blue</span>, the ones already learned in <span class=""c-known"">grey</span>, and the <span class=""c-ptr"">yellow arrows</span> show how to find the new one from stars you already know. This way the sky becomes a single network that starts from the Big Dipper.</p>
+<p>At the end of a lesson, press <b>“Test yourself”</b>: the lines and labels disappear, and you have to find the stars yourself. Every few lessons, visit “Practice” — it asks about all the constellations you have learned.</p>"
+lessons.UMa.find;Начинаем с самого знаменитого рисунка северного неба — <b>Большого Ковша</b>. Семь ярких звёзд: четыре образуют ковш, три — изогнутую ручку. От Ковша мы найдём почти всё северное небо.;We start with the most famous figure of the northern sky — the <b>Big Dipper</b> (the Plough). Seven bright stars: four form the bowl, three the curved handle. From the Dipper we will find almost the whole northern sky.
+lessons.UMa.look;Ковш — только часть Большой Медведицы: её спина и хвост. Голова и лапы — слабые звёзды вокруг. Буквы идут так: α, β, γ, δ — по ковшу от края к ручке, ε, ζ, η — по ручке до конца. Две крайние звезды ковша, <b>Мерак (β)</b> и <b>Дубхе (α)</b>, — «указатели», они понадобятся в следующем уроке.;The Dipper is only part of Ursa Major, the Great Bear: its back and tail. The head and legs are faint stars around it. The letters go like this: α, β, γ, δ around the bowl from its edge to the handle, then ε, ζ, η along the handle to its end. The two outer stars of the bowl, <b>Merak (β)</b> and <b>Dubhe (α)</b>, are the “pointers” — you will need them in the next lesson.
+lessons.UMa.facts.1;Ярчайшая звезда созвездия — <b>Алиот (ε)</b>, а не Дубхе (α): буквы не всегда идут по яркости.;The brightest star of the constellation is <b>Alioth (ε)</b>, not Dubhe (α): the letters do not always follow brightness.
+lessons.UMa.facts.2;Рядом с Мицаром — слабый <b>Алькор</b>. Различить их глазом — старинная проверка зрения.;Next to Mizar is the faint <b>Alcor</b>. Telling them apart with the naked eye is an old test of eyesight.
+lessons.UMa.facts.3;Пять средних звёзд Ковша летят в пространстве вместе (движущаяся группа Большой Медведицы), а Дубхе и Бенетнаш — нет. Через сотню тысяч лет Ковш изменит форму.;The five middle stars of the Dipper move through space together (the Ursa Major Moving Group), but Dubhe and Alkaid do not. In a hundred thousand years the Dipper will change its shape.
+lessons.UMa.facts.4;В средней полосе России Ковш <b>не заходит</b>: виден в любую ясную ночь года.;At mid-northern latitudes (around 50–60° N) the Dipper <b>never sets</b>: it is visible on any clear night of the year.
+lessons.UMa.facts.5;Большая Медведица — 3-е по площади созвездие (после Гидры и Девы).;Ursa Major is the 3rd largest constellation (after Hydra and Virgo).
+lessons.UMi.labels.1;×5;×5
+lessons.UMi.find;Проведи линию от <b>Мерака</b> через <b>Дубхе</b> и отложи это расстояние примерно <b>5 раз</b> — упрёшься в <b>Полярную звезду</b>. Это конец ручки Малого Ковша.;Draw a line from <b>Merak</b> through <b>Dubhe</b> and extend it about <b>5 times</b> that distance — you will reach <b>Polaris</b>, the Pole Star. It is the end of the handle of the Little Dipper.
+lessons.UMi.look;Малый Ковш похож на Большой, но меньше, слабее и «перевёрнут»: ручки смотрят в разные стороны. Хорошо видны только три звезды: Полярная и две звезды на краю ковша — <b>Кохаб</b> и <b>Феркад</b> («Стражи полюса»).;The Little Dipper looks like the Big one, but smaller, fainter and “upside down”: the handles point in opposite directions. Only three stars are easy to see: Polaris and the two stars at the edge of the bowl — <b>Kochab</b> and <b>Pherkad</b> (the “Guardians of the Pole”).
+lessons.UMi.facts.1;Полярная — далеко не самая яркая звезда (около 2<sup>m</sup>, примерно 48-е место), зато она меньше чем в 1° от <b>северного полюса мира</b>. Вокруг неё вращается всё небо.;Polaris is far from the brightest star (about 2<sup>m</sup>, roughly 48th place), but it is less than 1° from the <b>north celestial pole</b>. The whole sky turns around it.
+lessons.UMi.facts.2;Высота Полярной над горизонтом ≈ <b>географическая широта</b> места. В Москве (56°) она на высоте 56°, на экваторе — у горизонта.;"The altitude of Polaris above the horizon ≈ the <b>geographic latitude</b> of the place. At 56° N it stands 56° high; at the equator it is on the horizon."
+lessons.UMi.facts.3;Из-за прецессии земной оси полюс медленно смещается: около 4800 лет назад «полярной» была Тубан (α Дракона), через ~12 000 лет будет Вега.;Because of the precession of the Earth’s axis the pole slowly moves: about 4800 years ago the “pole star” was Thuban (α Draconis), and in ~12,000 years it will be Vega.
+lessons.UMi.facts.4;Кохаб почти такой же яркий, как Полярная (2,1<sup>m</sup>).;Kochab is almost as bright as Polaris (2.1<sup>m</sup>).
+lessons.Cas.labels.1;столько же;the same again
+lessons.Cas.find;От <b>Мегреца</b> (там, где ручка Ковша соединяется с ковшом) проведи линию через <b>Полярную</b> и дальше на такое же расстояние. Там — буква <b>W</b> из пяти ярких звёзд: Кассиопея.;From <b>Megrez</b> (where the handle of the Dipper joins the bowl) draw a line through <b>Polaris</b> and on for the same distance. There you find the letter <b>W</b> made of five bright stars: Cassiopeia.
+lessons.Cas.look;Пять звёзд 2–3<sup>m</sup>: Каф (β), Шедар (α), γ, Рукбах (δ), Сегин (ε) — буква W или M, смотря как она повёрнута. Кассиопея и Ковш всегда по разные стороны от Полярной: когда Ковш высоко, Кассиопея низко, и наоборот.;Five stars of 2–3<sup>m</sup>: Caph (β), Schedar (α), γ, Ruchbah (δ), Segin (ε) — the letter W or M, depending on how it is turned. Cassiopeia and the Dipper are always on opposite sides of Polaris: when the Dipper is high, Cassiopeia is low, and vice versa.
+lessons.Cas.facts.1;Как и Ковш, Кассиопея в средней полосе России <b>не заходит</b>.;Like the Dipper, Cassiopeia <b>never sets</b> at mid-northern latitudes.
+lessons.Cas.facts.2;γ Кассиопеи — неправильная переменная: иногда становится ярче Шедара.;γ Cassiopeiae is an irregular variable: sometimes it becomes brighter than Schedar.
+lessons.Cas.facts.3;В 1572 году здесь вспыхнула сверхновая, которую наблюдал Тихо Браге.;"In 1572 a supernova flared up here; Tycho Brahe observed it."
+lessons.Cas.facts.4;Через Кассиопею проходит Млечный Путь.;The Milky Way runs through Cassiopeia.
+lessons.Cas.facts.5;Миф: царица Кассиопея — жена Цефея и мать Андромеды. Вся эта семья (Цефей, Андромеда, Персей, Пегас, Кит) — соседи на небе.;Myth: Queen Cassiopeia is the wife of Cepheus and the mother of Andromeda. The whole family (Cepheus, Andromeda, Perseus, Pegasus, Cetus) are neighbors in the sky.
+lessons.Cep.labels.1;×4;×4
+lessons.Cep.find;Продолжи линию от <b>Шедара</b> через <b>Каф</b> примерно в <b>4 раза</b> — попадёшь на <b>Альдерамин</b>, ярчайшую звезду Цефея.;Extend the line from <b>Schedar</b> through <b>Caph</b> about <b>4 times</b> — you will reach <b>Alderamin</b>, the brightest star of Cepheus.
+lessons.Cep.look;Цефей похож на <b>домик</b> с острой крышей. Основание домика лежит в Млечном Пути, а вершина крыши — звезда Эррай (γ) — смотрит на Полярную.;Cepheus looks like a <b>house</b> with a pointed roof. The base of the house lies in the Milky Way, and the top of the roof — the star Errai (γ) — points toward Polaris.
+lessons.Cep.facts.1;<b>δ Цефея</b> — прототип <b>цефеид</b>: её блеск меняется с периодом 5,37 суток. По цефеидам измеряют расстояния до других галактик.;<b>δ Cephei</b> is the prototype of the <b>Cepheids</b>: its brightness changes with a period of 5.37 days. Cepheids are used to measure distances to other galaxies.
+lessons.Cep.facts.2;<b>μ Цефея</b> — «Гранатовая звезда» Гершеля, один из самых красных и самых больших известных сверхгигантов.;<b>μ Cephei</b> is Herschel’s “Garnet Star”, one of the reddest and largest known supergiants.
+lessons.Cep.facts.3;Из-за прецессии около 4000 года н. э. полярной звездой станет Эррай (γ Цефея).;Because of precession, around the year 4000 AD Errai (γ Cephei) will become the pole star.
+lessons.Cep.facts.4;Цефей в России незаходящий.;At mid-northern latitudes Cepheus never sets.
+lessons.Dra.find;Дракон длинный и извилистый. Его <b>хвост</b> начинается между двумя Ковшами (рядом с указателями Большого Ковша), <b>тело</b> огибает Малый Ковш и поворачивает обратно, а <b>голова</b> — четырёхугольник из четырёх звёзд — смотрит в сторону яркой Веги.;Draco is long and winding. Its <b>tail</b> begins between the two Dippers (near the pointers of the Big Dipper), its <b>body</b> curves around the Little Dipper and turns back, and its <b>head</b> — a quadrilateral of four stars — looks toward bright Vega.
+lessons.Dra.look;Ищи голову: маленькая трапеция, две яркие звезды в ней — <b>Этамин (γ)</b> и <b>Растабан (β)</b>. От головы шея идёт на север и затем змейкой к хвосту.;Look for the head: a small trapezoid with two bright stars in it — <b>Eltanin (γ)</b> and <b>Rastaban (β)</b>. From the head the neck goes north and then winds like a snake to the tail.
+lessons.Dra.facts.1;<b>α Дракона (Тубан)</b> — всего 3,7<sup>m</sup>, но около 4800 лет назад, во времена египетских пирамид, она была полярной звездой.;<b>α Draconis (Thuban)</b> is only 3.7<sup>m</sup>, but about 4800 years ago, in the time of the Egyptian pyramids, it was the pole star.
+lessons.Dra.facts.2;В Драконе находится <b>северный полюс эклиптики</b> — рядом с туманностью Кошачий Глаз.;The <b>north ecliptic pole</b> is in Draco — next to the Cat’s Eye Nebula.
+lessons.Dra.facts.3;Метеорный поток <b>Дракониды</b> (около 8 октября) вылетает из головы Дракона.;The <b>Draconid</b> meteor shower (around October 8) radiates from the head of Draco.
+lessons.Dra.facts.4;Дракон — 8-е по площади созвездие.;Draco is the 8th largest constellation.
+lessons.Boo.labels.1;по дуге ручки;along the arc of the handle
+lessons.Boo.find;Продолжи <b>дугу ручки Ковша</b> (Алиот → Мицар → Бенетнаш) примерно на 30° — первая яркая оранжевая звезда это <b>Арктур</b>. По-английски запоминают: <i>«Arc to Arcturus»</i> — «по дуге к Арктуру».;Continue the <b>arc of the Dipper’s handle</b> (Alioth → Mizar → Alkaid) for about 30° — the first bright orange star is <b>Arcturus</b>. Remember: <i>“arc to Arcturus”</i>.
+lessons.Boo.look;Волопас похож на <b>воздушного змея</b> или мороженое в рожке: Арктур — нижний кончик, от него вверх расходится вытянутый пятиугольник.;Boötes looks like a <b>kite</b> or an ice-cream cone: Arcturus is the bottom tip, and an elongated pentagon spreads upward from it.
+lessons.Boo.facts.1;<b>Арктур</b> (−0,05<sup>m</sup>) — ярчайшая звезда северного полушария неба и 4-я по яркости на всём небе (после Сириуса, Канопуса и α Центавра).;<b>Arcturus</b> (−0.05<sup>m</sup>) is the brightest star of the northern celestial hemisphere and the 4th brightest in the whole sky (after Sirius, Canopus and α Centauri).
+lessons.Boo.facts.2;Арктур — оранжевый гигант в 37 световых годах.;Arcturus is an orange giant 37 light-years away.
+lessons.Boo.facts.3;Изар (ε) — красивая двойная звезда: оранжевая и голубоватая.;Izar (ε) is a beautiful double star: orange and bluish.
+lessons.Boo.facts.4;Метеорный поток Квадрантиды (начало января) — из северной части Волопаса.;The Quadrantid meteor shower (early January) comes from the northern part of Boötes.
+lessons.CrB.labels.1;~20° влево;~20° to the left
+lessons.CrB.find;Восточнее (левее) Арктура, примерно в 20°, — маленький <b>полукруг</b> из семи звёзд. Самая яркая — <b>Гемма</b>, «жемчужина в короне».;East of (to the left of) Arcturus, about 20° away, is a small <b>semicircle</b> of seven stars. The brightest is <b>Alphecca</b>, also called Gemma, “the jewel in the crown”.
+lessons.CrB.look;Аккуратная дуга, открытая к северу. Очень заметна, несмотря на скромную яркость звёзд.;A neat arc open to the north. Very noticeable despite the modest brightness of its stars.
+lessons.CrB.facts.1;<b>T Северной Короны</b> — повторная новая: вспыхивала в 1866 и 1946 годах (примерно раз в 80 лет) и на несколько дней становилась видна глазом. Следующую вспышку ждали в середине 2020-х.;<b>T Coronae Borealis</b> is a recurrent nova: it flared up in 1866 and 1946 (about once in 80 years) and for a few days became visible to the naked eye. The next outburst was expected in the mid-2020s.
+lessons.CrB.facts.2;Гемма — затменная переменная звезда.;Alphecca is an eclipsing variable star.
+lessons.CrB.facts.3;Миф: это корона Ариадны, которую Дионис забросил на небо.;Myth: this is the crown of Ariadne, which Dionysus threw into the sky.
+lessons.Vir.labels.1;дальше по дуге;on along the arc
+lessons.Vir.find;Продолжи ту же дугу от Арктура ещё на ~30° к югу — яркая бело-голубая звезда <b>Спика</b>. Присказка целиком: <i>«Arc to Arcturus, then speed on to Spica»</i>.;Continue the same arc from Arcturus another ~30° to the south — the bright blue-white star <b>Spica</b>. The whole rhyme: <i>“Arc to Arcturus, then speed on to Spica”</i>.
+lessons.Vir.look;Дева большая и бледная. Центр фигуры — Поррима (γ), от неё буквой <b>Y</b> расходятся цепочки: на запад к Льву, на север к Виндемиатрикс и на юго-восток к Спике.;"Virgo is large and faint. The center of the figure is Porrima (γ); from it, chains of stars spread out like the letter <b>Y</b>: west toward Leo, north toward Vindemiatrix and southeast toward Spica."
+lessons.Vir.facts.1;Дева — <b>2-е по площади</b> созвездие (после Гидры).;Virgo is the <b>2nd largest</b> constellation (after Hydra).
+lessons.Vir.facts.2;Спика лежит почти на эклиптике: Луна и планеты часто проходят рядом, а Луна может её закрывать.;Spica lies almost on the ecliptic: the Moon and planets often pass near it, and the Moon can cover it.
+lessons.Vir.facts.3;Солнце бывает в Деве примерно с 16 сентября по 31 октября — дольше, чем в любом другом зодиакальном созвездии.;The Sun is in Virgo from about September 16 to October 31 — longer than in any other zodiac constellation.
+lessons.Vir.facts.4;В Деве находится <b>точка осеннего равноденствия</b>.;The <b>autumnal equinox</b> point is in Virgo.
+lessons.Vir.facts.5;Между Денеболой и Виндемиатрикс — скопление галактик в Деве. В его центре галактика M87: в 2019 году получили первое изображение тени её чёрной дыры.;Between Denebola and Vindemiatrix lies the Virgo Cluster of galaxies. At its center is the galaxy M87: in 2019 the first image of the shadow of its black hole was obtained.
+lessons.Leo.labels.1;дно ковша протекает;the leaky bowl
+lessons.Leo.find;Если продырявить дно ковша (между <b>Мегрецом</b> и <b>Фекдой</b>), вода польётся прямо на Льва: продолжи линию Мегрец → Фекда примерно в 10 раз — упрёшься в <b>Регул</b>.;If you poke a hole in the bottom of the Dipper’s bowl (between <b>Megrez</b> and <b>Phecda</b>), the water will pour straight onto Leo: extend the line Megrez → Phecda about 10 times — you will reach <b>Regulus</b>.
+lessons.Leo.look;Голова и грудь Льва — <b>«серп»</b> (зеркальный вопросительный знак) с Регулом в основании. Туловище — треугольник, задний угол которого — <b>Денебола</b>, «хвост льва».;The head and chest of the Lion form the <b>“Sickle”</b> (a backward question mark) with Regulus at its base. The body is a triangle whose rear corner is <b>Denebola</b>, “the lion’s tail”.
+lessons.Leo.facts.1;<b>Регул</b> лежит ближе всех ярких звёзд к эклиптике — Луна часто его закрывает.;<b>Regulus</b> lies closer to the ecliptic than any other bright star — the Moon often covers it.
+lessons.Leo.facts.2;Солнце во Льве — примерно с 10 августа по 16 сентября.;The Sun is in Leo from about August 10 to September 16.
+lessons.Leo.facts.3;<b>Леониды</b> (17–18 ноября) — метеоры вылетают из серпа Льва.;The <b>Leonids</b> (November 17–18): their meteors radiate from the Sickle of Leo.
+lessons.Leo.facts.4;Альгиеба (γ) — красивая двойная из двух золотистых звёзд.;Algieba (γ) is a beautiful double of two golden stars.
+lessons.LMi_Sex.title;Малый Лев и Секстант;Leo Minor and Sextans
+lessons.LMi_Sex.labels.1;под Регулом;below Regulus
+lessons.LMi_Sex.find;Два тусклых созвездия-«заплатки», их учат по соседям. <b>Малый Лев</b> — между головой Льва и лапами Большой Медведицы. <b>Секстант</b> — прямо под Регулом (южнее), почти пустое место.;Two dim “patch” constellations, learned by their neighbors. <b>Leo Minor</b> is between the head of Leo and the paws of Ursa Major. <b>Sextans</b> is right below Regulus (to the south), an almost empty area.
+lessons.LMi_Sex.look;Малый Лев — маленький треугольник слабых звёзд, ярчайшая (Преципуа) всего 3,8<sup>m</sup>. Секстант — несколько звёзд 4,5–5<sup>m</sup>.;"Leo Minor is a small triangle of faint stars; the brightest (Praecipua) is only 3.8<sup>m</sup>. Sextans is a few stars of 4.5–5<sup>m</sup>."
+lessons.LMi_Sex.facts.1;Оба созвездия ввёл <b>Ян Гевелий</b> в 1687 году. Секстант назван в честь его астрономического инструмента.;Both constellations were introduced by <b>Johannes Hevelius</b> in 1687. Sextans is named after his astronomical instrument.
+lessons.LMi_Sex.facts.2;В Малом Льве есть звезда β, но <b>нет α</b> — её забыли обозначить.;Leo Minor has a star β but <b>no α</b> — it was never assigned.
+lessons.LMi_Sex.facts.3;Секстант пересекает небесный экватор.;Sextans straddles the celestial equator.
+lessons.CVn_Com.title;Гончие Псы и Волосы Вероники;Canes Venatici and Coma Berenices
+lessons.CVn_Com.labels.1;под ручкой;below the handle
+lessons.CVn_Com.labels.2;посередине;halfway
+lessons.CVn_Com.find;Под ручкой Ковша (к югу, ~15–18°) — одинокая звезда 3<sup>m</sup>: <b>Сердце Карла</b>, главная звезда Гончих Псов. Ровно <b>посередине</b> между Сердцем Карла и Денеболой — россыпь слабых звёзд: скопление <b>Волосы Вероники</b>.;Below the handle of the Dipper (to the south, ~15–18°) is a lone star of 3<sup>m</sup>: <b>Cor Caroli</b>, the main star of Canes Venatici. Exactly <b>halfway</b> between Cor Caroli and Denebola is a scattering of faint stars: the cluster of <b>Coma Berenices</b>.
+lessons.CVn_Com.look;Гончие Псы — всего две заметные звезды (Сердце Карла и Хара). Псы «бегут» за Медведицей, которую гонит Волопас. Волосы Вероники — туманная россыпь звёзд 4–5<sup>m</sup>, её хорошо видно в тёмном месте.;Canes Venatici has only two noticeable stars (Cor Caroli and Chara). The Hunting Dogs “run” after the Bear, driven by Boötes. Coma Berenices is a hazy scattering of 4–5<sup>m</sup> stars, easy to see from a dark site.
+lessons.CVn_Com.facts.1;Волосы Вероники названы в честь реальной египетской царицы <b>Береники II</b>.;Coma Berenices is named after a real Egyptian queen, <b>Berenice II</b>.
+lessons.CVn_Com.facts.2;В Волосах Вероники — <b>северный полюс Галактики</b>: мы смотрим «вверх» из диска Млечного Пути, поэтому там видны тысячи далёких галактик.;The <b>north galactic pole</b> is in Coma Berenices: we look “up” out of the disk of the Milky Way, so thousands of distant galaxies are visible there.
+lessons.CVn_Com.facts.3;M51 «Водоворот» (у Бенетнаша) — знаменитая спиральная галактика, в которой впервые увидели спиральную структуру (1845).;M51, the “Whirlpool” (near Alkaid), is a famous spiral galaxy — the first in which spiral structure was seen (1845).
+lessons.CVn_Com.facts.4;Сердце Карла названо в честь английского короля Карла.;Cor Caroli (“Charles’s Heart”) is named after the English king Charles.
+lessons.Cnc.labels.1;~20° вправо;~20° to the right
+lessons.Cnc.find;Западнее (правее) серпа Льва, на полпути к Близнецам, — самое тусклое созвездие зодиака. Найти его легко по туманному пятнышку — скоплению <b>Ясли (M44)</b>, которое за городом видно глазом.;West of (to the right of) the Sickle of Leo, halfway to Gemini, is the faintest constellation of the zodiac. It is easy to find by a hazy spot — the <b>Beehive Cluster (Praesepe, M44)</b>, visible to the naked eye outside the city.
+lessons.Cnc.look;"Перевёрнутая буква <b>Y</b> из звёзд 4<sup>m</sup>; Ясли — в центре, между двумя «осликами» (γ и δ).";"An upside-down letter <b>Y</b> of 4<sup>m</sup> stars; the Beehive is in the center, between the two “donkeys” (γ and δ)."
+lessons.Cnc.facts.1;Ни одной звезды ярче 3,5<sup>m</sup> — самое бледное созвездие зодиака.;Not a single star brighter than 3.5<sup>m</sup> — the faintest constellation of the zodiac.
+lessons.Cnc.facts.2;Солнце в Раке — примерно с 20 июля по 10 августа.;The Sun is in Cancer from about July 20 to August 10.
+lessons.Cnc.facts.3;<b>Тропик Рака</b> назван так потому, что 2000 лет назад в день летнего солнцестояния Солнце было в Раке. Из-за прецессии теперь оно в этот день в Близнецах.;The <b>Tropic of Cancer</b> got its name because 2000 years ago the Sun was in Cancer at the summer solstice. Because of precession it is now in Gemini on that day.
+lessons.Cnc.facts.4;Северный и Южный Ослики (γ и δ) по бокам от Яслей — «ослы у кормушки».;Asellus Borealis and Asellus Australis (γ and δ), the northern and southern donkeys on either side of the Beehive, are “donkeys at the manger”.
+lessons.Hya.labels.1;×2,7;×2.7
+lessons.Hya.find;Продолжи линию от <b>Альгиебы</b> через <b>Регул</b> ещё примерно в 2,5–3 раза — оранжевая одинокая звезда <b>Альфард</b>, сердце Гидры. Голова Гидры — маленькое колечко из 5–6 звёзд под Раком, хвост тянется под Девой почти до Весов.;"Extend the line from <b>Algieba</b> through <b>Regulus</b> about 2.5–3 times more — a lone orange star, <b>Alphard</b>, the heart of Hydra. The head of Hydra is a small ring of 5–6 stars below Cancer; the tail stretches below Virgo almost to Libra."
+lessons.Hya.look;Очень длинная цепочка звёзд: от головы до хвоста больше 100°. На спине у Гидры сидят Ворон и Чаша (следующий урок).;A very long chain of stars: more than 100° from head to tail. Corvus and Crater sit on Hydra’s back (next lesson).
+lessons.Hya.facts.1;Гидра — <b>самое большое созвездие</b> неба (1303 кв. градуса) и самое длинное.;Hydra is the <b>largest constellation</b> in the sky (1303 square degrees) and the longest.
+lessons.Hya.facts.2;Альфард по-арабски — «одинокая»: вокруг неё нет ярких звёзд.;Alphard is Arabic for “the solitary one”: there are no bright stars around it.
+lessons.Hya.facts.3;Не путай с <b>Южной Гидрой</b> (Hydrus) у южного полюса мира.;Do not confuse it with <b>Hydrus</b>, the Little Water Snake near the south celestial pole.
+lessons.Crv_Crt.title;Ворон и Чаша;Corvus and Crater
+lessons.Crv_Crt.labels.1;~18° вправо-вниз;~18° right and down
+lessons.Crv_Crt.find;Юго-западнее Спики (правее и ниже) — заметный четырёхугольник из звёзд 2,5–3<sup>m</sup>: <b>Ворон</b>. Ещё западнее — тусклая <b>Чаша</b>, похожая на бокал.;Southwest of Spica (to the right and below) is a noticeable quadrilateral of 2.5–3<sup>m</sup> stars: <b>Corvus</b>, the Crow. Farther west is the dim <b>Crater</b>, the Cup, which looks like a goblet.
+lessons.Crv_Crt.look;Ворон — «парус» или кривой квадратик. Чаша — полукруг-кубок на ножке. Оба сидят на спине Гидры.;Corvus is a “sail” or a lopsided square. Crater is a semicircular cup on a stem. Both sit on Hydra’s back.
+lessons.Crv_Crt.facts.1;В Вороне звезда α (Альхиба, 4<sup>m</sup>) — одна из самых слабых в фигуре: буквы раздавали не по яркости.;In Corvus the star α (Alchiba, 4<sup>m</sup>) is one of the faintest in the figure: the letters were not given out by brightness.
+lessons.Crv_Crt.facts.2;Миф: Аполлон послал ворона за водой с чашей, ворон замешкался и соврал, обвинив змею (Гидру). Наказание: сидит рядом с Чашей, но напиться не может.;"Myth: Apollo sent the crow to fetch water in a cup; the crow dawdled and lied, blaming a water snake (Hydra). Its punishment: it sits next to the Cup but can never drink."
+lessons.Crv_Crt.facts.3;В Вороне — сталкивающиеся галактики «Антенны».;The colliding “Antennae” galaxies are in Corvus.
+lessons.Lyr.labels.1;от головы Дракона;from the head of Draco
+lessons.Lyr.find;Рядом с головой Дракона (~15°) сияет <b>Вега</b> — одна из ярчайших звёзд неба (0,0<sup>m</sup>), голубовато-белая. Это первая вершина <b>Летнего треугольника</b>.;Next to the head of Draco (~15°) shines <b>Vega</b> — one of the brightest stars in the sky (0.0<sup>m</sup>), bluish-white. It is the first corner of the <b>Summer Triangle</b>.
+lessons.Lyr.look;Маленький параллелограмм под Вегой + сама Вега = лира (струнный инструмент Орфея).;A small parallelogram below Vega + Vega itself = a lyre (the stringed instrument of Orpheus).
+lessons.Lyr.facts.1;Вега — 5-я по яркости звезда неба. Долгое время её блеск принимали за <b>эталон нуля</b> звёздных величин.;Vega is the 5th brightest star in the sky. For a long time its brightness was taken as the <b>zero point</b> of the magnitude scale.
+lessons.Lyr.facts.2;Вега — первая звезда (кроме Солнца), которую сфотографировали (1850).;Vega was the first star (other than the Sun) to be photographed (1850).
+lessons.Lyr.facts.3;Через ~12 000 лет Вега станет полярной звездой.;In ~12,000 years Vega will become the pole star.
+lessons.Lyr.facts.4;<b>ε Лиры — «двойная двойная»</b>: в бинокль видны две звезды, а в телескоп каждая из них тоже двойная.;<b>ε Lyrae is the “Double Double”</b>: binoculars show two stars, and a telescope shows that each of them is double too.
+lessons.Lyr.facts.5;β Лиры (Шелиак) — затменная переменная. Между β и γ — туманность <b>Кольцо (M57)</b>.;β Lyrae (Sheliak) is an eclipsing variable. Between β and γ lies the <b>Ring Nebula (M57)</b>.
+lessons.Lyr.facts.6;Лириды — метеорный поток 22 апреля. В Москве Вега незаходящая (δ = +39° > 90° − 56°).;The Lyrids are a meteor shower on April 22. At 56° N Vega never sets (δ = +39° > 90° − 56°).
+lessons.Cyg.labels.1;~24° влево;~24° to the left
+lessons.Cyg.find;От Веги на восток (влево) ~24° — <b>Денеб</b>, хвост Лебедя и вторая вершина Летнего треугольника.;From Vega to the east (left), ~24° — <b>Deneb</b>, the tail of the Swan and the second corner of the Summer Triangle.
+lessons.Cyg.look;Большой крест — <b>«Северный крест»</b>. Денеб на вершине (хвост), <b>Альбирео</b> в основании (клюв), поперечная перекладина — крылья, в центре — Садр. Лебедь летит вдоль Млечного Пути на юг.;A large cross — the <b>“Northern Cross”</b>. Deneb is at the top (the tail), <b>Albireo</b> at the foot (the beak), the crossbar is the wings, and Sadr is in the center. The Swan flies south along the Milky Way.
+lessons.Cyg.facts.1;Денеб — далёкий (~2000 св. лет) сверхгигант, светит в десятки тысяч раз сильнее Солнца.;Deneb is a distant (~2000 light-years) supergiant, tens of thousands of times more luminous than the Sun.
+lessons.Cyg.facts.2;<b>Альбирео</b> — самая красивая цветная двойная: золотистая и голубая звезды (видны в небольшой телескоп).;<b>Albireo</b> is the most beautiful colored double: a golden and a blue star (visible in a small telescope).
+lessons.Cyg.facts.3;<b>61 Лебедя</b> — первая звезда, до которой измерили расстояние (Бессель, 1838).;<b>61 Cygni</b> was the first star whose distance was measured (Bessel, 1838).
+lessons.Cyg.facts.4;В Лебеде — <b>Лебедь X-1</b>, первый надёжный кандидат в чёрные дыры.;<b>Cygnus X-1</b>, the first reliable black hole candidate, is in Cygnus.
+lessons.Cyg.facts.5;Рядом с Денебом — туманность Северная Америка.;Next to Deneb is the North America Nebula.
+lessons.Aql.labels.1;Летний треугольник;Summer Triangle
+lessons.Aql.find;От Веги на юг (вниз) ~34° — <b>Альтаир</b>, третья вершина Летнего треугольника. Его легко узнать: по бокам две звезды-«охранницы» — <b>Таразед</b> и <b>Альшаин</b>, все три в одну линию.;From Vega to the south (down), ~34° — <b>Altair</b>, the third corner of the Summer Triangle. It is easy to recognize: it has two “guard” stars on either side — <b>Tarazed</b> and <b>Alshain</b>, all three in a line.
+lessons.Aql.look;Орёл — ромб или крестик с длинным хвостом на юг, Альтаир — на «шее» между охранницами. Через Орла проходит Млечный Путь.;"Aquila is a diamond or a small cross with a long tail to the south; Altair is on the “neck” between the guards. The Milky Way runs through Aquila."
+lessons.Aql.facts.1;<b>Летний треугольник</b> (Вега, Денеб, Альтаир) — астеризм, а не созвездие: его звёзды из трёх разных созвездий.;The <b>Summer Triangle</b> (Vega, Deneb, Altair) is an asterism, not a constellation: its stars belong to three different constellations.
+lessons.Aql.facts.2;Альтаир — одна из ближайших ярких звёзд (17 св. лет). Он вращается так быстро (оборот за ~9 часов), что заметно сплюснут.;Altair is one of the nearest bright stars (17 light-years). It spins so fast (one turn in ~9 hours) that it is noticeably flattened.
+lessons.Aql.facts.3;Альтаир почти на небесном экваторе (δ = +9°) — виден почти из любой точки Земли.;Altair is almost on the celestial equator (δ = +9°) — it is visible from almost anywhere on Earth.
+lessons.Aql.facts.4;В Китае и Японии Альтаир и Вега — пастух и ткачиха, разлучённые Млечным Путём (праздник Танабата).;In China and Japan, Altair and Vega are the cowherd and the weaver girl, separated by the Milky Way (the Tanabata festival).
+lessons.Her.labels.1;линия Гемма — Вега;the line Alphecca — Vega
+lessons.Her.find;Между <b>Геммой</b> (Северная Корона) и <b>Вегой</b> — неяркий четырёхугольник из звёзд 3<sup>m</sup>, «Трапеция». Он лежит почти точно на линии Гемма — Вега, ближе к Гемме. Это туловище Геркулеса.;Between <b>Alphecca</b> (Corona Borealis) and <b>Vega</b> is a dim quadrilateral of 3<sup>m</sup> stars, the “Keystone”. It lies almost exactly on the line Alphecca — Vega, closer to Alphecca. This is the body of Hercules.
+lessons.Her.look;Трапеция и четыре «конечности». Геркулес висит <b>вниз головой</b>: его голова, Рас Альгети (α), — на юге, рядом с головой Змееносца.;The Keystone and four “limbs”. Hercules hangs <b>upside down</b>: his head, Rasalgethi (α), is in the south, next to the head of Ophiuchus.
+lessons.Her.facts.1;<b>M13</b> — ярчайшее шаровое скопление северного неба, на западной стороне Трапеции. В бинокль — пушистое пятнышко. В 1974 году в его сторону отправили радиопослание «Аресибо».;<b>M13</b> is the brightest globular cluster of the northern sky, on the western side of the Keystone. In binoculars it is a fuzzy spot. In 1974 the Arecibo radio message was sent toward it.
+lessons.Her.facts.2;Солнце со всей Солнечной системой летит в направлении Геркулеса (<b>апекс</b> — на границе с Лирой, недалеко от Веги).;The Sun and the whole Solar System are moving toward Hercules (the <b>solar apex</b> is on the border with Lyra, not far from Vega).
+lessons.Her.facts.3;Геркулес — 5-е по площади созвездие.;Hercules is the 5th largest constellation.
+lessons.Her.facts.4;Рас Альгети — красный гигант, переменная звезда.;Rasalgethi is a red giant, a variable star.
+lessons.Oph_Ser.title;Змееносец и Змея;Ophiuchus and Serpens
+lessons.Oph_Ser.labels.1;голова к голове;head to head
+lessons.Oph_Ser.find;Под Геркулесом — огромный, но бледный <b>Змееносец</b>. Головы двух великанов почти соприкасаются: <b>Рас Альгети</b> (α Геркулеса) и <b>Рас Альхаге</b> (α Змееносца) — всего ~5° друг от друга.;Below Hercules is the huge but faint <b>Ophiuchus</b>. The heads of the two giants almost touch: <b>Rasalgethi</b> (α Herculis) and <b>Rasalhague</b> (α Ophiuchi) are only ~5° apart.
+lessons.Oph_Ser.look;"Змееносец — большой вытянутый пятиугольник («колокол»). В руках он держит <b>Змею</b>, которая разделена на две части: <b>Голова Змеи</b> — западнее, под Северной Короной; <b>Хвост Змеи</b> — восточнее, к Орлу.";"Ophiuchus is a large elongated pentagon (a “bell”). He holds <b>Serpens</b>, the Serpent, which is split into two parts: <b>Serpens Caput</b> (the head) is to the west, below Corona Borealis; <b>Serpens Cauda</b> (the tail) is to the east, toward Aquila."
+lessons.Oph_Ser.facts.1;Змея — <b>единственное созвездие из двух отдельных частей</b>.;Serpens is the <b>only constellation made of two separate parts</b>.
+lessons.Oph_Ser.facts.2;Через Змееносец проходит эклиптика: Солнце бывает там примерно с 29 ноября по 18 декабря — дольше, чем в Скорпионе. Поэтому его называют «13-м зодиакальным созвездием».;The ecliptic passes through Ophiuchus: the Sun is there from about November 29 to December 18 — longer than in Scorpius. That is why it is called the “13th zodiac constellation”.
+lessons.Oph_Ser.facts.3;В Змееносце — <b>звезда Барнарда</b>, вторая ближайшая к нам звёздная система (слабая, 9,5<sup>m</sup>).;<b>Barnard’s Star</b>, the second nearest star system to us, is in Ophiuchus (it is faint, 9.5<sup>m</sup>).
+lessons.Oph_Ser.facts.4;В 1604 году здесь вспыхнула <b>Сверхновая Кеплера</b> — последняя, которую видели глазом в нашей Галактике.;In 1604 <b>Kepler’s Supernova</b> flared up here — the last one in our Galaxy seen with the naked eye.
+lessons.Oph_Ser.facts.5;В Хвосте Змеи — туманность Орёл (M16) со «Столпами творения».;In Serpens Cauda is the Eagle Nebula (M16) with the “Pillars of Creation”.
+lessons.Sco.labels.1;по эклиптике;along the ecliptic
+lessons.Sco.find;<b>Регул</b>, <b>Спика</b> и <b>Антарес</b> лежат почти на одной линии — на эклиптике. Продолжи Регул → Спика ещё на ~46° — красный <b>Антарес</b>, «сердце Скорпиона».;<b>Regulus</b>, <b>Spica</b> and <b>Antares</b> lie almost on one line — the ecliptic. Extend Regulus → Spica another ~46° — the red <b>Antares</b>, “the heart of the Scorpion”.
+lessons.Sco.look;Голова — вертикальная дуга из трёх звёзд (Дшубба, Акраб и π), туловище с Антаресом, длинный изогнутый <b>хвост с жалом</b> (Шаула и Лесат).;The head is a vertical arc of three stars (Dschubba, Acrab and π), then the body with Antares, and a long curved <b>tail with a stinger</b> (Shaula and Lesath).
+lessons.Sco.facts.1;«Антарес» — «соперник Марса»: красный сверхгигант, похожий по цвету на Марс.;“Antares” means “rival of Mars”: a red supergiant similar in color to Mars.
+lessons.Sco.facts.2;В Москве Антарес поднимается всего на ~8° над горизонтом, а хвост Скорпиона не восходит вовсе.;At 56° N Antares rises only ~8° above the horizon, and the tail of the Scorpion never rises at all.
+lessons.Sco.facts.3;Солнце в Скорпионе бывает всего ~7 дней (23–29 ноября).;The Sun spends only ~7 days in Scorpius (November 23–29).
+lessons.Sco.facts.4;Миф: Скорпион ужалил Ориона, поэтому они на противоположных сторонах неба. В средних широтах их никогда не видно одновременно.;Myth: the Scorpion stung Orion, so they are on opposite sides of the sky. At mid-latitudes they are never seen at the same time.
+lessons.Lib.labels.1;между Спикой и Антаресом;between Spica and Antares
+lessons.Lib.find;Ровно между <b>Спикой</b> и <b>Антаресом</b>, почти на той же линии (эклиптике), — неяркие Весы: четырёхугольник из звёзд 2,6–3,3<sup>m</sup>.;Exactly between <b>Spica</b> and <b>Antares</b>, almost on the same line (the ecliptic), is the dim Libra: a quadrilateral of 2.6–3.3<sup>m</sup> stars.
+lessons.Lib.look;Две чаши весов — <b>Зубен эль Генуби</b> (α, «южная клешня») и <b>Зубен эш Шемали</b> (β, «северная клешня»). Названия напоминают, что раньше эти звёзды были клешнями Скорпиона.;The two pans of the scales are <b>Zubenelgenubi</b> (α, “the southern claw”) and <b>Zubeneschamali</b> (β, “the northern claw”). The names recall that these stars were once the claws of the Scorpion.
+lessons.Lib.facts.1;Весы — единственное зодиакальное созвездие, изображающее предмет, а не живое существо.;Libra is the only zodiac constellation that shows an object rather than a living being.
+lessons.Lib.facts.2;2000 лет назад здесь была точка осеннего равноденствия (день равен ночи — «весы»). Теперь она в Деве.;2000 years ago the autumnal equinox point was here (day equals night — “the scales”). Now it is in Virgo.
+lessons.Lib.facts.3;Солнце в Весах — примерно с 31 октября по 23 ноября.;The Sun is in Libra from about October 31 to November 23.
+lessons.Sgr.labels.1;Денеб → Альтаир, ещё столько же;Deneb → Altair, the same again
+lessons.Sgr.find;Продолжи линию <b>Денеб → Альтаир</b> ещё на такое же расстояние — попадёшь в Стрельца (на звезду Нунки). Или ищи левее (восточнее) хвоста Скорпиона характерный <b>«Чайник»</b> из восьми звёзд.;Extend the line <b>Deneb → Altair</b> by the same distance again — you will land in Sagittarius (on the star Nunki). Or look to the left (east) of the Scorpion’s tail for the characteristic <b>“Teapot”</b> of eight stars.
+lessons.Sgr.look;Чайник: носик смотрит на запад, к хвосту Скорпиона, ручка — на восток. Из носика «идёт пар» — самое яркое облако Млечного Пути.;The Teapot: the spout points west, toward the Scorpion’s tail, the handle east. “Steam” rises from the spout — the brightest cloud of the Milky Way.
+lessons.Sgr.facts.1;В направлении Стрельца — <b>центр нашей Галактики</b> (~26 000 св. лет) со сверхмассивной чёрной дырой Стрелец A*.;In the direction of Sagittarius lies the <b>center of our Galaxy</b> (~26,000 light-years), with the supermassive black hole Sagittarius A*.
+lessons.Sgr.facts.2;В Стрельце — <b>точка зимнего солнцестояния</b>: 21–22 декабря Солнце здесь, на самом юге эклиптики.;The <b>winter solstice point</b> is in Sagittarius: on December 21–22 the Sun is here, at the southernmost point of the ecliptic.
+lessons.Sgr.facts.3;α Стрельца (Рукбат) — лишь 4<sup>m</sup> и далеко от Чайника.;α Sagittarii (Rukbat) is only 4<sup>m</sup> and far from the Teapot.
+lessons.Sgr.facts.4;В Москве Каус Аустралис (δ = −34°) едва касается горизонта, поэтому Чайник видно только на юге России.;At 56° N, Kaus Australis (δ = −34°) barely touches the horizon, so the whole Teapot is seen only farther south.
+lessons.Sgr.facts.5;Здесь много туманностей и скоплений: Лагуна (M8), Тройная (M20), Омега (M17), шаровое M22.;There are many nebulae and clusters here: the Lagoon (M8), the Trifid (M20), the Omega (M17) and the globular cluster M22.
+lessons.Del_Sge_Vul_Sct.title;Дельфин, Стрела, Лисичка, Щит;Delphinus, Sagitta, Vulpecula, Scutum
+lessons.Del_Sge_Vul_Sct.labels.1;Дельфин;Delphinus
+lessons.Del_Sge_Vul_Sct.labels.2;Щит ×2;Scutum ×2
+lessons.Del_Sge_Vul_Sct.find;Вокруг Альтаира — четыре маленьких созвездия. <b>Дельфин</b> — к северо-востоку (левее и выше) ~14°: маленький ромбик с хвостиком. <b>Стрела</b> — между Альтаиром и Альбирео: тонкая стрелка. <b>Лисичка</b> — выше Стрелы, почти невидимая. <b>Щит</b>: продолжи линию Альтаир → δ Орла вдвое — там яркое облако Млечного Пути со скоплением M11.;Around Altair there are four small constellations. <b>Delphinus</b> is to the northeast (left and up) ~14°: a small diamond with a tail. <b>Sagitta</b> is between Altair and Albireo: a thin arrow. <b>Vulpecula</b> is above Sagitta, almost invisible. <b>Scutum</b>: extend the line Altair → δ Aquilae twice — there is a bright cloud of the Milky Way with the cluster M11.
+lessons.Del_Sge_Vul_Sct.look;Дельфин — один из самых «похожих» рисунков на небе. Стрела — три-четыре звезды в линию с «оперением».;Delphinus is one of the most lifelike figures in the sky. Sagitta is three or four stars in a line with “fletching”.
+lessons.Del_Sge_Vul_Sct.facts.1;Звёзды Дельфина <b>Суалоцин</b> и <b>Ротанев</b> — шутка: прочитай задом наперёд, получится Nicolaus Venator — латинское имя астронома Никколо Каччаторе.;The stars of Delphinus, <b>Sualocin</b> and <b>Rotanev</b>, are a joke: read them backwards and you get Nicolaus Venator — the Latin name of the astronomer Niccolò Cacciatore.
+lessons.Del_Sge_Vul_Sct.facts.2;<b>Щит</b> назван в честь герба польского короля Яна III Собеского (Гевелий, 1684).;<b>Scutum</b> is named after the coat of arms of the Polish king Jan III Sobieski (Hevelius, 1684).
+lessons.Del_Sge_Vul_Sct.facts.3;Стрела — 3-е с конца по площади созвездие.;Sagitta is the 3rd smallest constellation.
+lessons.Del_Sge_Vul_Sct.facts.4;<b>M27 «Гантель»</b> в Лисичке — первая открытая планетарная туманность (Мессье, 1764).;<b>M27, the “Dumbbell”</b> in Vulpecula, was the first planetary nebula discovered (Messier, 1764).
+lessons.Del_Sge_Vul_Sct.facts.5;На границе Лисички и Стрелы — астеризм <b>«Вешалка»</b>, хорошо видный в бинокль.;On the border of Vulpecula and Sagitta is the <b>“Coathanger”</b> asterism, a fine sight in binoculars.
+lessons.Peg.labels.1;столько же;the same again
+lessons.Peg.find;От <b>Полярной</b> через <b>Каф</b> (крайнюю звезду Кассиопеи) — и ещё столько же: упрёшься в угол <b>Большого квадрата Пегаса</b>, звезду Альферац.;From <b>Polaris</b> through <b>Caph</b> (the end star of Cassiopeia) — and the same distance again: you will reach a corner of the <b>Great Square of Pegasus</b>, the star Alpheratz.
+lessons.Peg.look;Квадрат из четырёх звёзд 2–3<sup>m</sup> со стороной ~15°: <b>Альферац</b>, <b>Шеат</b>, <b>Маркаб</b>, <b>Альгениб</b>. Пегас нарисован вверх ногами: квадрат — туловище коня, от Маркаба на запад тянется шея к морде (Эниф), от Шеата — передние ноги.;A square of four 2–3<sup>m</sup> stars, ~15° on a side: <b>Alpheratz</b>, <b>Scheat</b>, <b>Markab</b>, <b>Algenib</b>. Pegasus is drawn upside down: the square is the horse’s body, the neck stretches west from Markab to the muzzle (Enif), and the front legs come from Scheat.
+lessons.Peg.facts.1;Угловая звезда квадрата Альферац принадлежит не Пегасу, а <b>Андромеде</b> (α Андромеды).;The corner star of the square, Alpheratz, belongs not to Pegasus but to <b>Andromeda</b> (α Andromedae).
+lessons.Peg.facts.2;Линия Полярная — Каф — Альферац почти совпадает с кругом <b>α = 0ч</b>: у обеих звёзд прямое восхождение ~0ч08м.;The line Polaris — Caph — Alpheratz almost coincides with the circle <b>α = 0h</b>: both stars have a right ascension of ~0h08m.
+lessons.Peg.facts.3;Внутри квадрата глазом видно очень мало звёзд — хороший тест засветки: сколько звёзд видишь внутри, такое и небо.;Very few stars are visible inside the square with the naked eye — a good test of light pollution: the more stars you see inside, the darker the sky.
+lessons.Peg.facts.4;<b>51 Пегаса</b> — первая звезда, похожая на Солнце, у которой нашли планету (1995, Нобелевская премия 2019).;<b>51 Pegasi</b> was the first Sun-like star found to have a planet (1995, Nobel Prize 2019).
+lessons.Peg.facts.5;Пегас — 7-е по площади созвездие.;Pegasus is the 7th largest constellation.
+lessons.And.labels.1;цепочка;the chain
+lessons.And.labels.2;к M31;to M31
+lessons.And.find;От <b>Альфераца</b> (угол квадрата) на северо-восток тянется цепочка ярких звёзд: <b>Мирах</b> и <b>Аламак</b>. От Мираха поднимись (на север) через две слабые звезды μ и ν — рядом с ν туманное пятнышко: <b>галактика Андромеды M31</b>.;From <b>Alpheratz</b> (the corner of the square) a chain of bright stars runs northeast: <b>Mirach</b> and <b>Almach</b>. From Mirach go up (north) through two faint stars, μ and ν — next to ν is a hazy spot: the <b>Andromeda Galaxy, M31</b>.
+lessons.And.look;Две расходящиеся цепочки звёзд от Альфераца — как буква V, лежащая на боку.;Two chains of stars diverging from Alpheratz — like the letter V lying on its side.
+lessons.And.facts.1;<b>M31</b> — самый далёкий объект, который легко видно глазом: ~2,5 млн световых лет.;<b>M31</b> is the most distant object easily seen with the naked eye: ~2.5 million light-years.
+lessons.And.facts.2;M31 и Млечный Путь сближаются и через ~4–5 млрд лет столкнутся.;M31 and the Milky Way are approaching each other and will collide in ~4–5 billion years.
+lessons.And.facts.3;Аламак (γ) — красивая двойная: оранжевая и голубая звёзды.;Almach (γ) is a beautiful double: an orange and a blue star.
+lessons.And.facts.4;"Миф: Андромеду, дочь Цефея и Кассиопеи, приковали к скале в жертву морскому чудовищу Киту; её спас Персей.";"Myth: Andromeda, the daughter of Cepheus and Cassiopeia, was chained to a rock as a sacrifice to the sea monster Cetus; Perseus rescued her."
+lessons.Per.labels.1;цепочка дальше;the chain continues
+lessons.Per.find;Продолжи цепочку Андромеды (Мирах → Аламак) дальше — придёшь к <b>Мирфаку</b>, ярчайшей звезде Персея. Персей стоит в Млечном Пути между Кассиопеей и Капеллой.;Continue the chain of Andromeda (Mirach → Almach) further — you will come to <b>Mirfak</b>, the brightest star of Perseus. Perseus stands in the Milky Way between Cassiopeia and Capella.
+lessons.Per.look;Дуга звёзд вокруг Мирфака («сегмент Персея») и ответвление на юг к <b>Алголю</b> — голове Медузы в руке героя.;An arc of stars around Mirfak (the “Alpha Persei cluster”) and a branch south to <b>Algol</b> — the head of Medusa in the hero’s hand.
+lessons.Per.facts.1;<b>Алголь — «звезда дьявола»</b>, затменная переменная: каждые 2,87 суток примерно на 10 часов тускнеет с 2,1 до 3,4<sup>m</sup>. Тёмный спутник закрывает яркую звезду.;<b>Algol, the “Demon Star”</b>, is an eclipsing variable: every 2.87 days it fades from 2.1 to 3.4<sup>m</sup> for about 10 hours. A dark companion covers the bright star.
+lessons.Per.facts.2;Между Персеем и Кассиопеей — <b>Двойное скопление h и χ Персея</b>, видное глазом.;Between Perseus and Cassiopeia is the <b>Double Cluster h & χ Persei</b>, visible to the naked eye.
+lessons.Per.facts.3;<b>Персеиды</b> (12–13 августа) — самый известный летний метеорный поток.;The <b>Perseids</b> (August 12–13) are the best-known summer meteor shower.
+lessons.Per.facts.4;В Москве Персей незаходящий.;At mid-northern latitudes Perseus never sets.
+lessons.Tri_Ari.title;Треугольник и Овен;Triangulum and Aries
+lessons.Tri_Ari.labels.1;вниз от Мираха;down from Mirach
+lessons.Tri_Ari.find;Под Андромедой (южнее Мираха) — маленький узкий треугольник из звёзд 3–4<sup>m</sup>: <b>Треугольник</b>. Ещё ниже — <b>Овен</b>: короткая изогнутая линия из трёх звёзд, ярчайшая — оранжевая <b>Хамаль</b> (2<sup>m</sup>).;"Below Andromeda (south of Mirach) is a small narrow triangle of 3–4<sup>m</sup> stars: <b>Triangulum</b>. Lower still is <b>Aries</b>: a short curved line of three stars; the brightest is the orange <b>Hamal</b> (2<sup>m</sup>)."
+lessons.Tri_Ari.look;Треугольник — вытянутый «клин». Овен — «хоккейная клюшка»: Хамаль, Шератан, Мезартим.;Triangulum is an elongated “wedge”. Aries is a “hockey stick”: Hamal, Sheratan, Mesarthim.
+lessons.Tri_Ari.facts.1;<b>M33</b> — галактика Треугольника (~3 млн св. лет), третья по величине в Местной группе после M31 и Млечного Пути.;<b>M33</b> is the Triangulum Galaxy (~3 million light-years), the third largest in the Local Group after M31 and the Milky Way.
+lessons.Tri_Ari.facts.2;Точку весеннего равноденствия, от которой отсчитывают прямое восхождение, называют <b>«точкой Овна»</b>. Но из-за прецессии она уже ~2000 лет как в Рыбах.;The vernal equinox point, from which right ascension is counted, is called the <b>“First Point of Aries”</b>. But because of precession it has been in Pisces for ~2000 years.
+lessons.Tri_Ari.facts.3;Солнце в Овне — примерно с 18 апреля по 14 мая.;The Sun is in Aries from about April 18 to May 14.
+lessons.Tri_Ari.facts.4;Мезартим (γ Овна) — одна из первых двойных звёзд, открытых с телескопом (Гук, 1664).;Mesarthim (γ Arietis) was one of the first double stars discovered with a telescope (Hooke, 1664).
+lessons.Psc.labels.1;под квадратом;below the square
+lessons.Psc.find;Под Большим квадратом Пегаса (южнее стороны Маркаб — Альгениб) — <b>«Колечко»</b>: кольцо из 5–7 слабых звёзд. Это западная Рыба. От колечка на восток тянется длинная «лента» к звезде <b>Альриша</b> (узел), а от неё на север, под Андромеду, — вторая Рыба.;Below the Great Square of Pegasus (south of the side Markab — Algenib) is the <b>“Circlet”</b>: a ring of 5–7 faint stars. This is the western fish. From the Circlet a long “ribbon” runs east to the star <b>Alrescha</b> (the knot), and from there north, under Andromeda, to the second fish.
+lessons.Psc.look;"Огромная буква <b>V</b>, обнимающая квадрат Пегаса снизу и слева; Альриша — в вершине V.";"A huge letter <b>V</b> hugging the Square of Pegasus from below and from the left; Alrescha is at the point of the V."
+lessons.Psc.facts.1;Сейчас в Рыбах — <b>точка весеннего равноденствия</b> (α = 0ч, δ = 0°), примерно в 7° к югу от ω Рыб.;The <b>vernal equinox point</b> is now in Pisces (α = 0h, δ = 0°), about 7° south of ω Piscium.
+lessons.Psc.facts.2;Солнце в Рыбах — примерно с 12 марта по 18 апреля, включая день весеннего равноденствия.;The Sun is in Pisces from about March 12 to April 18, including the day of the vernal equinox.
+lessons.Psc.facts.3;Ярчайшая звезда Рыб — η (3,6<sup>m</sup>), а не α.;The brightest star of Pisces is η (3.6<sup>m</sup>), not α.
+lessons.Cet.labels.1;≈ ×2,5;≈ ×2.5
+lessons.Cet.find;Продолжи восточную сторону квадрата Пегаса (<b>Альферац → Альгениб</b>) на юг примерно в 2,5 раза — найдёшь <b>Дифду</b> (2<sup>m</sup>), хвост Кита. Голова Кита — кружок звёзд с <b>Менкаром</b> — восточнее, под Овном.;Extend the eastern side of the Square of Pegasus (<b>Alpheratz → Algenib</b>) to the south about 2.5 times — you will find <b>Diphda</b> (2<sup>m</sup>), the tail of Cetus. The head of Cetus, a circle of stars with <b>Menkar</b>, is farther east, below Aries.
+lessons.Cet.look;Кит огромный и бледный: хвост на западе (Дифда), голова на востоке (Менкар), между ними — туловище с переменной звездой Мира.;Cetus is huge and faint: the tail is in the west (Diphda), the head in the east (Menkar), and between them the body with the variable star Mira.
+lessons.Cet.facts.1;<b>Мира</b> («Удивительная», ο Кита) — первая открытая периодическая переменная: за ~332 дня меняет блеск от 2–3<sup>m</sup> до 10<sup>m</sup>, то видна глазом, то нет.;<b>Mira</b> (“the Wonderful”, ο Ceti) was the first periodic variable discovered: over ~332 days its brightness changes from 2–3<sup>m</sup> to 10<sup>m</sup>, so it is sometimes visible to the naked eye and sometimes not.
+lessons.Cet.facts.2;<b>τ Кита</b> — одна из ближайших (12 св. лет) звёзд, похожих на Солнце.;<b>τ Ceti</b> is one of the nearest (12 light-years) Sun-like stars.
+lessons.Cet.facts.3;Кит — 4-е по площади созвездие.;Cetus is the 4th largest constellation.
+lessons.Cet.facts.4;Кит не зодиакальный, но Луна и планеты иногда заходят в его северную часть.;Cetus is not a zodiac constellation, but the Moon and planets sometimes enter its northern part.
+lessons.Aqr.labels.1;вниз от Энифа;down from Enif
+lessons.Aqr.find;От <b>Энифа</b> (морда Пегаса) на юг ~11° — <b>Садалмелик</b> (α Водолея). Рядом с ним — маленький Y-образный <b>«Кувшин»</b> из четырёх звёзд, из которого Водолей льёт воду вниз, к Фомальгауту.;From <b>Enif</b> (the muzzle of Pegasus) ~11° south — <b>Sadalmelik</b> (α Aquarii). Next to it is the small Y-shaped <b>“Water Jar”</b> of four stars, from which Aquarius pours water down toward Fomalhaut.
+lessons.Aqr.look;Широкое бледное созвездие под Пегасом, между Козерогом (запад) и Рыбами (восток). Поток воды — цепочка слабых звёзд, стекающая на юг.;A wide faint constellation below Pegasus, between Capricornus (west) and Pisces (east). The stream of water is a chain of faint stars flowing south.
+lessons.Aqr.facts.1;Ярчайшая звезда — <b>Садалсууд (β)</b>, а не α (2,9 и 2,95<sup>m</sup>).;The brightest star is <b>Sadalsuud (β)</b>, not α (2.9 and 2.95<sup>m</sup>).
+lessons.Aqr.facts.2;Солнце в Водолее — примерно с 16 февраля по 12 марта.;The Sun is in Aquarius from about February 16 to March 12.
+lessons.Aqr.facts.3;Эта-Аквариды (начало мая) — метеоры, оставленные кометой Галлея.;The Eta Aquariids (early May) are meteors left by Halley’s Comet.
+lessons.Aqr.facts.4;NGC 7293 <b>«Улитка»</b> — одна из ближайших к нам планетарных туманностей.;NGC 7293, the <b>“Helix”</b>, is one of the nearest planetary nebulae.
+lessons.Cap.labels.1;Вега → Альтаир, ещё 2/3;Vega → Altair, another 2/3
+lessons.Cap.find;Продолжи линию <b>Вега → Альтаир</b> ещё примерно на две трети этого расстояния — придёшь к <b>Альгеди</b> (α Козерога) на западном краю созвездия.;Extend the line <b>Vega → Altair</b> by about two thirds of that distance — you will come to <b>Algedi</b> (α Capricorni) at the western edge of the constellation.
+lessons.Cap.look;Большой треугольник (или «улыбка», «лодочка») из звёзд 3–4<sup>m</sup> под Водолеем. Восточный угол — <b>Денеб Альгеди</b> (δ), ярчайшая звезда.;A large triangle (or a “smile”, a “boat”) of 3–4<sup>m</sup> stars below Aquarius. The eastern corner is <b>Deneb Algedi</b> (δ), the brightest star.
+lessons.Cap.facts.1;α Козерога — пара, видная глазом (Альгеди и Прима Гиеди), но это случайное совпадение направлений, а не настоящая двойная.;α Capricorni is a pair visible to the naked eye (Algedi and Prima Giedi), but it is a chance alignment, not a true double.
+lessons.Cap.facts.2;<b>Тропик Козерога</b>: 2000 лет назад в зимнее солнцестояние Солнце было в Козероге, теперь — в Стрельце.;"<b>The Tropic of Capricorn</b>: 2000 years ago the Sun was in Capricornus at the winter solstice; now it is in Sagittarius."
+lessons.Cap.facts.3;Солнце в Козероге — примерно с 20 января по 16 февраля.;The Sun is in Capricornus from about January 20 to February 16.
+lessons.Cap.facts.4;Козерог — самое маленькое из 12 классических зодиакальных созвездий.;Capricornus is the smallest of the 12 classical zodiac constellations.
+lessons.PsA.labels.1;×3,5;×3.5
+lessons.PsA.find;Продолжи западную сторону квадрата Пегаса (<b>Шеат → Маркаб</b>) на юг примерно в 3,5 раза — одинокая яркая звезда низко над горизонтом: <b>Фомальгаут</b>.;Extend the western side of the Square of Pegasus (<b>Scheat → Markab</b>) to the south about 3.5 times — a lone bright star low above the horizon: <b>Fomalhaut</b>.
+lessons.PsA.look;Фомальгаут — почти всё созвездие: остальные звёзды слабые, они образуют небольшое кольцо — тело рыбы.;Fomalhaut is almost the whole constellation: the other stars are faint and form a small ring — the body of the fish.
+lessons.PsA.facts.1;Фомальгаут («рот рыбы») — одинокая яркая звезда южной части осеннего неба. В Москве поднимается всего на ~5°.;Fomalhaut (“mouth of the fish”) is the lone bright star of the southern part of the autumn sky. At 56° N it rises only ~5°.
+lessons.PsA.facts.2;Вокруг Фомальгаута — пылевой диск, снятый «Хабблом» и «Уэббом».;Around Fomalhaut is a dust disk imaged by the Hubble and Webb telescopes.
+lessons.PsA.facts.3;Южная Рыба пьёт воду, которую льёт Водолей.;The Southern Fish drinks the water poured by Aquarius.
+lessons.Equ_Lac.title;Малый Конь и Ящерица;Equuleus and Lacerta
+lessons.Equ_Lac.labels.1;у морды Пегаса;by the muzzle of Pegasus
+lessons.Equ_Lac.labels.2;между Лебедем и Кассиопеей;between Cygnus and Cassiopeia
+lessons.Equ_Lac.find;<b>Малый Конь</b> — маленькая трапеция слабых звёзд между <b>Энифом</b> и <b>Дельфином</b>. <b>Ящерица</b> — тусклый зигзаг между <b>Денебом</b> и <b>Кассиопеей</b>, под Цефеем.;<b>Equuleus</b> is a small trapezoid of faint stars between <b>Enif</b> and <b>Delphinus</b>. <b>Lacerta</b> is a dim zigzag between <b>Deneb</b> and <b>Cassiopeia</b>, below Cepheus.
+lessons.Equ_Lac.look;Оба созвездия — «заплатки»: их запоминают по соседям, а не по форме.;Both constellations are “patches”: they are remembered by their neighbors, not by their shape.
+lessons.Equ_Lac.facts.1;Малый Конь — <b>2-е с конца по площади</b> (меньше только Южный Крест).;Equuleus is the <b>2nd smallest</b> constellation (only Crux is smaller).
+lessons.Equ_Lac.facts.2;Ящерицу ввёл Гевелий (1687).;Lacerta was introduced by Hevelius (1687).
+lessons.Equ_Lac.facts.3;<b>BL Ящерицы</b> сначала приняли за переменную звезду, а это оказалось ядро далёкой активной галактики — прототип <b>блазаров</b>.;<b>BL Lacertae</b> was first taken for a variable star, but it turned out to be the core of a distant active galaxy — the prototype of <b>blazars</b>.
+lessons.Ori.find;Самое узнаваемое созвездие неба и вторая «опорная точка» после Ковша. Ищи <b>три яркие звезды в ряд</b> — Пояс Ориона. Вокруг — четырёхугольник: сверху красная <b>Бетельгейзе</b> и <b>Беллатрикс</b>, снизу голубой <b>Ригель</b> и <b>Саиф</b>. От Ориона расходятся указатели на соседние созвездия.;The most recognizable constellation in the sky and the second “anchor” after the Dipper. Look for <b>three bright stars in a row</b> — Orion’s Belt. Around them is a quadrilateral: red <b>Betelgeuse</b> and <b>Bellatrix</b> above, blue <b>Rigel</b> and <b>Saiph</b> below. Pointers to the neighboring constellations start from Orion.
+lessons.Ori.look;Песочные часы: плечи (Бетельгейзе, Беллатрикс), пояс (Минтака, Альнилам, Альнитак), колени (Саиф, Ригель). Под поясом свисает «меч» с туманностью Ориона.;An hourglass: the shoulders (Betelgeuse, Bellatrix), the belt (Mintaka, Alnilam, Alnitak), the knees (Saiph, Rigel). Below the belt hangs the “sword” with the Orion Nebula.
+lessons.Ori.facts.1;Пояс лежит почти на <b>небесном экваторе</b> (у Минтаки δ ≈ 0°): Минтака восходит почти точно на востоке и заходит на западе. Орион виден со всех обитаемых мест Земли.;The Belt lies almost on the <b>celestial equator</b> (Mintaka has δ ≈ 0°): Mintaka rises almost exactly in the east and sets in the west. Orion is visible from every inhabited place on Earth.
+lessons.Ori.facts.2;Ригель (β) обычно <b>ярче</b> Бетельгейзе (α).;Rigel (β) is usually <b>brighter</b> than Betelgeuse (α).
+lessons.Ori.facts.3;Бетельгейзе — красный сверхгигант, который когда-нибудь взорвётся сверхновой. В 2019–2020 гг. она заметно потускнела («Великое потускнение»).;Betelgeuse is a red supergiant that will one day explode as a supernova. In 2019–2020 it noticeably faded (the “Great Dimming”).
+lessons.Ori.facts.4;<b>Туманность Ориона (M42)</b> видна глазом — ближайшая к нам большая область звездообразования (~1350 св. лет).;The <b>Orion Nebula (M42)</b> is visible to the naked eye — the nearest large star-forming region (~1350 light-years).
+lessons.Ori.facts.5;Ориониды (~21 октября) — метеоры от кометы Галлея.;The Orionids (~October 21) are meteors from Halley’s Comet.
+lessons.Tau.labels.1;пояс вправо-вверх;the belt, right and up
+lessons.Tau.labels.2;Плеяды;Pleiades
+lessons.Tau.find;Продолжи Пояс Ориона вправо-вверх (на северо-запад) ~20° — оранжевый <b>Альдебаран</b>, «глаз Быка». Он сидит в V-образной россыпи звёзд — скоплении <b>Гиады</b>. Ещё дальше в том же направлении — маленький «ковшик» из 6–7 звёзд: <b>Плеяды</b>.;Extend Orion’s Belt to the right and up (northwest) ~20° — the orange <b>Aldebaran</b>, “the eye of the Bull”. It sits in a V-shaped scattering of stars — the <b>Hyades</b> cluster. Farther in the same direction is a tiny “dipper” of 6–7 stars: the <b>Pleiades</b>.
+lessons.Tau.look;Морда Быка — буква <b>V</b> (Гиады и Альдебаран). Два длинных рога уходят на восток: к Эль-Нату и к ζ Тельца.;The face of the Bull is the letter <b>V</b> (the Hyades and Aldebaran). Two long horns go east: to Elnath and to ζ Tauri.
+lessons.Tau.facts.1;<b>Гиады</b> — ближайшее рассеянное скопление (~150 св. лет). Альдебаран (65 св. лет) в него не входит — он просто на переднем плане.;The <b>Hyades</b> are the nearest open cluster (~150 light-years). Aldebaran (65 light-years) is not part of it — it is just in the foreground.
+lessons.Tau.facts.2;"<b>Плеяды</b> («Семь сестёр», в русских сказках — Стожары) — скопление молодых горячих звёзд в ~440 св. годах; глазом видно 6–7 звёзд.";"The <b>Pleiades</b> (the “Seven Sisters”) are a cluster of young hot stars ~440 light-years away; 6–7 stars are visible to the naked eye."
+lessons.Tau.facts.3;<b>M1 — Крабовидная туманность</b> у южного рога: остаток сверхновой 1054 года, записанной китайскими астрономами, внутри — пульсар.;"<b>M1, the Crab Nebula</b>, near the southern horn, is the remnant of the supernova of 1054 recorded by Chinese astronomers; there is a pulsar inside."
+lessons.Tau.facts.4;Солнце в Тельце — примерно с 14 мая по 21 июня. Луна часто закрывает Альдебаран и Плеяды.;The Sun is in Taurus from about May 14 to June 21. The Moon often covers Aldebaran and the Pleiades.
+lessons.Tau.facts.5;Эль-Нат (β) раньше считался общей звездой с Возничим (γ Возничего).;Elnath (β) used to be counted as a star shared with Auriga (γ Aurigae).
+lessons.Aur.labels.1;≈ ×5;≈ ×5
+lessons.Aur.find;Верхний край ковша (<b>Мегрец → Дубхе</b>) продолжи примерно в 5 раз — попадёшь на <b>Капеллу</b>, жёлтую звезду 0<sup>m</sup>. Капелла стоит высоко над Орионом, почти над Эль-Натом.;Extend the top edge of the bowl (<b>Megrez → Dubhe</b>) about 5 times — you will reach <b>Capella</b>, a yellow star of 0<sup>m</sup>. Capella stands high above Orion, almost above Elnath.
+lessons.Aur.look;"Пятиугольник с Капеллой в верхнем углу; нижний угол — Эль-Нат (Телец). Рядом с Капеллой — маленький треугольник «Козлята».";"A pentagon with Capella at the top corner; the bottom corner is Elnath (in Taurus). Next to Capella is a small triangle, “the Kids”."
+lessons.Aur.facts.1;"Капелла — 6-я по яркости звезда неба и <b>самая северная</b> из звёзд 0<sup>m</sup>; в Москве незаходящая.";"Capella is the 6th brightest star in the sky and the <b>northernmost</b> of the 0<sup>m</sup> stars; at 56° N it never sets."
+lessons.Aur.facts.2;На самом деле Капелла — две жёлтые звезды-гиганта, обращающиеся друг вокруг друга.;Capella is actually two yellow giant stars orbiting each other.
+lessons.Aur.facts.3;<b>ε Возничего</b> — затменная звезда с рекордным периодом: раз в 27 лет её на ~2 года закрывает огромный тёмный диск.;<b>ε Aurigae</b> is an eclipsing star with a record period: once every 27 years a huge dark disk covers it for ~2 years.
+lessons.Aur.facts.4;Три рассеянных скопления — M36, M37, M38 — в цепочку внутри пятиугольника.;Three open clusters, M36, M37 and M38, form a chain inside the pentagon.
+lessons.Gem.labels.1;диагональ ковша ×4;the diagonal of the bowl ×4
+lessons.Gem.labels.2;Ригель → Бетельгейзе;Rigel → Betelgeuse
+lessons.Gem.find;Два способа. 1) Диагональ ковша <b>Мегрец → Мерак</b> продолжи примерно в 4 раза — точно на Кастор. 2) Линия <b>Ригель → Бетельгейзе</b> и дальше почти вдвое — тоже в Близнецов. Две яркие звезды рядом — головы близнецов: <b>Кастор</b> (белый) и <b>Поллукс</b> (оранжевый, чуть ярче).;Two ways. 1) Extend the diagonal of the bowl, <b>Megrez → Merak</b>, about 4 times — right onto Castor. 2) The line <b>Rigel → Betelgeuse</b>, extended almost twice as far, also leads to Gemini. The two bright stars side by side are the heads of the twins: <b>Castor</b> (white) and <b>Pollux</b> (orange, slightly brighter).
+lessons.Gem.look;Две параллельные цепочки звёзд — тела братьев — спускаются от Кастора и Поллукса к Ориону.;Two parallel chains of stars — the brothers’ bodies — run down from Castor and Pollux toward Orion.
+lessons.Gem.facts.1;<b>Поллукс (β) ярче Кастора (α)</b> — ещё одно исключение из правила букв.;<b>Pollux (β) is brighter than Castor (α)</b> — another exception to the rule of letters.
+lessons.Gem.facts.2;Кастор — шестерная звёздная система: три пары двойных.;Castor is a sextuple star system: three pairs of binaries.
+lessons.Gem.facts.3;У ног Близнецов, на границе с Тельцом, сейчас находится <b>точка летнего солнцестояния</b>.;At the feet of the Twins, on the border with Taurus, is now the <b>summer solstice point</b>.
+lessons.Gem.facts.4;<b>Геминиды</b> (13–14 декабря) — самый сильный метеорный поток года.;The <b>Geminids</b> (December 13–14) are the strongest meteor shower of the year.
+lessons.Gem.facts.5;В Близнецах в 1930 году открыли Плутон (Клайд Томбо).;Pluto was discovered in Gemini in 1930 (Clyde Tombaugh).
+lessons.Gem.facts.6;Солнце в Близнецах — примерно с 21 июня по 20 июля.;The Sun is in Gemini from about June 21 to July 20.
+lessons.CMa.labels.1;пояс влево-вниз;the belt, left and down
+lessons.CMa.find;Продолжи Пояс Ориона влево-вниз (на юго-восток) ~20° — <b>Сириус</b> (−1,5<sup>m</sup>), ярчайшая звезда ночного неба.;Extend Orion’s Belt to the left and down (southeast) ~20° — <b>Sirius</b> (−1.5<sup>m</sup>), the brightest star of the night sky.
+lessons.CMa.look;Пёс стоит на задних лапах: Сириус — на шее, внизу треугольник Адара — Везен — Алудра (лапы и хвост).;The Dog stands on its hind legs: Sirius is on the neck, and below is the triangle Adhara — Wezen — Aludra (the legs and tail).
+lessons.CMa.facts.1;Сириус — ярчайшая звезда ночного неба и одна из ближайших (8,6 св. лет).;Sirius is the brightest star of the night sky and one of the nearest (8.6 light-years).
+lessons.CMa.facts.2;У Сириуса есть спутник — белый карлик <b>Сириус B</b> («Щенок»).;Sirius has a companion — the white dwarf <b>Sirius B</b> (“the Pup”).
+lessons.CMa.facts.3;В Москве Сириус поднимается лишь на ~17°, поэтому сильно мерцает разными цветами.;At 56° N Sirius rises only ~17°, so it twinkles strongly in different colors.
+lessons.CMa.facts.4;В Древнем Египте первый утренний восход Сириуса предвещал разлив Нила.;In ancient Egypt the first morning rising of Sirius foretold the flooding of the Nile.
+lessons.CMa.facts.5;В 4° к югу от Сириуса — скопление M41, видное глазом.;4° south of Sirius is the cluster M41, visible to the naked eye.
+lessons.CMi_Mon.title;Малый Пёс и Единорог;Canis Minor and Monoceros
+lessons.CMi_Mon.labels.1;Зимний треугольник;Winter Triangle
+lessons.CMi_Mon.find;Восточнее (левее) Бетельгейзе на ~26° — <b>Процион</b> (0,4<sup>m</sup>), главная звезда Малого Пса. Бетельгейзе, Сириус и Процион образуют почти равносторонний <b>Зимний треугольник</b>. Внутри треугольника — тусклый <b>Единорог</b>.;East of (to the left of) Betelgeuse by ~26° is <b>Procyon</b> (0.4<sup>m</sup>), the main star of Canis Minor. Betelgeuse, Sirius and Procyon form an almost equilateral <b>Winter Triangle</b>. Inside the triangle is the dim <b>Monoceros</b>, the Unicorn.
+lessons.CMi_Mon.look;Малый Пёс — всего две заметные звезды (Процион и Гомейза). Единорог — без звёзд ярче 3,7<sup>m</sup>, зато через него проходит Млечный Путь.;Canis Minor has only two noticeable stars (Procyon and Gomeisa). Monoceros has no stars brighter than 3.7<sup>m</sup>, but the Milky Way runs through it.
+lessons.CMi_Mon.facts.1;"Процион — одна из ближайших звёзд (11,5 св. лет); у него, как у Сириуса, есть спутник — белый карлик.";"Procyon is one of the nearest stars (11.5 light-years); like Sirius, it has a white dwarf companion."
+lessons.CMi_Mon.facts.2;«Процион» значит «перед псом»: в средних северных широтах он восходит чуть раньше Сириуса.;“Procyon” means “before the dog”: at mid-northern latitudes it rises a little before Sirius.
+lessons.CMi_Mon.facts.3;β Единорога — красивая тройная звезда.;β Monocerotis is a beautiful triple star.
+lessons.CMi_Mon.facts.4;В Единороге — туманность <b>Розетка</b>.;The <b>Rosette</b> Nebula is in Monoceros.
+lessons.Lep_Col.title;Заяц и Голубь;Lepus and Columba
+lessons.Lep_Col.labels.1;ещё полпути;another half
+lessons.Lep_Col.labels.2;ещё южнее;farther south
+lessons.Lep_Col.find;Под ногами Ориона сидит <b>Заяц</b>: продолжи линию <b>Бетельгейзе → Саиф</b> ещё на половину — попадёшь на <b>Арнеб</b> (α Зайца). Ещё южнее, низко над горизонтом, — <b>Голубь</b> со звездой Факт.;At Orion’s feet sits <b>Lepus</b>, the Hare: extend the line <b>Betelgeuse → Saiph</b> by another half — you will reach <b>Arneb</b> (α Leporis). Farther south, low above the horizon, is <b>Columba</b>, the Dove, with the star Phact.
+lessons.Lep_Col.look;Заяц — «бабочка» или неровный четырёхугольник из звёзд 3<sup>m</sup>. Голубь — короткая цепочка звёзд под Зайцем.;Lepus is a “butterfly” or an uneven quadrilateral of 3<sup>m</sup> stars. Columba is a short chain of stars below Lepus.
+lessons.Lep_Col.facts.1;Заяц убегает от охотника Ориона и его псов.;The Hare runs away from the hunter Orion and his dogs.
+lessons.Lep_Col.facts.2;"Голубя ввёл Планциус (1592); это голубь Ноя.";"Columba was introduced by Plancius (1592); it is Noah’s dove."
+lessons.Lep_Col.facts.3;<b>R Зайца</b> — «Малиновая звезда Хинда», одна из самых красных звёзд неба.;<b>R Leporis</b> is “Hind’s Crimson Star”, one of the reddest stars in the sky.
+lessons.Eri.labels.1;исток у Ригеля;the source near Rigel
+lessons.Eri.find;Рядом с <b>Ригелем</b> (~3,5° к западу) — <b>Курса</b> (β Эридана), исток реки. Отсюда Эридан петляет на запад, затем далеко на юг — до <b>Ахернара</b> (0,5<sup>m</sup>), «конца реки».;Next to <b>Rigel</b> (~3.5° to the west) is <b>Cursa</b> (β Eridani), the source of the river. From here Eridanus meanders west, then far south — down to <b>Achernar</b> (0.5<sup>m</sup>), “the end of the river”.
+lessons.Eri.look;Река — длинная извилистая цепочка звёзд 3–4<sup>m</sup>. Ярко только в самом конце — Ахернар.;The river is a long winding chain of 3–4<sup>m</sup> stars. Only its very end is bright — Achernar.
+lessons.Eri.facts.1;Эридан — 6-е по площади созвездие, по склонению тянется почти на 60°.;Eridanus is the 6th largest constellation and stretches almost 60° in declination.
+lessons.Eri.facts.2;Ахернар не виден нигде в средней полосе: его δ = −57°, он восходит только южнее 33° широты.;Achernar cannot be seen from mid-northern latitudes: its δ = −57°, so it rises only south of latitude 33° N.
+lessons.Eri.facts.3;<b>ε Эридана</b> — одна из ближайших звёзд, похожих на Солнце (10,5 св. лет).;<b>ε Eridani</b> is one of the nearest Sun-like stars (10.5 light-years).
+lessons.Eri.facts.4;Ахернар вращается так быстро, что сильно сплюснут — одна из самых сплюснутых изученных звёзд.;Achernar spins so fast that it is strongly flattened — one of the flattest stars ever studied.
+lessons.Cam_Lyn.title;Жираф и Рысь;Camelopardalis and Lynx
+lessons.Cam_Lyn.labels.1;Жираф — вдоль этой линии;Camelopardalis is along this line
+lessons.Cam_Lyn.labels.2;Рысь — вдоль этой линии;Lynx is along this line
+lessons.Cam_Lyn.find;Два больших, но очень тусклых «заполнителя» северного неба. <b>Жираф</b> — огромная пустая область между Полярной, Кассиопеей и Капеллой. <b>Рысь</b> — длинная цепочка слабых звёзд от Капеллы к передним лапам Большой Медведицы.;Two large but very dim “fillers” of the northern sky. <b>Camelopardalis</b>, the Giraffe, is a huge empty area between Polaris, Cassiopeia and Capella. <b>Lynx</b> is a long chain of faint stars from Capella to the front paws of Ursa Major.
+lessons.Cam_Lyn.look;Ярких фигур нет. Запоминай: Жираф — между Полярной и Капеллой, Рысь — между Капеллой и Ковшом.;There are no bright figures. Remember: the Giraffe is between Polaris and Capella, the Lynx between Capella and the Dipper.
+lessons.Cam_Lyn.facts.1;По легенде, Гевелий назвал Рысь так, потому что для её поиска нужны глаза рыси.;Legend says Hevelius named it Lynx because you need the eyes of a lynx to find it.
+lessons.Cam_Lyn.facts.2;Жирафа ввёл Планциус (1612).;Camelopardalis was introduced by Plancius (1612).
+lessons.Cam_Lyn.facts.3;<b>Каскад Кембла</b> в Жирафе — цепочка из ~20 звёзд, красиво выглядит в бинокль.;<b>Kemble’s Cascade</b> in Camelopardalis is a chain of ~20 stars, beautiful in binoculars.
+lessons.Cam_Lyn.facts.4;В средней полосе России оба созвездия почти целиком незаходящие.;At mid-northern latitudes both constellations almost never set.
+lessons.Cen_Cru.title;Центавр, Южный Крест, Муха;Centaurus, Crux, Musca
+lessons.Cen_Cru.labels.1;указатели;the pointers
+lessons.Cen_Cru.labels.2;×4,5 к полюсу;×4.5 to the pole
+lessons.Cen_Cru.find;Это небо из России уже не видно. Двигайся на юг от Девы и Гидры: под ними — <b>Центавр</b>. Две его ярчайшие звезды, <b>α (Ригиль Кентаурус)</b> и <b>β (Хадар)</b>, — «указатели» на <b>Южный Крест</b>. Длинную перекладину Креста (<b>Гакрукс → Акрукс</b>) продолжи в 4,5 раза — попадёшь в южный полюс мира. Под Крестом — небольшая <b>Муха</b>.;This part of the sky is no longer visible from mid-northern latitudes. Move south from Virgo and Hydra: below them is <b>Centaurus</b>. Its two brightest stars, <b>α (Rigil Kentaurus)</b> and <b>β (Hadar)</b>, are the “pointers” to the <b>Southern Cross</b> (Crux). Extend the long bar of the Cross (<b>Gacrux → Acrux</b>) 4.5 times — you will reach the south celestial pole. Below the Cross is the small <b>Musca</b>, the Fly.
+lessons.Cen_Cru.look;Крест — маленький «воздушный змей» из четырёх ярких звёзд. Центавр — большой, обнимает Крест с трёх сторон.;The Cross is a small “kite” of four bright stars. Centaurus is large and wraps around the Cross on three sides.
+lessons.Cen_Cru.facts.1;<b>α Центавра</b> — ближайшая звёздная система (4,3 св. года). Её третья звезда, <b>Проксима</b>, — ближайшая к Солнцу звезда (4,24 св. года).;<b>α Centauri</b> is the nearest star system (4.3 light-years). Its third star, <b>Proxima</b>, is the nearest star to the Sun (4.24 light-years).
+lessons.Cen_Cru.facts.2;Южный Крест — <b>самое маленькое созвездие</b> неба (88-е по площади). Он изображён на флагах Австралии, Новой Зеландии, Бразилии.;The Southern Cross is the <b>smallest constellation</b> in the sky (88th by area). It is shown on the flags of Australia, New Zealand and Brazil.
+lessons.Cen_Cru.facts.3;У южного полюса мира нет яркой звезды: ближайшая заметная — σ Октанта (5,4<sup>m</sup>).;There is no bright star at the south celestial pole: the nearest noticeable one is σ Octantis (5.4<sup>m</sup>).
+lessons.Cen_Cru.facts.4;<b>ω Центавра</b> — ярчайшее шаровое скопление неба. Рядом с Крестом — тёмная туманность <b>Угольный Мешок</b>.;<b>ω Centauri</b> is the brightest globular cluster in the sky. Next to the Cross is the dark <b>Coalsack</b> nebula.
+lessons.Cen_Cru.facts.5;Ригиль Кентаурус (δ ≈ −61°) не восходит севернее 29° широты.;Rigil Kentaurus (δ ≈ −61°) never rises north of latitude 29° N.
+lessons.Argo.title;Корабль Арго: Киль, Корма, Паруса, Компас, Насос;The ship Argo: Carina, Puppis, Vela, Pyxis, Antlia
+lessons.Argo.labels.1;~36° на юг от Сириуса;~36° south of Sirius
+lessons.Argo.find;Продолжи путь на юг от <b>Сириуса</b> ~36° — <b>Канопус</b>, вторая по яркости звезда неба (−0,7<sup>m</sup>). Вокруг — три части древнего огромного созвездия Корабль Арго: <b>Киль</b> (с Канопусом), <b>Корма</b> (к юго-востоку от Большого Пса) и <b>Паруса</b>. Между ними и Гидрой — маленькие <b>Компас</b> и <b>Насос</b>.;Continue south from <b>Sirius</b> ~36° — <b>Canopus</b>, the second brightest star in the sky (−0.7<sup>m</sup>). Around it are three parts of the ancient huge constellation Argo Navis: <b>Carina</b>, the Keel (with Canopus), <b>Puppis</b>, the Stern (southeast of Canis Major), and <b>Vela</b>, the Sails. Between them and Hydra are the small <b>Pyxis</b> and <b>Antlia</b>.
+lessons.Argo.look;Через Корабль идёт Млечный Путь. Ярко: Канопус, Наос, Альсухайль, γ Парусов, а у Киля — «Ложный крест» (ε, ι Киля и δ, κ Парусов), который путают с Южным Крестом.;The Milky Way runs through the Ship. Bright ones: Canopus, Naos, Suhail, γ Velorum, and near Carina the “False Cross” (ε, ι Carinae and δ, κ Velorum), which is mistaken for the Southern Cross.
+lessons.Argo.facts.1;Корабль Арго был так велик, что в XVIII веке <b>Лакайль</b> разделил его на Киль, Корму и Паруса. Буквы остались общие: в Корме и Парусах <b>нет α и β</b>.;Argo Navis was so big that in the 18th century <b>Lacaille</b> split it into Carina, Puppis and Vela. The letters stayed shared: Puppis and Vela have <b>no α or β</b>.
+lessons.Argo.facts.2;Канопус в России не виден нигде: он восходит только южнее 37° широты.;Canopus cannot be seen from mid-northern latitudes: it rises only south of latitude 37° N.
+lessons.Argo.facts.3;По Канопусу ориентируются космические аппараты (датчик звёздной ориентации).;Spacecraft use Canopus to orient themselves (star trackers).
+lessons.Argo.facts.4;<b>η Киля</b> — одна из самых массивных звёзд Галактики. В 1843 году она вспыхнула и ненадолго стала второй по яркости звездой неба.;<b>η Carinae</b> is one of the most massive stars in the Galaxy. In 1843 it flared up and briefly became the second brightest star in the sky.
+lessons.Argo.facts.5;Компас и Насос ввёл Лакайль — он любил называть созвездия в честь приборов.;Pyxis and Antlia were introduced by Lacaille — he liked to name constellations after instruments.
+lessons.Lup_TrA.title;Волк, Наугольник, Циркуль, Южный Треугольник, Жертвенник;Lupus, Norma, Circinus, Triangulum Australe, Ara
+lessons.Lup_TrA.labels.1;к Южному Треугольнику;to the Southern Triangle
+lessons.Lup_TrA.labels.2;под жалом;below the stinger
+lessons.Lup_TrA.find;Между Центавром и Скорпионом — пять небольших созвездий. <b>Волк</b> — между Центавром и Скорпионом. <b>Циркуль</b> — крошечный, рядом с α Центавра. <b>Южный Треугольник</b> — яркий треугольник (Атрия, 1,9<sup>m</sup>) восточнее α Центавра. <b>Наугольник</b> — тусклый, между Волком и Южным Треугольником. <b>Жертвенник</b> — под хвостом Скорпиона.;Between Centaurus and Scorpius are five small constellations. <b>Lupus</b>, the Wolf, is between Centaurus and Scorpius. <b>Circinus</b> is tiny, next to α Centauri. <b>Triangulum Australe</b> is a bright triangle (Atria, 1.9<sup>m</sup>) east of α Centauri. <b>Norma</b> is dim, between Lupus and Triangulum Australe. <b>Ara</b>, the Altar, is below the tail of Scorpius.
+lessons.Lup_TrA.look;Самые заметные — Южный Треугольник (почти равносторонний) и Жертвенник (две пары ярких звёзд).;The most noticeable are Triangulum Australe (almost equilateral) and Ara (two pairs of bright stars).
+lessons.Lup_TrA.facts.1;Волк и Жертвенник — древние созвездия Птолемея. Южный Треугольник придумали голландские мореплаватели Кейзер и де Хаутман, Циркуль и Наугольник — Лакайль.;"Lupus and Ara are ancient constellations of Ptolemy. Triangulum Australe was invented by the Dutch navigators Keyser and de Houtman; Circinus and Norma by Lacaille."
+lessons.Lup_TrA.facts.2;Через Наугольник и Жертвенник проходит Млечный Путь.;The Milky Way runs through Norma and Ara.
+lessons.Lup_TrA.facts.3;«Атрия» — сокращение от <i>Alpha Trianguli Australis</i>.;“Atria” is short for <i>Alpha Trianguli Australis</i>.
+lessons.Lup_TrA.facts.4;Северная часть Волка поднимается над горизонтом на юге России.;The northern part of Lupus rises above the horizon at latitudes around 45° N.
+lessons.CrA_Pav.title;Южная Корона, Телескоп, Павлин, Индеец, Микроскоп;Corona Australis, Telescopium, Pavo, Indus, Microscopium
+lessons.CrA_Pav.labels.1;на юг от Чайника;south of the Teapot
+lessons.CrA_Pav.find;Под «Чайником» Стрельца — изящная дуга звёзд 4–5<sup>m</sup>: <b>Южная Корона</b>. Ещё южнее — <b>Телескоп</b> и <b>Павлин</b> (его ярчайшая звезда — Пикок, 1,9<sup>m</sup>). Восточнее (левее) — <b>Индеец</b>, а между Стрельцом и Южной Рыбой — крошечный <b>Микроскоп</b>.;Below the “Teapot” of Sagittarius is a graceful arc of 4–5<sup>m</sup> stars: <b>Corona Australis</b>, the Southern Crown. Farther south are <b>Telescopium</b> and <b>Pavo</b>, the Peacock (its brightest star is Peacock, 1.9<sup>m</sup>). To the east (left) is <b>Indus</b>, and between Sagittarius and Piscis Austrinus is the tiny <b>Microscopium</b>.
+lessons.CrA_Pav.look;Южная Корона похожа на Северную — маленькая дуга. Остальные — бледные «заплатки».;Corona Australis looks like Corona Borealis — a small arc. The others are faint “patches”.
+lessons.CrA_Pav.facts.1;"Южная Корона — древнее созвездие Птолемея; Павлин и Индеец — Кейзера и де Хаутмана; Телескоп и Микроскоп — Лакайля.";"Corona Australis is an ancient constellation of Ptolemy; Pavo and Indus are by Keyser and de Houtman; Telescopium and Microscopium by Lacaille."
+lessons.CrA_Pav.facts.2;Имя «Пикок» (Peacock, «павлин») дали в 1930-х годах для навигационного альманаха.;The name “Peacock” was given in the 1930s for a navigational almanac.
+lessons.CrA_Pav.facts.3;<b>ε Индейца</b> — одна из ближайших звёзд (12 св. лет), вокруг неё пара коричневых карликов.;<b>ε Indi</b> is one of the nearest stars (12 light-years), with a pair of brown dwarfs around it.
+lessons.Gru_Phe.title;Журавль, Феникс, Тукан, Скульптор, Печь;Grus, Phoenix, Tucana, Sculptor, Fornax
+lessons.Gru_Phe.labels.1;~20° на юг;~20° south
+lessons.Gru_Phe.labels.2;к Ахернару;to Achernar
+lessons.Gru_Phe.find;Ниже Фомальгаута (~20° на юг) — <b>Журавль</b> с яркой <b>Альнаир</b> (1,7<sup>m</sup>) и длинной шеей-цепочкой. Восточнее, на пути к Ахернару, — <b>Феникс</b> (Анкаа). Между Фомальгаутом и Китом — тусклые <b>Скульптор</b> и <b>Печь</b> (у реки Эридан). <b>Тукан</b> — ближе к полюсу, в нём Малое Магелланово Облако.;"Below Fomalhaut (~20° south) is <b>Grus</b>, the Crane, with the bright <b>Alnair</b> (1.7<sup>m</sup>) and a long neck made of a chain of stars. To the east, on the way to Achernar, is <b>Phoenix</b> (Ankaa). Between Fomalhaut and Cetus are the dim <b>Sculptor</b> and <b>Fornax</b> (by the river Eridanus). <b>Tucana</b> is closer to the pole; the Small Magellanic Cloud is in it."
+lessons.Gru_Phe.look;Журавль — длинная диагональная цепочка звёзд. Остальные — бледные области вокруг южного полюса Галактики.;Grus is a long diagonal chain of stars. The rest are faint areas around the south galactic pole.
+lessons.Gru_Phe.facts.1;В <b>Скульпторе — южный полюс Галактики</b>.;The <b>south galactic pole is in Sculptor</b>.
+lessons.Gru_Phe.facts.2;«Сверхглубокое поле Хаббла» (2004) — снимок крошечного участка неба в <b>Печи</b>: на нём ~10 000 галактик.;The “Hubble Ultra Deep Field” (2004) is an image of a tiny patch of sky in <b>Fornax</b>: it shows ~10,000 galaxies.
+lessons.Gru_Phe.facts.3;<b>47 Тукана</b> — второе по яркости шаровое скопление неба после ω Центавра.;<b>47 Tucanae</b> is the second brightest globular cluster in the sky after ω Centauri.
+lessons.Gru_Phe.facts.4;β Журавля — красный гигант рядом с бело-голубой Альнаир: заметный контраст цветов.;β Gruis is a red giant next to blue-white Alnair: a striking color contrast.
+lessons.LMC.title;Большое Магелланово Облако и соседи;The Large Magellanic Cloud and neighbors
+lessons.LMC.labels.1;от Канопуса;from Canopus
+lessons.LMC.labels.2;вдоль Эридана;along Eridanus
+lessons.LMC.find;Между <b>Канопусом</b> и <b>Ахернаром</b> — область без ярких звёзд, но с <b>Большим Магеллановым Облаком</b>: оно выглядит как оторванный кусок Млечного Пути. БМО — в <b>Золотой Рыбе</b> и частично в <b>Столовой Горе</b>. Вокруг — мелкие созвездия Лакайля: <b>Сетка</b> (ромбик), <b>Часы</b> (цепочка вдоль Эридана), <b>Резец</b> (между Голубем и Эриданом), <b>Живописец</b> (рядом с Канопусом).;Between <b>Canopus</b> and <b>Achernar</b> is an area without bright stars but with the <b>Large Magellanic Cloud</b>: it looks like a torn-off piece of the Milky Way. The LMC is in <b>Dorado</b> and partly in <b>Mensa</b>. Around them are small constellations of Lacaille: <b>Reticulum</b> (a small diamond), <b>Horologium</b> (a chain along Eridanus), <b>Caelum</b> (between Columba and Eridanus) and <b>Pictor</b> (next to Canopus).
+lessons.LMC.look;Здесь всё тусклое: учи по соседям — Канопус, Ахернар, БМО.;Everything here is dim: learn it by the neighbors — Canopus, Achernar, the LMC.
+lessons.LMC.facts.1;БМО — спутник нашей Галактики на расстоянии ~160 тыс. св. лет.;The LMC is a satellite of our Galaxy, ~160,000 light-years away.
+lessons.LMC.facts.2;В 1987 году в БМО вспыхнула <b>сверхновая SN 1987A</b> — ближайшая за 400 лет. Впервые в истории удалось поймать нейтрино от взрыва сверхновой.;In 1987 the <b>supernova SN 1987A</b> flared up in the LMC — the nearest in 400 years. For the first time in history, neutrinos from a supernova explosion were detected.
+lessons.LMC.facts.3;<b>Столовая Гора</b> — единственное созвездие, названное в честь места на Земле: горы у Кейптауна, где работал Лакайль. И самое тусклое: все звёзды слабее 5<sup>m</sup>.;<b>Mensa</b> is the only constellation named after a place on Earth: Table Mountain near Cape Town, where Lacaille worked. It is also the faintest: all its stars are fainter than 5<sup>m</sup>.
+lessons.LMC.facts.4;<b>β Живописца</b> — звезда с пылевым диском и планетами.;<b>β Pictoris</b> is a star with a dust disk and planets.
+lessons.SCP.title;Вокруг южного полюса;Around the south pole
+lessons.SCP.labels.1;от Креста к полюсу;from the Cross to the pole
+lessons.SCP.find;"<b>Южный полюс мира</b> — в <b>Октанте</b>; рядом нет ярких звёзд (σ Октанта — всего 5,4<sup>m</sup>). Между полюсом и Магеллановыми Облаками — <b>Южная Гидра</b>. Под Южным Крестом (ближе к полюсу) — <b>Хамелеон</b>, у Киля — <b>Летучая Рыба</b>, под Южным Треугольником — <b>Райская Птица</b>.";"The <b>south celestial pole</b> is in <b>Octans</b>; there are no bright stars nearby (σ Octantis is only 5.4<sup>m</sup>). Between the pole and the Magellanic Clouds is <b>Hydrus</b>. Below the Southern Cross (closer to the pole) is <b>Chamaeleon</b>, next to Carina is <b>Volans</b>, the Flying Fish, and below Triangulum Australe is <b>Apus</b>, the Bird of Paradise."
+lessons.SCP.look;Всё бледное. Опоры: Южный Крест, Ахернар, Магеллановы Облака.;Everything is faint. Anchors: the Southern Cross, Achernar, the Magellanic Clouds.
+lessons.SCP.facts.1;σ Октанта — «южная полярная звезда», но её едва видно глазом.;σ Octantis is the “southern pole star”, but it is barely visible to the naked eye.
+lessons.SCP.facts.2;<b>β Южной Гидры</b> (2,8<sup>m</sup>) — ближайшая к южному полюсу мира звезда ярче 3<sup>m</sup>.;<b>β Hydri</b> (2.8<sup>m</sup>) is the star brighter than 3<sup>m</sup> nearest to the south celestial pole.
+lessons.SCP.facts.3;"Октант — прибор-предшественник секстанта; созвездие ввёл Лакайль.";"The octant was an instrument that came before the sextant; the constellation was introduced by Lacaille."
+lessons.SCP.facts.4;Летучая Рыба, Хамелеон, Райская Птица и Южная Гидра — созвездия голландских мореплавателей Кейзера и де Хаутмана (1590-е).;Volans, Chamaeleon, Apus and Hydrus are constellations of the Dutch navigators Keyser and de Houtman (1590s).
+lessons.zodiac.title;Эклиптика и зодиак;The ecliptic and the zodiac
+lessons.zodiac.html;"<p>Карта повёрнута так, что в центре — <b>северный полюс эклиптики</b>, а сама эклиптика (оранжевый пунктир) — большое кольцо. По нему за год проходит Солнце; точки показывают, где оно 1-го числа каждого месяца.</p>
+<h3>13 созвездий на эклиптике</h3>
+<p>Солнце проходит через 13 созвездий — 12 «зодиакальных» и <b>Змееносец</b>. По порядку (с запада на восток, как движется Солнце): Рыбы → Овен → Телец → Близнецы → Рак → Лев → Дева → Весы → Скорпион → Змееносец → Стрелец → Козерог → Водолей.</p>
+<div id=""zodiac-table""></div>
+<p>Это <b>не</b> астрологические «знаки»: из-за прецессии и неравных размеров созвездий даты сильно отличаются. В Скорпионе Солнце проводит меньше недели, в Деве — около 45 дней.</p>
+<h3>Как это использовать в задачах</h3>
+<ul>
+  <li>Созвездие, в котором сейчас Солнце, <b>не видно</b> (оно на дневном небе).</li>
+  <li>Созвездие <b>напротив</b> Солнца (на 12ч по прямому восхождению) видно всю ночь, в полночь оно на юге.</li>
+  <li><b>Полная Луна</b> всегда напротив Солнца: в декабре она в Близнецах или Тельце, в июне — в Стрельце или Змееносце.</li>
+  <li>Луна и планеты всегда недалеко от эклиптики (в пределах нескольких градусов).</li>
+</ul>
+<h3>Особые точки</h3>
+<ul>
+  <li>Весеннее равноденствие (α = 0ч) — в <b>Рыбах</b>.</li>
+  <li>Летнее солнцестояние (α = 6ч) — в <b>Близнецах</b>, у границы с Тельцом.</li>
+  <li>Осеннее равноденствие (α = 12ч) — в <b>Деве</b>.</li>
+  <li>Зимнее солнцестояние (α = 18ч) — в <b>Стрельце</b>.</li>
+</ul>";"<p>The map is turned so that the <b>north ecliptic pole</b> is in the center, and the ecliptic itself (the orange dashed line) is a large ring. The Sun travels along it during the year; the dots show where it is on the 1st of each month.</p>
+<h3>13 constellations on the ecliptic</h3>
+<p>The Sun passes through 13 constellations — the 12 of the “zodiac” and <b>Ophiuchus</b>. In order (from west to east, the way the Sun moves): Pisces → Aries → Taurus → Gemini → Cancer → Leo → Virgo → Libra → Scorpius → Ophiuchus → Sagittarius → Capricornus → Aquarius.</p>
+<div id=""zodiac-table""></div>
+<p>These are <b>not</b> the astrological “signs”: because of precession and the unequal sizes of the constellations, the dates differ a lot. The Sun spends less than a week in Scorpius and about 45 days in Virgo.</p>
+<h3>How to use this in problems</h3>
+<ul>
+  <li>The constellation the Sun is in right now is <b>not visible</b> (it is in the daytime sky).</li>
+  <li>The constellation <b>opposite</b> the Sun (12h away in right ascension) is visible all night; at midnight it is in the south.</li>
+  <li>The <b>full Moon</b> is always opposite the Sun: in December it is in Gemini or Taurus, in June in Sagittarius or Ophiuchus.</li>
+  <li>The Moon and planets are always close to the ecliptic (within a few degrees).</li>
+</ul>
+<h3>Special points</h3>
+<ul>
+  <li>Vernal equinox (α = 0h) — in <b>Pisces</b>.</li>
+  <li>Summer solstice (α = 6h) — in <b>Gemini</b>, near the border with Taurus.</li>
+  <li>Autumnal equinox (α = 12h) — in <b>Virgo</b>.</li>
+  <li>Winter solstice (α = 18h) — in <b>Sagittarius</b>.</li>
+</ul>"
+lessons.milkyway.title;Млечный Путь;The Milky Way
+lessons.milkyway.html;"<p>В центре карты — <b>северный полюс Галактики</b> (в Волосах Вероники), поэтому Млечный Путь лёг кольцом по краю. Это диск нашей Галактики, увиденный изнутри.</p>
+<h3>Через какие созвездия он проходит</h3>
+<p>Кассиопея → Персей → Возничий → (край Близнецов и Ориона) → Единорог → Корма → Паруса → Киль → Южный Крест → Центавр → Наугольник → Скорпион → Стрелец → Щит → Орёл → Лисичка → Лебедь → Цефей → Кассиопея.</p>
+<p>И наоборот: <b>не</b> проходит через Большую Медведицу, Льва, Деву, Пегаса, Рыб — там мы смотрим «вбок» из диска, и видны далёкие галактики.</p>
+<h3>Опорные точки</h3>
+<ul>
+  <li><b>Центр Галактики</b> — в Стрельце (у границы со Скорпионом и Змееносцем). Здесь Млечный Путь ярче и шире всего.</li>
+  <li><b>Антицентр</b> — в Тельце, у границы с Возничим.</li>
+  <li><b>Северный полюс Галактики</b> — в Волосах Вероники, <b>южный</b> — в Скульпторе.</li>
+  <li>Тёмная полоса, которая «раздваивает» Млечный Путь от Лебедя до Стрельца, — <b>Большой Разрыв</b>: облака пыли перед звёздами.</li>
+</ul>
+<p>Кстати: Млечный Путь и эклиптика пересекаются в двух местах — в Близнецах/Тельце и в Стрельце. Поэтому Луна и планеты периодически проходят на фоне Млечного Пути именно там.</p>";"<p>In the center of the map is the <b>north galactic pole</b> (in Coma Berenices), so the Milky Way lies as a ring around the edge. It is the disk of our Galaxy, seen from the inside.</p>
+<h3>Which constellations it passes through</h3>
+<p>Cassiopeia → Perseus → Auriga → (the edge of Gemini and Orion) → Monoceros → Puppis → Vela → Carina → Crux → Centaurus → Norma → Scorpius → Sagittarius → Scutum → Aquila → Vulpecula → Cygnus → Cepheus → Cassiopeia.</p>
+<p>And the other way round: it does <b>not</b> pass through Ursa Major, Leo, Virgo, Pegasus or Pisces — there we look “sideways” out of the disk and see distant galaxies.</p>
+<h3>Reference points</h3>
+<ul>
+  <li>The <b>Galactic Center</b> is in Sagittarius (near the border with Scorpius and Ophiuchus). Here the Milky Way is brightest and widest.</li>
+  <li>The <b>anticenter</b> is in Taurus, near the border with Auriga.</li>
+  <li>The <b>north galactic pole</b> is in Coma Berenices, the <b>south</b> one in Sculptor.</li>
+  <li>The dark lane that “splits” the Milky Way from Cygnus to Sagittarius is the <b>Great Rift</b>: clouds of dust in front of the stars.</li>
+</ul>
+<p>By the way: the Milky Way and the ecliptic cross in two places — in Gemini/Taurus and in Sagittarius. That is why the Moon and planets periodically pass in front of the Milky Way exactly there.</p>"
+lessons.coords.title;Координаты и видимость;Coordinates and visibility
+lessons.coords.html;"<p>Большинство олимпиадных задач про звёздное небо решаются тремя формулами и знанием, где находятся яркие звёзды.</p>
+<h3>Видна ли звезда на широте φ</h3>
+<ul>
+  <li>Звезда <b>не заходит</b>, если δ &gt; 90° − φ.</li>
+  <li>Звезда <b>не восходит</b>, если δ &lt; −(90° − φ).</li>
+  <li>Высота в верхней кульминации (на юге): <b>h = 90° − φ + δ</b>.</li>
+</ul>
+<p>Пример: Москва, φ ≈ 56°. Незаходящие — с δ &gt; 34° (Вега, Капелла, Денеб, Ковш). Не восходят — с δ &lt; −34° (Канопус, Ахернар, Южный Крест). Сириус (δ = −17°) поднимается на 90 − 56 − 17 = 17°.</p>
+<h3>Какие звёзды на юге в полночь</h3>
+<p>Прямое восхождение Солнца 21 марта ≈ 0ч и растёт примерно на <b>2ч в месяц</b>. В полночь на юге находятся звёзды с α ≈ α<sub>Солнца</sub> + 12ч.</p>
+<p>Пример: 1 января Солнце имеет α ≈ 18ч40м, значит, в полночь на юге α ≈ 6ч40м — это Сириус (6ч45м). Зимой ночью виден Орион, летом — Скорпион.</p>
+<h3>Звёздное время</h3>
+<p>Звезда кульминирует, когда <b>местное звёздное время</b> равно её прямому восхождению. Звёздные сутки короче солнечных на 3 мин 56 с, поэтому каждый вечер звёзды восходят на ~4 минуты раньше, а за месяц картина неба сдвигается на ~2 часа.</p>
+<h3>Прецессия</h3>
+<p>Земная ось описывает конус за ~26 000 лет. Поэтому медленно смещаются полюс мира (Тубан → Полярная → Вега), точки равноденствий (весеннее перешло из Овна в Рыбы) и даты, когда Солнце бывает в созвездиях.</p>
+<p>Таблица ярчайших звёзд с координатами — в «Шпаргалке». В «Атласе» щёлкни по любой звезде, чтобы увидеть её координаты и высоту над горизонтом на твоей широте.</p>";"<p>Most olympiad problems about the starry sky are solved with three formulas and knowing where the bright stars are.</p>
+<h3>Is a star visible at latitude φ</h3>
+<ul>
+  <li>A star <b>never sets</b> if δ &gt; 90° − φ.</li>
+  <li>A star <b>never rises</b> if δ &lt; −(90° − φ).</li>
+  <li>Altitude at upper culmination (in the south): <b>h = 90° − φ + δ</b>.</li>
+</ul>
+<p>Example: φ ≈ 56° (Moscow, Edinburgh). Never set: stars with δ &gt; 34° (Vega, Capella, Deneb, the Dipper). Never rise: stars with δ &lt; −34° (Canopus, Achernar, the Southern Cross). Sirius (δ = −17°) rises to 90 − 56 − 17 = 17°.</p>
+<h3>Which stars are in the south at midnight</h3>
+<p>The right ascension of the Sun on March 21 is ≈ 0h and grows by about <b>2h per month</b>. At midnight the stars in the south have α ≈ α<sub>Sun</sub> + 12h.</p>
+<p>Example: on January 1 the Sun has α ≈ 18h40m, so at midnight α ≈ 6h40m is in the south — that is Sirius (6h45m). On winter nights Orion is visible, on summer nights Scorpius.</p>
+<h3>Sidereal time</h3>
+<p>A star culminates when the <b>local sidereal time</b> equals its right ascension. A sidereal day is 3 min 56 s shorter than a solar day, so every evening the stars rise ~4 minutes earlier, and in a month the picture of the sky shifts by ~2 hours.</p>
+<h3>Precession</h3>
+<p>The Earth’s axis traces a cone over ~26,000 years. That is why the celestial pole (Thuban → Polaris → Vega), the equinox points (the vernal one moved from Aries to Pisces) and the dates when the Sun is in each constellation slowly shift.</p>
+<p>A table of the brightest stars with coordinates is in the “Reference” tab. In the “Atlas”, tap any star to see its coordinates and its altitude above the horizon at your latitude.</p>"

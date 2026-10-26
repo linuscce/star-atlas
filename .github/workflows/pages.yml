@@ -1,6 +1,7 @@
 # Публикация сайта на GitHub Pages при каждом push в main.
-# Сайт собирается заново из src/, проверяются данные уроков (npm test), затем выкладывается
-# папка public/ и рядом с ней star-atlas.html — один файл для телефона без интернета.
+# Сайт собирается заново из src/ и таблиц texts/, проверяются уроки и переводы (npm test), затем выкладывается
+# папка public/ (/ → /ru/ или /en/) и рядом с ней star-atlas-ru.html, star-atlas-en.html —
+# приложение одним файлом для телефона без интернета (на них ссылается главная страница).
 name: Pages
 
 on:
@@ -31,7 +32,7 @@ jobs:
       - run: npm test
       - run: |
           cp -r public _site
-          cp dist/star-atlas.html _site/
+          cp dist/star-atlas-*.html _site/
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:

@@ -56,6 +56,9 @@ sup { font-size: 0.7em; }
 .prog { margin-left: auto; display: flex; align-items: center; font-size: 13px; color: #97a3c8; }
 .prog-bar { width: 120px; height: 6px; margin-right: 8px; border-radius: 3px; background: #243057; overflow: hidden; }
 .prog-bar i { display: block; height: 100%; width: 0; background: #5fd38d; }
+a.brand { color: inherit; text-decoration: none; }
+.lang { flex: none; margin-left: 14px; padding: 3px 8px; border: 1px solid #243057; border-radius: 6px; color: #97a3c8; font-size: 12px; text-decoration: none; }
+.lang:hover { color: #e7ecff; }
 
 .icon-btn { display: none; width: 40px; height: 40px; margin: 0 8px 0 -6px; padding: 11px 9px; border: 0; background: none; }
 .icon-btn i { display: block; height: 2px; margin-bottom: 5px; border-radius: 1px; background: #e7ecff; }

@@ -1,6 +1,11 @@
-import { CON_RU, DSO, LATIN_FIX, STAR_NAMES } from './catalog';
+import { CONSTELLATIONS } from '../data/constellations';
+import { DSO } from '../data/dso';
+import { T } from '../i18n';
 import { clamp, enclosingCircle, norm360, vec } from './math';
 import type { DsoItem, PointRef, RaDec, SkyRaw } from './types';
+
+// Где в public/sky.js каталожное имя звезды на каждом языке (см. SkyRaw.names).
+const NAME_FIELD: Record<string, number> = { ru: 2, en: 4 };
 
 const SUP: Record<string, string> = { 1: '¹', 2: '²', 3: '³', 4: '⁴', 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹' };
 
@@ -66,12 +71,12 @@ export class Sky {
       if (m && !(`${m[1]} ${con}` in alias)) alias[`${m[1]} ${con}`] = i;
     });
     Object.keys(alias).forEach((k) => { if (!(k in this.bayerIdx)) this.bayerIdx[k] = alias[k]; });
-    Object.keys(STAR_NAMES).forEach((k) => {
+    Object.keys(T.stars).forEach((k) => {
       const i = this.starIndex(k);
-      if (i >= 0) this.curated[i] = STAR_NAMES[k];
+      if (i >= 0) this.curated[i] = T.stars[k];
     });
 
-    this.cons = Object.keys(CON_RU);
+    this.cons = Object.keys(CONSTELLATIONS);
     for (const abbr of this.cons) {
       this.lines[abbr] = (raw.lines[abbr] || []).map(toVectors);
       this.bounds[abbr] = (raw.bounds[abbr] || []).map(toVectors);
@@ -87,7 +92,10 @@ export class Sky {
       this.geo[abbr] = { fig: enclosingCircle(fig.length ? fig : bnd), bnd: enclosingCircle(bnd) };
     }
     this.mw = raw.mw.map((m) => ({ l: m.l, rings: m.rings.map(toVectors) }));
-    for (const d of DSO) this.dsoById[d.id] = d;
+    for (const d of DSO) {
+      const t = T.dso[d.id];
+      this.dsoById[d.id] = { id: d.id, ra: d.ra, dec: d.dec, type: d.type, size: d.size, name: t ? t.name : d.id, label: t && t.label };
+    }
   }
 
   // Лежит ли точка (единичный вектор) внутри уровня Млечного Пути. Считаем, сколько раз дуга
@@ -135,15 +143,17 @@ export class Sky {
     return d ? { ra: d.ra, dec: d.dec } : null;
   }
 
-  conName(abbr: string): string { return CON_RU[abbr] ? CON_RU[abbr][0] : abbr; }
-  conGen(abbr: string): string { return CON_RU[abbr] ? CON_RU[abbr][1] : abbr; }
-  conLatin(abbr: string): string { return LATIN_FIX[abbr] || this.raw.cons[abbr].la; }
-  conLatinGen(abbr: string): string { return this.raw.cons[abbr].gen; }
+  conName(abbr: string): string { return T.cons[abbr] ? T.cons[abbr].name : abbr; }
+  conGen(abbr: string): string { return T.cons[abbr] ? T.cons[abbr].gen : abbr; }
+  conLatin(abbr: string): string { return CONSTELLATIONS[abbr][0]; }
+  conLatinGen(abbr: string): string { return CONSTELLATIONS[abbr][1]; }
+  // Второе название рядом с основным: перевод (если созвездия зовут по-латыни) или латинское.
+  conAlt(abbr: string): string { return (T.cons[abbr] && T.cons[abbr].meaning) || this.conLatin(abbr); }
 
   starName(i: number): string {
     if (this.curated[i]) return this.curated[i];
     const n = this.raw.names[i];
-    return n && n[2] ? n[2] : '';
+    return (n && n[NAME_FIELD[T.lang]]) || '';
   }
   hasCuratedName(i: number): boolean { return i in this.curated; }
   // Только имена, отобранные для учёбы (без малоизвестных каталожных).
@@ -161,7 +171,7 @@ export class Sky {
     return n[3] || '';
   }
 
-  // «α Лиры» или «α Lyr»; для звёзд без обозначения — номер HIP.
+  // «α Лиры» (α Lyrae) или «α Lyr»; для звёзд без обозначения — номер HIP.
   starDesig(i: number, latin = false): string {
     const letter = this.starLetter(i), con = this.starCon(i);
     if (!letter || !con) return `HIP ${this.hip[i]}`;

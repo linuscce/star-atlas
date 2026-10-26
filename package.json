@@ -4,13 +4,14 @@
   "private": true,
   "description": "Звёздное небо шаг за шагом — учебник созвездий",
   "scripts": {
-    "build": "tsc && esbuild .build/main.js --bundle --minify --charset=utf8 --target=es5 --outfile=public/app.js && node tools/inline.js",
+    "texts": "node tools/texts.js",
+    "build": "node tools/texts.js && tsc && node tools/build.js",
     "watch": "tsc --watch",
-    "check": "tsc --noEmit",
+    "check": "node tools/texts.js && tsc --noEmit",
     "test": "esbuild tools/check.ts --bundle --platform=node --charset=utf8 --log-level=warning --outfile=tools/.check.js && node tools/.check.js",
     "serve": "python -m http.server 8080 --directory public --bind 0.0.0.0",
     "data": "python tools/build_sky.py",
-    "e2e": "node tools/e2e/old-browser.js && node tools/e2e/old-browser.js --dist",
+    "e2e": "node tools/e2e/old-browser.js && node tools/e2e/old-browser.js --lang=en && node tools/e2e/old-browser.js --dist && node tools/e2e/old-browser.js --dist --lang=en",
     "perf": "node tools/e2e/perf.js"
   },
   "devDependencies": {

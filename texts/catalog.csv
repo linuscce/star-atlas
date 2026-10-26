@@ -1,0 +1,591 @@
+﻿key;ru;en
+cons.And.name;Андромеда;Andromeda
+cons.And.gen;Андромеды;Andromedae
+cons.And.meaning;;Chained Princess
+cons.Ant.name;Насос;Antlia
+cons.Ant.gen;Насоса;Antliae
+cons.Ant.meaning;;Air Pump
+cons.Aps.name;Райская Птица;Apus
+cons.Aps.gen;Райской Птицы;Apodis
+cons.Aps.meaning;;Bird of Paradise
+cons.Aqr.name;Водолей;Aquarius
+cons.Aqr.gen;Водолея;Aquarii
+cons.Aqr.meaning;;Water Bearer
+cons.Aql.name;Орёл;Aquila
+cons.Aql.gen;Орла;Aquilae
+cons.Aql.meaning;;Eagle
+cons.Ara.name;Жертвенник;Ara
+cons.Ara.gen;Жертвенника;Arae
+cons.Ara.meaning;;Altar
+cons.Ari.name;Овен;Aries
+cons.Ari.gen;Овна;Arietis
+cons.Ari.meaning;;Ram
+cons.Aur.name;Возничий;Auriga
+cons.Aur.gen;Возничего;Aurigae
+cons.Aur.meaning;;Charioteer
+cons.Boo.name;Волопас;Boötes
+cons.Boo.gen;Волопаса;Boötis
+cons.Boo.meaning;;Herdsman
+cons.Cae.name;Резец;Caelum
+cons.Cae.gen;Резца;Caeli
+cons.Cae.meaning;;Chisel
+cons.Cam.name;Жираф;Camelopardalis
+cons.Cam.gen;Жирафа;Camelopardalis
+cons.Cam.meaning;;Giraffe
+cons.Cnc.name;Рак;Cancer
+cons.Cnc.gen;Рака;Cancri
+cons.Cnc.meaning;;Crab
+cons.CVn.name;Гончие Псы;Canes Venatici
+cons.CVn.gen;Гончих Псов;Canum Venaticorum
+cons.CVn.meaning;;Hunting Dogs
+cons.CMa.name;Большой Пёс;Canis Major
+cons.CMa.gen;Большого Пса;Canis Majoris
+cons.CMa.meaning;;Great Dog
+cons.CMi.name;Малый Пёс;Canis Minor
+cons.CMi.gen;Малого Пса;Canis Minoris
+cons.CMi.meaning;;Little Dog
+cons.Cap.name;Козерог;Capricornus
+cons.Cap.gen;Козерога;Capricorni
+cons.Cap.meaning;;Sea Goat
+cons.Car.name;Киль;Carina
+cons.Car.gen;Киля;Carinae
+cons.Car.meaning;;Keel
+cons.Cas.name;Кассиопея;Cassiopeia
+cons.Cas.gen;Кассиопеи;Cassiopeiae
+cons.Cas.meaning;;Queen
+cons.Cen.name;Центавр;Centaurus
+cons.Cen.gen;Центавра;Centauri
+cons.Cen.meaning;;Centaur
+cons.Cep.name;Цефей;Cepheus
+cons.Cep.gen;Цефея;Cephei
+cons.Cep.meaning;;King
+cons.Cet.name;Кит;Cetus
+cons.Cet.gen;Кита;Ceti
+cons.Cet.meaning;;Sea Monster (Whale)
+cons.Cha.name;Хамелеон;Chamaeleon
+cons.Cha.gen;Хамелеона;Chamaeleontis
+cons.Cha.meaning;;Chameleon
+cons.Cir.name;Циркуль;Circinus
+cons.Cir.gen;Циркуля;Circini
+cons.Cir.meaning;;Drawing Compass
+cons.Col.name;Голубь;Columba
+cons.Col.gen;Голубя;Columbae
+cons.Col.meaning;;Dove
+cons.Com.name;Волосы Вероники;Coma Berenices
+cons.Com.gen;Волос Вероники;Comae Berenices
+cons.Com.meaning;;Berenice’s Hair
+cons.CrA.name;Южная Корона;Corona Australis
+cons.CrA.gen;Южной Короны;Coronae Australis
+cons.CrA.meaning;;Southern Crown
+cons.CrB.name;Северная Корона;Corona Borealis
+cons.CrB.gen;Северной Короны;Coronae Borealis
+cons.CrB.meaning;;Northern Crown
+cons.Crv.name;Ворон;Corvus
+cons.Crv.gen;Ворона;Corvi
+cons.Crv.meaning;;Crow
+cons.Crt.name;Чаша;Crater
+cons.Crt.gen;Чаши;Crateris
+cons.Crt.meaning;;Cup
+cons.Cru.name;Южный Крест;Crux
+cons.Cru.gen;Южного Креста;Crucis
+cons.Cru.meaning;;Southern Cross
+cons.Cyg.name;Лебедь;Cygnus
+cons.Cyg.gen;Лебедя;Cygni
+cons.Cyg.meaning;;Swan
+cons.Del.name;Дельфин;Delphinus
+cons.Del.gen;Дельфина;Delphini
+cons.Del.meaning;;Dolphin
+cons.Dor.name;Золотая Рыба;Dorado
+cons.Dor.gen;Золотой Рыбы;Doradus
+cons.Dor.meaning;;Dolphinfish
+cons.Dra.name;Дракон;Draco
+cons.Dra.gen;Дракона;Draconis
+cons.Dra.meaning;;Dragon
+cons.Equ.name;Малый Конь;Equuleus
+cons.Equ.gen;Малого Коня;Equulei
+cons.Equ.meaning;;Little Horse
+cons.Eri.name;Эридан;Eridanus
+cons.Eri.gen;Эридана;Eridani
+cons.Eri.meaning;;River
+cons.For.name;Печь;Fornax
+cons.For.gen;Печи;Fornacis
+cons.For.meaning;;Furnace
+cons.Gem.name;Близнецы;Gemini
+cons.Gem.gen;Близнецов;Geminorum
+cons.Gem.meaning;;Twins
+cons.Gru.name;Журавль;Grus
+cons.Gru.gen;Журавля;Gruis
+cons.Gru.meaning;;Crane
+cons.Her.name;Геркулес;Hercules
+cons.Her.gen;Геркулеса;Herculis
+cons.Her.meaning;;Heracles
+cons.Hor.name;Часы;Horologium
+cons.Hor.gen;Часов;Horologii
+cons.Hor.meaning;;Pendulum Clock
+cons.Hya.name;Гидра;Hydra
+cons.Hya.gen;Гидры;Hydrae
+cons.Hya.meaning;;Water Snake
+cons.Hyi.name;Южная Гидра;Hydrus
+cons.Hyi.gen;Южной Гидры;Hydri
+cons.Hyi.meaning;;Little Water Snake
+cons.Ind.name;Индеец;Indus
+cons.Ind.gen;Индейца;Indi
+cons.Ind.meaning;;Indian
+cons.Lac.name;Ящерица;Lacerta
+cons.Lac.gen;Ящерицы;Lacertae
+cons.Lac.meaning;;Lizard
+cons.Leo.name;Лев;Leo
+cons.Leo.gen;Льва;Leonis
+cons.Leo.meaning;;Lion
+cons.LMi.name;Малый Лев;Leo Minor
+cons.LMi.gen;Малого Льва;Leonis Minoris
+cons.LMi.meaning;;Little Lion
+cons.Lep.name;Заяц;Lepus
+cons.Lep.gen;Зайца;Leporis
+cons.Lep.meaning;;Hare
+cons.Lib.name;Весы;Libra
+cons.Lib.gen;Весов;Librae
+cons.Lib.meaning;;Scales
+cons.Lup.name;Волк;Lupus
+cons.Lup.gen;Волка;Lupi
+cons.Lup.meaning;;Wolf
+cons.Lyn.name;Рысь;Lynx
+cons.Lyn.gen;Рыси;Lyncis
+cons.Lyn.meaning;;Lynx
+cons.Lyr.name;Лира;Lyra
+cons.Lyr.gen;Лиры;Lyrae
+cons.Lyr.meaning;;Lyre
+cons.Men.name;Столовая Гора;Mensa
+cons.Men.gen;Столовой Горы;Mensae
+cons.Men.meaning;;Table Mountain
+cons.Mic.name;Микроскоп;Microscopium
+cons.Mic.gen;Микроскопа;Microscopii
+cons.Mic.meaning;;Microscope
+cons.Mon.name;Единорог;Monoceros
+cons.Mon.gen;Единорога;Monocerotis
+cons.Mon.meaning;;Unicorn
+cons.Mus.name;Муха;Musca
+cons.Mus.gen;Мухи;Muscae
+cons.Mus.meaning;;Fly
+cons.Nor.name;Наугольник;Norma
+cons.Nor.gen;Наугольника;Normae
+cons.Nor.meaning;;Carpenter’s Square
+cons.Oct.name;Октант;Octans
+cons.Oct.gen;Октанта;Octantis
+cons.Oct.meaning;;Octant
+cons.Oph.name;Змееносец;Ophiuchus
+cons.Oph.gen;Змееносца;Ophiuchi
+cons.Oph.meaning;;Serpent Bearer
+cons.Ori.name;Орион;Orion
+cons.Ori.gen;Ориона;Orionis
+cons.Ori.meaning;;Hunter
+cons.Pav.name;Павлин;Pavo
+cons.Pav.gen;Павлина;Pavonis
+cons.Pav.meaning;;Peacock
+cons.Peg.name;Пегас;Pegasus
+cons.Peg.gen;Пегаса;Pegasi
+cons.Peg.meaning;;Winged Horse
+cons.Per.name;Персей;Perseus
+cons.Per.gen;Персея;Persei
+cons.Per.meaning;;Hero
+cons.Phe.name;Феникс;Phoenix
+cons.Phe.gen;Феникса;Phoenicis
+cons.Phe.meaning;;Firebird
+cons.Pic.name;Живописец;Pictor
+cons.Pic.gen;Живописца;Pictoris
+cons.Pic.meaning;;Painter’s Easel
+cons.Psc.name;Рыбы;Pisces
+cons.Psc.gen;Рыб;Piscium
+cons.Psc.meaning;;Fishes
+cons.PsA.name;Южная Рыба;Piscis Austrinus
+cons.PsA.gen;Южной Рыбы;Piscis Austrini
+cons.PsA.meaning;;Southern Fish
+cons.Pup.name;Корма;Puppis
+cons.Pup.gen;Кормы;Puppis
+cons.Pup.meaning;;Stern
+cons.Pyx.name;Компас;Pyxis
+cons.Pyx.gen;Компаса;Pyxidis
+cons.Pyx.meaning;;Mariner’s Compass
+cons.Ret.name;Сетка;Reticulum
+cons.Ret.gen;Сетки;Reticuli
+cons.Ret.meaning;;Reticle
+cons.Sge.name;Стрела;Sagitta
+cons.Sge.gen;Стрелы;Sagittae
+cons.Sge.meaning;;Arrow
+cons.Sgr.name;Стрелец;Sagittarius
+cons.Sgr.gen;Стрельца;Sagittarii
+cons.Sgr.meaning;;Archer
+cons.Sco.name;Скорпион;Scorpius
+cons.Sco.gen;Скорпиона;Scorpii
+cons.Sco.meaning;;Scorpion
+cons.Scl.name;Скульптор;Sculptor
+cons.Scl.gen;Скульптора;Sculptoris
+cons.Scl.meaning;;Sculptor’s Workshop
+cons.Sct.name;Щит;Scutum
+cons.Sct.gen;Щита;Scuti
+cons.Sct.meaning;;Shield
+cons.Ser.name;Змея;Serpens
+cons.Ser.gen;Змеи;Serpentis
+cons.Ser.meaning;;Serpent
+cons.Sex.name;Секстант;Sextans
+cons.Sex.gen;Секстанта;Sextantis
+cons.Sex.meaning;;Sextant
+cons.Tau.name;Телец;Taurus
+cons.Tau.gen;Тельца;Tauri
+cons.Tau.meaning;;Bull
+cons.Tel.name;Телескоп;Telescopium
+cons.Tel.gen;Телескопа;Telescopii
+cons.Tel.meaning;;Telescope
+cons.Tri.name;Треугольник;Triangulum
+cons.Tri.gen;Треугольника;Trianguli
+cons.Tri.meaning;;Triangle
+cons.TrA.name;Южный Треугольник;Triangulum Australe
+cons.TrA.gen;Южного Треугольника;Trianguli Australis
+cons.TrA.meaning;;Southern Triangle
+cons.Tuc.name;Тукан;Tucana
+cons.Tuc.gen;Тукана;Tucanae
+cons.Tuc.meaning;;Toucan
+cons.UMa.name;Большая Медведица;Ursa Major
+cons.UMa.gen;Большой Медведицы;Ursae Majoris
+cons.UMa.meaning;;Great Bear
+cons.UMi.name;Малая Медведица;Ursa Minor
+cons.UMi.gen;Малой Медведицы;Ursae Minoris
+cons.UMi.meaning;;Little Bear
+cons.Vel.name;Паруса;Vela
+cons.Vel.gen;Парусов;Velorum
+cons.Vel.meaning;;Sails
+cons.Vir.name;Дева;Virgo
+cons.Vir.gen;Девы;Virginis
+cons.Vir.meaning;;Maiden
+cons.Vol.name;Летучая Рыба;Volans
+cons.Vol.gen;Летучей Рыбы;Volantis
+cons.Vol.meaning;;Flying Fish
+cons.Vul.name;Лисичка;Vulpecula
+cons.Vul.gen;Лисички;Vulpeculae
+cons.Vul.meaning;;Little Fox
+stars.α UMa;Дубхе;Dubhe
+stars.β UMa;Мерак;Merak
+stars.γ UMa;Фекда;Phecda
+stars.δ UMa;Мегрец;Megrez
+stars.ε UMa;Алиот;Alioth
+stars.ζ UMa;Мицар;Mizar
+stars.g UMa;Алькор;Alcor
+stars.η UMa;Бенетнаш;Alkaid
+stars.α UMi;Полярная;Polaris
+stars.β UMi;Кохаб;Kochab
+stars.γ UMi;Феркад;Pherkad
+stars.α Cas;Шедар;Schedar
+stars.β Cas;Каф;Caph
+stars.δ Cas;Рукбах;Ruchbah
+stars.ε Cas;Сегин;Segin
+stars.α Cep;Альдерамин;Alderamin
+stars.β Cep;Альфирк;Alfirk
+stars.γ Cep;Эррай;Errai
+stars.μ Cep;Гранатовая звезда;Garnet Star
+stars.α Dra;Тубан;Thuban
+stars.β Dra;Растабан;Rastaban
+stars.γ Dra;Этамин;Eltanin
+stars.α Boo;Арктур;Arcturus
+stars.ε Boo;Изар;Izar
+stars.η Boo;Муфрид;Muphrid
+stars.γ Boo;Сегинус;Seginus
+stars.β Boo;Неккар;Nekkar
+stars.α CrB;Гемма;Alphecca
+stars.α Vir;Спика;Spica
+stars.γ Vir;Поррима;Porrima
+stars.ε Vir;Виндемиатрикс;Vindemiatrix
+stars.β Vir;Завийава;Zavijava
+stars.α Leo;Регул;Regulus
+stars.β Leo;Денебола;Denebola
+stars.γ Leo;Альгиеба;Algieba
+stars.δ Leo;Зосма;Zosma
+stars.θ Leo;Шертан;Chertan
+stars.HIP53229;Преципуа;Praecipua
+stars.α CVn;Сердце Карла;Cor Caroli
+stars.β CVn;Хара;Chara
+stars.α Com;Диадема;Diadem
+stars.β Cnc;Альтарф;Tarf
+stars.α Cnc;Акубенс;Acubens
+stars.γ Cnc;Северный Ослик;Asellus Borealis
+stars.δ Cnc;Южный Ослик;Asellus Australis
+stars.α Hya;Альфард;Alphard
+stars.γ Crv;Гиена;Gienah
+stars.β Crv;Крац;Kraz
+stars.δ Crv;Альгораб;Algorab
+stars.α Crv;Альхиба;Alchiba
+stars.α Crt;Алькес;Alkes
+stars.α Lyr;Вега;Vega
+stars.β Lyr;Шелиак;Sheliak
+stars.γ Lyr;Сулафат;Sulafat
+stars.α Cyg;Денеб;Deneb
+stars.β Cyg;Альбирео;Albireo
+stars.γ Cyg;Садр;Sadr
+stars.ε Cyg;Альджанах;Aljanah
+stars.HIP104214;61 Лебедя;61 Cygni
+stars.α Aql;Альтаир;Altair
+stars.γ Aql;Таразед;Tarazed
+stars.β Aql;Альшаин;Alshain
+stars.α Her;Рас Альгети;Rasalgethi
+stars.β Her;Корнефорос;Kornephoros
+stars.α Oph;Рас Альхаге;Rasalhague
+stars.η Oph;Сабик;Sabik
+stars.β Oph;Цельбальрай;Cebalrai
+stars.α Ser;Унук аль Хай;Unukalhai
+stars.α Sco;Антарес;Antares
+stars.λ Sco;Шаула;Shaula
+stars.β Sco;Акраб;Acrab
+stars.δ Sco;Дшубба;Dschubba
+stars.θ Sco;Сарган;Sargas
+stars.υ Sco;Лесат;Lesath
+stars.α Lib;Зубен эль Генуби;Zubenelgenubi
+stars.β Lib;Зубен эш Шемали;Zubeneschamali
+stars.ε Sgr;Каус Аустралис;Kaus Australis
+stars.σ Sgr;Нунки;Nunki
+stars.λ Sgr;Каус Бореалис;Kaus Borealis
+stars.δ Sgr;Каус Медиус;Kaus Media
+stars.ζ Sgr;Асцелла;Ascella
+stars.α Sgr;Рукбат;Rukbat
+stars.α Del;Суалоцин;Sualocin
+stars.β Del;Ротанев;Rotanev
+stars.α Vul;Анзер;Anser
+stars.α Peg;Маркаб;Markab
+stars.β Peg;Шеат;Scheat
+stars.γ Peg;Альгениб;Algenib
+stars.ε Peg;Эниф;Enif
+stars.HIP113357;51 Пегаса;51 Pegasi
+stars.α And;Альферац;Alpheratz
+stars.β And;Мирах;Mirach
+stars.γ And;Аламак;Almach
+stars.α Per;Мирфак;Mirfak
+stars.β Per;Алголь;Algol
+stars.α Tri;Мотала;Mothallah
+stars.α Ari;Хамаль;Hamal
+stars.β Ari;Шератан;Sheratan
+stars.γ Ari;Мезартим;Mesarthim
+stars.α Psc;Альриша;Alrescha
+stars.ο Cet;Мира;Mira
+stars.β Cet;Дифда;Diphda
+stars.α Cet;Менкар;Menkar
+stars.α Aqr;Садалмелик;Sadalmelik
+stars.β Aqr;Садалсууд;Sadalsuud
+stars.δ Aqr;Скат;Skat
+stars.α Cap;Альгеди;Algedi
+stars.δ Cap;Денеб Альгеди;Deneb Algedi
+stars.β Cap;Даби;Dabih
+stars.γ Cap;Нашира;Nashira
+stars.α PsA;Фомальгаут;Fomalhaut
+stars.α Equ;Китальфа;Kitalpha
+stars.α Ori;Бетельгейзе;Betelgeuse
+stars.β Ori;Ригель;Rigel
+stars.γ Ori;Беллатрикс;Bellatrix
+stars.δ Ori;Минтака;Mintaka
+stars.ε Ori;Альнилам;Alnilam
+stars.ζ Ori;Альнитак;Alnitak
+stars.κ Ori;Саиф;Saiph
+stars.λ Ori;Мейсса;Meissa
+stars.α Tau;Альдебаран;Aldebaran
+stars.β Tau;Эль-Нат;Elnath
+stars.η Tau;Альциона;Alcyone
+stars.α Aur;Капелла;Capella
+stars.β Aur;Менкалинан;Menkalinan
+stars.ε Aur;Альмааз;Almaaz
+stars.ι Aur;Хассалех;Hassaleh
+stars.α Gem;Кастор;Castor
+stars.β Gem;Поллукс;Pollux
+stars.γ Gem;Альхена;Alhena
+stars.μ Gem;Тейат;Tejat
+stars.ε Gem;Мебсута;Mebsuta
+stars.δ Gem;Васат;Wasat
+stars.α CMa;Сириус;Sirius
+stars.ε CMa;Адара;Adhara
+stars.δ CMa;Везен;Wezen
+stars.β CMa;Мирцам;Mirzam
+stars.η CMa;Алудра;Aludra
+stars.α CMi;Процион;Procyon
+stars.β CMi;Гомейза;Gomeisa
+stars.α Lep;Арнеб;Arneb
+stars.β Lep;Нихал;Nihal
+stars.α Col;Факт;Phact
+stars.β Col;Вазн;Wazn
+stars.β Eri;Курса;Cursa
+stars.α Eri;Ахернар;Achernar
+stars.γ Eri;Заурак;Zaurak
+stars.θ Eri;Акамар;Acamar
+stars.α Cen;Ригиль Кентаурус;Rigil Kentaurus
+stars.β Cen;Хадар;Hadar
+stars.θ Cen;Менкент;Menkent
+stars.α Cru;Акрукс;Acrux
+stars.β Cru;Мимоза;Mimosa
+stars.γ Cru;Гакрукс;Gacrux
+stars.α Car;Канопус;Canopus
+stars.β Car;Миаплацидус;Miaplacidus
+stars.ε Car;Авиор;Avior
+stars.ζ Pup;Наос;Naos
+stars.λ Vel;Альсухайль;Suhail
+stars.α TrA;Атрия;Atria
+stars.α Pav;Пикок;Peacock
+stars.α Gru;Альнаир;Alnair
+stars.α Phe;Анкаа;Ankaa
+dso.M31.name;Туманность Андромеды (галактика);Andromeda Galaxy
+dso.M33.name;Галактика Треугольника;Triangulum Galaxy
+dso.M42.name;Туманность Ориона;Orion Nebula
+dso.M45.label;Плеяды;Pleiades
+dso.M45.name;Плеяды (рассеянное скопление);Pleiades (open cluster)
+dso.Hyades.label;Гиады;Hyades
+dso.Hyades.name;Гиады (рассеянное скопление);Hyades (open cluster)
+dso.M44.label;Ясли;Beehive
+dso.M44.name;Ясли, M44 (рассеянное скопление);Beehive Cluster, Praesepe, M44 (open cluster)
+dso.M67.name;M67 (рассеянное скопление);M67 (open cluster)
+dso.M13.name;Большое скопление Геркулеса;Great Globular Cluster in Hercules
+dso.M92.name;M92 (шаровое скопление);M92 (globular cluster)
+dso.M57.label;M57 Кольцо;M57 Ring
+dso.M57.name;Туманность Кольцо;Ring Nebula
+dso.M27.label;M27 Гантель;M27 Dumbbell
+dso.M27.name;Туманность Гантель;Dumbbell Nebula
+dso.M1.label;M1 Крабовидная;M1 Crab
+dso.M1.name;Крабовидная туманность;Crab Nebula
+dso.M8.label;M8 Лагуна;M8 Lagoon
+dso.M8.name;Туманность Лагуна;Lagoon Nebula
+dso.M20.name;Тройная туманность;Trifid Nebula
+dso.M17.name;Туманность Омега;Omega Nebula
+dso.M16.name;Туманность Орёл («Столпы творения»);Eagle Nebula (“Pillars of Creation”)
+dso.M22.name;M22 (шаровое скопление);M22 (globular cluster)
+dso.M51.label;M51 Водоворот;M51 Whirlpool
+dso.M51.name;Галактика Водоворот;Whirlpool Galaxy
+dso.M81.name;Галактика Боде;Bode’s Galaxy
+dso.M82.name;Галактика Сигара;Cigar Galaxy
+dso.M101.label;M101 Вертушка;M101 Pinwheel
+dso.M101.name;Галактика Вертушка;Pinwheel Galaxy
+dso.M104.label;M104 Сомбреро;M104 Sombrero
+dso.M104.name;Галактика Сомбреро;Sombrero Galaxy
+dso.M87.name;Галактика M87 (первый снимок тени чёрной дыры);Galaxy M87 (first image of a black hole’s shadow)
+dso.M3.name;M3 (шаровое скопление);M3 (globular cluster)
+dso.M5.name;M5 (шаровое скопление);M5 (globular cluster)
+dso.M4.name;M4 (шаровое скопление у Антареса);M4 (globular cluster near Antares)
+dso.M6.label;M6 Бабочка;M6 Butterfly
+dso.M6.name;Скопление Бабочка;Butterfly Cluster
+dso.M7.label;M7 Птолемея;M7 Ptolemy
+dso.M7.name;Скопление Птолемея;Ptolemy Cluster
+dso.M11.label;M11 Дикая Утка;M11 Wild Duck
+dso.M11.name;Скопление Дикая Утка;Wild Duck Cluster
+dso.M15.name;M15 (шаровое скопление);M15 (globular cluster)
+dso.M2.name;M2 (шаровое скопление);M2 (globular cluster)
+dso.M35.name;M35 (рассеянное скопление);M35 (open cluster)
+dso.M36.name;M36 (рассеянное скопление);M36 (open cluster)
+dso.M37.name;M37 (рассеянное скопление);M37 (open cluster)
+dso.M38.name;M38 (рассеянное скопление);M38 (open cluster)
+dso.M41.name;M41 (рассеянное скопление);M41 (open cluster)
+dso.M50.name;M50 (рассеянное скопление);M50 (open cluster)
+dso.M79.name;M79 (шаровое скопление);M79 (globular cluster)
+dso.M64.label;M64 Чёрный Глаз;M64 Black Eye
+dso.M64.name;Галактика Чёрный Глаз;Black Eye Galaxy
+dso.M65.name;M65 (галактика, Триплет Льва);M65 (galaxy, Leo Triplet)
+dso.M66.name;M66 (галактика, Триплет Льва);M66 (galaxy, Leo Triplet)
+dso.M52.name;M52 (рассеянное скопление);M52 (open cluster)
+dso.M103.name;M103 (рассеянное скопление);M103 (open cluster)
+dso.M34.name;M34 (рассеянное скопление);M34 (open cluster)
+dso.M39.name;M39 (рассеянное скопление);M39 (open cluster)
+dso.M71.name;M71 (шаровое скопление);M71 (globular cluster)
+dso.M30.name;M30 (шаровое скопление);M30 (globular cluster)
+dso.M83.name;Южная Вертушка (галактика);Southern Pinwheel Galaxy
+dso.hχPer.label;h и χ Персея;h & χ Persei
+dso.hχPer.name;Двойное скопление h и χ Персея;Double Cluster h & χ Persei
+dso.Mel111.label;Скопл. Волосы Вероники;Coma Cluster
+dso.Mel111.name;Скопление Волосы Вероники (Mel 111);Coma Star Cluster (Mel 111)
+dso.NGC2244.label;Розетка;Rosette
+dso.NGC2244.name;Туманность Розетка и скопление NGC 2244;Rosette Nebula and cluster NGC 2244
+dso.NGC7293.label;Улитка;Helix
+dso.NGC7293.name;Туманность Улитка (NGC 7293);Helix Nebula (NGC 7293)
+dso.NGC6543.label;Кошачий Глаз;Cat’s Eye
+dso.NGC6543.name;Туманность Кошачий Глаз (NGC 6543);Cat’s Eye Nebula (NGC 6543)
+dso.NGC7000.label;Северная Америка;North America
+dso.NGC7000.name;Туманность Северная Америка (NGC 7000);North America Nebula (NGC 7000)
+dso.NGC253.label;NGC 253;NGC 253
+dso.NGC253.name;Галактика Скульптор (NGC 253);Sculptor Galaxy (NGC 253)
+dso.LMC.label;БМО;LMC
+dso.LMC.name;Большое Магелланово Облако;Large Magellanic Cloud
+dso.SMC.label;ММО;SMC
+dso.SMC.name;Малое Магелланово Облако;Small Magellanic Cloud
+dso.omegaCen.label;ω Центавра;ω Centauri
+dso.omegaCen.name;ω Центавра — ярчайшее шаровое скопление;ω Centauri, the brightest globular cluster
+dso.47Tuc.label;47 Тукана;47 Tucanae
+dso.47Tuc.name;47 Тукана (шаровое скопление);47 Tucanae (globular cluster)
+dso.Coalsack.label;Угольный Мешок;Coalsack
+dso.Coalsack.name;Угольный Мешок (тёмная туманность);Coalsack (dark nebula)
+dso.etaCar.label;η Киля;η Carinae
+dso.etaCar.name;Туманность η Киля (NGC 3372);Carina Nebula around η Carinae (NGC 3372)
+dso.NGC4755.label;Шкатулка;Jewel Box
+dso.NGC4755.name;Шкатулка с драгоценностями (NGC 4755);Jewel Box (NGC 4755)
+dso.IC2602.label;Южные Плеяды;Southern Pleiades
+dso.IC2602.name;Южные Плеяды (IC 2602);Southern Pleiades (IC 2602)
+dso.Tarantula.label;Тарантул;Tarantula
+dso.Tarantula.name;Туманность Тарантул (в БМО);Tarantula Nebula (in the LMC)
+dso.CenA.label;Центавр A;Centaurus A
+dso.CenA.name;Галактика Центавр A (NGC 5128);Centaurus A galaxy (NGC 5128)
+dso.GC.label;Центр Галактики;Galactic Center
+dso.GC.name;Центр Галактики (Стрелец A*);Galactic Center (Sagittarius A*)
+dso.GAC.label;Антицентр;Anticenter
+dso.GAC.name;Антицентр Галактики;Galactic anticenter
+dso.NGP.label;Сев. полюс Галактики;N. Galactic Pole
+dso.NGP.name;Северный полюс Галактики;North Galactic Pole
+dso.SGP.label;Юж. полюс Галактики;S. Galactic Pole
+dso.SGP.name;Южный полюс Галактики;South Galactic Pole
+dso.NEP.label;Сев. полюс эклиптики;N. Ecliptic Pole
+dso.NEP.name;Северный полюс эклиптики;North Ecliptic Pole
+dso.SCP.label;Южный полюс мира;S. Celestial Pole
+dso.SCP.name;Южный полюс мира;South Celestial Pole
+dso.Cr399.label;Вешалка;Coathanger
+dso.Cr399.name;Астеризм Вешалка (Collinder 399);Coathanger asterism (Collinder 399)
+dso.Kemble.label;Каскад Кембла;Kemble’s Cascade
+dso.Kemble.name;Каскад Кембла (цепочка звёзд);Kemble’s Cascade (a chain of stars)
+dso.NGC2403.name;Галактика NGC 2403;Galaxy NGC 2403
+greek.α;альфа;alpha
+greek.β;бета;beta
+greek.γ;гамма;gamma
+greek.δ;дельта;delta
+greek.ε;эпсилон;epsilon
+greek.ζ;дзета;zeta
+greek.η;эта;eta
+greek.θ;тета;theta
+greek.ι;йота;iota
+greek.κ;каппа;kappa
+greek.λ;лямбда;lambda
+greek.μ;мю;mu
+greek.ν;ню;nu
+greek.ξ;кси;xi
+greek.ο;омикрон;omicron
+greek.π;пи;pi
+greek.ρ;ро;rho
+greek.σ;сигма;sigma
+greek.τ;тау;tau
+greek.υ;ипсилон;upsilon
+greek.φ;фи;phi
+greek.χ;хи;chi
+greek.ψ;пси;psi
+greek.ω;омега;omega
+asterisms.1.name;Большой Ковш;Big Dipper (Plough)
+asterisms.1.stars;семь ярких звёзд Большой Медведицы;the seven bright stars of Ursa Major
+asterisms.2.name;Летний треугольник;Summer Triangle
+asterisms.2.stars;Вега (Лира), Денеб (Лебедь), Альтаир (Орёл);Vega (Lyra), Deneb (Cygnus), Altair (Aquila)
+asterisms.3.name;Зимний треугольник;Winter Triangle
+asterisms.3.stars;Бетельгейзе (Орион), Сириус (Большой Пёс), Процион (Малый Пёс);Betelgeuse (Orion), Sirius (Canis Major), Procyon (Canis Minor)
+asterisms.4.name;Зимний шестиугольник;Winter Hexagon
+asterisms.4.stars;Сириус, Процион, Поллукс, Капелла, Альдебаран, Ригель;Sirius, Procyon, Pollux, Capella, Aldebaran, Rigel
+asterisms.5.name;Большой квадрат Пегаса;Great Square of Pegasus
+asterisms.5.stars;Альферац (Андромеда), Шеат, Маркаб, Альгениб (Пегас);Alpheratz (Andromeda), Scheat, Markab, Algenib (Pegasus)
+asterisms.6.name;Пояс Ориона;Orion’s Belt
+asterisms.6.stars;Минтака, Альнилам, Альнитак;Mintaka, Alnilam, Alnitak
+asterisms.7.name;Северный крест;Northern Cross
+asterisms.7.stars;главные звёзды Лебедя: Денеб, Садр, Альбирео и крылья;the main stars of Cygnus: Deneb, Sadr, Albireo and the wings
+asterisms.8.name;Чайник;Teapot
+asterisms.8.stars;восемь звёзд Стрельца;eight stars of Sagittarius
+asterisms.9.name;Серп Льва;Sickle of Leo
+asterisms.9.stars;голова и грудь Льва с Регулом;the head and chest of Leo, with Regulus
+asterisms.10.name;Трапеция Геркулеса;Keystone
+asterisms.10.stars;туловище Геркулеса, рядом M13;the body of Hercules, with M13 nearby
+asterisms.11.name;Кувшин;Water Jar
+asterisms.11.stars;четыре звезды Водолея около Садалмелика;four stars of Aquarius around Sadalmelik
+asterisms.12.name;Колечко;Circlet
+asterisms.12.stars;кольцо слабых звёзд западной Рыбы;a ring of faint stars in the western fish of Pisces
+asterisms.13.name;Ложный крест;False Cross
+asterisms.13.stars;ε и ι Киля, δ и κ Парусов — похож на Южный Крест;ε and ι Carinae, δ and κ Velorum — looks like the Southern Cross

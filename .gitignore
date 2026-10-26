@@ -2,3 +2,4 @@ node_modules/
 .build/
 tools/.check.js
 tools/e2e/shots/
+src/i18n/gen/
