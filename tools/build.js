@@ -4,6 +4,7 @@
 //   public/<язык>/app/index.html     — приложение (src/app.html) с надписями этого языка;
 //   public/<язык>/app/text.js        — тексты языка (window.TEXT);
 //   dist/star-atlas-<язык>.html      — приложение одним файлом: его копируют на телефон без интернета.
+const crypto = require('crypto');
 const esbuild = require('esbuild');
 const fs = require('fs');
 const path = require('path');
@@ -32,6 +33,8 @@ const template = (f) => fs.readFileSync(path.join(ROOT, 'src', f), 'utf8').repla
 const safeJs = (s) => s.replace(/<\/script/gi, '<\\/script').replace(/<!--/g, '<\\!--')
   .replace(/\u2028/g, '\\u2028').replace(/\u2029/g, '\\u2029');
 const kb = (s) => `${Math.round(Buffer.byteLength(s) / 1024)} КБ`;
+// Метка содержимого в адресе (app.js?v=…): файл изменился — адрес новый, и браузер не возьмёт старый из кэша.
+const ver = (s) => crypto.createHash('md5').update(s).digest('hex').slice(0, 10);
 
 // Уроки (устройство) и данные неба — для главной страницы.
 const lessonsJs = esbuild.buildSync({ entryPoints: [path.join(ROOT, '.build/data/lessons.js')], bundle: true, format: 'cjs', write: false }).outputFiles[0].text;
@@ -137,9 +140,11 @@ for (const lang of langs) {
   // Тексты языка — JSON, оформленный как скрипт (window.TEXT, как window.SKY в sky.js).
   const textJs = `// Сгенерировано tools/build.js из texts/*.csv. Не редактировать вручную.\nwindow.TEXT = ${safeJs(JSON.stringify(t))};\n`;
   write(path.join(PUB, lang, 'app', 'text.js'), textJs);
+  const v = { vApp: ver(read('app.js')), vStyle: ver(read('style.css')), vSky: ver(read('sky.js')), vText: ver(textJs) };
 
   const app = template('app.html');
   write(path.join(PUB, lang, 'app', 'index.html'), render(app, t, {
+    ...v,
     lang,
     alternates: langs.map((l) => `<link rel="alternate" hreflang="${l}" href="../../${l}/app/">`).join('\n'),
     otherLangHref: `../../${other}/app/`,
@@ -149,7 +154,7 @@ for (const lang of langs) {
   }));
 
   // Один файл: всё внутри, ссылка на другой язык — на соседний файл, главной страницы нет.
-  let single = render(app, t, {
+  let single = render(app.replace(/\?v=\{\{\w+\}\}/g, ''), t, {
     lang, alternates: '', otherLangHref: `star-atlas-${other}.html`, otherLangCode: other, brandTag: 'div', brandHref: '',
   });
   single = single
@@ -163,6 +168,7 @@ for (const lang of langs) {
 
   const mb = (Buffer.byteLength(single) / 1048576).toFixed(1).replace('.', t.decimal);
   const home = render(template('home.html'), t, {
+    ...v,
     lang,
     alternates: langs.map((l) => `<link rel="alternate" hreflang="${l}" href="../${l}/">`).join('\n'),
     otherLangHref: `../${other}/`,

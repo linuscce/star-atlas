@@ -10,47 +10,79 @@
 <link rel="alternate" hreflang="ru" href="../ru/">
 <link rel="alternate" hreflang="en" href="../en/">
 <!-- Пока читают главную, браузер в фоне загружает карту — переход в приложение будет быстрым. -->
-<link rel="prefetch" href="../sky.js">
-<link rel="prefetch" href="../app.js">
-<link rel="prefetch" href="../style.css">
-<link rel="prefetch" href="app/text.js">
+<link rel="prefetch" href="../sky.js?v=316b0cea17">
+<link rel="prefetch" href="../app.js?v=38da3f1c75">
+<link rel="prefetch" href="../style.css?v=4622a56cbd">
+<link rel="prefetch" href="app/text.js?v=98be9485db">
 <style>
 /* Главная страница — без внешних файлов, чтобы открывалась сразу. Ограничения те же, что в style.css:
-   Chrome 37+, без CSS-переменных, grid и flex-gap. Палитра — как в style.css. */
+   Chrome 37+, без CSS-переменных, grid и flex-gap. Палитра — как в style.css.
+   Страница занимает весь экран: первый блок растягивается по высоте, разделы и подвал — внизу. */
 * { box-sizing: border-box; }
-html, body { margin: 0; background: #0b1020; color: #e7ecff; font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; -webkit-text-size-adjust: 100%; }
+html, body { margin: 0; color: #e7ecff; font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; -webkit-text-size-adjust: 100%; }
+html { background: #0b1020; }
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #0b1020 radial-gradient(ellipse at 72% 30%, #182552 0%, rgba(11, 16, 32, 0) 60%) no-repeat;
+}
 a { color: #6cc4ff; }
-.top { display: flex; align-items: center; height: 52px; padding: 0 18px; background: #10172e; border-bottom: 1px solid #243057; }
+.top { flex: none; display: flex; align-items: center; height: 56px; padding: 0 24px; background: rgba(16, 23, 46, 0.92); border-bottom: 1px solid #243057; }
 .brand { font-weight: 700; color: #e7ecff; text-decoration: none; }
 .brand span { font-weight: 400; color: #97a3c8; }
 .lang { margin-left: auto; padding: 3px 9px; border: 1px solid #243057; border-radius: 6px; color: #97a3c8; font-size: 13px; text-decoration: none; }
-.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
-.hero { display: flex; align-items: center; padding: 40px 0 28px; }
-.hero-text { flex: 1; min-width: 0; padding-right: 36px; }
-h1 { margin: 0 0 14px; font-size: 34px; line-height: 1.2; }
-.lead { margin: 0 0 24px; color: #c4cbe6; font-size: 17px; }
-.btn { display: inline-block; padding: 12px 22px; border-radius: 10px; background: #2a6fdb; color: #fff; font-weight: 600; text-decoration: none; }
+.lang:hover { color: #e7ecff; }
+.wrap { flex: 1; display: flex; flex-direction: column; width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+.hero { flex: 1; display: flex; align-items: center; padding: 48px 0 40px; }
+.hero-text { flex: 1; min-width: 0; padding-right: 56px; }
+h1 { margin: 0 0 18px; font-size: 44px; line-height: 1.15; }
+.lead { max-width: 600px; margin: 0 0 30px; color: #c4cbe6; font-size: 19px; }
+.btn { display: inline-block; padding: 14px 26px; border-radius: 10px; background: #2a6fdb; color: #fff; font-size: 17px; font-weight: 600; text-decoration: none; }
 .btn:hover { background: #3a7ff0; }
-.prog { margin-top: 12px; color: #97a3c8; font-size: 14px; min-height: 22px; }
-.fig { flex: none; width: 420px; margin: 0; padding: 12px 14px 14px; background: #080c1d; border: 1px solid #243057; border-radius: 14px; }
+.prog { margin-top: 14px; color: #97a3c8; font-size: 15px; min-height: 24px; }
+.fig { flex: none; width: 560px; margin: 0; padding: 14px 16px 16px; background: #080c1d; border: 1px solid #243057; border-radius: 16px; }
 .fig svg { display: block; width: 100%; height: auto; }
-.fig figcaption { margin-top: 8px; color: #97a3c8; font-size: 13px; line-height: 1.45; }
-.cards { display: flex; flex-wrap: wrap; margin: 0 -8px; padding: 8px 0 18px; }
-.card { display: flex; width: 25%; padding: 0 8px 16px; color: inherit; text-decoration: none; }
-.card div { flex: 1; min-width: 0; padding: 16px 16px 18px; background: #10172e; border: 1px solid #243057; border-radius: 12px; }
-.card:hover div { border-color: #3f78bd; }
-.card svg { width: 28px; height: 28px; fill: none; stroke: #6cc4ff; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
-.card h2 { margin: 8px 0 6px; font-size: 18px; }
-.card p { margin: 0; color: #97a3c8; font-size: 14px; line-height: 1.45; }
-.offline { margin: 0 0 18px; padding: 16px 18px; background: #10172e; border: 1px solid #243057; border-radius: 12px; color: #c4cbe6; font-size: 15px; }
+.fig figcaption { margin-top: 10px; color: #97a3c8; font-size: 14px; line-height: 1.45; }
+.cards { flex: none; display: flex; flex-wrap: wrap; margin: 0 -10px; padding: 0 0 14px; }
+.card { display: flex; width: 25%; padding: 0 10px 20px; color: inherit; text-decoration: none; }
+.card div { flex: 1; min-width: 0; padding: 20px 20px 22px; background: #10172e; border: 1px solid #243057; border-radius: 14px; }
+.card:hover div { border-color: #3f78bd; background: #131c3a; }
+.card svg { width: 30px; height: 30px; fill: none; stroke: #6cc4ff; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
+.card h2 { margin: 10px 0 6px; font-size: 20px; }
+.card p { margin: 0; color: #97a3c8; font-size: 15px; line-height: 1.5; }
+.offline { flex: none; margin: 0 0 18px; padding: 18px 20px; background: #10172e; border: 1px solid #243057; border-radius: 14px; color: #c4cbe6; font-size: 16px; }
 .offline a { white-space: nowrap; }
-.credits { padding: 4px 0 32px; color: #6f7aa0; font-size: 13px; }
+.credits { flex: none; margin: 0; padding: 0 0 28px; color: #6f7aa0; font-size: 13px; }
+/* Большие экраны — крупнее, чтобы страница не терялась посередине. */
+@media (min-width: 1700px) {
+  .top { height: 64px; padding: 0 32px; font-size: 18px; }
+  .lang { font-size: 15px; }
+  .wrap { max-width: 1560px; }
+  h1 { font-size: 56px; }
+  .lead { max-width: 720px; font-size: 22px; }
+  .btn { padding: 16px 30px; font-size: 19px; }
+  .prog { font-size: 17px; }
+  .fig { width: 720px; }
+  .fig figcaption { font-size: 16px; }
+  .card h2 { font-size: 23px; }
+  .card p { font-size: 17px; }
+  .offline { font-size: 18px; }
+  .credits { font-size: 15px; }
+}
+@media (max-width: 1180px) {
+  h1 { font-size: 36px; }
+  .lead { font-size: 18px; }
+  .fig { width: 440px; }
+}
 @media (max-width: 899px) {
-  .hero { display: block; padding: 24px 0 18px; }
+  .top { padding: 0 18px; }
+  .wrap { display: block; padding: 0 20px; }
+  .hero { display: block; padding: 28px 0 24px; }
   .hero-text { padding-right: 0; }
-  h1 { font-size: 27px; }
+  h1 { font-size: 28px; }
   .lead { font-size: 16px; }
-  .fig { width: auto; max-width: 440px; margin-top: 26px; }
+  .fig { width: auto; max-width: 480px; margin-top: 28px; }
   .card { width: 50%; }
 }
 @media (max-width: 520px) {
