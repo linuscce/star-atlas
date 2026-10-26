@@ -1,0 +1,21 @@
+{
+  "name": "star-atlas",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Звёздное небо шаг за шагом — учебник созвездий",
+  "scripts": {
+    "build": "tsc && esbuild .build/main.js --bundle --minify --charset=utf8 --target=es5 --outfile=public/app.js && node tools/inline.js",
+    "watch": "tsc --watch",
+    "check": "tsc --noEmit",
+    "test": "esbuild tools/check.ts --bundle --platform=node --charset=utf8 --log-level=warning --outfile=tools/.check.js && node tools/.check.js",
+    "serve": "python -m http.server 8080 --directory public --bind 0.0.0.0",
+    "data": "python tools/build_sky.py",
+    "e2e": "node tools/e2e/old-browser.js && node tools/e2e/old-browser.js --dist",
+    "perf": "node tools/e2e/perf.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.2",
+    "puppeteer-core": "^23.11.1",
+    "typescript": "^5.6.3"
+  }
+}

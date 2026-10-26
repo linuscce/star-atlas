@@ -1,0 +1,16 @@
+{
+  // Код компилируется в ES5 — чтобы работал встроенный Chrome 37–50 на Android 5–6.
+  // lib: es5 — компилятор не даст случайно использовать Set, Map, Array.find и другие новые функции.
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es5", "dom"],
+    "module": "es2015",
+    "moduleResolution": "node",
+    "outDir": ".build",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true
+  },
+  "include": ["src"]
+}

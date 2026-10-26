@@ -1,0 +1,408 @@
+/* Рассчитано на встроенный Chrome 37–50 (Android 5–6): без CSS-переменных, без flex-gap и grid,
+   без тяжёлых эффектов (blur, большие тени).
+   Палитра: фон #0b1020, панели #10172e / #161e3b, линии #243057, текст #e7ecff,
+   приглушённый #97a3c8, акцент #6cc4ff, указатели #ffcf5a, верно #5fd38d, ошибка #ff6b6b. */
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: #0b1020;
+  color: #e7ecff;
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Точно по видимой области экрана, в том числе в мобильном Chrome со скрывающейся строкой адреса. */
+body {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+button { font: inherit; color: inherit; cursor: pointer; }
+a { color: #6cc4ff; }
+.muted { color: #97a3c8; }
+.small { font-size: 13px; }
+sup { font-size: 0.7em; }
+
+/* ---------- шапка ---------- */
+
+.top {
+  flex: none;
+  display: flex;
+  align-items: center;
+  height: 52px;
+  padding: 0 14px;
+  background: #10172e;
+  border-bottom: 1px solid #243057;
+}
+.brand { font-weight: 700; white-space: nowrap; margin-right: 22px; }
+.brand span { font-weight: 400; color: #97a3c8; }
+.tabs { display: flex; }
+.tabs button {
+  margin-right: 4px;
+  padding: 7px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: #97a3c8;
+}
+.tabs button:hover { color: #e7ecff; }
+.tabs button.on { background: #161e3b; color: #e7ecff; box-shadow: inset 0 -2px 0 #6cc4ff; }
+.prog { margin-left: auto; display: flex; align-items: center; font-size: 13px; color: #97a3c8; }
+.prog-bar { width: 120px; height: 6px; margin-right: 8px; border-radius: 3px; background: #243057; overflow: hidden; }
+.prog-bar i { display: block; height: 100%; width: 0; background: #5fd38d; }
+
+.icon-btn { display: none; width: 40px; height: 40px; margin: 0 8px 0 -6px; padding: 11px 9px; border: 0; background: none; }
+.icon-btn i { display: block; height: 2px; margin-bottom: 5px; border-radius: 1px; background: #e7ecff; }
+
+/* ---------- раскладка ---------- */
+
+.layout { flex: 1; display: flex; min-height: 0; position: relative; }
+
+.lessons {
+  flex: none;
+  width: 260px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 6px 0 30px;
+  background: #10172e;
+  border-right: 1px solid #243057;
+}
+.map-col { flex: 1; min-width: 0; position: relative; }
+.map-wrap { position: absolute; top: 0; right: 0; bottom: 0; left: 0; overflow: hidden; background: #080c1d; }
+#sky { display: block; touch-action: none; -ms-touch-action: none; cursor: grab; }
+#sky:active { cursor: grabbing; }
+
+.panel {
+  flex: none;
+  width: 400px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 18px 22px 40px;
+  background: #10172e;
+  border-left: 1px solid #243057;
+}
+.ref { display: none; flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+
+body.tab-quiz .lessons, body.tab-atlas .lessons, body.tab-ref .lessons { display: none; }
+body.tab-ref .map-col, body.tab-ref .panel { display: none; }
+body.tab-ref .ref { display: block; }
+
+/* ---------- список уроков ---------- */
+
+.blk { padding: 14px 16px 4px; color: #97a3c8; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; }
+.li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 7px 14px 7px 16px;
+  border: 0;
+  background: none;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.3;
+}
+.li:hover { background: #161e3b; }
+.li .n { flex: none; width: 26px; color: #97a3c8; font-size: 12px; }
+.li .t { flex: 1; }
+.li .st { flex: none; margin-left: 6px; color: #5fd38d; font-weight: 700; }
+.li .st.half { color: #f0b44c; }
+.li.cur { background: #1a2850; box-shadow: inset 3px 0 0 #6cc4ff; }
+
+/* ---------- элементы поверх карты ---------- */
+
+.tools { position: absolute; top: 8px; left: 8px; right: 64px; display: flex; flex-wrap: wrap; }
+.tg {
+  flex: none;
+  margin: 0 6px 6px 0;
+  padding: 5px 11px;
+  border: 1px solid #243057;
+  border-radius: 14px;
+  background: rgba(16, 23, 46, 0.88);
+  color: #97a3c8;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.tg.on { color: #fff; border-color: #3f78bd; background: rgba(38, 78, 140, 0.88); }
+
+.zoom { position: absolute; right: 10px; bottom: 12px; }
+.zoom button {
+  display: block;
+  width: 42px;
+  height: 42px;
+  margin-top: 8px;
+  padding: 0;
+  border: 1px solid #243057;
+  border-radius: 21px;
+  background: rgba(16, 23, 46, 0.9);
+  font-size: 22px;
+  line-height: 40px;
+  text-align: center;
+}
+.zoom svg { vertical-align: middle; }
+
+.banner {
+  position: absolute;
+  top: 46px;
+  left: 50%;
+  max-width: 92%;
+  padding: 8px 16px;
+  border: 1px solid #ffcf5a;
+  border-radius: 10px;
+  background: rgba(14, 20, 42, 0.95);
+  font-size: 16px;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translate(-50%, -6px);
+  transform: translate(-50%, -6px);
+  transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
+}
+.banner.show { opacity: 1; visibility: visible; -webkit-transform: translate(-50%, 0); transform: translate(-50%, 0); }
+.banner.good { border-color: #5fd38d; color: #c9f5da; }
+.banner.bad { border-color: #ff6b6b; color: #ffd0d0; }
+.banner .cnt { margin-left: 8px; color: #97a3c8; font-size: 13px; }
+
+.hint {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  max-width: 80%;
+  padding: 7px 14px;
+  border: 1px solid #243057;
+  border-radius: 10px;
+  background: rgba(14, 20, 42, 0.95);
+  font-size: 14px;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  transition: opacity 0.2s, visibility 0.2s;
+}
+.hint.show { opacity: 1; visibility: visible; }
+
+/* ---------- панель урока ---------- */
+
+.panel h1 { margin: 2px 0 6px; font-size: 24px; line-height: 1.2; }
+.panel h2 { margin: 0 0 4px; font-size: 20px; }
+.panel h3 { margin: 18px 0 6px; color: #97a3c8; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.panel p { margin: 0 0 10px; }
+.crumb { color: #97a3c8; font-size: 13px; }
+.con-names { margin: 2px 0 8px; color: #97a3c8; font-size: 14px; }
+.abbr { color: #e7ecff; font-family: Consolas, "Roboto Mono", monospace; font-size: 13px; }
+.done-badge { margin: 4px 0; color: #5fd38d; font-weight: 600; font-size: 14px; }
+.c-focus { color: #6cc4ff; font-weight: 600; }
+.c-known { color: #a5b0d6; font-weight: 600; }
+.c-ptr { color: #ffcf5a; font-weight: 600; }
+
+.rows { margin: 0; padding: 0; list-style: none; }
+.rows li {
+  display: flex;
+  align-items: baseline;
+  padding: 7px 8px;
+  margin: 0 -8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.rows li:hover, .rows li:active { background: #161e3b; }
+.r-name { flex: none; margin-right: 10px; font-weight: 600; }
+.r-sub { flex: 1; min-width: 0; color: #97a3c8; font-size: 14px; }
+.r-mag { flex: none; margin-left: 8px; color: #97a3c8; font-size: 13px; }
+
+.facts { margin: 0; padding-left: 18px; }
+.facts li { margin-bottom: 7px; }
+
+.prose h3 { margin-top: 20px; }
+.prose ul { padding-left: 18px; }
+.prose li { margin-bottom: 6px; }
+
+.actions { margin-top: 22px; }
+.nav-row { display: flex; margin-top: 10px; }
+.nav-row .btn { flex: 1; }
+.nav-row .btn + .btn { margin-left: 8px; }
+
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border: 1px solid #243057;
+  border-radius: 10px;
+  background: #161e3b;
+  text-align: center;
+}
+.btn:hover { border-color: #3a4a80; }
+.btn.primary { width: 100%; border-color: #3b82c4; background: #2563a6; font-weight: 600; }
+.btn.primary:hover { background: #2b70bb; }
+.btn:disabled { opacity: 0.4; cursor: default; }
+
+.check-list { margin: 12px 0; }
+.ci { padding: 4px 0; color: #97a3c8; }
+.ci.cur { color: #e7ecff; font-weight: 600; }
+
+/* ---------- тренировка ---------- */
+
+.q-area { margin: 12px 0; padding: 14px; border: 1px solid #243057; border-radius: 12px; background: #161e3b; }
+.q-prompt { margin-bottom: 12px; font-size: 17px; }
+.opt { display: flex; align-items: center; width: 100%; margin-bottom: 8px; text-align: left; }
+.opt .k {
+  flex: none;
+  width: 22px; height: 22px;
+  margin-right: 10px;
+  border-radius: 6px;
+  background: #243057;
+  font-size: 12px;
+  line-height: 22px;
+  text-align: center;
+}
+.opt.right { border-color: #5fd38d; background: rgba(95, 211, 141, 0.16); }
+.opt.wrong { border-color: #ff6b6b; background: rgba(255, 107, 107, 0.16); }
+.q-feedback { margin: 6px 0 12px; }
+.q-feedback.good { color: #5fd38d; }
+.q-feedback.bad { color: #ff9a9a; }
+.q-score { color: #97a3c8; font-size: 14px; }
+.q-settings { margin: 14px 0; }
+.q-settings summary { padding: 6px 0; cursor: pointer; color: #6cc4ff; }
+.opt-title { margin: 14px 0 4px; color: #97a3c8; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+.chk { display: block; padding: 5px 0; }
+.chk input { margin-right: 6px; vertical-align: -2px; }
+.weak span {
+  display: inline-block;
+  margin: 0 6px 6px 0;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: rgba(255, 107, 107, 0.14);
+  color: #ffbcbc;
+  font-size: 13px;
+}
+
+/* ---------- атлас ---------- */
+
+.search { position: relative; margin: 10px 0; }
+input[type=search], input[type=number] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #243057;
+  border-radius: 10px;
+  background: #0b1020;
+  color: #e7ecff;
+  font: inherit;
+  -webkit-appearance: none;
+}
+.sugg { position: absolute; left: 0; right: 0; top: 100%; z-index: 5; border-radius: 10px; overflow: hidden; }
+.sugg button {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: 0;
+  border-bottom: 1px solid #243057;
+  background: #1b2547;
+  text-align: left;
+}
+.sugg button:hover { background: #22305c; }
+.sugg span { display: block; color: #97a3c8; font-size: 12px; }
+.lat { display: block; margin: 12px 0; font-size: 14px; }
+.lat input { display: inline-block; width: 86px; margin: 0 4px; padding: 6px 8px; }
+.lat .muted { display: block; font-size: 12px; }
+.info-card { margin: 12px 0; padding: 14px; border: 1px solid #243057; border-radius: 12px; background: #161e3b; }
+.info-card .btn { margin-top: 10px; width: 100%; }
+.kv { width: 100%; margin-top: 8px; border-collapse: collapse; font-size: 14px; }
+.kv th { padding: 4px 10px 4px 0; color: #97a3c8; font-weight: 400; text-align: left; vertical-align: top; width: 46%; }
+.kv td { padding: 4px 0; }
+.legend { margin-top: 18px; font-size: 13px; color: #97a3c8; }
+.legend div { margin: 4px 0; }
+.lg { display: inline-block; width: 16px; height: 10px; margin-right: 8px; vertical-align: middle; border: 1.5px solid #aae6be; }
+.lg-gal, .lg-gc { border-radius: 50%; }
+.lg-gc { width: 11px; height: 11px; }
+.lg-oc { width: 11px; height: 11px; border-radius: 50%; border-style: dashed; }
+.lg-ecl { height: 0; border: 0; border-top: 2px dashed #ffbe5a; }
+
+/* ---------- шпаргалка ---------- */
+
+.ref-inner { max-width: 1000px; margin: 0 auto; padding: 22px 22px 60px; }
+.ref h1 { margin: 0 0 8px; }
+.ref h2 { margin: 28px 0 10px; font-size: 19px; }
+.tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tbl th, .tbl td { padding: 6px 10px; border-bottom: 1px solid #243057; text-align: left; white-space: nowrap; vertical-align: top; }
+.tbl th { color: #97a3c8; font-weight: 600; }
+.tbl tr.click { cursor: pointer; }
+.tbl tr.click:hover { background: #161e3b; }
+.greek { display: flex; flex-wrap: wrap; }
+.greek div { width: 118px; margin: 0 8px 8px 0; padding: 6px 10px; border-radius: 8px; background: #161e3b; color: #97a3c8; }
+.greek b { margin-right: 8px; color: #e7ecff; font-size: 20px; }
+.credits { margin-top: 30px; }
+
+.bottom-tabs, .scrim { display: none; }
+
+/* ---------- телефоны и узкие окна ---------- */
+
+@media (max-width: 899px) {
+  html, body { font-size: 15px; }
+  .top { height: 48px; padding: 0 10px; }
+  .icon-btn { display: block; }
+  .brand { margin-right: 10px; font-size: 16px; }
+  .brand span { display: none; }
+  .tabs { display: none; }
+  .prog-bar { width: 64px; }
+
+  .layout { flex-direction: column; padding-bottom: 56px; }
+  .map-col { flex: none; height: 50vh; }
+  body.tab-quiz .map-col { height: 56vh; }
+  body.tab-atlas .map-col { height: 60vh; }
+  .panel { flex: 1; width: auto; min-height: 0; padding: 14px 16px 24px; border-left: 0; border-top: 1px solid #243057; }
+  .panel h1 { font-size: 21px; }
+
+  .lessons {
+    position: fixed;
+    top: 0; bottom: 0; left: 0;
+    z-index: 30;
+    width: 84%;
+    max-width: 340px;
+    -webkit-transform: translateX(-105%);
+    transform: translateX(-105%);
+    transition: transform 0.22s ease-out;
+  }
+  body.drawer-open .lessons { -webkit-transform: none; transform: none; }
+  body.drawer-open .scrim { display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 20; background: rgba(0, 0, 0, 0.55); }
+  .li { padding-top: 10px; padding-bottom: 10px; }
+
+  .tools { right: 8px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 2px; }
+  .tools::-webkit-scrollbar { display: none; }
+  .zoom { right: 8px; bottom: 8px; }
+  .zoom button { width: 38px; height: 38px; line-height: 36px; margin-top: 6px; }
+  .banner { top: 44px; font-size: 15px; }
+  .hint { bottom: 10px; max-width: 74%; font-size: 13px; }
+
+  .bottom-tabs {
+    display: flex;
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 15;
+    height: 56px;
+    background: #10172e;
+    border-top: 1px solid #243057;
+  }
+  .bottom-tabs button { flex: 1; padding: 6px 0 0; border: 0; background: none; color: #97a3c8; font-size: 11px; line-height: 1.2; }
+  .bottom-tabs svg { display: block; width: 22px; height: 22px; margin: 0 auto 3px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
+  .bottom-tabs button.on { color: #6cc4ff; }
+
+  .ref-inner { padding: 16px 14px 40px; }
+  .tbl { font-size: 13px; }
+  .tbl th, .tbl td { padding: 5px 8px; }
+  .greek div { width: 96px; }
+}
+
+@media (max-width: 899px) and (orientation: landscape) and (max-height: 500px) {
+  .layout { flex-direction: row; }
+  .map-col, body.tab-quiz .map-col, body.tab-atlas .map-col { flex: 1; height: auto; }
+  .panel { flex: none; width: 46%; border-top: 0; border-left: 1px solid #243057; }
+}
+
+.fps { position: fixed; left: 6px; bottom: 62px; z-index: 50; padding: 3px 8px; border-radius: 6px; background: rgba(0, 0, 0, 0.7); color: #9f9; font: 12px/1.3 monospace; pointer-events: none; }
