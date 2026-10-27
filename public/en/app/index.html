@@ -9,7 +9,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2310172e'/%3E%3Cpath d='M16 5l2.6 7.4L26 15l-7.4 2.6L16 25l-2.6-7.4L6 15l7.4-2.6z' fill='%236cc4ff'/%3E%3C/svg%3E">
 <link rel="alternate" hreflang="ru" href="../../ru/app/">
 <link rel="alternate" hreflang="en" href="../../en/app/">
-<link rel="stylesheet" href="../../style.css?v=4622a56cbd">
+<link rel="stylesheet" href="../../style.css?v=81bcf069b5">
 </head>
 <body class="tab-learn">
 
@@ -19,6 +19,7 @@
   <nav class="tabs">
     <button data-tab="learn">Lessons</button>
     <button data-tab="quiz">Practice</button>
+    <button data-tab="tasks">Problems</button>
     <button data-tab="atlas">Atlas</button>
     <button data-tab="ref">Reference</button>
   </nav>
@@ -40,25 +41,37 @@
         <button id="z-out" aria-label="Zoom out">&minus;</button>
         <button id="z-home" aria-label="Reset view"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 5a7 7 0 1 1-6.6 4.7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M4 4v6h6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
+      <button class="sheet-open" id="sheet-open" aria-label="Expand" title="Expand"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <div class="banner" id="banner"></div>
       <div class="hint" id="hint"></div>
     </div>
   </div>
-  <section class="panel" id="panel"></section>
+  <section class="panel">
+    <div class="sheet-bar" id="sheet-bar">
+      <i class="grip" id="sheet-grip"></i>
+      <span class="sheet-title" id="sheet-title"></span>
+      <button class="sheet-btn down" id="sheet-down" aria-label="Collapse" title="Collapse"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="sheet-btn up" id="sheet-up" aria-label="Expand" title="Expand"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+    <div class="panel-body" id="panel"></div>
+  </section>
   <section class="ref" id="ref"></section>
 </div>
 
 <nav class="bottom-tabs">
   <button data-tab="learn"><svg viewBox="0 0 24 24"><path d="M4 5c3-1.5 5.5-1.5 8 0v14c-2.5-1.5-5-1.5-8 0zM12 5c2.5-1.5 5-1.5 8 0v14c-3-1.5-5.5-1.5-8 0"/></svg>Lessons</button>
   <button data-tab="quiz"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.8"/></svg>Practice</button>
+  <button data-tab="tasks"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="M8 9.5l2 2 4-4M8 16h8"/></svg>Problems</button>
   <button data-tab="atlas"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 6.5l1.4 3.9 3.9 1.4-3.9 1.4L12 17.5l-1.4-4.3-3.9-1.4 3.9-1.4z"/></svg>Atlas</button>
   <button data-tab="ref"><svg viewBox="0 0 24 24"><path d="M6 4h12v16H6zM9 9h6M9 13h6M9 17h3"/></svg>Reference</button>
 </nav>
 <div class="scrim" id="scrim"></div>
 
 <noscript><p style="padding:20px">This site needs JavaScript.</p></noscript>
+<!-- Тексты южного маршрута уроков: сразу — тем, у кого сохранена южная широта; остальным приложение подгрузит их само, если понадобятся. -->
+<script>window.SOUTH_JS = 'south.js?v=9e2f45666d'; try { if (+localStorage.getItem('sa.lat') < 0) document.write('<script src="' + window.SOUTH_JS + '"><\/script>'); } catch (e) { /* нет localStorage */ }</script>
 <script src="../../sky.js?v=316b0cea17"></script>
-<script src="text.js?v=b0fcae1fb0"></script>
-<script src="../../app.js?v=38da3f1c75"></script>
+<script src="text.js?v=b50d6aa0bf"></script>
+<script src="../../app.js?v=840476e933"></script>
 </body>
 </html>

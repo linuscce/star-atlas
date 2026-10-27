@@ -1,13 +1,14 @@
 import type { Lesson, RaDec, View } from '../core/types';
 import { setOf } from '../core/util';
-import { BLOCKS, LESSONS } from '../data/lessons';
-import { T, fill, fmtMag } from '../i18n';
+import { T, fill, fmtDeg, fmtMag, fmtNum } from '../i18n';
 import type { MapClick, Pointer } from '../map/skymap';
-import { app, applyToggles, lessonText, lessonTitle, starShortInfo, starTitle } from '../ui/app';
+import { app, applyToggles, panelToTop, starShortInfo, starTitle } from '../ui/app';
+import { blockTitle, course, courseBlocks, lessonText, lessonTitle } from '../ui/course';
 import type { TabController } from '../ui/app';
 import { $, each } from '../ui/dom';
 import { banner, hint, pulse } from '../ui/overlay';
 import { currentRoute, setRoute } from '../ui/router';
+import { showMap } from '../ui/sheet';
 import { save, state, toggles } from '../ui/state';
 import { zodiacTableHtml } from './ref';
 
@@ -18,7 +19,8 @@ const keyStars = (L: Lesson) => (L.stars || []).map((k) => app.sky.starIndex(k))
 
 function knownCons(upTo: number): Record<string, true> {
   const s: Record<string, true> = {};
-  for (let i = 0; i < upTo; i++) for (const c of LESSONS[i].cons) s[c] = true;
+  const c = course();
+  for (let i = 0; i < upTo; i++) for (const a of c[i].cons) s[a] = true;
   return s;
 }
 
@@ -58,18 +60,8 @@ function baseLessonView(L: Lesson): View {
   return sky.fit(pts, 30, 150);
 }
 
-export function lessonOfCon(abbr: string): number {
-  for (let i = 0; i < LESSONS.length; i++) if (LESSONS[i].cons.indexOf(abbr) >= 0) return i;
-  return -1;
-}
-
-export function lessonIndex(id: string): number {
-  for (let i = 0; i < LESSONS.length; i++) if (LESSONS[i].id === id) return i;
-  return -1;
-}
-
 function render() {
-  const map = app.map, L = LESSONS[state.lesson];
+  const map = app.map, L = course()[state.lesson];
   const known = knownCons(state.lesson), focus = focusCons(L), t = toggles.learn;
   const hideFocus = !!check;
   applyToggles('learn');
@@ -95,9 +87,11 @@ function render() {
 export function openLesson(i: number, fly = true) {
   check = null;
   banner(null);
-  state.lesson = Math.max(0, Math.min(LESSONS.length - 1, i));
+  const c = course();
+  state.lesson = Math.max(0, Math.min(c.length - 1, i));
+  const L = c[state.lesson];
+  state.lessonId = L.id;
   save();
-  const L = LESSONS[state.lesson];
   setRoute({ tab: 'learn', id: L.id });
   toggles.learn.grid = !!(L.opts && L.opts.grid);
   toggles.learn.ecliptic = !!(L.opts && L.opts.ecliptic);
@@ -110,10 +104,21 @@ export function openLesson(i: number, fly = true) {
 
 // Открыть урок с любой вкладки. Адрес — сначала, чтобы в истории не появился лишний шаг.
 export function goLesson(i: number) {
-  const L = LESSONS[Math.max(0, Math.min(LESSONS.length - 1, i))];
+  const c = course(), L = c[Math.max(0, Math.min(c.length - 1, i))];
   setRoute({ tab: 'learn', id: L.id });
   if (state.tab !== 'learn') app.setTab('learn');
   openLesson(i);
+}
+
+// Видно ли созвездия урока с широты пользователя (по центру фигуры): не видно или только низко — предупреждаем.
+function visibilityNote(L: Lesson): string {
+  if (!L.cons.length) return '';
+  let best = -90;
+  for (const c of L.cons) best = Math.max(best, 90 - Math.abs(state.lat - app.sky.geo[c].fig.dec));
+  const lat = fmtNum(state.lat, 1);
+  if (best < 0) return `<div class="vis-note">${fill(T.ui.notVisible, { lat })}</div>`;
+  if (best < 15) return `<div class="vis-note">${fill(T.ui.lowVisible, { lat, h: fmtDeg(best) })}</div>`;
+  return '';
 }
 
 function sectionHtml(title: string, body?: string) {
@@ -121,12 +126,13 @@ function sectionHtml(title: string, body?: string) {
 }
 
 function renderPanel() {
-  const sky = app.sky, ui = T.ui, i = state.lesson, L = LESSONS[i], text = lessonText(L);
-  let h = `<div class="crumb">${fill(ui.lessonCrumb, { n: i + 1, total: LESSONS.length, block: T.blocks[L.block] || '' })}</div><h1>${lessonTitle(L)}</h1>`;
+  const sky = app.sky, ui = T.ui, c = course(), i = state.lesson, L = c[i], text = lessonText(L);
+  let h = `<div class="crumb">${fill(ui.lessonCrumb, { n: i + 1, total: c.length, block: blockTitle(L.block) })}</div><h1>${lessonTitle(L)}</h1>`;
   if (L.cons.length) {
     h += '<div class="con-names">' + L.cons.map((a) =>
       `<div><b>${sky.conName(a)}</b> · <i>${sky.conAlt(a)}</i>, ${ui.gen} <i>${sky.conLatinGen(a)}</i> · <span class="abbr">${a}</span></div>`).join('') + '</div>';
   }
+  h += visibilityNote(L);
   if (state.done[L.id]) h += `<div class="done-badge">✓ ${ui.done}${state.done[L.id] !== 'ok' ? ` · ${state.done[L.id]}` : ''}</div>`;
   if (L.theory) {
     h += `<div class="prose">${text.html || ''}</div>`;
@@ -148,12 +154,12 @@ function renderPanel() {
   h += L.theory ? `<button class="btn primary" id="l-done">${ui.gotIt}</button>` : `<button class="btn primary" id="l-check">${ui.check}</button>`;
   h += '<div class="nav-row">';
   h += `<button class="btn" id="l-prev" ${i === 0 ? 'disabled' : ''}>${ui.prev}</button>`;
-  h += `<button class="btn" id="l-next" ${i === LESSONS.length - 1 ? 'disabled' : ''}>${ui.next}</button>`;
+  h += `<button class="btn" id="l-next" ${i === c.length - 1 ? 'disabled' : ''}>${ui.next}</button>`;
   h += '</div></div>';
 
   const panel = app.panel;
   panel.innerHTML = h;
-  panel.scrollTop = 0;
+  panelToTop();
   const zt = panel.querySelector('#zodiac-table');
   if (zt) zt.innerHTML = zodiacTableHtml();
   const btn = (id: string, fn: () => void) => { const b = panel.querySelector('#' + id); if (b) b.addEventListener('click', fn); };
@@ -176,9 +182,9 @@ function renderPanel() {
 export function renderList() {
   const el = $('lessons');
   let h = '';
-  for (const b of BLOCKS) {
-    h += `<div class="blk">${T.blocks[b] || ''}</div>`;
-    LESSONS.forEach((L, i) => {
+  for (const b of courseBlocks()) {
+    h += `<div class="blk">${blockTitle(b)}</div>`;
+    course().forEach((L, i) => {
       if (L.block !== b) return;
       const d = state.done[L.id];
       let mark = '';
@@ -191,21 +197,30 @@ export function renderList() {
   }
   el.innerHTML = h;
   each(el.querySelectorAll('.li'), (b) => b.addEventListener('click', () => goLesson(+b.dataset.i!)));
-  const cur = el.querySelector('.cur') as HTMLElement | null;
-  if (cur && (cur.offsetTop < el.scrollTop || cur.offsetTop > el.scrollTop + el.clientHeight - 40)) {
-    el.scrollTop = cur.offsetTop - el.clientHeight / 3;
+  // Прокрутить к текущему уроку — в начале кадра, когда браузер всё равно считает раскладку (см. panelToTop).
+  if (!listScrollQueued) {
+    listScrollQueued = true;
+    requestAnimationFrame(() => {
+      listScrollQueued = false;
+      const cur = el.querySelector('.cur') as HTMLElement | null;
+      if (cur && (cur.offsetTop < el.scrollTop || cur.offsetTop > el.scrollTop + el.clientHeight - 40)) {
+        el.scrollTop = cur.offsetTop - el.clientHeight / 3;
+      }
+    });
   }
 }
+let listScrollQueued = false;
 
 // ---------- «Проверь себя» ----------
 
 function startCheck() {
-  const sky = app.sky, ui = T.ui, L = LESSONS[state.lesson];
+  const sky = app.sky, ui = T.ui, L = course()[state.lesson];
   const stars = keyStars(L).filter((i) => sky.mag[i] <= 4.6).slice(0, 4);
   const tasks: Task[] = stars.map((idx) => ({ kind: 'star' as const, idx }));
   if (L.cons.length > 1 || stars.length < 3) for (const abbr of L.cons) tasks.push({ kind: 'con', abbr });
   check = { tasks, i: 0, ok: 0, busy: false };
   hint(null);
+  showMap();
   render();
   const v = lessonView(L);
   app.map.flyTo({ ra: v.ra, dec: v.dec, fov: Math.min(170, v.fov * 1.15) });
@@ -257,7 +272,7 @@ function checkClick(c: MapClick) {
     check.busy = false;
     check.i++;
     if (check.i < check.tasks.length) { showTask(); map.redraw(); return; }
-    const L = LESSONS[state.lesson], score = `${check.ok}/${check.tasks.length}`;
+    const L = course()[state.lesson], score = `${check.ok}/${check.tasks.length}`;
     state.done[L.id] = score;
     save();
     const good = check.ok / check.tasks.length >= 0.7;
@@ -274,9 +289,9 @@ function checkClick(c: MapClick) {
 export const learnTab: TabController = {
   enter() {
     const cur = currentRoute();
-    if (!cur || cur.tab !== 'learn') setRoute({ tab: 'learn', id: LESSONS[state.lesson].id });
+    if (!cur || cur.tab !== 'learn') setRoute({ tab: 'learn', id: course()[state.lesson].id });
     render();
-    app.map.setView(lessonView(LESSONS[state.lesson]));
+    app.map.setView(lessonView(course()[state.lesson]));
     renderPanel();
     renderList();
   },
@@ -289,5 +304,5 @@ export const learnTab: TabController = {
     if (con) hint(fill(T.ui.hereCon, { con: sky.conName(con) }), 2500);
   },
   render,
-  home: () => lessonView(LESSONS[state.lesson]),
+  home: () => lessonView(course()[state.lesson]),
 };

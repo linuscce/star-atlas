@@ -44,7 +44,7 @@ h1 { margin: 0 0 18px; font-size: 44px; line-height: 1.15; }
 .fig svg { display: block; width: 100%; height: auto; }
 .fig figcaption { margin-top: 10px; color: #97a3c8; font-size: 14px; line-height: 1.45; }
 .cards { flex: none; display: flex; flex-wrap: wrap; margin: 0 -10px; padding: 0 0 14px; }
-.card { display: flex; width: 25%; padding: 0 10px 20px; color: inherit; text-decoration: none; }
+.card { display: flex; width: 20%; padding: 0 10px 20px; color: inherit; text-decoration: none; }
 .card div { flex: 1; min-width: 0; padding: 20px 20px 22px; background: #10172e; border: 1px solid #243057; border-radius: 14px; }
 .card:hover div { border-color: #3f78bd; background: #131c3a; }
 .card svg { width: 30px; height: 30px; fill: none; stroke: #6cc4ff; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
@@ -53,6 +53,15 @@ h1 { margin: 0 0 18px; font-size: 44px; line-height: 1.15; }
 .offline { flex: none; margin: 0 0 18px; padding: 18px 20px; background: #10172e; border: 1px solid #243057; border-radius: 14px; color: #c4cbe6; font-size: 16px; }
 .offline a { white-space: nowrap; }
 .credits { flex: none; margin: 0; padding: 0 0 28px; color: #6f7aa0; font-size: 13px; }
+/* Полушарие: от него зависят картинка, совет, с чего начать, и широта в приложении. */
+.hemi { margin-top: 22px; color: #97a3c8; font-size: 14px; }
+.hemi span { display: block; margin-bottom: 8px; }
+.hemi button { margin: 0 8px 8px 0; padding: 7px 14px; border: 1px solid #243057; border-radius: 18px; background: #10172e; color: #c4cbe6; font: inherit; font-size: 14px; cursor: pointer; }
+.hemi button.on { border-color: #3f78bd; background: #26508c; color: #fff; }
+.south { display: none; max-width: 600px; margin: 6px 0 0; color: #f0b44c; font-size: 15px; }
+#fig-s { display: none; }
+body.south-hemi #fig-s, body.south-hemi .south { display: block; }
+body.south-hemi #fig-n { display: none; }
 /* Большие экраны — крупнее, чтобы страница не терялась посередине. */
 @media (min-width: 1700px) {
   .top { height: 64px; padding: 0 32px; font-size: 18px; }
@@ -70,6 +79,7 @@ h1 { margin: 0 0 18px; font-size: 44px; line-height: 1.15; }
   .credits { font-size: 15px; }
 }
 @media (max-width: 1180px) {
+  .card { width: 33.333%; }
   h1 { font-size: 36px; }
   .lead { font-size: 18px; }
   .fig { width: 440px; }
@@ -105,13 +115,18 @@ h1 { margin: 0 0 18px; font-size: 44px; line-height: 1.15; }
       <p class="lead">{{home.lead}}</p>
       <a class="btn" id="go" href="app/#lesson/{{firstLesson}}" data-continue="{{home.continue}}">{{home.start}}</a>
       <div class="prog" id="prog" data-text="{{home.progress}}"></div>
+      <div class="hemi"><span>{{home.hemiTitle}}</span>
+        <button id="hemi-n">{{home.hemiNorth}}</button><button id="hemi-s">{{home.hemiSouth}}</button>
+      </div>
+      <p class="south" id="south-note">{{home.southNote}}</p>
     </div>
-    <figure class="fig">{{figure}}<figcaption>{{home.figure}}</figcaption></figure>
+    <figure class="fig"><div id="fig-n">{{figure}}<figcaption>{{home.figure}}</figcaption></div><div id="fig-s">{{figureSouth}}<figcaption>{{home.figureSouth}}</figcaption></div></figure>
   </section>
 
   <section class="cards">
     <a class="card" href="app/#learn"><div>{{icon.learn}}<h2>{{page.tabs.learn}}</h2><p>{{home.learn}}</p></div></a>
     <a class="card" href="app/#quiz"><div>{{icon.quiz}}<h2>{{page.tabs.quiz}}</h2><p>{{home.quiz}}</p></div></a>
+    <a class="card" href="app/#tasks"><div>{{icon.tasks}}<h2>{{page.tabs.tasks}}</h2><p>{{home.tasks}}</p></div></a>
     <a class="card" href="app/#atlas"><div>{{icon.atlas}}<h2>{{page.tabs.atlas}}</h2><p>{{home.atlas}}</p></div></a>
     <a class="card" href="app/#ref"><div>{{icon.ref}}<h2>{{page.tabs.ref}}</h2><p>{{home.ref}}</p></div></a>
   </section>
@@ -123,18 +138,55 @@ h1 { margin: 0 0 18px; font-size: 44px; line-height: 1.15; }
 <script>
 // Кнопка «Продолжить» и прогресс — из того же localStorage, что у приложения (ключи sa.*).
 (function () {
-  var LESSONS = {{lessons}}; // [id, название] по порядку
+  var LESSONS = {{lessons}}; // [id, название] по порядку северного маршрута
+  var SOUTH = {{southOrder}}; // id уроков по порядку южного маршрута
   function get(k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
   try { localStorage.setItem('sa.lang', JSON.stringify('{{lang}}')); } catch (e) { /* нет localStorage */ }
-  var done = get('sa.done', {}), cur = get('sa.lesson', 0), n = 0, i;
-  for (i = 0; i < LESSONS.length; i++) if (done[LESSONS[i][0]]) n++;
-  var go = document.getElementById('go'), prog = document.getElementById('prog');
-  if (n > 0 || cur > 0) {
-    var k = Math.max(0, Math.min(LESSONS.length - 1, cur));
-    go.href = 'app/#lesson/' + LESSONS[k][0];
-    go.textContent = go.getAttribute('data-continue').replace('{n}', k + 1).replace('{title}', LESSONS[k][1]);
-    prog.textContent = prog.getAttribute('data-text').replace('{done}', n).replace('{total}', LESSONS.length);
+  var done = get('sa.done', {}), north = [], title = {}, n = 0, i;
+  for (i = 0; i < LESSONS.length; i++) {
+    north.push(LESSONS[i][0]);
+    title[LESSONS[i][0]] = LESSONS[i][1];
+    if (done[LESSONS[i][0]]) n++;
   }
+  // Текущий урок — по id: в северном и южном маршрутах у него разные номера. Раньше хранился только номер (северный).
+  var cur = get('sa.lessonId', '') || north[Math.max(0, Math.min(north.length - 1, get('sa.lesson', 0)))];
+  var go = document.getElementById('go'), prog = document.getElementById('prog');
+  function progress(south) {
+    var order = south ? SOUTH : north, k = Math.max(0, order.indexOf(cur));
+    if (n === 0 && k === 0) return;
+    go.href = (location.protocol === 'file:' ? 'app/index.html' : 'app/') + '#lesson/' + order[k];
+    go.textContent = go.getAttribute('data-continue').replace('{n}', k + 1).replace('{title}', title[order[k]]);
+    prog.textContent = prog.getAttribute('data-text').replace('{done}', n).replace('{total}', order.length);
+  }
+  // Полушарие — по знаку сохранённой широты. Выбор меняет широту и поворот карты в приложении («юг сверху»).
+  var hn = document.getElementById('hemi-n'), hs = document.getElementById('hemi-s'), southPrefetched = false;
+  function show(south) {
+    document.body.className = south ? 'south-hemi' : '';
+    hn.className = south ? '' : 'on';
+    hs.className = south ? 'on' : '';
+    progress(south);
+    // Южанам приложение понадобится вместе с текстами южного маршрута.
+    if (south && !southPrefetched) {
+      southPrefetched = true;
+      var l = document.createElement('link');
+      l.rel = 'prefetch';
+      l.href = 'app/south.js?v={{vSouth}}';
+      document.head.appendChild(l);
+    }
+  }
+  function choose(south) {
+    var lat = get('sa.lat', null);
+    if (typeof lat !== 'number' || (lat < 0) !== south) {
+      try {
+        localStorage.setItem('sa.lat', JSON.stringify(south ? -33.87 : {{defaultLat}}));
+        localStorage.setItem('sa.southup', JSON.stringify(south));
+      } catch (e) { /* нет localStorage */ }
+    }
+    show(south);
+  }
+  hn.onclick = function () { choose(false); };
+  hs.onclick = function () { choose(true); };
+  show(get('sa.lat', 1) < 0);
   // Без сервера (file://) папка сама не открывается — дописываем index.html.
   if (location.protocol === 'file:') {
     var a = document.getElementsByTagName('a');

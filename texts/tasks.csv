@@ -1,0 +1,180 @@
+﻿key;ru;en
+tasks.title;Задачи;Problems
+tasks.intro;Задачи в стиле олимпиад на знание неба. Ответ проверяется сразу, после ответа — решение и картинка на карте.;"Olympiad-style problems on knowing the sky. Your answer is checked at once; then you see the solution and the picture on the map."
+tasks.topicsTitle;Темы;Topics
+tasks.topics.map;Созвездия на карте без линий;Constellations on a map without lines
+tasks.topics.vis;Видимость и высота звёзд;Visibility and altitude of stars
+tasks.topics.sun;Солнце, Луна и время года;The Sun, the Moon and the seasons
+tasks.topics.stars;Звёзды и созвездия;Stars and constellations
+tasks.topics.solved;Задачи с подробным решением;Problems with detailed solutions
+tasks.allSky;Всё небо, а не только видимое с моей широты;The whole sky, not only what is visible from my latitude
+tasks.levelTitle;Сложность;Difficulty
+tasks.levels.easy;Лёгкий;Easy
+tasks.levels.mid;Средний;Medium
+tasks.levels.hard;Сложный;Hard
+tasks.levelHint.easy;Яркие звёзды и известные созвездия, склонения даны в условии, варианты сильно различаются.;"Bright stars and well-known constellations; declinations are given; the options are clearly different."
+tasks.levelHint.mid;"Ярчайшие звёзды; склонения нужно помнить хотя бы примерно.";"The brightest stars; you need to remember declinations at least roughly."
+tasks.levelHint.hard;Тусклые созвездия, звёзды 2–3-й величины, близкие варианты, ответ точнее, даты у границ созвездий.;Faint constellations, stars of 2nd–3rd magnitude, close options, more precise answers, dates near constellation borders.
+tasks.levelUp;Пять верных ответов подряд — попробуй уровень «{level}».;Five correct answers in a row — try the “{level}” level.
+tasks.levelUpBtn;Попробовать;Try it
+tasks.check;Проверить;Check
+tasks.next;Следующая задача →;Next problem →
+tasks.wrongAnswer;Неверно. Правильный ответ: {answer};Wrong. The right answer: {answer}
+tasks.partly;Верно {ok} из {n}. Правильно: {answer};{ok} of {n} correct. The right answer: {answer}
+tasks.solutionTitle;Решение;Solution
+tasks.choose;— выбери —;— choose —
+tasks.numberPlaceholder;число;number
+tasks.enterNumber;Введи число, например 42 или 17,5;Enter a number, e.g. 42 or 17.5
+tasks.score;Решено верно {ok} из {n};Solved correctly: {ok} of {n}
+tasks.noTopics;Выбери хотя бы одну тему.;Choose at least one topic.
+tasks.guideTitle;Как решать задачи на знание неба;How to solve problems on knowing the sky
+tasks.guide.1;<b>Карта без линий.</b> Начинай с самых заметных фигур: Ковш, Кассиопея, Пояс Ориона, Летний треугольник, Квадрат Пегаса. От них иди к соседям по указателям из уроков. Помни: на картах неба восток слева.;<b>A map without lines.</b> Start with the most noticeable figures: the Big Dipper, Cassiopeia, Orion’s Belt, the Summer Triangle, the Square of Pegasus. From them, move to the neighbors using the pointers from the lessons. Remember: on sky maps east is on the left.
+tasks.guide.2;<b>Млечный Путь на карте — подсказка.</b> Через него проходят Кассиопея, Персей, Возничий, Лебедь, Орёл, Щит, Стрелец, Скорпион, Корма, Паруса, Южный Крест. Его нет у Большой Медведицы, Льва, Девы, Волопаса, Пегаса, Рыб.;<b>The Milky Way on a map is a hint.</b> It runs through Cassiopeia, Perseus, Auriga, Cygnus, Aquila, Scutum, Sagittarius, Scorpius, Puppis, Vela and Crux. It is absent from Ursa Major, Leo, Virgo, Boötes, Pegasus and Pisces.
+tasks.guide.3;"<b>Видимость на широте φ.</b> Звезда не заходит, если δ &gt; 90° − φ, и не восходит, если δ &lt; −(90° − φ); в южном полушарии — наоборот. Наибольшая высота (верхняя кульминация): h = 90° − |φ − δ|.";"<b>Visibility at latitude φ.</b> A star never sets if δ &gt; 90° − φ and never rises if δ &lt; −(90° − φ); in the southern hemisphere it is the other way round. Its highest altitude (upper culmination) is h = 90° − |φ − δ|."
+tasks.guide.4;<b>Высота полюса мира равна широте.</b> Полярная — меньше чем в 1° от полюса, поэтому её высота ≈ φ. В южном полушарии яркой полярной звезды нет — полюс находят по Южному Кресту. В зените кульминируют звёзды с δ = φ.;<b>The altitude of the celestial pole equals the latitude.</b> Polaris is less than 1° from the pole, so its altitude ≈ φ. The southern hemisphere has no bright pole star — the pole is found from the Southern Cross. Stars with δ = φ culminate at the zenith.
+tasks.guide.5;<b>Что видно в какое время года.</b> α Солнца ≈ 0ч 21 марта и растёт на 2ч в месяц. В полночь кульминируют звёзды с α ≈ α Солнца + 12ч (в северном полушарии — на юге, в южном — на севере), вечером около 22 ч — с α ≈ α Солнца + 10ч.;"<b>What is visible in which season.</b> The Sun’s α ≈ 0h on March 21 and grows by 2h per month. At midnight the stars with α ≈ α of the Sun + 12h culminate (in the south from the northern hemisphere, in the north from the southern); in the evening at about 10 pm, α ≈ α of the Sun + 10h."
+tasks.guide.6;"<b>Солнце и Луна.</b> Солнце проходит 13 созвездий, включая Змееносец; даты — в таблице «Солнце в созвездиях», они не совпадают со «знаками зодиака». Полная Луна — напротив Солнца.";"<b>The Sun and the Moon.</b> The Sun passes through 13 constellations, including Ophiuchus; the dates are in the table “The Sun in the constellations” and differ from the “zodiac signs”. The full Moon is opposite the Sun."
+tasks.guide.7;<b>Обозначения звёзд.</b> α — обычно, но не всегда самая яркая звезда (исключения: Орион, Близнецы, Большая Медведица, Рыбы, Водолей). Название созвездия — в родительном падеже: α Лиры, β Ориона.;<b>Star designations.</b> α is usually, but not always, the brightest star (exceptions: Orion, Gemini, Ursa Major, Pisces, Aquarius). The constellation name is in the Latin genitive: α Lyrae, β Orionis.
+tasks.guide.8;"<b>Проверяй ответ здравым смыслом.</b> Звезда с δ &lt; 0 не видна с Северного полюса; на экваторе за год видно всё небо; созвездие, в котором сейчас Солнце, ночью не видно.";"<b>Check your answer with common sense.</b> A star with δ &lt; 0 is never seen from the North Pole; from the equator the whole sky is visible during a year; the constellation where the Sun is now is not visible at night."
+tasks.materials;Таблицы для решения — в «Шпаргалке»: ярчайшие звёзды с координатами, Солнце в созвездиях, что на юге в полночь, созвездия на твоей широте.;Tables for solving are in the “Reference” tab: the brightest stars with coordinates, the Sun in the constellations, what is in the south at midnight, the constellations at your latitude.
+tasks.openRef;Открыть Шпаргалку;Open the Reference
+tasks.gen.map.text;На участке звёздной карты без линий и подписей цифрами отмечены ярчайшие звёзды нескольких созвездий. Назови эти созвездия.;On a part of a star map without lines and labels, numbers mark the brightest stars of several constellations. Name these constellations.
+tasks.gen.map.solution;{list}. Ищи сначала знакомые фигуры и самые яркие звёзды, а потом переходи к соседям.;{list}. Look for familiar figures and the brightest stars first, then move to their neighbors.
+tasks.gen.vis.text;Как ведёт себя звезда <b>{star}</b> в городе {city} (φ = {lat}°)?;How does the star <b>{star}</b> behave in {city} (φ = {lat}°)?
+tasks.gen.vis.options.1;никогда не заходит;it never sets
+tasks.gen.vis.options.2;восходит и заходит;it rises and sets
+tasks.gen.vis.options.3;никогда не восходит;it never rises
+tasks.gen.vis.solution;"Склонение звезды δ = {dec}. На широте {lat}° не заходят звёзды с δ &gt; 90° − φ = {up}°, а не восходят — с δ &lt; −(90° − φ) = −{up}°. Значит, звезда {answer}.";"The star’s declination is δ = {dec}. At latitude {lat}°, stars with δ &gt; 90° − φ = {up}° never set, and stars with δ &lt; −(90° − φ) = −{up}° never rise. So {answer}."
+tasks.gen.vis.solutionSouth;"Склонение звезды δ = {dec}. На широте {lat}° (южное полушарие) не заходят звёзды с δ &lt; −(90° − |φ|) = −{up}°, а не восходят — с δ &gt; 90° − |φ| = {up}°. Значит, звезда {answer}.";"The star’s declination is δ = {dec}. At latitude {lat}° (southern hemisphere), stars with δ &lt; −(90° − |φ|) = −{up}° never set, and stars with δ &gt; 90° − |φ| = {up}° never rise. So {answer}."
+tasks.gen.decGiven;Склонение звезды δ = {dec}.;The star’s declination is δ = {dec}.
+tasks.gen.alt.text;На какую наибольшую высоту над горизонтом поднимается <b>{star}</b> в городе {city} (φ = {lat}°)? Ответ — в градусах.;What is the highest altitude above the horizon that <b>{star}</b> reaches in {city} (φ = {lat}°)? Answer in degrees.
+tasks.gen.alt.solution;Склонение звезды δ = {dec} ≈ {decd}°. В верхней кульминации h = 90° − |φ − δ| = 90° − |{lat}° − ({decd}°)| ≈ {h}°.;The star’s declination is δ = {dec} ≈ {decd}°. At upper culmination h = 90° − |φ − δ| = 90° − |{lat}° − ({decd}°)| ≈ {h}°.
+tasks.gen.lat.text;В верхней кульминации <b>{star}</b> поднимается к югу от зенита на высоту {h}°. На какой широте находится наблюдатель? Ответ — в градусах.;At upper culmination <b>{star}</b> rises south of the zenith to an altitude of {h}°. At what latitude is the observer? Answer in degrees.
+tasks.gen.lat.solution;Для кульминации к югу от зенита h = 90° − φ + δ, отсюда φ = 90° − h + δ. Склонение звезды δ ≈ {decd}°, значит φ = 90° − {h}° + ({decd}°) ≈ {lat}°.;For a culmination south of the zenith h = 90° − φ + δ, so φ = 90° − h + δ. The star’s declination is δ ≈ {decd}°, so φ = 90° − {h}° + ({decd}°) ≈ {lat}°.
+tasks.gen.lat.textSouth;В верхней кульминации <b>{star}</b> поднимается к северу от зенита на высоту {h}°. На какой широте в южном полушарии находится наблюдатель? Ответ — в градусах, южная широта — со знаком минус.;At upper culmination <b>{star}</b> rises north of the zenith to an altitude of {h}°. At what latitude in the southern hemisphere is the observer? Answer in degrees, with a minus sign for southern latitude.
+tasks.gen.lat.solutionSouth;Для кульминации к северу от зенита h = 90° + φ − δ, отсюда φ = h − 90° + δ. Склонение звезды δ ≈ {decd}°, значит φ = {h}° − 90° + ({decd}°) ≈ {lat}°.;For a culmination north of the zenith h = 90° + φ − δ, so φ = h − 90° + δ. The star’s declination is δ ≈ {decd}°, so φ = {h}° − 90° + ({decd}°) ≈ {lat}°.
+tasks.gen.circUp.text;Какое из этих созвездий в городе {city} (φ = {lat}°) никогда не заходит — целиком?;Which of these constellations never sets in {city} (φ = {lat}°) — all of it?
+tasks.gen.circUp.solution;"Не заходят звёзды с δ &gt; 90° − φ = {limit}°. Самая южная точка созвездия {con} — δ ≈ {d}°: всё созвездие севернее этой границы. У остальных часть звёзд южнее.";"Stars with δ &gt; 90° − φ = {limit}° never set. The southernmost point of {con} is at δ ≈ {d}°, so the whole constellation is north of this limit. The others have some stars farther south."
+tasks.gen.circUp.solutionSouth;"В южном полушарии не заходят звёзды с δ &lt; −(90° − |φ|) = −{limit}°. Самая северная точка созвездия {con} — δ ≈ {d}°: всё созвездие южнее этой границы. У остальных часть звёзд севернее.";"In the southern hemisphere stars with δ &lt; −(90° − |φ|) = −{limit}° never set. The northernmost point of {con} is at δ ≈ {d}°, so the whole constellation is south of this limit. The others have some stars farther north."
+tasks.gen.circDown.text;Какое из этих созвездий в городе {city} (φ = {lat}°) никогда не видно — ни одной своей частью?;Which of these constellations is never visible from {city} (φ = {lat}°) — not even partly?
+tasks.gen.circDown.solution;"Не восходят звёзды с δ &lt; −(90° − φ) = −{limit}°. Самая северная точка созвездия {con} — δ ≈ {d}°: всё созвездие южнее этой границы. Остальные хотя бы частично поднимаются над горизонтом.";"Stars with δ &lt; −(90° − φ) = −{limit}° never rise. The northernmost point of {con} is at δ ≈ {d}°, so the whole constellation is south of this limit. The others rise above the horizon at least partly."
+tasks.gen.circDown.solutionSouth;"В южном полушарии не восходят звёзды с δ &gt; 90° − |φ| = {limit}°. Самая южная точка созвездия {con} — δ ≈ {d}°: всё созвездие севернее этой границы. Остальные хотя бы частично поднимаются над горизонтом.";"In the southern hemisphere stars with δ &gt; 90° − |φ| = {limit}° never rise. The southernmost point of {con} is at δ ≈ {d}°, so the whole constellation is north of this limit. The others rise above the horizon at least partly."
+tasks.gen.sun.text;В каком созвездии находится Солнце {date}?;In which constellation is the Sun on {date}?
+tasks.gen.sun.solution;По настоящим границам созвездий Солнце находится в созвездии {con} примерно с {from} по {to}. Это не «знак зодиака»: даты знаков сдвинуты почти на месяц.;By the real constellation boundaries the Sun is in {con} from about {from} to {to}. This is not a “zodiac sign”: the dates of the signs are shifted by almost a month.
+tasks.gen.moon.text;{date} — полнолуние. В каком созвездии Луна?;There is a full Moon on {date}. In which constellation is the Moon?
+tasks.gen.moon.solution;Полная Луна — напротив Солнца. {date} Солнце в созвездии {sun}, а напротив него на эклиптике — {con}. (Луна отходит от эклиптики до 5°, поэтому иногда бывает в соседнем созвездии.);The full Moon is opposite the Sun. On {date} the Sun is in {sun}, and opposite it on the ecliptic is {con}. (The Moon strays up to 5° from the ecliptic, so sometimes it is in a neighboring constellation.)
+tasks.gen.midnight.text;Какое из этих созвездий {date} около полуночи находится в верхней кульминации — выше всего над горизонтом?;Which of these constellations is at upper culmination — at its highest above the horizon — around midnight on {date}?
+tasks.gen.midnight.solution;{date} прямое восхождение Солнца ≈ {sun}. В полночь кульминируют звёзды с α ≈ α Солнца + 12ч ≈ {target}. Из предложенных ближе всех {con} (α ≈ {ra}).;On {date} the Sun’s right ascension is ≈ {sun}. At midnight the stars with α ≈ α of the Sun + 12h ≈ {target} culminate. Of the options, the closest is {con} (α ≈ {ra}).
+tasks.gen.coords.text;Какая яркая звезда имеет координаты α = {ra}, δ = {dec}?;Which bright star has the coordinates α = {ra}, δ = {dec}?
+tasks.gen.coords.solution;Это {star} ({desig}), {mag}.;It is {star} ({desig}), {mag}.
+tasks.gen.desig.text;Как по Байеру обозначается звезда <b>{star}</b>?;What is the Bayer designation of <b>{star}</b>?
+tasks.gen.desig.solution;{star} — это {desig} ({latin}).;{star} is {desig} ({latin}).
+tasks.gen.desigBack.text;Какая звезда обозначается <b>{desig}</b>?;Which star is <b>{desig}</b>?
+tasks.gen.conOf.text;В каком созвездии находится <b>{name}</b>?;In which constellation is <b>{name}</b>?
+tasks.gen.conOf.solution;{name} — в созвездии {con}.;{name} is in {con}.
+tasks.gen.zodiac.text;Какое из этих созвездий не зодиакальное — Солнце в нём не бывает?;Which of these constellations is not in the zodiac — the Sun never passes through it?
+tasks.gen.zodiac.solution;Солнце проходит 13 созвездий: {list}. {con} среди них нет.;The Sun passes through 13 constellations: {list}. {con} is not among them.
+tasks.gen.mw.text;Через какое из этих созвездий не проходит Млечный Путь?;Which of these constellations does the Milky Way not pass through?
+tasks.gen.mw.solution;Млечный Путь проходит через {yes}, а {con} лежит в стороне от него: в этом направлении мы смотрим из диска Галактики «вбок».;The Milky Way passes through {yes}, but {con} lies away from it: in that direction we look “sideways” out of the disk of the Galaxy.
+tasks.cities.murmansk;Мурманск;Murmansk
+tasks.cities.reykjavik;Рейкьявик;Reykjavík
+tasks.cities.spb;Санкт-Петербург;Saint Petersburg
+tasks.cities.moscow;Москва;Moscow
+tasks.cities.novosibirsk;Новосибирск;Novosibirsk
+tasks.cities.london;Лондон;London
+tasks.cities.sochi;Сочи;Sochi
+tasks.cities.vladivostok;Владивосток;Vladivostok
+tasks.cities.cairo;Каир;Cairo
+tasks.cities.singapore;Сингапур;Singapore
+tasks.cities.rio;Рио-де-Жанейро;Rio de Janeiro
+tasks.cities.sydney;Сидней;Sydney
+tasks.cities.capetown;Кейптаун;Cape Town
+tasks.cities.buenosaires;Буэнос-Айрес;Buenos Aires
+tasks.cities.auckland;Окленд;Auckland
+tasks.solved.orion-month.text;Житель Москвы видит Орион в полночь высоко на юге — созвездие в верхней кульминации. В каком месяце это происходит?;An observer in Moscow sees Orion high in the south at midnight — the constellation is at upper culmination. Which month is it?
+tasks.solved.orion-month.options.1;март;March
+tasks.solved.orion-month.options.2;июнь;June
+tasks.solved.orion-month.options.3;сентябрь;September
+tasks.solved.orion-month.options.4;декабрь;December
+tasks.solved.orion-month.solution;Прямое восхождение Ориона ≈ 5,5ч. В полночь на юге кульминируют звёзды с α ≈ α Солнца + 12ч, значит α Солнца ≈ 17,5ч. Солнце имеет α = 18ч 22 декабря, а 17,5ч — примерно в середине декабря. Поэтому Орион — «зимнее» созвездие.;The right ascension of Orion is ≈ 5.5h. At midnight the stars culminating in the south have α ≈ α of the Sun + 12h, so the Sun’s α ≈ 17.5h. The Sun has α = 18h on December 22, and 17.5h about the middle of December. That is why Orion is a “winter” constellation.
+tasks.solved.circumpolar-moscow.text;Какая из этих звёзд в Москве (φ = 55,8°) никогда не заходит?;Which of these stars never sets in Moscow (φ = 55.8°)?
+tasks.solved.circumpolar-moscow.options.1;Арктур;Arcturus
+tasks.solved.circumpolar-moscow.options.2;Альтаир;Altair
+tasks.solved.circumpolar-moscow.options.3;Вега;Vega
+tasks.solved.circumpolar-moscow.options.4;Альдебаран;Aldebaran
+tasks.solved.circumpolar-moscow.solution;"Не заходят звёзды с δ &gt; 90° − φ = 34,2°. Склонения: Вега +38,8°, Арктур +19,2°, Альдебаран +16,5°, Альтаир +8,9°. Подходит только Вега.";"Stars with δ &gt; 90° − φ = 34.2° never set. Declinations: Vega +38.8°, Arcturus +19.2°, Aldebaran +16.5°, Altair +8.9°. Only Vega qualifies."
+tasks.solved.sochi-spb.text;Какие из этих звёзд можно увидеть в Сочи (φ = 43,6°), но нельзя увидеть в Санкт-Петербурге (φ = 59,9°)? Отметь все верные.;Which of these stars can be seen from Sochi (φ = 43.6°) but not from Saint Petersburg (φ = 59.9°)? Mark all correct ones.
+tasks.solved.sochi-spb.options.1;Сириус;Sirius
+tasks.solved.sochi-spb.options.2;Шаула (λ Скорпиона);Shaula (λ Scorpii)
+tasks.solved.sochi-spb.options.3;Каус Аустралис (ε Стрельца);Kaus Australis (ε Sagittarii)
+tasks.solved.sochi-spb.options.4;Канопус;Canopus
+tasks.solved.sochi-spb.options.5;Антарес;Antares
+tasks.solved.sochi-spb.solution;"Звезда восходит, если δ &gt; −(90° − φ). В Сочи граница −46,4°, в Петербурге −30,1°. Сириус (−16,7°) и Антарес (−26,4°) видны в обоих городах, Канопус (−52,7°) — ни в одном. Шаула (−37,1°) и Каус Аустралис (−34,4°) лежат между границами: их видно в Сочи, но не в Петербурге.";"A star rises if δ &gt; −(90° − φ). For Sochi the limit is −46.4°, for Saint Petersburg −30.1°. Sirius (−16.7°) and Antares (−26.4°) are visible from both cities, Canopus (−52.7°) from neither. Shaula (−37.1°) and Kaus Australis (−34.4°) are between the limits: they are visible from Sochi but not from Saint Petersburg."
+tasks.solved.solstice-con.text;В каком созвездии сейчас находится точка летнего солнцестояния — место на эклиптике, где Солнце бывает 21 июня?;In which constellation is the summer solstice point now — the place on the ecliptic where the Sun is on June 21?
+tasks.solved.solstice-con.options.1;Рак;Cancer
+tasks.solved.solstice-con.options.2;Близнецы;Gemini
+tasks.solved.solstice-con.options.3;Телец;Taurus
+tasks.solved.solstice-con.options.4;Дева;Virgo
+tasks.solved.solstice-con.solution;Тропик Рака назван так потому, что 2000 лет назад в летнее солнцестояние Солнце было в Раке. Из-за прецессии точка солнцестояния смещается по эклиптике к западу (на 1° за 72 года): она прошла Близнецы и с 1990 года находится в Тельце, пока всего в 0,1° от границы. Поэтому в сам день солнцестояния Солнце стоит на границе Тельца и Близнецов.;The Tropic of Cancer got its name because 2000 years ago the Sun was in Cancer at the summer solstice. Because of precession the solstice point moves west along the ecliptic (1° in 72 years): it passed through Gemini and has been in Taurus since 1990, still only 0.1° from the border. So on the day of the solstice the Sun stands at the border of Taurus and Gemini.
+tasks.solved.equinox-point.text;В каком созвездии сейчас находится точка весеннего равноденствия (α = 0ч, δ = 0°)?;In which constellation is the vernal equinox point (α = 0h, δ = 0°) now?
+tasks.solved.equinox-point.options.1;Овен;Aries
+tasks.solved.equinox-point.options.2;Рыбы;Pisces
+tasks.solved.equinox-point.options.3;Водолей;Aquarius
+tasks.solved.equinox-point.options.4;Дева;Virgo
+tasks.solved.equinox-point.solution;Её по традиции называют «точкой Овна», но из-за прецессии она уже около 2000 лет как в Рыбах (а примерно через 600 лет перейдёт в Водолей). В Деве — точка осеннего равноденствия.;It is traditionally called the “First Point of Aries”, but because of precession it has been in Pisces for about 2000 years (and will move into Aquarius in about 600 years). The autumnal equinox point is in Virgo.
+tasks.solved.ecliptic-four.text;Что объединяет звёзды Альдебаран, Регул, Спику и Антарес?;What do the stars Aldebaran, Regulus, Spica and Antares have in common?
+tasks.solved.ecliptic-four.options.1;все четыре — красные гиганты;all four are red giants
+tasks.solved.ecliptic-four.options.2;все четыре лежат недалеко от эклиптики;all four lie close to the ecliptic
+tasks.solved.ecliptic-four.options.3;все четыре в Москве не заходят;all four never set in Moscow
+tasks.solved.ecliptic-four.options.4;все четыре входят в одно созвездие;all four belong to one constellation
+tasks.solved.ecliptic-four.solution;Все четыре — яркие звёзды зодиакальных созвездий (Телец, Лев, Дева, Скорпион) у самой эклиптики, поэтому рядом с ними часто проходят Луна и планеты, а Луна может их закрывать. Цвета у них разные: Регул и Спика бело-голубые. В Москве все четыре заходят.;All four are bright stars of zodiac constellations (Taurus, Leo, Virgo, Scorpius) right by the ecliptic, so the Moon and planets often pass near them, and the Moon can cover them. Their colors differ: Regulus and Spica are blue-white. In Moscow all four set.
+tasks.solved.sirius-lat.text;Севернее какой широты Сириус (δ = −16°43′) никогда не поднимается над горизонтом? Ответ — в градусах.;North of what latitude does Sirius (δ = −16°43′) never rise above the horizon? Answer in degrees.
+tasks.solved.sirius-lat.solution;"Звезда не восходит, если δ &lt; −(90° − φ), то есть φ &gt; 90° + δ = 90° − 16,7° = 73,3°. Например, на Шпицбергене (78° с. ш.) Сириус не виден никогда.";"A star never rises if δ &lt; −(90° − φ), that is, φ &gt; 90° + δ = 90° − 16.7° = 73.3°. For example, from Svalbard (78° N) Sirius is never seen."
+tasks.solved.brightness-order.text;В каком порядке идут звёзды от самой яркой к самой слабой?;Which order goes from the brightest star to the faintest?
+tasks.solved.brightness-order.options.1;Вега, Сириус, Полярная, Бетельгейзе;Vega, Sirius, Polaris, Betelgeuse
+tasks.solved.brightness-order.options.2;Полярная, Сириус, Вега, Бетельгейзе;Polaris, Sirius, Vega, Betelgeuse
+tasks.solved.brightness-order.options.3;Сириус, Вега, Бетельгейзе, Полярная;Sirius, Vega, Betelgeuse, Polaris
+tasks.solved.brightness-order.options.4;Сириус, Полярная, Вега, Бетельгейзе;Sirius, Polaris, Vega, Betelgeuse
+tasks.solved.brightness-order.solution;Звёздные величины: Сириус −1,4<sup>m</sup>, Вега 0,0<sup>m</sup>, Бетельгейзе ≈ 0,5<sup>m</sup> (переменная), Полярная 2,0<sup>m</sup>. Полярная вовсе не самая яркая звезда: она примерно 48-я по блеску.;Magnitudes: Sirius −1.4<sup>m</sup>, Vega 0.0<sup>m</sup>, Betelgeuse ≈ 0.5<sup>m</sup> (variable), Polaris 2.0<sup>m</sup>. Polaris is far from the brightest star: it is about 48th in brightness.
+tasks.solved.ori-sco.text;Можно ли из Москвы увидеть над горизонтом одновременно Бетельгейзе (α Ориона) и Антарес (α Скорпиона)?;Can Betelgeuse (α Orionis) and Antares (α Scorpii) be above the horizon at the same time as seen from Moscow?
+tasks.solved.ori-sco.options.1;да, летом;yes, in summer
+tasks.solved.ori-sco.options.2;да, зимой;yes, in winter
+tasks.solved.ori-sco.options.3;нет, никогда;no, never
+tasks.solved.ori-sco.options.4;да, весной под утро;yes, in spring before dawn
+tasks.solved.ori-sco.solution;Антарес (α ≈ 16,5ч, δ ≈ −26°) в Москве над горизонтом лишь около ±2,9ч от кульминации, а Бетельгейзе (α ≈ 5,9ч, δ ≈ +7°) — около ±6,7ч. Бетельгейзе заходит, когда звёздное время ≈ 12,7ч, а Антарес восходит только при ≈ 13,6ч: промежутки не пересекаются. По мифу Скорпион и Орион всегда по разные стороны неба.;In Moscow Antares (α ≈ 16.5h, δ ≈ −26°) is above the horizon only for about ±2.9h around culmination, and Betelgeuse (α ≈ 5.9h, δ ≈ +7°) for about ±6.7h. Betelgeuse sets when the sidereal time is ≈ 12.7h, while Antares rises only at ≈ 13.6h: the intervals do not overlap. In the myth the Scorpion and Orion are always on opposite sides of the sky.
+tasks.solved.summer-triangle-season.text;В какое время года вечером (около 22–23 ч) Летний треугольник — Вега, Денеб, Альтаир — стоит в Москве высоко на юге?;In which season, in the evening (around 10–11 pm), is the Summer Triangle — Vega, Deneb, Altair — high in the south as seen from Moscow?
+tasks.solved.summer-triangle-season.options.1;зимой;in winter
+tasks.solved.summer-triangle-season.options.2;весной;in spring
+tasks.solved.summer-triangle-season.options.3;в конце лета — начале осени;in late summer — early autumn
+tasks.solved.summer-triangle-season.options.4;поздней осенью;in late autumn
+tasks.solved.summer-triangle-season.solution;Прямое восхождение звёзд треугольника ≈ 19–21ч. В полночь на юге α ≈ α Солнца + 12ч, а на 1–2 часа раньше — α ≈ α Солнца + 10–11ч. Отсюда α Солнца ≈ 8,5–10ч — это август и начало сентября. Несмотря на название, в июне треугольник поднимается высоко только во второй половине ночи.;The right ascension of the triangle’s stars is ≈ 19–21h. At midnight the south has α ≈ α of the Sun + 12h, and 1–2 hours earlier α ≈ α of the Sun + 10–11h. Hence the Sun’s α ≈ 8.5–10h, which is August and early September. Despite its name, in June the triangle gets high only in the second half of the night.
+tasks.solved.zenith-moscow.text;Какая из этих звёзд в Москве (φ = 55,8°) кульминирует ближе всего к зениту?;Which of these stars culminates closest to the zenith in Moscow (φ = 55.8°)?
+tasks.solved.zenith-moscow.options.1;Вега;Vega
+tasks.solved.zenith-moscow.options.2;Альтаир;Altair
+tasks.solved.zenith-moscow.options.3;Арктур;Arcturus
+tasks.solved.zenith-moscow.options.4;Капелла;Capella
+tasks.solved.zenith-moscow.solution;"В верхней кульминации зенитное расстояние z = |φ − δ|. Капелла (δ = +46,0°): z ≈ 9,8°; Вега (+38,8°): z ≈ 17,0°; Арктур (+19,2°): z ≈ 36,6°; Альтаир (+8,9°): z ≈ 46,9°.";"At upper culmination the zenith distance is z = |φ − δ|. Capella (δ = +46.0°): z ≈ 9.8°; Vega (+38.8°): z ≈ 17.0°; Arcturus (+19.2°): z ≈ 36.6°; Altair (+8.9°): z ≈ 46.9°."
+tasks.solved.polaris-height.text;На какой высоте над горизонтом видна Полярная звезда в Санкт-Петербурге (φ = 59,9°)? Ответ — в градусах.;At what altitude above the horizon is Polaris seen from Saint Petersburg (φ = 59.9°)? Answer in degrees.
+tasks.solved.polaris-height.solution;Высота полюса мира над горизонтом равна широте места, а Полярная отстоит от полюса меньше чем на 1°. Поэтому её высота ≈ φ ≈ 60° (за сутки она меняется на ±0,7°).;The altitude of the celestial pole equals the latitude, and Polaris is less than 1° from the pole. So its altitude ≈ φ ≈ 60° (during a day it changes by ±0.7°).
+tasks.solved.noon-sun-height.text;На какой высоте над горизонтом Солнце в полдень 22 июня в Москве (φ = 55,8°)? Ответ — в градусах.;What is the altitude of the Sun at noon on June 22 in Moscow (φ = 55.8°)? Answer in degrees.
+tasks.solved.noon-sun-height.solution;В день летнего солнцестояния склонение Солнца δ = +23,4°. В полдень Солнце в верхней кульминации: h = 90° − φ + δ = 90° − 55,8° + 23,4° ≈ 57,7°.;On the day of the summer solstice the Sun’s declination is δ = +23.4°. At noon the Sun is at upper culmination: h = 90° − φ + δ = 90° − 55.8° + 23.4° ≈ 57.7°.
+tasks.solved.equator-all.text;Какую часть звёздного неба может увидеть за год наблюдатель на экваторе Земли?;What part of the starry sky can an observer at the Earth’s equator see during a year?
+tasks.solved.equator-all.options.1;только звёзды северного полушария неба;only the stars of the northern celestial hemisphere
+tasks.solved.equator-all.options.2;всё небо;the whole sky
+tasks.solved.equator-all.options.3;только звёзды около небесного экватора;only the stars near the celestial equator
+tasks.solved.equator-all.options.4;ровно половину неба;exactly half of the sky
+tasks.solved.equator-all.solution;На экваторе ось мира лежит в плоскости горизонта: каждая звезда восходит, заходит и полсуток проводит над горизонтом. За год Солнце обходит всё небо, поэтому ночью по очереди видны все звёзды — от Полярной до σ Октанта у южного полюса.;At the equator the celestial axis lies in the plane of the horizon: every star rises, sets and spends half a day above the horizon. During a year the Sun goes around the whole sky, so all the stars are seen at night in turn — from Polaris to σ Octantis at the south pole.
+tasks.solved.pole-sirius.text;Можно ли увидеть Сириус (δ = −16,7°) с Северного полюса Земли?;Can Sirius (δ = −16.7°) be seen from the Earth’s North Pole?
+tasks.solved.pole-sirius.options.1;да, зимой;yes, in winter
+tasks.solved.pole-sirius.options.2;да, летом;yes, in summer
+tasks.solved.pole-sirius.options.3;нет, никогда;no, never
+tasks.solved.pole-sirius.options.4;да, весь год низко над горизонтом;yes, all year, low above the horizon
+tasks.solved.pole-sirius.solution;"На полюсе полюс мира в зените, а небесный экватор совпадает с горизонтом. Видны только звёзды северного полушария неба (δ &gt; 0), и они не восходят и не заходят, а кружат параллельно горизонту. Сириус южнее экватора — его там не видно никогда.";"At the pole the celestial pole is at the zenith and the celestial equator coincides with the horizon. Only the stars of the northern celestial hemisphere (δ &gt; 0) are visible, and they neither rise nor set but circle parallel to the horizon. Sirius is south of the equator, so it is never seen there."
+tasks.solved.vega-lower.text;Вега (δ = +38,8°) в Москве (φ = 55,8°) никогда не заходит. На какой высоте над горизонтом она бывает в нижней кульминации — в самой низкой точке своего пути? Ответ — в градусах.;Vega (δ = +38.8°) never sets in Moscow (φ = 55.8°). How high above the horizon is it at lower culmination — the lowest point of its path? Answer in degrees.
+tasks.solved.vega-lower.solution;В нижней кульминации звезда проходит под полюсом мира, и её высота h = φ + δ − 90° = 55,8° + 38,8° − 90° ≈ 4,5°. Вега не заходит, но в нижней кульминации — например, около полуночи в конце декабря — почти касается горизонта на севере.;At lower culmination a star passes below the celestial pole, and its altitude is h = φ + δ − 90° = 55.8° + 38.8° − 90° ≈ 4.5°. Vega never sets, but at lower culmination — for example, around midnight in late December — it almost touches the northern horizon.
+tasks.solved.sun-ophiuchus.text;В каком созвездии находится Солнце 5 декабря?;In which constellation is the Sun on December 5?
+tasks.solved.sun-ophiuchus.options.1;Скорпион;Scorpius
+tasks.solved.sun-ophiuchus.options.2;Змееносец;Ophiuchus
+tasks.solved.sun-ophiuchus.options.3;Стрелец;Sagittarius
+tasks.solved.sun-ophiuchus.options.4;Весы;Libra
+tasks.solved.sun-ophiuchus.solution;По настоящим границам созвездий Солнце примерно с 30 ноября по 17 декабря проходит Змееносец — дольше, чем Скорпион (около недели). В астрологическом календаре 5 декабря — «знак Стрельца», но знаки не совпадают с созвездиями: их даты сдвинуты прецессией почти на месяц.;By the real constellation boundaries the Sun crosses Ophiuchus from about November 30 to December 17 — longer than Scorpius (about a week). In the astrological calendar December 5 is “Sagittarius”, but the signs do not match the constellations: precession has shifted their dates by almost a month.

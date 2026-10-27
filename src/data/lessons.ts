@@ -1,4 +1,4 @@
-import type { Lesson } from '../core/types';
+import type { Lesson, SouthStep } from '../core/types';
 
 // Уроки идут как в детской книжке: созвездие за созвездием, каждое новое — от уже знакомых.
 // Здесь только устройство урока; тексты — в src/i18n/<язык>/lessons.ts под тем же id.
@@ -381,4 +381,75 @@ export const LESSONS: Lesson[] = [
     view: { ra: 90, dec: 20, fov: 110 }, opts: { grid: true, ecliptic: true },
     focusLines: ['Ori', 'Tau', 'Gem', 'Aur', 'CMa', 'CMi'],
   },
+];
+
+// Южный маршрут — для южного полушария: те же уроки в другом порядке, от Южного Креста.
+// Тексты «Как найти» и подписи указателей — в texts/south.csv (south.js загружается, только когда маршрут нужен).
+// Указатели заданы там, где северные опираются на созвездия, которых в южном маршруте ещё не было;
+// расстояния и «во сколько раз» в текстах — по расчёту (как и для северных).
+export const SOUTH_BLOCKS = ['s-start', 's-cross', 's-canopus', 's-orion', 's-scorpius', 's-autumn', 's-leo', 's-north', 'theory'];
+
+export const SOUTH_ROUTE: SouthStep[] = [
+  { id: 'intro', block: 's-start' },
+
+  { id: 'Cen_Cru', block: 's-cross' },
+  { id: 'SCP', block: 's-cross' },
+  { id: 'Lup_TrA', block: 's-cross', pointers: [{ path: ['α Cen', 'α Cir', 'α TrA'] }, { path: ['α TrA', 'β Ara'] }] },
+
+  { id: 'Argo', block: 's-canopus', pointers: [{ path: ['β Cru', 'ε Car', 'α Car'] }] },
+  // Ахернар понадобится дальше (Феникс, Журавль, Эридан): к нему — от Креста через полюс.
+  { id: 'LMC', block: 's-canopus', pointers: [{ path: ['α Car', 'LMC'] }, { path: ['α Cru', { ra: 0, dec: -89.99 }, 'α Eri'] }, { path: ['α Eri', 'α Hor', 'α Cae'] }] },
+  { id: 'Gru_Phe', block: 's-canopus', pointers: [{ path: ['α Eri', 'α Phe', 'α Gru'] }] },
+
+  { id: 'Ori', block: 's-orion' },
+  { id: 'CMa', block: 's-orion' },
+  { id: 'CMi_Mon', block: 's-orion' },
+  { id: 'Lep_Col', block: 's-orion' },
+  { id: 'Eri', block: 's-orion' },
+  { id: 'Tau', block: 's-orion' },
+  { id: 'Gem', block: 's-orion', pointers: [{ line: ['β Ori', 'α Ori', 'α Gem'] }] },
+  { id: 'Aur', block: 's-orion', pointers: [{ line: ['ζ Ori', 'β Tau', 'α Aur'] }] },
+
+  { id: 'Sco', block: 's-scorpius', pointers: [{ path: ['α Cen', 'α Sco'] }] },
+  { id: 'Sgr', block: 's-scorpius', pointers: [{ path: ['λ Sco', 'ε Sgr'] }] },
+  { id: 'CrA_Pav', block: 's-scorpius' },
+  { id: 'Lib', block: 's-scorpius', pointers: [{ path: ['α Sco', 'α Lib'] }] },
+  { id: 'Oph_Ser', block: 's-scorpius', pointers: [{ path: ['α Sco', 'η Oph', 'α Oph'] }] },
+  { id: 'Aql', block: 's-scorpius', pointers: [{ path: ['σ Sgr', 'α Aql'] }] },
+  { id: 'Del_Sge_Vul_Sct', block: 's-scorpius' },
+  { id: 'Cap', block: 's-scorpius', pointers: [{ path: ['α Aql', 'α Cap'] }] },
+  { id: 'Aqr', block: 's-scorpius', pointers: [{ path: ['δ Cap', 'α Aqr'] }] },
+  { id: 'PsA', block: 's-scorpius', pointers: [{ path: ['α Gru', 'α PsA'] }] },
+
+  { id: 'Cet', block: 's-autumn', pointers: [{ path: ['α PsA', 'β Cet'] }] },
+  { id: 'Peg', block: 's-autumn', pointers: [{ path: ['β Cet', 'γ Peg'] }] },
+  { id: 'And', block: 's-autumn' },
+  { id: 'Tri_Ari', block: 's-autumn' },
+  { id: 'Psc', block: 's-autumn' },
+  { id: 'Per', block: 's-autumn' },
+
+  { id: 'Vir', block: 's-leo', pointers: [{ path: ['α Cen', 'θ Cen', 'α Vir'] }] },
+  { id: 'Crv_Crt', block: 's-leo' },
+  { id: 'Leo', block: 's-leo', pointers: [{ path: ['α Vir', 'β Leo', 'α Leo'] }] },
+  { id: 'Hya', block: 's-leo' },
+  { id: 'LMi_Sex', block: 's-leo' },
+  { id: 'Cnc', block: 's-leo' },
+  { id: 'Boo', block: 's-leo', pointers: [{ path: ['α Vir', 'α Boo'] }] },
+  { id: 'CrB', block: 's-leo' },
+  { id: 'Her', block: 's-leo', pointers: [{ path: ['α CrB', 'ζ Her'] }] },
+  { id: 'CVn_Com', block: 's-leo', pointers: [{ path: ['β Leo', 'Mel111', 'α CVn'] }] },
+
+  { id: 'Lyr', block: 's-north', pointers: [{ path: ['α Aql', 'α Lyr'] }] },
+  { id: 'Cyg', block: 's-north' },
+  { id: 'UMa', block: 's-north', pointers: [{ path: ['α Boo', 'η UMa'] }] },
+  { id: 'UMi', block: 's-north' },
+  { id: 'Cas', block: 's-north' },
+  { id: 'Cep', block: 's-north' },
+  { id: 'Dra', block: 's-north' },
+  { id: 'Cam_Lyn', block: 's-north' },
+  { id: 'Equ_Lac', block: 's-north' },
+
+  { id: 'zodiac', block: 'theory' },
+  { id: 'milkyway', block: 'theory' },
+  { id: 'coords', block: 'theory' },
 ];

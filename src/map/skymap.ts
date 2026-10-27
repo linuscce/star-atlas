@@ -43,7 +43,7 @@ export class SkyMap {
   view: View = { ra: 0, dec: 90, fov: 100 };
   opt: MapOptions = {
     mw: true, grid: false, ecliptic: false, months: false, bounds: false,
-    lines: true, conLabels: true, starLabels: true, dso: true, magLimit: null, mwBoost: 1,
+    lines: true, conLabels: true, starLabels: true, dso: true, magLimit: null, mwBoost: 1, southUp: false,
   };
   lineStyle: (abbr: string) => LineStyle = () => 'known';
   conLabelFilter: ((abbr: string) => boolean) | null = null;
@@ -79,6 +79,8 @@ export class SkyMap {
   private cx = 0; private cy = 0; private scale = 1;
   private px = 0; private py = 0; private pc = 0;
   private minCos = 0;
+  private viewAng = 0;   // угловой радиус экрана (до угла) от центра, радианы
+  private cosView = -1;  // cos(viewAng): точки с меньшим косинусом за краем экрана
   drawMs = 0;
   private anim: ((now: number) => void) | null = null;
   private queued = false;
@@ -102,7 +104,11 @@ export class SkyMap {
     for (let i = 0; i < n; i++) lists[colorBucket(sky.bv[i]) * 2 + (sky.mag[i] > 5 ? 1 : 0)].push(i);
     this.buckets = lists.map((l) => new Int32Array(l));
 
+    // Млечный Путь — отдельный холст в 1/3 разрешения под основным: растягивает его браузер (CSS),
+    // а не drawImage на каждом кадре. Основной холст прозрачный там, где нет рисунка.
     this.mwCanvas = document.createElement('canvas');
+    this.mwCanvas.className = 'mw-layer';
+    canvas.parentElement!.insertBefore(this.mwCanvas, canvas);
     this.mwCtx = this.mwCanvas.getContext('2d')!;
     this.glow = document.createElement('canvas');
     this.glow.width = this.glow.height = 64;
@@ -166,11 +172,16 @@ export class SkyMap {
     const v = this.view, ra = v.ra * D2R, dec = v.dec * D2R;
     const sr = Math.sin(ra), cr = Math.cos(ra), sd = Math.sin(dec), cd = Math.cos(dec);
     this.c0 = cd * cr; this.c1 = cd * sr; this.c2 = sd;
-    this.e0 = -sr; this.e1 = cr; this.e2 = 0;
-    this.n0 = -sd * cr; this.n1 = -sd * sr; this.n2 = cd;
+    // «Юг сверху» — поворот на 180°: оси «восток» и «север» в другую сторону.
+    const f = this.opt.southUp ? -1 : 1;
+    this.e0 = -sr * f; this.e1 = cr * f; this.e2 = 0;
+    this.n0 = -sd * cr * f; this.n1 = -sd * sr * f; this.n2 = cd * f;
     this.cx = this.w / 2; this.cy = this.h / 2;
     this.scale = (Math.min(this.w, this.h) / 2) / (2 * Math.tan(v.fov / 4 * D2R));
     this.minCos = v.fov <= 170 ? 0 : Math.max(-0.5, Math.cos((v.fov / 2 + 8) * D2R));
+    // Стереографическая проекция: точка на угле экрана отстоит от центра на 2·atan(ρ/2).
+    this.viewAng = Math.min(Math.PI, 2 * Math.atan(Math.sqrt(this.w * this.w + this.h * this.h) / 2 / this.scale / 2) + 2 * D2R);
+    this.cosView = Math.cos(this.viewAng);
   }
 
   private projV(x: number, y: number, z: number) {
@@ -291,6 +302,8 @@ export class SkyMap {
     this.canvas.style.height = h + 'px';
     this.mwCanvas.width = Math.ceil(w / MW_SCALE);
     this.mwCanvas.height = Math.ceil(h / MW_SCALE);
+    this.mwCanvas.style.width = Math.ceil(w / MW_SCALE) * MW_SCALE + 'px';
+    this.mwCanvas.style.height = Math.ceil(h / MW_SCALE) * MW_SCALE + 'px';
     this.redraw();
   }
 
@@ -300,9 +313,9 @@ export class SkyMap {
     const ctx = this.ctx, o = this.opt;
     ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     this.prep();
-    ctx.fillStyle = '#080c1d';
-    ctx.fillRect(0, 0, this.w, this.h);
+    ctx.clearRect(0, 0, this.w, this.h); // фон и Млечный Путь — под холстом (.map-wrap и .mw-layer)
 
+    this.mwCanvas.style.visibility = o.mw ? '' : 'hidden';
     if (o.mw) this.drawMilkyWay();
     if (o.grid) this.drawGrid();
     if (o.ecliptic) this.drawEcliptic();
@@ -344,12 +357,19 @@ export class SkyMap {
     // Тогда добавляем большой прямоугольник — он меняет «внутри» и «снаружи» местами.
     const R = rhoMax * this.scale + 50;
     for (let li = 0; li < this.sky.mw.length; li++) {
+      const level = this.sky.mw[li], caps = level.caps;
       m.beginPath();
-      for (const ring of this.sky.mw[li].rings) this.polygon(m, ring, cosMax, rhoMax);
+      for (let k = 0; k < level.rings.length; k++) {
+        // Кольцо целиком за краем экрана и не вокруг точки напротив центра — на экране от него ничего
+        // (его контур не опоясывает экран и не меняет заливку evenodd). Пропускаем, это главная экономия.
+        const cosd = caps[4 * k] * this.c0 + caps[4 * k + 1] * this.c1 + caps[4 * k + 2] * this.c2;
+        const r = caps[4 * k + 3];
+        if (Math.acos(clamp(cosd, -1, 1)) > r + this.viewAng && -cosd < Math.cos(r)) continue;
+        this.polygon(m, level.rings[k], cosMax, rhoMax);
+      }
       if (this.sky.mwContains(li, -this.c0, -this.c1, -this.c2)) m.rect(this.cx - R, this.cy - R, 2 * R, 2 * R);
       m.fill('evenodd');
     }
-    this.ctx.drawImage(this.mwCanvas, 0, 0, this.w, this.h);
   }
 
   private drawGrid() {
@@ -497,7 +517,10 @@ export class SkyMap {
       for (let k = 0; k < list.length; k++) {
         const i = list[k], m = mag[i];
         if (m > lim) break;
-        this.projV(xyz[3 * i], xyz[3 * i + 1], xyz[3 * i + 2]);
+        // Сначала дешёвая проверка «в поле зрения» — без неё на каждом кадре проецировались все 5000 звёзд.
+        const X = xyz[3 * i], Y = xyz[3 * i + 1], Z = xyz[3 * i + 2];
+        if (X * this.c0 + Y * this.c1 + Z * this.c2 < this.cosView) continue;
+        this.projV(X, Y, Z);
         if (this.pc < this.minCos) continue;
         const x = this.px, y = this.py;
         if (x < -10 || y < -10 || x > w + 10 || y > h + 10) continue;
@@ -794,7 +817,7 @@ export class SkyMap {
   private panBy(dx: number, dy: number) {
     this.anim = null;
     this.prep();
-    const k = R2D / this.scale, v = this.view;
+    const k = (this.opt.southUp ? -R2D : R2D) / this.scale, v = this.view; // карта едет за пальцем при любом повороте
     v.dec = clamp(v.dec + dy * k, -89.9, 89.9);
     v.ra = norm360(v.ra + dx * k / Math.max(0.15, Math.cos(v.dec * D2R)));
     this.redraw();

@@ -1,15 +1,16 @@
 import { visibility } from '../core/math';
 import type { View } from '../core/types';
 import { setOf } from '../core/util';
-import { LESSONS } from '../data/lessons';
 import { T, fill, fmtDec, fmtDeg, fmtMag, fmtNum, fmtRA } from '../i18n';
 import type { MapClick } from '../map/skymap';
-import { app, applyToggles, lessonTitle } from '../ui/app';
+import { app, applyToggles } from '../ui/app';
+import { course, lessonOfCon, lessonTitle } from '../ui/course';
 import type { TabController } from '../ui/app';
 import { each, escapeHtml } from '../ui/dom';
+import { bindPlace, placeHtml } from '../ui/place';
 import { setRoute } from '../ui/router';
-import { save, state, toggles } from '../ui/state';
-import { goLesson, lessonOfCon } from './learn';
+import { state, toggles } from '../ui/state';
+import { goLesson } from './learn';
 
 let focusCon: string | null = null;
 let selStar = -1;
@@ -64,7 +65,7 @@ function conLink(abbr: string | null) {
 function lessonBtn(abbr: string | null) {
   if (!abbr) return '';
   const i = lessonOfCon(abbr);
-  return i >= 0 ? `<button class="btn" data-lesson="${i}">${fill(T.ui.lessonBtn, { n: i + 1, title: lessonTitle(LESSONS[i]) })}</button>` : '';
+  return i >= 0 ? `<button class="btn" data-lesson="${i}">${fill(T.ui.lessonBtn, { n: i + 1, title: lessonTitle(course()[i]) })}</button>` : '';
 }
 
 const atLat = () => fill(T.ui.atLat, { lat: fmtNum(state.lat, 1) });
@@ -100,9 +101,23 @@ function infoDso(id: string) {
 function showInfo(html: string) {
   const el = app.panel.querySelector('#atlas-info') as HTMLElement | null;
   if (!el) return;
-  el.innerHTML = html;
+  el.innerHTML = `<button class="info-x" id="a-clear" aria-label="${T.ui.deselect}" title="${T.ui.deselect}">&times;</button>` + html;
   bindLinks(el);
+  (el.querySelector('#a-clear') as HTMLElement).addEventListener('click', clearSelection);
 }
+
+// Снять выделение: повторный щелчок по тому же месту, кнопка × или Esc.
+function clearSelection() {
+  focusCon = null; selStar = -1; selDso = null;
+  render();
+  const el = app.panel.querySelector('#atlas-info') as HTMLElement | null;
+  if (el) el.innerHTML = `<p class="muted">${T.ui.nothingSelected}</p>`;
+  setRoute({ tab: 'atlas' }, true);
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.keyCode === 27 && state.tab === 'atlas' && (focusCon || selStar >= 0 || selDso)) clearSelection();
+});
 
 function bindLinks(root: HTMLElement) {
   each(root.querySelectorAll('[data-con]'), (a) => a.addEventListener('click', (e) => {
@@ -162,7 +177,7 @@ function renderPanel() {
   const ui = T.ui, lg = ui.legend;
   let h = `<h1>${ui.atlasTitle}</h1><p class="muted">${ui.atlasIntro}</p>`;
   h += `<div class="search"><input id="a-q" type="search" placeholder="${ui.searchPlaceholder}" autocomplete="off"><div id="a-sugg" class="sugg"></div></div>`;
-  h += `<label class="lat">${ui.myLat} <input id="a-lat" type="number" step="0.1" min="-90" max="90" value="${state.lat}"> ° <span class="muted">${ui.latExamples}</span></label>`;
+  h += placeHtml('a-lat');
   h += `<div id="atlas-info" class="info-card"><p class="muted">${ui.nothingSelected}</p></div>`;
   h += `<div class="legend"><div class="opt-title">${ui.legendTitle}</div>` +
     `<div><span class="lg lg-gal"></span>${lg.gal}</div><div><span class="lg lg-gc"></span>${lg.gc}</div>` +
@@ -187,11 +202,7 @@ function renderPanel() {
   input.addEventListener('keydown', (e) => {
     if (e.keyCode === 13) { const b = sugg.querySelector('button') as HTMLElement | null; if (b) b.click(); }
   });
-  const lat = panel.querySelector('#a-lat') as HTMLInputElement;
-  lat.addEventListener('change', () => {
-    const v = parseFloat(lat.value.replace(',', '.'));
-    if (!isNaN(v) && v >= -90 && v <= 90) { state.lat = v; save(); refreshInfo(); }
-  });
+  bindPlace(panel, 'a-lat', refreshInfo);
   refreshInfo();
 }
 
@@ -208,15 +219,19 @@ export const atlasTab: TabController = {
   },
   click(c: MapClick) {
     if (c.star >= 0) {
+      if (c.star === selStar) { clearSelection(); return; }
       selStar = c.star; selDso = null; focusCon = app.sky.starCon(c.star) || app.sky.conAt(c.ra, c.dec);
       render();
       showInfo(infoStar(c.star));
     } else if (c.dso) {
+      if (c.dso.id === selDso) { clearSelection(); return; }
       selDso = c.dso.id; selStar = -1; focusCon = app.sky.conAt(c.dso.ra, c.dso.dec);
       render();
       showInfo(infoDso(c.dso.id));
     } else {
-      selStar = -1; selDso = null; focusCon = app.sky.conAt(c.ra, c.dec);
+      const con = app.sky.conAt(c.ra, c.dec);
+      if (con && con === focusCon && selStar < 0 && !selDso) { clearSelection(); return; }
+      selStar = -1; selDso = null; focusCon = con;
       render();
       showInfo(infoPoint(c.ra, c.dec));
     }

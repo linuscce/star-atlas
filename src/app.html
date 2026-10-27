@@ -18,6 +18,7 @@
   <nav class="tabs">
     <button data-tab="learn">{{page.tabs.learn}}</button>
     <button data-tab="quiz">{{page.tabs.quiz}}</button>
+    <button data-tab="tasks">{{page.tabs.tasks}}</button>
     <button data-tab="atlas">{{page.tabs.atlas}}</button>
     <button data-tab="ref">{{page.tabs.ref}}</button>
   </nav>
@@ -39,23 +40,35 @@
         <button id="z-out" aria-label="{{page.zoomOut}}">&minus;</button>
         <button id="z-home" aria-label="{{page.zoomHome}}"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 5a7 7 0 1 1-6.6 4.7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M4 4v6h6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
+      <button class="sheet-open" id="sheet-open" aria-label="{{ui.sheetExpand}}" title="{{ui.sheetExpand}}">{{icon.chevron}}</button>
       <div class="banner" id="banner"></div>
       <div class="hint" id="hint"></div>
     </div>
   </div>
-  <section class="panel" id="panel"></section>
+  <section class="panel">
+    <div class="sheet-bar" id="sheet-bar">
+      <i class="grip" id="sheet-grip"></i>
+      <span class="sheet-title" id="sheet-title"></span>
+      <button class="sheet-btn down" id="sheet-down" aria-label="{{ui.sheetCollapse}}" title="{{ui.sheetCollapse}}">{{icon.chevron}}</button>
+      <button class="sheet-btn up" id="sheet-up" aria-label="{{ui.sheetExpand}}" title="{{ui.sheetExpand}}">{{icon.chevron}}</button>
+    </div>
+    <div class="panel-body" id="panel"></div>
+  </section>
   <section class="ref" id="ref"></section>
 </div>
 
 <nav class="bottom-tabs">
   <button data-tab="learn">{{icon.learn}}{{page.tabs.learn}}</button>
   <button data-tab="quiz">{{icon.quiz}}{{page.tabs.quiz}}</button>
+  <button data-tab="tasks">{{icon.tasks}}{{page.tabs.tasks}}</button>
   <button data-tab="atlas">{{icon.atlas}}{{page.tabs.atlas}}</button>
   <button data-tab="ref">{{icon.ref}}{{page.tabs.ref}}</button>
 </nav>
 <div class="scrim" id="scrim"></div>
 
 <noscript><p style="padding:20px">{{page.noscript}}</p></noscript>
+<!-- Тексты южного маршрута уроков: сразу — тем, у кого сохранена южная широта; остальным приложение подгрузит их само, если понадобятся. -->
+<script>window.SOUTH_JS = 'south.js?v={{vSouth}}'; try { if (+localStorage.getItem('sa.lat') < 0) document.write('<script src="' + window.SOUTH_JS + '"><\/script>'); } catch (e) { /* нет localStorage */ }</script>
 <script src="../../sky.js?v={{vSky}}"></script>
 <script src="text.js?v={{vText}}"></script>
 <script src="../../app.js?v={{vApp}}"></script>

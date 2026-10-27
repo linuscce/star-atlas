@@ -115,7 +115,7 @@ lessons.Cnc.find;Западнее (правее) серпа Льва, на по�
 lessons.Cnc.look;"Перевёрнутая буква <b>Y</b> из звёзд 4<sup>m</sup>; Ясли — в центре, между двумя «осликами» (γ и δ).";"An upside-down letter <b>Y</b> of 4<sup>m</sup> stars; the Beehive is in the center, between the two “donkeys” (γ and δ)."
 lessons.Cnc.facts.1;Ни одной звезды ярче 3,5<sup>m</sup> — самое бледное созвездие зодиака.;Not a single star brighter than 3.5<sup>m</sup> — the faintest constellation of the zodiac.
 lessons.Cnc.facts.2;Солнце в Раке — примерно с 20 июля по 10 августа.;The Sun is in Cancer from about July 20 to August 10.
-lessons.Cnc.facts.3;<b>Тропик Рака</b> назван так потому, что 2000 лет назад в день летнего солнцестояния Солнце было в Раке. Из-за прецессии теперь оно в этот день в Близнецах.;The <b>Tropic of Cancer</b> got its name because 2000 years ago the Sun was in Cancer at the summer solstice. Because of precession it is now in Gemini on that day.
+lessons.Cnc.facts.3;<b>Тропик Рака</b> назван так потому, что 2000 лет назад в день летнего солнцестояния Солнце было в Раке. Из-за прецессии теперь в этот день Солнце на границе Тельца и Близнецов.;The <b>Tropic of Cancer</b> got its name because 2000 years ago the Sun was in Cancer at the summer solstice. Because of precession, on that day the Sun is now at the border of Taurus and Gemini.
 lessons.Cnc.facts.4;Северный и Южный Ослики (γ и δ) по бокам от Яслей — «ослы у кормушки».;Asellus Borealis and Asellus Australis (γ and δ), the northern and southern donkeys on either side of the Beehive, are “donkeys at the manger”.
 lessons.Hya.labels.1;×2,7;×2.7
 lessons.Hya.find;Продолжи линию от <b>Альгиебы</b> через <b>Регул</b> ещё примерно в 2,5–3 раза — оранжевая одинокая звезда <b>Альфард</b>, сердце Гидры. Голова Гидры — маленькое колечко из 5–6 звёзд под Раком, хвост тянется под Девой почти до Весов.;"Extend the line from <b>Algieba</b> through <b>Regulus</b> about 2.5–3 times more — a lone orange star, <b>Alphard</b>, the heart of Hydra. The head of Hydra is a small ring of 5–6 stars below Cancer; the tail stretches below Virgo almost to Libra."
@@ -302,7 +302,7 @@ lessons.Gem.find;Два способа. 1) Диагональ ковша <b>Ме
 lessons.Gem.look;Две параллельные цепочки звёзд — тела братьев — спускаются от Кастора и Поллукса к Ориону.;Two parallel chains of stars — the brothers’ bodies — run down from Castor and Pollux toward Orion.
 lessons.Gem.facts.1;<b>Поллукс (β) ярче Кастора (α)</b> — ещё одно исключение из правила букв.;<b>Pollux (β) is brighter than Castor (α)</b> — another exception to the rule of letters.
 lessons.Gem.facts.2;Кастор — шестерная звёздная система: три пары двойных.;Castor is a sextuple star system: three pairs of binaries.
-lessons.Gem.facts.3;У ног Близнецов, на границе с Тельцом, сейчас находится <b>точка летнего солнцестояния</b>.;At the feet of the Twins, on the border with Taurus, is now the <b>summer solstice point</b>.
+lessons.Gem.facts.3;У ног Близнецов проходит граница с Тельцом, а рядом с ней — <b>точка летнего солнцестояния</b>. Из-за прецессии она в 1990 году перешла из Близнецов в Телец и пока всего в 0,1° от границы.;At the feet of the Twins runs the border with Taurus, and next to it lies the <b>summer solstice point</b>. Because of precession it moved from Gemini into Taurus in 1990 and is still only 0.1° from the border.
 lessons.Gem.facts.4;<b>Геминиды</b> (13–14 декабря) — самый сильный метеорный поток года.;The <b>Geminids</b> (December 13–14) are the strongest meteor shower of the year.
 lessons.Gem.facts.5;В Близнецах в 1930 году открыли Плутон (Клайд Томбо).;Pluto was discovered in Gemini in 1930 (Clyde Tombaugh).
 lessons.Gem.facts.6;Солнце в Близнецах — примерно с 21 июня по 20 июля.;The Sun is in Gemini from about June 21 to July 20.
@@ -423,7 +423,7 @@ lessons.zodiac.html;"<p>Карта повёрнута так, что в цент
 <h3>Особые точки</h3>
 <ul>
   <li>Весеннее равноденствие (α = 0ч) — в <b>Рыбах</b>.</li>
-  <li>Летнее солнцестояние (α = 6ч) — в <b>Близнецах</b>, у границы с Тельцом.</li>
+  <li>Летнее солнцестояние (α = 6ч) — в <b>Тельце</b>, у самой границы с Близнецами (до 1990 года было в Близнецах).</li>
   <li>Осеннее равноденствие (α = 12ч) — в <b>Деве</b>.</li>
   <li>Зимнее солнцестояние (α = 18ч) — в <b>Стрельце</b>.</li>
 </ul>";"<p>The map is turned so that the <b>north ecliptic pole</b> is in the center, and the ecliptic itself (the orange dashed line) is a large ring. The Sun travels along it during the year; the dots show where it is on the 1st of each month.</p>
@@ -441,7 +441,7 @@ lessons.zodiac.html;"<p>Карта повёрнута так, что в цент
 <h3>Special points</h3>
 <ul>
   <li>Vernal equinox (α = 0h) — in <b>Pisces</b>.</li>
-  <li>Summer solstice (α = 6h) — in <b>Gemini</b>, near the border with Taurus.</li>
+  <li>Summer solstice (α = 6h) — in <b>Taurus</b>, right at the border with Gemini (until 1990 it was in Gemini).</li>
   <li>Autumnal equinox (α = 12h) — in <b>Virgo</b>.</li>
   <li>Winter solstice (α = 18h) — in <b>Sagittarius</b>.</li>
 </ul>"

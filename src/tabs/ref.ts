@@ -1,36 +1,17 @@
-import { eclToEq, sunLongitude, visibility } from '../core/math';
-import { T, fill, fmtDayMonth, fmtDec, fmtDeg, fmtMag, fmtNum, fmtRA } from '../i18n';
+import { norm360, visibility } from '../core/math';
+import { sunRA, sunRuns } from '../core/sun';
+import { T, fill, fmtDate, fmtDayMonth, fmtDec, fmtDeg, fmtMag, fmtNum, fmtRA } from '../i18n';
 import { app } from '../ui/app';
 import { $, each } from '../ui/dom';
-import { save, state } from '../ui/state';
+import { bindPlace, placeHtml } from '../ui/place';
+import { state } from '../ui/state';
 import { goCon } from './atlas';
-import { lessonOfCon } from './learn';
-
-const ZODIAC = ['Psc', 'Ari', 'Tau', 'Gem', 'Cnc', 'Leo', 'Vir', 'Lib', 'Sco', 'Oph', 'Sgr', 'Cap', 'Aqr'];
-
-let zodiacCache: { con: string; from: Date; to: Date }[] | null = null;
-
-// Даты, когда Солнце в каждом созвездии, — по настоящим границам созвездий (IAU).
-export function sunRuns(): { con: string; from: Date; to: Date }[] {
-  if (zodiacCache) return zodiacCache;
-  const year = new Date().getFullYear(), runs: { con: string; from: Date; to: Date }[] = [];
-  for (let d = 0; d < 366; d++) {
-    const date = new Date(Date.UTC(year, 0, 1 + d, 12));
-    if (date.getUTCFullYear() !== year) break;
-    const p = eclToEq(sunLongitude(date));
-    const con = app.sky.conAt(p.ra, p.dec, ZODIAC) || '?';
-    const last = runs[runs.length - 1];
-    if (last && last.con === con) last.to = date;
-    else runs.push({ con, from: date, to: date });
-  }
-  zodiacCache = runs;
-  return runs;
-}
+import { lessonOfCon } from '../ui/course';
 
 const head = (cols: string[]) => '<tr>' + cols.map((c) => `<th>${c}</th>`).join('') + '</tr>';
 
 export function zodiacTableHtml(): string {
-  const runs = sunRuns().slice();
+  const runs = sunRuns(app.sky).slice();
   // Стрелец переходит через Новый год — склеиваем начало и конец года.
   let first = runs[0];
   const last = runs[runs.length - 1];
@@ -61,10 +42,39 @@ function brightTable(): string {
   return '<table class="tbl">' + head(T.ui.brightHead.concat(fill(T.ui.atLat, { lat: fmtNum(state.lat, 1) }))) + rows.join('') + '</table>';
 }
 
+// Что кульминирует в полночь 15-го числа каждого месяца: α ≈ α Солнца + 12ч.
+// Только созвездия, которые на этой широте поднимаются хотя бы на 10°, и не огромные (у Гидры центр ничего не значит).
+function monthsTable(): string {
+  const sky = app.sky, year = new Date().getFullYear(), rows: string[] = [];
+  const cands = sky.cons.filter((c) => { const f = sky.geo[c].fig; return f.r < 30 && 90 - Math.abs(state.lat - f.dec) > 10; });
+  for (let m = 0; m < 12; m++) {
+    const date = new Date(Date.UTC(year, m, 15, 12)), sun = sunRA(date), target = norm360(sun + 180);
+    const cons = cands.filter((c) => { const d = Math.abs(norm360(sky.geo[c].fig.ra) - target); return Math.min(d, 360 - d) <= 15; })
+      .sort((a, b) => sky.geo[b].fig.dec - sky.geo[a].fig.dec).map((c) => sky.conName(c));
+    rows.push(`<tr><td>${fmtDate(date)}</td><td>${fmtRA(sun)}</td><td>${fmtRA(target)}</td><td>${cons.join(', ')}</td></tr>`);
+  }
+  return '<table class="tbl">' + head(T.ui.monthsHead) + rows.join('') + '</table>';
+}
+
+// Созвездия, которые на широте φ целиком не заходят или совсем не видны (по границам).
+function latConsHtml(): string {
+  const sky = app.sky, phi = state.lat, ui = T.ui;
+  const always: string[] = [], never: string[] = [];
+  for (const c of sky.cons) {
+    const [lo, hi] = sky.conDecRange(c);
+    if (phi >= 0 ? lo > 90 - phi : hi < -90 - phi) always.push(sky.conName(c));
+    if (phi >= 0 ? hi < phi - 90 : lo > 90 + phi) never.push(sky.conName(c));
+  }
+  const list = (a: string[]) => (a.length ? a.sort((x, y) => x.localeCompare(y, T.locale)).join(', ') : ui.latConsNone);
+  return `<h2>${fill(ui.latConsTitle, { lat: fmtNum(phi, 1) })}</h2><ul class="facts">` +
+    `<li><b>${ui.latConsAlways}:</b> ${list(always)}</li><li><b>${ui.latConsNever}:</b> ${list(never)}</li></ul>` +
+    `<p class="muted small">${ui.latConsNote}</p>`;
+}
+
 export function renderRef() {
   const sky = app.sky, ui = T.ui, el = $('ref');
   let h = `<div class="ref-inner"><h1>${ui.refTitle}</h1>`;
-  h += `<label class="lat">${ui.myLat} <input id="r-lat" type="number" step="0.1" min="-90" max="90" value="${state.lat}"> °</label>`;
+  h += placeHtml('r-lat');
 
   h += `<h2>${ui.greekTitle}</h2><div class="greek">` + Object.keys(T.greek).map((l) => `<div><b>${l}</b>${T.greek[l]}</div>`).join('') + '</div>';
 
@@ -74,7 +84,14 @@ export function renderRef() {
   h += `<h2>${fill(ui.sunTitle, { year: new Date().getFullYear() })}</h2><div class="tbl-wrap">${zodiacTableHtml()}</div>`;
   h += `<p class="muted small">${ui.sunNote}</p>`;
 
+  h += `<h2>${ui.monthsTitle}</h2><div class="tbl-wrap" id="r-months">${monthsTable()}</div>`;
+  h += `<p class="muted small">${ui.monthsNote}</p>`;
+
+  h += `<div id="r-latcons">${latConsHtml()}</div>`;
+
   h += `<h2>${ui.formulasTitle}</h2><ul class="facts">` + ui.formulas.map((f) => `<li>${f}</li>`).join('') + '</ul>';
+
+  h += `<h2>${T.tasks.guideTitle}</h2><ul class="facts">` + T.tasks.guide.map((g) => `<li>${g}</li>`).join('') + '</ul>';
 
   h += `<h2>${ui.asterismsTitle}</h2><ul class="facts">` + T.asterisms.map((a) => `<li><b>${a.name}</b> — ${a.stars}</li>`).join('') + '</ul>';
 
@@ -95,9 +112,9 @@ export function renderRef() {
   h += `<p class="muted small credits">${ui.credits}</p></div>`;
   el.innerHTML = h;
   each(el.querySelectorAll('tr[data-con]'), (tr) => tr.addEventListener('click', () => goCon(tr.dataset.con!)));
-  const lat = el.querySelector('#r-lat') as HTMLInputElement;
-  lat.addEventListener('change', () => {
-    const v = parseFloat(lat.value.replace(',', '.'));
-    if (!isNaN(v) && v >= -90 && v <= 90) { state.lat = v; save(); $('r-bright').innerHTML = brightTable(); }
+  bindPlace(el, 'r-lat', () => {
+    $('r-bright').innerHTML = brightTable();
+    $('r-months').innerHTML = monthsTable();
+    $('r-latcons').innerHTML = latConsHtml();
   });
 }

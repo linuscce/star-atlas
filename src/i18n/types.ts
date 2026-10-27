@@ -21,6 +21,14 @@ export interface ConText {
 
 export interface DsoText { name: string; label?: string }
 
+export interface SolvedText { text: string; options?: string[]; solution: string }
+
+// Тексты южного маршрута уроков (texts/south.csv → <язык>/app/south.js, window.TEXT_SOUTH).
+export interface SouthTexts {
+  blocks: Record<string, string>;
+  lessons: Record<string, { find?: string; labels?: string[]; html?: string }>;
+}
+
 export interface Texts {
   lang: string;
   locale: string;     // для сортировки по алфавиту
@@ -29,9 +37,13 @@ export interface Texts {
   hour: string;
   minute: string;
   months: string[];   // сокращённые, в форме «12 мар»
+  monthsLong: string[]; // полные, в форме «12 марта»
+  dateLong: string;   // «{d} {m}» или «{m} {d}»
   page: Ref['page'];  // надписи в index.html приложения (подставляет tools/build.js)
   home: Ref['home'];  // главная страница
   ui: Ref['ui'];
+  // Задачи: тексты задач с решением и названия городов — по id из src/data/tasks.ts.
+  tasks: Omit<Ref['tasks'], 'solved' | 'cities'> & { solved: Record<string, SolvedText>; cities: Record<string, string> };
   cons: Record<string, ConText>;
   stars: Record<string, string>;
   dso: Record<string, DsoText>;

@@ -9,7 +9,9 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const DIR = path.join(ROOT, 'texts');
-const FILES = ['ui', 'catalog', 'lessons'];
+const FILES = ['ui', 'catalog', 'lessons', 'tasks'];
+// Тексты южного маршрута уроков — отдельно: они попадают в south.js, который загружается только для южного полушария.
+const SOUTH_FILES = ['south'];
 const REF = 'ru';
 // Значения-числа (остальное — строки).
 const NUMBERS = { defaultLat: true };
@@ -72,10 +74,17 @@ function put(obj, key, value) {
 }
 
 function loadTexts() {
+  const main = loadGroup(FILES), south = loadGroup(SOUTH_FILES);
+  const errors = main.errors.concat(south.errors), warnings = main.warnings.concat(south.warnings);
+  if (south.langs.join() !== main.langs.join()) errors.push(`texts/south.csv: языки ${south.langs.join(', ')}, а в остальных таблицах — ${main.langs.join(', ')}`);
+  return { langs: main.langs, texts: main.texts, south: south.texts, errors, warnings };
+}
+
+function loadGroup(files) {
   const errors = [], warnings = [];
   let langs = null;
   const rows = [], seen = {};
-  for (const name of FILES) {
+  for (const name of files) {
     const file = path.join(DIR, `${name}.csv`), rel = `texts/${name}.csv`;
     const table = parseCsv(readFile(file));
     const head = table.shift().map((h) => h.trim());

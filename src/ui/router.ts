@@ -1,13 +1,13 @@
 import type { Tab } from '../core/types';
 import { $, each } from './dom';
 
-// Раздел сайта — в адресе после #: #lesson/UMa, #quiz, #atlas, #atlas/Ori, #ref.
+// Раздел сайта — в адресе после #: #lesson/UMa, #quiz, #tasks, #atlas, #atlas/Ori, #ref.
 // Язык — в пути (/ru/, /en/), раздел — после #: так адреса работают и на любом статическом
 // хостинге без настройки, и в одном файле без сервера (file://), и в старом Chrome (hashchange).
 export interface Route { tab: Tab; id?: string }
 
 export function parseRoute(hash: string): Route | null {
-  const m = /^#?(lesson|learn|quiz|atlas|ref)(?:\/([\w-]+))?$/.exec(hash);
+  const m = /^#?(lesson|learn|quiz|tasks|atlas|ref)(?:\/([\w-]+))?$/.exec(hash);
   if (!m) return null;
   return { tab: m[1] === 'lesson' ? 'learn' : m[1] as Tab, id: m[2] };
 }
@@ -51,11 +51,11 @@ export function currentRoute(): Route | null {
 }
 
 // Записать раздел в адрес. Каждый переход — новая запись в истории, чтобы работала кнопка «назад»;
-// пустой или непонятный адрес при запуске просто заменяется.
-export function setRoute(r: Route) {
+// пустой или непонятный адрес при запуске просто заменяется (как и при replace — например, снятие выделения).
+export function setRoute(r: Route, replace = false) {
   const h = routeHash(r);
   if (h === current) return;
-  const replace = !parseRoute(current);
+  if (!parseRoute(current)) replace = true;
   current = h;
   if (replace) location.replace(h); else location.hash = h;
   updateLangLink();

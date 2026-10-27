@@ -1,7 +1,6 @@
 import type { Sky } from '../core/sky';
-import type { Lesson, MapTab, Tab, View } from '../core/types';
-import { T, fmtMag } from '../i18n';
-import type { LessonText } from '../i18n/types';
+import type { MapTab, Tab, View } from '../core/types';
+import { fmtMag } from '../i18n';
 import type { MapClick, SkyMap } from '../map/skymap';
 import { toggles } from './state';
 
@@ -21,20 +20,24 @@ export const app = {
   tabs: {} as Record<MapTab, TabController>,
   setTab: (_t: Tab) => { /* назначается в main */ },
   updateProgress: () => { /* назначается в main */ },
+  placeChanged: () => { /* назначается в main: широта или «юг сверху» изменились */ },
 };
+
+// Прокрутить панель наверх (новый урок, новая задача). Позицию узнаём из события scroll, а не читаем
+// scrollTop: чтение и запись размеров сразу после замены содержимого заставляют браузер пересчитать
+// раскладку страницы посреди работы — на запуске это стоило ~0,3 с на слабом телефоне.
+let panelScrolled = false;
+export function trackPanelScroll() {
+  app.panel.addEventListener('scroll', () => { panelScrolled = app.panel.scrollTop > 0; });
+}
+export function panelToTop() {
+  if (panelScrolled) { app.panel.scrollTop = 0; panelScrolled = false; }
+}
 
 export function applyToggles(tab: MapTab) {
   const t = toggles[tab], o = app.map.opt;
   o.grid = t.grid; o.ecliptic = t.ecliptic; o.mw = t.mw; o.bounds = t.bounds; o.dso = t.dso;
   o.conLabels = t.names; o.starLabels = t.names;
-}
-
-export function lessonText(L: Lesson): LessonText {
-  return T.lessons[L.id] || {};
-}
-
-export function lessonTitle(L: Lesson): string {
-  return lessonText(L).title || app.sky.conName(L.cons[0]);
 }
 
 // Имя звезды для людей: «Арктур», а если имени нет — «ε Волопаса».

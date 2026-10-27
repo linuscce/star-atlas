@@ -17,6 +17,19 @@ months.9;сен;Sep
 months.10;окт;Oct
 months.11;ноя;Nov
 months.12;дек;Dec
+monthsLong.1;января;January
+monthsLong.2;февраля;February
+monthsLong.3;марта;March
+monthsLong.4;апреля;April
+monthsLong.5;мая;May
+monthsLong.6;июня;June
+monthsLong.7;июля;July
+monthsLong.8;августа;August
+monthsLong.9;сентября;September
+monthsLong.10;октября;October
+monthsLong.11;ноября;November
+monthsLong.12;декабря;December
+dateLong;{d} {m};{m} {d}
 page.title;Звёздное небо — шаг за шагом;Starry Sky — Step by Step
 page.description;Учебник звёздного неба: созвездие за созвездием, с картой, указателями и тренировкой для олимпиады по астрономии.;A textbook of the night sky: constellation by constellation, with a map, star-hopping pointers and practice for astronomy olympiads.
 page.brand;Звёздное небо;Starry Sky
@@ -25,6 +38,7 @@ page.menu;Список уроков;Lesson list
 page.progress;Пройдено уроков;Lessons completed
 page.tabs.learn;Уроки;Lessons
 page.tabs.quiz;Тренировка;Practice
+page.tabs.tasks;Задачи;Problems
 page.tabs.atlas;Атлас;Atlas
 page.tabs.ref;Шпаргалка;Reference
 page.zoomIn;Приблизить;Zoom in
@@ -38,8 +52,14 @@ home.start;Начать с первого урока;Start with the first lesson
 home.continue;Продолжить: урок {n} · {title};Continue: lesson {n} · {title}
 home.progress;Пройдено уроков: {done} из {total};Lessons completed: {done} of {total}
 home.figure;Линия через две крайние звезды Ковша, продолженная в 5 раз, приводит к Полярной. Так, от знакомых звёзд, находится каждое новое созвездие.;The line through the two end stars of the Dipper’s bowl, extended 5 times, leads to Polaris. Every new constellation is found like this, from stars you already know.
+home.figureSouth;В южном полушарии нет «полярной звезды»: южный полюс мира находят по Южному Кресту — его длинную перекладину продолжают примерно в 4,5 раза.;The southern hemisphere has no “pole star”: the south celestial pole is found from the Southern Cross — extend its long bar about 4.5 times.
+home.hemiTitle;Где ты смотришь на небо?;Where do you watch the sky from?
+home.hemiNorth;Северное полушарие;Northern hemisphere
+home.hemiSouth;Южное полушарие;Southern hemisphere
+home.southNote;В южном полушарии уроки идут по своему маршруту: от Южного Креста и Центавра — к Ориону и Скорпиону, а северные созвездия — в конце.;In the southern hemisphere the lessons follow their own route: from the Southern Cross and Centaurus to Orion and Scorpius, with the northern constellations at the end.
 home.learn;Карта с новым созвездием, как его найти, главные звёзды и объекты, факты для олимпиады и «Проверь себя».;A map with the new constellation, how to find it, its main stars and objects, olympiad facts and a self-test.
 home.quiz;Четыре типа вопросов: узнать созвездие, показать его на карте, найти и назвать звезду. Ошибки повторяются чаще.;Four kinds of questions: recognize a constellation, show it on the map, find and name a star. Mistakes come up more often.
+home.tasks;Олимпиадные задачи на знание неба: карта без линий, видимость звёзд, Солнце и Луна. Ответ проверяется сразу, есть решения.;Olympiad-style sky problems: maps without lines, star visibility, the Sun and the Moon. Answers are checked at once, with solutions.
 home.atlas;Всё небо с поиском. Нажми на звезду — увидишь координаты и видимость на своей широте.;The whole sky with search. Tap a star to see its coordinates and visibility at your latitude.
 home.ref;Греческий алфавит, ярчайшие звёзды, Солнце в созвездиях, формулы видимости, все 88 созвездий.;The Greek alphabet, the brightest stars, the Sun in the constellations, visibility formulas, all 88 constellations.
 home.offline;Без интернета: сохрани сайт одним файлом и открой его в браузере телефона. Работает и на старых Android.;No internet? Save the site as a single file and open it in your phone’s browser. Works on old Android phones too.
@@ -49,6 +69,9 @@ ui.itIs;Это {con};This is {con}
 ui.gen;род. п.;gen.
 ui.atLat;На широте {lat}°;At latitude {lat}°
 ui.myLat;Моя широта;My latitude
+ui.placeHint;или выбери город:;or pick a city:
+ui.notVisible;С твоей широты ({lat}°) это не видно: созвездие не поднимается над горизонтом.;From your latitude ({lat}°) this is not visible: the constellation never rises above the horizon.
+ui.lowVisible;С твоей широты ({lat}°) это видно только низко над горизонтом — не выше {h}°.;From your latitude ({lat}°) this is seen only low above the horizon — no higher than {h}°.
 ui.firstHint;Карту можно двигать пальцем или мышью и приближать;Drag the map with a finger or the mouse, and zoom in
 ui.fps;кадр {ms} мс · DPR {dpr} · звёзды {mag};frame {ms} ms · DPR {dpr} · stars {mag}
 ui.toggle.names;Подписи;Labels
@@ -59,7 +82,9 @@ ui.toggle.mw;Млечный Путь;Milky Way
 ui.toggle.dso;Объекты;Objects
 ui.toggleLines.learn;Все линии;All lines
 ui.toggleLines.quiz;Подсказка: линии;Hint: lines
+ui.toggleLines.tasks;Подсказка: линии;Hint: lines
 ui.toggleLines.atlas;Линии;Lines
+ui.toggleSouthUp;Юг сверху;South up
 ui.lessonCrumb;Урок {n} из {total} · {block};Lesson {n} of {total} · {block}
 ui.done;Пройдено;Completed
 ui.find;Как найти;How to find it
@@ -84,13 +109,13 @@ ui.quizTitle;Тренировка;Practice
 ui.quizIntro;Вопросы по созвездиям из выбранного набора. То, в чём ошибаешься, спрашивается чаще.;Questions about the constellations in the chosen set. The ones you get wrong come up more often.
 ui.quizNoTypes;Выбери хотя бы один тип вопросов.;Choose at least one type of question.
 ui.quizNothing;Пока нечего спрашивать: ты ещё не прошёл ни одного урока.;Nothing to ask yet: no lessons are completed.
-ui.quizAskNorth;Спрашивать по всему небу, видимому из России;Ask about the sky seen from mid-northern latitudes
+ui.quizAskVisible;Спрашивать по всему небу, видимому с моей широты;Ask about all the sky visible from my latitude
 ui.qTypes.conId;Узнай созвездие по звёздам;Name the constellation from its stars
 ui.qTypes.findCon;Покажи созвездие на карте;Show a constellation on the map
 ui.qTypes.findStar;Найди звезду;Find a star
 ui.qTypes.nameStar;Назови отмеченную звезду;Name the marked star
 ui.qPools.learned;Изученные уроки;Lessons studied
-ui.qPools.north;Небо, видимое из России;Sky seen from mid-northern latitudes
+ui.qPools.visible;Небо, видимое с моей широты;Sky visible from my latitude
 ui.qPools.all;Все 88 созвездий;All 88 constellations
 ui.qConId;Какое созвездие внутри жёлтой границы?;Which constellation is inside the yellow boundary?
 ui.qFindCon;Нажми на карте внутри созвездия <b>{con}</b>;Tap the map inside <b>{con}</b>
@@ -112,7 +137,6 @@ ui.weakTitle;Чаще всего ошибаешься;Most frequent mistakes
 ui.atlasTitle;Атлас;Atlas
 ui.atlasIntro;Всё небо. Нажми на звезду, объект или пустое место — увидишь название, созвездие и координаты.;The whole sky. Tap a star, an object or an empty spot to see its name, constellation and coordinates.
 ui.searchPlaceholder;Найти: Вега, Орион, α Lyr, M31…;Search: Vega, Orion, α Lyr, M31…
-ui.latExamples;Москва 55,8 · Петербург 59,9 · Сочи 43,6;London 51.5 · New York 40.7 · Sydney −33.9
 ui.nothingSelected;Ничего не выбрано.;Nothing selected.
 ui.legendTitle;Обозначения;Legend
 ui.legend.gal;галактика;galaxy
@@ -156,11 +180,11 @@ ui.sunHead.2;Солнце;Sun
 ui.sunHead.3;дней;days
 ui.sunNote;Посчитано по настоящим границам созвездий. Это не астрологические «знаки».;Computed from the real constellation boundaries. These are not the astrological “signs”.
 ui.formulasTitle;Формулы видимости;Visibility formulas
-ui.formulas.1;"Не заходит: <b>δ &gt; 90° − φ</b>. Не восходит: <b>δ &lt; −(90° − φ)</b>.";"Never sets: <b>δ &gt; 90° − φ</b>. Never rises: <b>δ &lt; −(90° − φ)</b>."
+ui.formulas.1;"Не заходит: <b>δ &gt; 90° − φ</b>. Не восходит: <b>δ &lt; −(90° − φ)</b>. В южном полушарии наоборот: не заходит при δ &lt; −(90° − |φ|), не восходит при δ &gt; 90° − |φ|.";"Never sets: <b>δ &gt; 90° − φ</b>. Never rises: <b>δ &lt; −(90° − φ)</b>. In the southern hemisphere it is the other way round: never sets if δ &lt; −(90° − |φ|), never rises if δ &gt; 90° − |φ|."
 ui.formulas.2;Высота в верхней кульминации: <b>h = 90° − |φ − δ|</b> (для звёзд южнее зенита — 90° − φ + δ).;Altitude at upper culmination: <b>h = 90° − |φ − δ|</b> (for stars south of the zenith, 90° − φ + δ).
-ui.formulas.3;Высота Полярной ≈ широте места φ.;The altitude of Polaris ≈ the latitude φ.
+ui.formulas.3;Высота Полярной ≈ широте места φ. В южном полушарии яркой полярной звезды нет: высота южного полюса мира равна |φ|, его находят по Южному Кресту.;The altitude of Polaris ≈ the latitude φ. The southern hemisphere has no bright pole star: the south celestial pole is at an altitude of |φ| and is found from the Southern Cross.
 ui.formulas.4;α Солнца ≈ 0ч 21 марта, 6ч 22 июня, 12ч 23 сентября, 18ч 22 декабря (+2ч в месяц).;α of the Sun ≈ 0h on March 21, 6h on June 22, 12h on September 23, 18h on December 22 (+2h per month).
-ui.formulas.5;В полночь на юге звёзды с α ≈ α Солнца + 12ч. Полная Луна — напротив Солнца.;At midnight the stars with α ≈ α of the Sun + 12h are in the south. The full Moon is opposite the Sun.
+ui.formulas.5;В полночь кульминируют звёзды с α ≈ α Солнца + 12ч (в северном полушарии — на юге, в южном — на севере). Полная Луна — напротив Солнца.;At midnight the stars with α ≈ α of the Sun + 12h culminate (in the south as seen from the northern hemisphere, in the north from the southern). The full Moon is opposite the Sun.
 ui.formulas.6;Звёздные сутки = 23ч 56м 4с: каждый день звёзды восходят на ~4 минуты раньше.;A sidereal day is 23h 56m 4s: the stars rise about 4 minutes earlier every day.
 ui.formulas.7;"Разница в 5<sup>m</sup> — в 100 раз по яркости; 1<sup>m</sup> — в 2,512 раза.";"A difference of 5<sup>m</sup> is a factor of 100 in brightness; 1<sup>m</sup> is a factor of 2.512."
 ui.asterismsTitle;Астеризмы;Asterisms
@@ -180,3 +204,17 @@ ui.visShortNeverSets;не заходит ({h});never sets ({h})
 ui.visShortNeverRises;не восходит;never rises
 ui.visShortRises;до {h};up to {h}
 ui.credits;Данные о звёздах, линиях и границах созвездий: проект d3-celestial (Olaf Frohn), каталоги Hipparcos и IAU.;Data on stars, constellation lines and boundaries: the d3-celestial project (Olaf Frohn), the Hipparcos and IAU catalogues.
+ui.deselect;Снять выделение;Clear selection
+ui.monthsTitle;Что кульминирует в полночь;What culminates at midnight
+ui.monthsHead.1;Дата;Date
+ui.monthsHead.2;α Солнца;α of the Sun
+ui.monthsHead.3;α на меридиане;α on the meridian
+ui.monthsHead.4;Созвездия в верхней кульминации;Constellations at upper culmination
+ui.monthsNote;"Полночь по местному солнечному времени; показаны созвездия, центр которых не дальше 1ч от меридиана. В северном полушарии они высоко на юге, в южном — на севере. Вечером около 22 ч в кульминации то же, что в полночь на месяц позже.";"Midnight by local solar time; the constellations whose centers are within 1h of the meridian. In the northern hemisphere they are high in the south, in the southern hemisphere high in the north. In the evening at about 10 pm the same is culminating as at midnight a month later."
+ui.latConsTitle;Созвездия на широте {lat}°;Constellations at latitude {lat}°
+ui.latConsAlways;Никогда не заходят целиком;Never set (entirely)
+ui.latConsNever;Никогда не видны;Never visible
+ui.latConsNone;нет;none
+ui.latConsNote;По границам созвездий. Остальные созвездия хотя бы частично восходят и заходят. Широту можно поменять вверху страницы.;By the constellation boundaries. All other constellations at least partly rise and set. You can change the latitude at the top of the page.
+ui.sheetExpand;Развернуть;Expand
+ui.sheetCollapse;Свернуть;Collapse

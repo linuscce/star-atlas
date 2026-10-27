@@ -1,18 +1,20 @@
 import { angDist, clamp } from '../core/math';
 import type { Lesson, QPool, QType, View } from '../core/types';
 import { setOf, shuffle } from '../core/util';
-import { LESSONS } from '../data/lessons';
 import { T, fill } from '../i18n';
 import type { MapClick } from '../map/skymap';
 import { app, applyToggles, starTitle } from '../ui/app';
+import { course } from '../ui/course';
 import type { TabController } from '../ui/app';
 import { each } from '../ui/dom';
 import { banner } from '../ui/overlay';
 import { save, state, toggles } from '../ui/state';
 
 const TYPES: QType[] = ['conId', 'findCon', 'findStar', 'nameStar'];
-// north — всё, кроме южного неба (блок south): то, что видно из средних северных широт.
-const POOLS: QPool[] = ['learned', 'north', 'all'];
+// visible — то, что поднимается над горизонтом на широте пользователя (state.lat).
+const POOLS: QPool[] = ['learned', 'visible', 'all'];
+// Видно ли с широты пользователя: в верхней кульминации — хотя бы на 10° над горизонтом.
+const seen = (dec: number) => 90 - Math.abs(state.lat - dec) >= 10;
 
 interface Question {
   type: QType;
@@ -31,17 +33,16 @@ const score = { ok: 0, n: 0, streak: 0 };
 
 function poolLessons(): Lesson[] {
   const p = state.quizPool;
-  return LESSONS.filter((L, i) => !L.theory && (
-    p === 'all' ? true : p === 'north' ? L.block !== 'south' : (!!state.done[L.id] || i < state.lesson)));
+  return course().filter((L, i) => !L.theory && (p !== 'learned' || !!state.done[L.id] || i < state.lesson));
 }
 
 function pools() {
-  const sky = app.sky, cons: string[] = [], stars: number[] = [];
+  const sky = app.sky, cons: string[] = [], stars: number[] = [], vis = state.quizPool === 'visible';
   for (const L of poolLessons()) {
-    for (const c of L.cons) if (cons.indexOf(c) < 0) cons.push(c);
+    for (const c of L.cons) if (cons.indexOf(c) < 0 && (!vis || seen(sky.geo[c].fig.dec))) cons.push(c);
     for (const k of L.stars || []) {
       const i = sky.starIndex(k);
-      if (i >= 0 && sky.mag[i] <= 3.5 && stars.indexOf(i) < 0 && sky.curatedName(i)) stars.push(i);
+      if (i >= 0 && sky.mag[i] <= 3.5 && stars.indexOf(i) < 0 && sky.curatedName(i) && (!vis || seen(sky.dec[i]))) stars.push(i);
     }
   }
   return { cons, stars };
@@ -169,7 +170,7 @@ function renderPanel() {
   h += '<div class="q-area" id="q-area">';
   if (!q) {
     h += cons.length ? `<p>${ui.quizNoTypes}</p>`
-      : `<p>${ui.quizNothing}</p><button class="btn primary" id="q-north">${ui.quizAskNorth}</button>`;
+      : `<p>${ui.quizNothing}</p><button class="btn primary" id="q-north">${ui.quizAskVisible}</button>`;
   } else {
     const prompts: Record<QType, string> = {
       conId: ui.qConId,
@@ -227,7 +228,7 @@ function renderPanel() {
     if (!q.correct) (panel.querySelector(`.opt[data-o="${o}"]`) as HTMLElement | null)?.classList.add('wrong');
   }));
   const north = panel.querySelector('#q-north');
-  if (north) north.addEventListener('click', () => { state.quizPool = 'north'; save(); newQuestion(); });
+  if (north) north.addEventListener('click', () => { state.quizPool = 'visible'; save(); newQuestion(); });
   const next = panel.querySelector('#q-next');
   if (next) next.addEventListener('click', newQuestion);
   const skip = panel.querySelector('#q-skip');

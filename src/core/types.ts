@@ -1,13 +1,16 @@
-import type { Texts } from '../i18n/types';
+import type { SouthTexts, Texts } from '../i18n/types';
 
 export interface RaDec { ra: number; dec: number }
 export interface View { ra: number; dec: number; fov: number }
 
-export type Tab = 'learn' | 'quiz' | 'atlas' | 'ref';
-export type MapTab = 'learn' | 'quiz' | 'atlas';
+export type Tab = 'learn' | 'quiz' | 'tasks' | 'atlas' | 'ref';
+export type MapTab = 'learn' | 'quiz' | 'tasks' | 'atlas';
 export type Toggle = 'lines' | 'names' | 'bounds' | 'grid' | 'ecliptic' | 'mw' | 'dso';
 export type QType = 'conId' | 'findStar' | 'nameStar' | 'findCon';
-export type QPool = 'learned' | 'north' | 'all';
+export type QPool = 'learned' | 'visible' | 'all';
+// Темы задач: созвездия на карте, видимость, Солнце и Луна, звёзды, задачи с решением.
+export type TaskTopic = 'map' | 'vis' | 'sun' | 'stars' | 'solved';
+export type TaskLevel = 'easy' | 'mid' | 'hard';
 
 export type DsoType = 'gal' | 'gc' | 'oc' | 'neb' | 'pn' | 'pt';
 export interface DsoData {
@@ -43,9 +46,13 @@ export interface MapOptions {
   dso: boolean;
   magLimit: number | null;
   mwBoost: number;
+  southUp: boolean;   // юг сверху (запад слева) — так южное небо выглядит для наблюдателя в южном полушарии
 }
 
-// Устройство урока; тексты — в src/i18n/<язык>/lessons.ts под тем же id.
+// Шаг южного маршрута: урок, блок и свои указатели (если северные опираются на ещё не пройденное).
+export interface SouthStep { id: string; block: string; pointers?: PointerSpec[] }
+
+// Устройство урока; тексты — в texts/lessons.csv под тем же id.
 export interface Lesson {
   id: string;
   block: string;
@@ -71,5 +78,6 @@ export interface SkyRaw {
 }
 
 declare global {
-  interface Window { SKY: SkyRaw; TEXT: Texts }
+  // SOUTH_JS — адрес south.js (задаёт страница); TEXT_SOUTH — его содержимое, когда загружен.
+  interface Window { SKY: SkyRaw; TEXT: Texts; TEXT_SOUTH?: SouthTexts; SOUTH_JS?: string }
 }

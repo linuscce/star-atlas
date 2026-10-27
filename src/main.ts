@@ -1,19 +1,24 @@
 import { Sky } from './core/sky';
-import type { Tab } from './core/types';
+import type { Lesson, Tab } from './core/types';
 import { LESSONS } from './data/lessons';
 import { T, fill, setTexts } from './i18n';
 import { SkyMap } from './map/skymap';
 import { atlasTab, goCon, rememberAtlasView } from './tabs/atlas';
-import { learnTab, lessonIndex, openLesson, renderList } from './tabs/learn';
+import { learnTab, openLesson, renderList } from './tabs/learn';
 import { quizTab } from './tabs/quiz';
+import { tasksTab } from './tabs/tasks';
 import { renderRef } from './tabs/ref';
-import { app } from './ui/app';
+import { app, trackPanelScroll } from './ui/app';
+import { course, ensureCourse, lessonIndex, syncLessonIndex } from './ui/course';
 import { $, each } from './ui/dom';
 import { hint } from './ui/overlay';
 import { currentRoute, setRoute, startRouter } from './ui/router';
 import type { Route } from './ui/router';
 import { save, state, store } from './ui/state';
+import { initSheet, showMap } from './ui/sheet';
 import { renderToolbar } from './ui/toolbar';
+
+let shownCourse: Lesson[] = []; // маршрут уроков, который сейчас показан (северный или южный)
 
 function boot() {
   setTexts(window.TEXT);
@@ -21,10 +26,12 @@ function boot() {
   if (typeof state.lat !== 'number' || isNaN(state.lat)) state.lat = T.defaultLat;
   const sky = new Sky(window.SKY);
   const map = new SkyMap($<HTMLCanvasElement>('sky'), sky);
+  map.opt.southUp = state.southUp;
   app.sky = sky;
   app.map = map;
   app.panel = $('panel');
-  app.tabs = { learn: learnTab, quiz: quizTab, atlas: atlasTab };
+  trackPanelScroll();
+  app.tabs = { learn: learnTab, quiz: quizTab, tasks: tasksTab, atlas: atlasTab };
 
   map.starLabel = (i, focus) => {
     const name = sky.curatedName(i);
@@ -33,12 +40,25 @@ function boot() {
   };
   map.onclick = (c) => {
     const t = state.tab;
-    if (t === 'learn' || t === 'quiz' || t === 'atlas') app.tabs[t].click(c);
+    if (t !== 'ref') app.tabs[t].click(c);
   };
   map.onviewchange = (v) => { if (state.tab === 'atlas') rememberAtlasView(v); };
 
   app.setTab = setTab;
   app.updateProgress = updateProgress;
+  // Широта перешла через экватор — маршрут уроков другой (южный подгружается при первой надобности).
+  app.placeChanged = () => {
+    if (state.tab !== 'ref') renderToolbar(state.tab);
+    ensureCourse(() => {
+      if (course() !== shownCourse) {
+        shownCourse = course();
+        syncLessonIndex();
+        if (state.tab === 'learn') openLesson(state.lesson, false);
+      }
+      renderList();
+    });
+  };
+  initSheet();
 
   each(document.querySelectorAll('[data-tab]'), (b) => b.addEventListener('click', () => setTab(b.dataset.tab as Tab)));
   $('btn-menu').addEventListener('click', () => {
@@ -50,16 +70,11 @@ function boot() {
   $('z-out').addEventListener('click', () => map.zoomBy(1.4));
   $('z-home').addEventListener('click', () => {
     const t = state.tab;
-    if (t === 'learn' || t === 'quiz' || t === 'atlas') map.flyTo(app.tabs[t].home());
+    if (t !== 'ref') map.flyTo(app.tabs[t].home());
   });
 
-  updateProgress();
-  renderList();
-  // Раздел из адреса (#lesson/UMa, #atlas…), а если его нет — тот, где остановились в прошлый раз.
-  const saved: Route = state.tab === 'learn' ? { tab: 'learn', id: (LESSONS[state.lesson] || LESSONS[0]).id } : { tab: state.tab };
-  applyRoute(startRouter(applyRoute) || saved, true);
-  document.body.classList.add('ready');
-  if (!state.done.intro && state.lesson === 0) hint(T.ui.firstHint, 5000);
+  // Южанам нужен южный маршрут уроков: обычно south.js уже загружен страницей, иначе подождём его.
+  ensureCourse(start);
 
   // ?debug — доступ к приложению из консоли (для автотестов).
   if (/[?&]debug/.test(location.search)) (window as unknown as { __app: typeof app }).__app = app;
@@ -73,6 +88,18 @@ function boot() {
       el.textContent = fill(T.ui.fps, { ms: map.drawMs.toFixed(1), dpr: q.dpr, mag: q.magOffset ? q.magOffset.toFixed(1) : '±0' });
     }, 500);
   }
+}
+
+function start() {
+  shownCourse = course();
+  syncLessonIndex();
+  updateProgress();
+  renderList();
+  // Раздел из адреса (#lesson/UMa, #atlas…), а если его нет — тот, где остановились в прошлый раз.
+  const saved: Route = state.tab === 'learn' ? { tab: 'learn', id: course()[state.lesson].id } : { tab: state.tab };
+  applyRoute(startRouter(applyRoute) || saved, true);
+  document.body.classList.add('ready');
+  if (!state.done.intro && state.lesson === 0) hint(T.ui.firstHint, 5000);
 }
 
 // Открыть раздел по адресу: при запуске и при переходах «назад/вперёд».
@@ -100,6 +127,7 @@ function setTab(tab: Tab, first = false) {
   const cur = currentRoute();
   if (tab !== 'learn' && (!cur || cur.tab !== tab)) setRoute({ tab });
   if (tab === 'ref') { renderRef(); return; }
+  showMap();
   // Колонки меняют размер — подгоняем холст до первой отрисовки.
   app.map.resize();
   renderToolbar(tab);

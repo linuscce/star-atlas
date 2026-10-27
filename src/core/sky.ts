@@ -35,13 +35,15 @@ export class Sky {
   readonly lines: Record<string, Float32Array[]> = {};
   readonly bounds: Record<string, Float32Array[]> = {};
   private readonly ringCircles: Record<string, [number, number, number, number][]> = {}; // центр + cos(радиуса)
-  readonly mw: { l: number; rings: Float32Array[] }[];
+  // caps — описанный круг каждого кольца: центр (x, y, z) и угловой радиус в радианах, по 4 числа на кольцо.
+  readonly mw: { l: number; rings: Float32Array[]; caps: Float32Array }[];
   readonly geo: Record<string, ConGeo> = {};
   readonly dsoById: Record<string, DsoItem> = {};
   private readonly ngp = vec(192.85948, 27.12825); // северный полюс Галактики
   private readonly hipIdx: Record<number, number> = {};
   private readonly bayerIdx: Record<string, number> = {};
   private readonly curated: Record<number, string> = {};
+  private decRange: Record<string, [number, number]> | null = null;
 
   constructor(raw: SkyRaw) {
     this.raw = raw;
@@ -91,7 +93,22 @@ export class Sky {
       for (const r of raw.bounds[abbr] || []) for (let i = 0; i < r.length; i += 6) bnd.push({ ra: r[i], dec: r[i + 1] });
       this.geo[abbr] = { fig: enclosingCircle(fig.length ? fig : bnd), bnd: enclosingCircle(bnd) };
     }
-    this.mw = raw.mw.map((m) => ({ l: m.l, rings: m.rings.map(toVectors) }));
+    this.mw = raw.mw.map((m) => {
+      const caps = new Float32Array(m.rings.length * 4);
+      // Для отсева хватает круга вокруг центра масс (не наименьшего) — два прохода вместо итераций.
+      m.rings.forEach((ring, k) => {
+        let cx = 0, cy = 0, cz = 0;
+        const vs: number[][] = [];
+        for (let i = 0; i < ring.length; i += 2) { const v = vec(ring[i], ring[i + 1]); vs.push(v); cx += v[0]; cy += v[1]; cz += v[2]; }
+        const l = Math.sqrt(cx * cx + cy * cy + cz * cz) || 1;
+        cx /= l; cy /= l; cz /= l;
+        let minCos = 1;
+        for (const v of vs) minCos = Math.min(minCos, v[0] * cx + v[1] * cy + v[2] * cz);
+        caps[4 * k] = cx; caps[4 * k + 1] = cy; caps[4 * k + 2] = cz;
+        caps[4 * k + 3] = Math.acos(clamp(minCos, -1, 1)) + 0.5 * Math.PI / 180;
+      });
+      return { l: m.l, rings: m.rings.map(toVectors), caps };
+    });
     for (const d of DSO) {
       const t = T.dso[d.id];
       this.dsoById[d.id] = { id: d.id, ra: d.ra, dec: d.dec, type: d.type, size: d.size, name: t ? t.name : d.id, label: t && t.label };
@@ -210,6 +227,20 @@ export class Sky {
       }
     }
     return null;
+  }
+
+  // Самое южное и самое северное склонение созвездия по его границам.
+  // (У созвездий с полюсом мира — Малой Медведицы и Октанта — полюс внутри, но не на границе: ±90° тут не будет.)
+  conDecRange(abbr: string): [number, number] {
+    if (!this.decRange) {
+      this.decRange = {};
+      for (const a of this.cons) {
+        let lo = 90, hi = -90;
+        for (const r of this.raw.bounds[a] || []) for (let i = 1; i < r.length; i += 2) { lo = Math.min(lo, r[i]); hi = Math.max(hi, r[i]); }
+        this.decRange[a] = [lo, hi];
+      }
+    }
+    return this.decRange[abbr];
   }
 
   // Вид, в который помещаются все точки.

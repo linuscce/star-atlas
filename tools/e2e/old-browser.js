@@ -169,7 +169,137 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms));
   if (rows < 100) failures.push('шпаргалка не построилась');
   await page.screenshot({ path: path.join(OUT, `old-ref-${LANG}.png`) });
 
-  // 8. Главная страница: «Продолжить» с прогрессом, переход в атлас по карточке.
+  // 8. Панель с текстом: свернуть (карта на весь экран) и развернуть (без карты).
+  await page.evaluate(() => document.querySelector('.bottom-tabs [data-tab="learn"]').click());
+  await wait(500);
+  const skyH = () => page.evaluate(() => document.getElementById('sky').getBoundingClientRect().height);
+  const hMid = await skyH();
+  await page.evaluate(() => document.getElementById('sheet-down').click());
+  await wait(300);
+  const hMin = await skyH();
+  await page.evaluate(() => { document.getElementById('sheet-up').click(); document.getElementById('sheet-up').click(); });
+  await wait(300);
+  const maxOk = await page.evaluate(() => /sheet-max/.test(document.body.className) && document.querySelector('.map-col').offsetHeight === 0 && document.getElementById('panel').offsetHeight > 400);
+  await page.evaluate(() => document.getElementById('sheet-down').click());
+  await wait(300);
+  console.log(`Панель: карта ${Math.round(hMid)} → свёрнута ${Math.round(hMin)}, во весь экран: ${maxOk ? 'да' : 'НЕТ'}`);
+  if (!(hMin > hMid * 1.5)) failures.push('свёрнутая панель не освобождает место для карты');
+  if (!maxOk) failures.push('панель не разворачивается во весь экран');
+
+  // 9. Задачи: ответить, увидеть решение, перейти к следующей.
+  await page.evaluate(() => document.querySelector('.bottom-tabs [data-tab="tasks"]').click());
+  await wait(800);
+  const task1 = await page.evaluate(() => document.querySelector('.task-text').textContent);
+  await page.evaluate(() => {
+    const o = document.querySelector('.task .opt');
+    if (o) { o.click(); return; }
+    const num = document.getElementById('t-num');
+    if (num) num.value = '45';
+    const box = document.querySelector('.task-multi input');
+    if (box) box.checked = true;
+    const sel = document.querySelectorAll('.task-slot select');
+    for (let i = 0; i < sel.length; i++) sel[i].selectedIndex = 1;
+    document.getElementById('t-check').click();
+  });
+  await wait(500);
+  const solved = await page.evaluate(() => [location.hash, !!document.querySelector('.task .q-feedback'), !!document.querySelector('.task .solution'), !!document.getElementById('t-next')]);
+  await page.evaluate(() => document.getElementById('t-next').click());
+  await wait(600);
+  const task2 = await page.evaluate(() => document.querySelector('.task-text').textContent);
+  console.log(`Задачи: ${solved[0]}, ответ проверен: ${solved[1] ? 'да' : 'НЕТ'}, решение: ${solved[2] ? 'да' : 'НЕТ'}, следующая: ${task2 !== task1 ? 'да' : 'та же'}`);
+  if (solved[0] !== '#tasks' || !solved[1] || !solved[2] || !solved[3]) failures.push('задача: нет проверки ответа или решения');
+
+  // 10. Атлас: щелчок по созвездию выделяет его, повторный — снимает выделение.
+  await page.evaluate(() => document.querySelector('.bottom-tabs [data-tab="atlas"]').click());
+  await wait(500);
+  await page.evaluate(() => window.__app.map.setView({ ra: 84, dec: 0, fov: 60 }));
+  await wait(300);
+  const focus = () => page.evaluate(() => [Object.keys(window.__app.map.boundFocus).join(), !!document.querySelector('#atlas-info h2')]);
+  await tapSky(78, 8);
+  await wait(400);
+  const f1 = await focus();
+  await tapSky(78, 8);
+  await wait(400);
+  const f2 = await focus();
+  console.log(`Атлас: выделено «${f1[0]}», после второго касания «${f2[0]}»`);
+  if (f1[0] !== 'Ori' || !f1[1]) failures.push(`касание по Ориону выделило «${f1[0]}»`);
+  if (f2[0] !== '' || f2[1]) failures.push('повторное касание не снимает выделение');
+
+  // 11. Телефон боком: вкладки в шапке, без нижней панели, карта и текст рядом.
+  await page.setViewport({ width: 924, height: 412, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+  await wait(600);
+  const land = await page.evaluate(() => {
+    const vis = (sel) => { const e = document.querySelector(sel); return !!e && e.offsetWidth > 0; };
+    const sky = document.getElementById('sky').getBoundingClientRect(), panel = document.querySelector('.panel').getBoundingClientRect();
+    return { tabs: vis('.tabs'), bottom: vis('.bottom-tabs'), side: panel.left >= sky.right - 1, sky: Math.round(sky.width) };
+  });
+  console.log(`Телефон боком: вкладки в шапке ${land.tabs ? 'да' : 'НЕТ'}, нижняя панель ${land.bottom ? 'ЕСТЬ' : 'нет'}, текст справа от карты ${land.side ? 'да' : 'НЕТ'}, карта ${land.sky} px`);
+  if (!land.tabs || land.bottom || !land.side || land.sky < 450) failures.push('раскладка для телефона боком');
+  await page.screenshot({ path: path.join(OUT, `old-landscape-${LANG}.png`) });
+  await page.setViewport({ width: 400, height: 760, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+  await wait(300);
+
+  // 12. Южное полушарие: Сидней в атласе — карта юг сверху, касание по повёрнутой карте верное; уроки — южным
+  // маршрутом, тексты которого (south.js) подгружаются только сейчас; тот же урок — под другим номером.
+  const listInfo = () => page.evaluate(() => {
+    const cur = document.querySelector('#lessons .li.cur');
+    return { blk: document.querySelector('#lessons .blk').textContent, cur: cur.querySelector('.t').textContent, n: cur.querySelector('.n').textContent, loaded: !!window.TEXT_SOUTH };
+  });
+  const listNorth = await listInfo();
+  if (!useDist && listNorth.loaded) failures.push('south.js загружен в северном полушарии');
+  await page.evaluate(() => document.querySelector('.bottom-tabs [data-tab="atlas"]').click());
+  await wait(400);
+  const pickCity = (south) => page.evaluate((south) => {
+    const b = document.querySelectorAll('#panel .city');
+    for (let i = 0; i < b.length; i++) if ((+b[i].getAttribute('data-lat') < 0) === south) { b[i].click(); return; }
+  }, south);
+  await pickCity(true);
+  await wait(600);
+  const south = await page.evaluate(() => {
+    const m = window.__app.map;
+    m.setView({ ra: 84, dec: 0, fov: 60 });
+    const c = m.project(84, 0), n = m.project(84, 10);
+    return { up: m.opt.southUp, toggle: !!document.querySelector('#tg-south.on'), flipped: n[1] > c[1] };
+  });
+  await wait(300);
+  await tapSky(78, 8);
+  await wait(400);
+  const fSouth = await focus();
+  const listSouth = await listInfo();
+  const southOk = listSouth.loaded && listSouth.blk === (await page.evaluate(() => window.TEXT_SOUTH && window.TEXT_SOUTH.blocks['s-start']))
+    && listSouth.cur === listNorth.cur && listSouth.n !== listNorth.n;
+  console.log(`Южное полушарие: юг сверху ${south.up && south.flipped ? 'да' : 'НЕТ'}, кнопка ${south.toggle ? 'включена' : 'НЕТ'}, касание по Ориону → «${fSouth[0]}»`);
+  console.log(`  уроки: «${listSouth.blk}», «${listSouth.cur}» — урок ${listNorth.n} → ${listSouth.n}${southOk ? '' : ' — НЕВЕРНО'}`);
+  if (!south.up || !south.flipped || !south.toggle) failures.push('южная широта не поворачивает карту');
+  if (fSouth[0] !== 'Ori') failures.push(`на повёрнутой карте касание по Ориону выделило «${fSouth[0]}»`);
+  if (!southOk) failures.push(`южный маршрут уроков: ${JSON.stringify(listSouth)}`);
+  // Урок южного маршрута: свой «Как найти».
+  await page.evaluate(() => document.querySelector('.bottom-tabs [data-tab="learn"]').click());
+  await wait(500);
+  const southLesson = await page.evaluate(() => {
+    const id = location.hash.split('/')[1], d = document.createElement('div');
+    d.innerHTML = (window.TEXT_SOUTH.lessons[id] || {}).find || '';
+    const want = d.textContent.slice(0, 40);
+    return { id, ok: !!want && document.getElementById('panel').textContent.indexOf(want) >= 0 };
+  });
+  if (!southLesson.ok) failures.push(`урок ${southLesson.id}: нет южного текста «Как найти»`);
+  await page.screenshot({ path: path.join(OUT, `old-south-lesson-${LANG}.png`) });
+  // Перезапуск с южной широтой: south.js приходит вместе со страницей, сразу южный маршрут.
+  await page.reload({ waitUntil: 'load' });
+  await wait(800);
+  const listReload = await listInfo();
+  if (listReload.blk !== listSouth.blk || listReload.n !== listSouth.n) failures.push(`после перезапуска на юге: ${JSON.stringify(listReload)}`);
+  await page.evaluate(() => document.querySelector('.bottom-tabs [data-tab="atlas"]').click());
+  await wait(400);
+  await pickCity(false);
+  await wait(300);
+  if (await page.evaluate(() => window.__app.map.opt.southUp)) failures.push('северная широта не возвращает карту');
+  const listBack = await listInfo();
+  if (listBack.blk !== listNorth.blk || listBack.n !== listNorth.n) failures.push(`северный маршрут не вернулся: ${JSON.stringify(listBack)}`);
+  await page.evaluate(() => document.querySelector('.bottom-tabs [data-tab="learn"]').click());
+  await wait(300);
+
+  // 13. Главная страница: «Продолжить» с прогрессом, выбор полушария, переход в атлас по карточке.
   if (!useDist) {
     await page.goto(HOME, { waitUntil: 'load' });
     await wait(300);
@@ -179,6 +309,17 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms));
     if (!/index\.html#lesson\/Boo$/.test(home[1])) failures.push(`«Продолжить» ведёт на ${home[1]}`);
     if (!home[3]) failures.push('на главной нет картинки');
     await page.screenshot({ path: path.join(OUT, `old-home-${LANG}.png`), fullPage: true });
+    await page.evaluate(() => document.getElementById('hemi-s').click());
+    await wait(200);
+    const hemi = await page.evaluate(() => [document.getElementById('fig-s').offsetHeight > 0, document.getElementById('south-note').offsetHeight > 0,
+      JSON.parse(localStorage.getItem('sa.lat')), document.getElementById('go').textContent, document.getElementById('go').getAttribute('href')]);
+    console.log(`Главная, южное полушарие: картинка Креста ${hemi[0] ? 'да' : 'НЕТ'}, совет ${hemi[1] ? 'да' : 'НЕТ'}, широта ${hemi[2]}; «${hemi[3]}»`);
+    if (!hemi[0] || !hemi[1] || !(hemi[2] < 0)) failures.push('выбор южного полушария на главной');
+    // Тот же урок, но номер — по южному маршруту.
+    if (hemi[3] === home[0] || hemi[4] !== home[1]) failures.push(`«Продолжить» на юге: «${hemi[3]}» → ${hemi[4]}`);
+    await page.screenshot({ path: path.join(OUT, `old-home-south-${LANG}.png`) });
+    await page.evaluate(() => document.getElementById('hemi-n').click());
+    await wait(200);
     await page.evaluate(() => document.querySelector('.card[href*="#atlas"]').click());
     await wait(1200);
     const atlas = await page.evaluate(() => [location.hash, document.body.className]);

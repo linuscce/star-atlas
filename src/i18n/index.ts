@@ -51,3 +51,6 @@ export function fmtDeg(x: number): string {
 }
 
 export const fmtDayMonth = (d: Date) => `${d.getUTCDate()} ${T.months[d.getUTCMonth()]}`;
+
+// «15 мая» / «May 15».
+export const fmtDate = (d: Date) => fill(T.dateLong, { d: d.getUTCDate(), m: T.monthsLong[d.getUTCMonth()] });
