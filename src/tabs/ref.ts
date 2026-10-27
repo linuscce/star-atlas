@@ -1,30 +1,13 @@
 import { norm360, visibility } from '../core/math';
-import { sunRA, sunRuns } from '../core/sun';
-import { T, fill, fmtDate, fmtDayMonth, fmtDec, fmtDeg, fmtMag, fmtNum, fmtRA } from '../i18n';
+import { sunRA } from '../core/sun';
+import { T, fill, fmtDate, fmtDec, fmtDeg, fmtMag, fmtNum, fmtRA } from '../i18n';
 import { app } from '../ui/app';
 import { $, each } from '../ui/dom';
 import { bindPlace, placeHtml } from '../ui/place';
 import { state } from '../ui/state';
 import { goCon } from './atlas';
+import { head, zodiacTableHtml } from './zodiac';
 import { lessonOfCon } from '../ui/course';
-
-const head = (cols: string[]) => '<tr>' + cols.map((c) => `<th>${c}</th>`).join('') + '</tr>';
-
-export function zodiacTableHtml(): string {
-  const runs = sunRuns(app.sky).slice();
-  // Стрелец переходит через Новый год — склеиваем начало и конец года.
-  let first = runs[0];
-  const last = runs[runs.length - 1];
-  if (runs.length > 1 && first.con === last.con) {
-    first = { con: first.con, from: last.from, to: first.to };
-    runs.shift(); runs.pop(); runs.unshift(first);
-  }
-  return '<table class="tbl">' + head(T.ui.sunHead) + runs.map((r) => {
-    let days = Math.round((r.to.getTime() - r.from.getTime()) / 86400000) + 1;
-    if (days < 0) days += 365;
-    return `<tr><td>${app.sky.conName(r.con)}</td><td>${fmtDayMonth(r.from)} — ${fmtDayMonth(r.to)}</td><td>${days}</td></tr>`;
-  }).join('') + '</table>';
-}
 
 function visShort(dec: number): string {
   const v = visibility(dec, state.lat), ui = T.ui;
@@ -81,7 +64,7 @@ export function renderRef() {
   h += `<h2>${ui.brightTitle}</h2><div class="tbl-wrap" id="r-bright">${brightTable()}</div>`;
   h += `<p class="muted small">${ui.brightNote}</p>`;
 
-  h += `<h2>${fill(ui.sunTitle, { year: new Date().getFullYear() })}</h2><div class="tbl-wrap">${zodiacTableHtml()}</div>`;
+  h += `<h2>${fill(ui.sunTitle, { year: new Date().getFullYear() })}</h2><div class="tbl-wrap">${zodiacTableHtml(app.sky)}</div>`;
   h += `<p class="muted small">${ui.sunNote}</p>`;
 
   h += `<h2>${ui.monthsTitle}</h2><div class="tbl-wrap" id="r-months">${monthsTable()}</div>`;

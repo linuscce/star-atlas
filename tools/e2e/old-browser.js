@@ -1,7 +1,7 @@
 // Эмуляция встроенного Chrome 37–50 (Android 5–6) в headless Chrome: перед загрузкой удаляем новые API
 // (Pointer Events, Set/Map, NodeList.forEach, .fill и др.), открываем урок по адресу и проходим его касаниями,
-// проверяем адреса разделов и «назад», щипок, тренировку, шпаргалку, заливку Млечного Пути с 400 точек обзора
-// и главную страницу.
+// проверяем адреса разделов и «назад», щипок, тренировку, шпаргалку, заливку Млечного Пути с 400 точек обзора,
+// главную страницу и страницу урока для поисковиков.
 //
 // Запуск: npm run e2e  (или node tools/e2e/old-browser.js [--dist] [--lang=en])
 // Chrome: переменная CHROME_PATH или стандартный путь установки.
@@ -324,6 +324,32 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms));
     await wait(1200);
     const atlas = await page.evaluate(() => [location.hash, document.body.className]);
     if (atlas[0] !== '#atlas' || !/\btab-atlas\b/.test(atlas[1])) failures.push(`карточка «Атлас» открыла ${atlas.join(' ')}`);
+
+    // 14. Страница урока для поисковиков: список уроков на главной → «Лира» → картинка, текст → «Открыть на карте».
+    await page.goto(HOME, { waitUntil: 'load' });
+    await wait(200);
+    const toLyr = await page.evaluate(() => {
+      const a = document.querySelectorAll('#program a');
+      for (let i = 0; i < a.length; i++) if (/lessons\/lyr\//.test(a[i].getAttribute('href'))) return [a.length, a[i].getAttribute('href')];
+      return [a.length, null];
+    });
+    console.log(`Главная: уроков в списке ${toLyr[0]}, «Лира» → ${toLyr[1]}`);
+    if (!toLyr[1] || !/index\.html$/.test(toLyr[1])) failures.push(`ссылка на страницу урока «Лира»: ${toLyr[1]}`);
+    else {
+      await page.goto(new URL(toLyr[1], HOME).href, { waitUntil: 'load' });
+      await wait(200);
+      const lp = await page.evaluate(() => [document.querySelector('h1').textContent, window.innerWidth >= document.documentElement.scrollWidth,
+        document.querySelectorAll('.fig svg text').length, document.querySelectorAll('.facts li').length, document.querySelector('.cta a').getAttribute('href')]);
+      console.log(`Страница урока: «${lp[0]}», подписей на картинке ${lp[2]}, фактов ${lp[3]} → ${lp[4]}`);
+      if (!lp[1]) failures.push('страница урока шире экрана');
+      if (lp[2] < 3 || !lp[3]) failures.push('на странице урока нет картинки или фактов');
+      await page.screenshot({ path: path.join(OUT, `old-lesson-page-${LANG}.png`), fullPage: true });
+      await page.evaluate(() => document.querySelector('.cta a').click());
+      await wait(1500);
+      const opened = await page.evaluate(() => [location.hash, document.querySelector('#panel h1') && document.querySelector('#panel h1').textContent, window.TEXT.cons.Lyr.name]);
+      if (opened[0] !== '#lesson/Lyr' || opened[1] !== opened[2]) failures.push(`«Открыть на карте» открыло ${opened.slice(0, 2).join(' ')}`);
+      if (lp[0].indexOf(opened[2]) < 0) failures.push(`на странице урока заголовок «${lp[0]}»`);
+    }
   }
 
   if (errors.length) failures.push('ошибки в консоли:\n  ' + errors.join('\n  '));

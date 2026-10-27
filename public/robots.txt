@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://linuscce.github.io/star-atlas/sitemap.xml

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10172e">
+<meta name="description" content="This is a real map of the sky: the 5,000 stars visible to the naked eye. You can drag it (with the mouse or a finger) and zoom in (with the mouse wheel, two…">
+<title>How to read a star map · Starry Sky</title>
+<link rel="icon" href="../../../favicon.ico" sizes="48x48">
+<link rel="icon" href="../../../icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../../apple-touch-icon.png">
+<link rel="canonical" href="https://linuscce.github.io/star-atlas/en/lessons/intro/">
+<link rel="alternate" hreflang="ru" href="https://linuscce.github.io/star-atlas/ru/lessons/intro/">
+<link rel="alternate" hreflang="en" href="https://linuscce.github.io/star-atlas/en/lessons/intro/">
+<link rel="alternate" hreflang="x-default" href="https://linuscce.github.io/star-atlas/en/lessons/intro/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Starry Sky — Step by Step">
+<meta property="og:title" content="How to read a star map · Starry Sky">
+<meta property="og:description" content="This is a real map of the sky: the 5,000 stars visible to the naked eye. You can drag it (with the mouse or a finger) and zoom in (with the mouse wheel, two…">
+<meta property="og:url" content="https://linuscce.github.io/star-atlas/en/lessons/intro/">
+<meta property="og:image" content="https://linuscce.github.io/star-atlas/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Из поиска чаще всего идут дальше в приложение — браузер загружает его в фоне. -->
+<link rel="prefetch" href="../../../sky.js?v=316b0cea17">
+<link rel="prefetch" href="../../../app.js?v=c945c7249b">
+<link rel="prefetch" href="../../../style.css?v=81bcf069b5">
+<link rel="prefetch" href="../../app/text.js?v=079babd0c1">
+<style>
+/* Страница урока для поисковиков (src/pages/lesson.ts) — без внешних файлов, как главная.
+   Ограничения те же, что в style.css: Chrome 37+, без CSS-переменных, grid и flex-gap. Палитра — как в style.css. */
+* { box-sizing: border-box; }
+html, body { margin: 0; color: #e7ecff; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; -webkit-text-size-adjust: 100%; }
+html, body { background: #0b1020; }
+a { color: #6cc4ff; }
+.top { display: flex; align-items: center; height: 56px; padding: 0 24px; background: #10172e; border-bottom: 1px solid #243057; }
+.brand { font-weight: 700; color: #e7ecff; text-decoration: none; }
+.brand span { font-weight: 400; color: #97a3c8; }
+.lang { margin-left: auto; padding: 3px 9px; border: 1px solid #243057; border-radius: 6px; color: #97a3c8; font-size: 13px; text-decoration: none; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+.crumb { margin: 26px 0 8px; color: #97a3c8; font-size: 14px; }
+h1 { margin: 0 0 10px; font-size: 32px; line-height: 1.2; }
+h2 { margin: 30px 0 8px; font-size: 21px; }
+p { margin: 0 0 12px; }
+.con-names { color: #c4cbe6; font-size: 15px; }
+.fig { margin: 22px 0 0; padding: 12px 14px 14px; background: #080c1d; border: 1px solid #243057; border-radius: 14px; }
+.fig svg { display: block; width: 100%; height: auto; }
+.fig figcaption { margin-top: 8px; color: #97a3c8; font-size: 14px; line-height: 1.45; }
+.cta { margin: 22px 0; }
+.btn { display: inline-block; padding: 13px 24px; border-radius: 10px; background: #2a6fdb; color: #fff; font-size: 17px; font-weight: 600; text-decoration: none; }
+.btn:hover { background: #3a7ff0; }
+.rows, .facts { margin: 0; padding: 0; list-style: none; }
+.rows li { padding: 7px 0; border-bottom: 1px solid #1c2647; }
+.rows span { color: #97a3c8; }
+.rows .mag { float: right; }
+.facts li { position: relative; margin: 0 0 10px; padding-left: 18px; }
+.facts li:before { content: ""; position: absolute; left: 2px; top: 11px; width: 6px; height: 6px; border-radius: 3px; background: #6cc4ff; }
+.prose ul { padding-left: 22px; }
+.prose li { margin-bottom: 6px; }
+.tbl-wrap { overflow-x: auto; margin-bottom: 12px; }
+.tbl { border-collapse: collapse; font-size: 15px; }
+.tbl th, .tbl td { padding: 5px 12px 5px 0; border-bottom: 1px solid #1c2647; text-align: left; }
+.tbl th { color: #97a3c8; font-weight: 600; }
+sup { line-height: 0; }
+.pager { display: flex; margin: 8px -6px 30px; }
+.pager a { flex: 1; margin: 0 6px; padding: 12px 16px; background: #10172e; border: 1px solid #243057; border-radius: 12px; color: #e7ecff; text-decoration: none; }
+.pager a:hover { border-color: #3f78bd; }
+.pager span { display: block; color: #97a3c8; font-size: 14px; }
+.pager .next { text-align: right; }
+.pager .next:only-child { margin-left: auto; flex: none; width: 50%; }
+.credits { padding-bottom: 28px; color: #6f7aa0; font-size: 13px; }
+@media (max-width: 520px) {
+  .top { padding: 0 14px; }
+  .brand span { display: none; }
+  .wrap { padding: 0 14px; }
+  h1 { font-size: 25px; }
+  .fig { margin-left: -6px; margin-right: -6px; padding: 8px; }
+  .btn { display: block; text-align: center; }
+  .pager .next:only-child { width: auto; flex: 1; }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../../">Starry Sky<span> · step by step</span></a>
+  <a class="lang" href="../../../ru/lessons/intro/" hreflang="ru" title="Русский">RU</a>
+</header>
+<main class="wrap">
+<div class="crumb"><a href="../../#program">All lessons</a> · Lesson 1 of 53 · Getting started</div><h1>How to read a star map</h1><p class="cta"><a class="btn" href="../../app/#lesson/intro">Open the lesson on the interactive map</a></p><div class="prose"><p>This is a real map of the sky: the 5,000 stars visible to the naked eye. You can drag it (with the mouse or a finger) and zoom in (with the mouse wheel, two fingers or the +/− buttons).</p>
+<h3>North is up, east is on the left</h3>
+<p>On maps of the Earth east is on the right, but on star maps it is on the <b>left</b>. Why? A map of the Earth is a view from above, while we look at the sky from below, from the inside. Lie on your back with your head to the north, and east will be on your left. All olympiad star maps are drawn this way.</p>
+<h3>The size of a dot is brightness</h3>
+<p>The brightness of stars is measured in <b>magnitudes</b> (m). The <b>smaller</b> the number, the brighter the star: Sirius is −1.5<sup>m</sup>, Polaris 2<sup>m</sup>, and the faintest stars visible to the naked eye in a dark place are about 6<sup>m</sup>. A difference of 5<sup>m</sup> is exactly a factor of 100 in brightness.</p>
+<h3>How stars are named</h3>
+<p>Bright stars have proper names (Vega, Rigel), but in problems they are more often written in <b>Bayer</b> form: a Greek letter plus the Latin genitive of the constellation — <b>α Lyrae</b> = Vega, <b>β Orionis</b> = Rigel. Usually α is the brightest star of the constellation, β the second and so on, but there are exceptions. The Greek alphabet is in the “Reference” tab — learn it first.</p>
+<h3>Coordinates</h3>
+<p>The grid on the map shows <b>equatorial coordinates</b>: declination δ (from −90° to +90°, like latitude) and right ascension α (from 0h to 24h, increasing to the east — to the left). The bright line is the celestial equator (δ = 0°).</p>
+<h3>How the lessons work</h3>
+<p>Each lesson is one constellation (or several small ones). The new constellation is drawn in <span class="c-focus">blue</span>, the ones already learned in <span class="c-known">grey</span>, and the <span class="c-ptr">yellow arrows</span> show how to find the new one from stars you already know. This way the sky becomes a single network that starts from the Big Dipper.</p>
+<p>At the end of a lesson, press <b>“Test yourself”</b>: the lines and labels disappear, and you have to find the stars yourself. Every few lessons, visit “Practice” — it asks about all the constellations you have learned.</p></div><p class="cta"><a class="btn" href="../../app/#lesson/intro">Open the lesson on the interactive map</a></p><nav class="pager"><a class="next" href="../uma/"><span>Next →</span>Ursa Major</a></nav>
+</main>
+<footer class="wrap credits">Data on stars, constellation lines and boundaries: the d3-celestial project (Olaf Frohn), the Hipparcos and IAU catalogues.</footer>
+<script>
+// Без сервера (file://) папка сама не открывается — дописываем index.html.
+(function () {
+  if (location.protocol !== 'file:') return;
+  var a = document.getElementsByTagName('a');
+  for (var i = 0; i < a.length; i++) {
+    var h = a[i].getAttribute('href') || '', m = /^([^:#]*\/)(#.*)?$/.exec(h);
+    if (m) a[i].setAttribute('href', m[1] + 'index.html' + (m[2] || ''));
+  }
+})();
+</script>
+</body>
+</html>

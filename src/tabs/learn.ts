@@ -10,7 +10,7 @@ import { banner, hint, pulse } from '../ui/overlay';
 import { currentRoute, setRoute } from '../ui/router';
 import { showMap } from '../ui/sheet';
 import { save, state, toggles } from '../ui/state';
-import { zodiacTableHtml } from './ref';
+import { zodiacTableHtml } from './zodiac';
 
 type Task = { kind: 'star'; idx: number } | { kind: 'con'; abbr: string };
 let check: { tasks: Task[]; i: number; ok: number; busy: boolean } | null = null;
@@ -161,7 +161,7 @@ function renderPanel() {
   panel.innerHTML = h;
   panelToTop();
   const zt = panel.querySelector('#zodiac-table');
-  if (zt) zt.innerHTML = zodiacTableHtml();
+  if (zt) zt.innerHTML = zodiacTableHtml(app.sky);
   const btn = (id: string, fn: () => void) => { const b = panel.querySelector('#' + id); if (b) b.addEventListener('click', fn); };
   btn('l-prev', () => openLesson(state.lesson - 1));
   btn('l-next', () => openLesson(state.lesson + 1));

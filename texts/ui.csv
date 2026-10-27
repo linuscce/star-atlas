@@ -1,6 +1,7 @@
 ﻿key;ru;en
 lang;ru;en
 locale;ru;en
+ogLocale;ru_RU;en_US
 defaultLat;55.75;51.5
 decimal;,;.
 hour;ч;h
@@ -32,6 +33,7 @@ monthsLong.12;декабря;December
 dateLong;{d} {m};{m} {d}
 page.title;Звёздное небо — шаг за шагом;Starry Sky — Step by Step
 page.description;Учебник звёздного неба: созвездие за созвездием, с картой, указателями и тренировкой для олимпиады по астрономии.;A textbook of the night sky: constellation by constellation, with a map, star-hopping pointers and practice for astronomy olympiads.
+page.appTitle;Карта неба: уроки, тренировка, задачи, атлас · Звёздное небо;Sky map: lessons, practice, problems, atlas · Starry Sky
 page.brand;Звёздное небо;Starry Sky
 page.brandSub;шаг за шагом;step by step
 page.menu;Список уроков;Lesson list
@@ -64,6 +66,14 @@ home.atlas;Всё небо с поиском. Нажми на звезду — �
 home.ref;Греческий алфавит, ярчайшие звёзды, Солнце в созвездиях, формулы видимости, все 88 созвездий.;The Greek alphabet, the brightest stars, the Sun in the constellations, visibility formulas, all 88 constellations.
 home.offline;Без интернета: сохрани сайт одним файлом и открой его в браузере телефона. Работает и на старых Android.;No internet? Save the site as a single file and open it in your phone’s browser. Works on old Android phones too.
 home.download;Скачать файл ({size} МБ);Download the file ({size} MB)
+home.title;Звёздное небо шаг за шагом — учебник созвездий для олимпиады по астрономии;Starry Sky Step by Step — learn the constellations for astronomy olympiads
+site.titleOne;Созвездие {con} — как найти на небе;{con} constellation — how to find it in the sky
+site.titleMany;{con} — как найти на небе;{con} — how to find them in the sky
+site.openMap;Открыть урок на интерактивной карте;Open the lesson on the interactive map
+site.allLessons;Все уроки;All lessons
+site.figure;Синим — новые созвездия, серым — знакомые по прошлым урокам, жёлтым — указатели: как найти новое от знакомых звёзд.;"Blue: the new constellations; grey: ones from earlier lessons; yellow: pointers showing how to find the new ones from familiar stars."
+site.notFound;Такой страницы нет;Page not found
+site.toHome;На главную;To the home page
 ui.right;Верно!;Correct!
 ui.itIs;Это {con};This is {con}
 ui.gen;род. п.;gen.

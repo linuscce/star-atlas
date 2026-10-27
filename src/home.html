@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#10172e">
 <meta name="description" content="{{page.description}}">
-<title>{{page.title}}</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2310172e'/%3E%3Cpath d='M16 5l2.6 7.4L26 15l-7.4 2.6L16 25l-2.6-7.4L6 15l7.4-2.6z' fill='%236cc4ff'/%3E%3C/svg%3E">
-{{alternates}}
+<title>{{home.title}}</title>
+{{icons}}
+{{head}}
 <!-- Пока читают главную, браузер в фоне загружает карту — переход в приложение будет быстрым. -->
 <link rel="prefetch" href="../sky.js?v={{vSky}}">
 <link rel="prefetch" href="../app.js?v={{vApp}}">
@@ -50,6 +50,15 @@ h1 { margin: 0 0 18px; font-size: 44px; line-height: 1.15; }
 .card svg { width: 30px; height: 30px; fill: none; stroke: #6cc4ff; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
 .card h2 { margin: 10px 0 6px; font-size: 20px; }
 .card p { margin: 0; color: #97a3c8; font-size: 15px; line-height: 1.5; }
+/* Все уроки по блокам: по этим ссылкам поисковики находят страницы уроков (lessons/<slug>/). */
+.program { flex: none; padding: 6px 0 10px; }
+.program h2 { margin: 0 0 14px; font-size: 24px; }
+.blocks { display: flex; flex-wrap: wrap; margin: 0 -10px; }
+.blk { width: 25%; padding: 0 10px 18px; }
+.blk h3 { margin: 0 0 6px; color: #97a3c8; font-size: 15px; font-weight: 600; }
+.blk ol { margin: 0; padding-left: 28px; color: #6f7aa0; font-size: 15px; line-height: 1.55; }
+.blk a { color: #c4cbe6; text-decoration: none; }
+.blk a:hover { color: #6cc4ff; text-decoration: underline; }
 .offline { flex: none; margin: 0 0 18px; padding: 18px 20px; background: #10172e; border: 1px solid #243057; border-radius: 14px; color: #c4cbe6; font-size: 16px; }
 .offline a { white-space: nowrap; }
 .credits { flex: none; margin: 0; padding: 0 0 28px; color: #6f7aa0; font-size: 13px; }
@@ -75,11 +84,15 @@ body.south-hemi #fig-n { display: none; }
   .fig figcaption { font-size: 16px; }
   .card h2 { font-size: 23px; }
   .card p { font-size: 17px; }
+  .program h2 { font-size: 28px; }
+  .blk h3 { font-size: 17px; }
+  .blk ol { font-size: 17px; }
   .offline { font-size: 18px; }
   .credits { font-size: 15px; }
 }
 @media (max-width: 1180px) {
   .card { width: 33.333%; }
+  .blk { width: 33.333%; }
   h1 { font-size: 36px; }
   .lead { font-size: 18px; }
   .fig { width: 440px; }
@@ -93,11 +106,13 @@ body.south-hemi #fig-n { display: none; }
   .lead { font-size: 16px; }
   .fig { width: auto; max-width: 480px; margin-top: 28px; }
   .card { width: 50%; }
+  .blk { width: 50%; }
 }
 @media (max-width: 520px) {
   .wrap { padding: 0 14px; }
   .brand span { display: none; }
   .card { width: 100%; }
+  .blk { width: 100%; }
   .btn { display: block; text-align: center; }
 }
 </style>
@@ -129,6 +144,11 @@ body.south-hemi #fig-n { display: none; }
     <a class="card" href="app/#tasks"><div>{{icon.tasks}}<h2>{{page.tabs.tasks}}</h2><p>{{home.tasks}}</p></div></a>
     <a class="card" href="app/#atlas"><div>{{icon.atlas}}<h2>{{page.tabs.atlas}}</h2><p>{{home.atlas}}</p></div></a>
     <a class="card" href="app/#ref"><div>{{icon.ref}}<h2>{{page.tabs.ref}}</h2><p>{{home.ref}}</p></div></a>
+  </section>
+
+  <section class="program" id="program">
+    <h2>{{site.allLessons}}</h2>
+    <div class="blocks">{{program}}</div>
   </section>
 
   <p class="offline">{{home.offline}} <a href="{{offlineHref}}" download>{{offlineLink}}</a></p>

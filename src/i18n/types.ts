@@ -32,6 +32,7 @@ export interface SouthTexts {
 export interface Texts {
   lang: string;
   locale: string;     // для сортировки по алфавиту
+  ogLocale: string;   // язык страницы для соцсетей (og:locale), подставляет tools/build.js
   defaultLat: number; // широта, пока пользователь не ввёл свою
   decimal: string;
   hour: string;
@@ -41,6 +42,7 @@ export interface Texts {
   dateLong: string;   // «{d} {m}» или «{m} {d}»
   page: Ref['page'];  // надписи в index.html приложения (подставляет tools/build.js)
   home: Ref['home'];  // главная страница
+  site: Ref['site'];  // статические страницы уроков (src/pages/lesson.ts)
   ui: Ref['ui'];
   // Задачи: тексты задач с решением и названия городов — по id из src/data/tasks.ts.
   tasks: Omit<Ref['tasks'], 'solved' | 'cities'> & { solved: Record<string, SolvedText>; cities: Record<string, string> };

@@ -4,7 +4,10 @@
 //   public/<язык>/app/index.html     — приложение (src/app.html) с надписями этого языка;
 //   public/<язык>/app/text.js        — тексты языка (window.TEXT);
 //   public/<язык>/app/south.js       — тексты южного маршрута уроков (window.TEXT_SOUTH), только для южан;
+//   public/<язык>/lessons/<id>/      — страницы уроков для поисковиков (src/lesson.html, src/pages/lesson.ts);
+//   public/sitemap.xml, robots.txt, 404.html, icon.svg;
 //   dist/star-atlas-<язык>.html      — приложение одним файлом: его копируют на телефон без интернета.
+// Адрес сайта (для canonical, hreflang, sitemap) — homepage в package.json. Картинки og-*.png и значки — npm run images.
 const crypto = require('crypto');
 const esbuild = require('esbuild');
 const fs = require('fs');
@@ -15,6 +18,7 @@ const { loadTexts } = require('./texts');
 const ROOT = path.join(__dirname, '..');
 const PUB = path.join(ROOT, 'public');
 const DIST = path.join(ROOT, 'dist');
+const SITE = require('../package.json').homepage.replace(/\/$/, '');
 // esbuild только склеивает и сжимает: в ES5 код переводит tsc, а --target=es5 проверяет, что новинок не осталось.
 const common = { bundle: true, minify: true, charset: 'utf8', target: 'es5', logLevel: 'warning' };
 
@@ -37,14 +41,49 @@ const kb = (s) => `${Math.round(Buffer.byteLength(s) / 1024)} КБ`;
 // Метка содержимого в адресе (app.js?v=…): файл изменился — адрес новый, и браузер не возьмёт старый из кэша.
 const ver = (s) => crypto.createHash('md5').update(s).digest('hex').slice(0, 10);
 
-// Уроки (устройство) и данные неба — для главной страницы.
-const lessonsJs = esbuild.buildSync({ entryPoints: [path.join(ROOT, '.build/data/lessons.js')], bundle: true, format: 'cjs', write: false }).outputFiles[0].text;
-const lessonsMod = { exports: {} };
-vm.runInNewContext(lessonsJs, { module: lessonsMod, exports: lessonsMod.exports });
-const { LESSONS, SOUTH_ROUTE } = lessonsMod.exports;
+// Уроки, данные неба и статические страницы уроков (src/pages/lesson.ts) — для главной и страниц уроков.
+const pagesJs = esbuild.buildSync({ entryPoints: [path.join(ROOT, '.build/pages/lesson.js')], bundle: true, format: 'cjs', write: false }).outputFiles[0].text;
+const pages = { exports: {} };
+vm.runInNewContext(pagesJs, { module: pages, exports: pages.exports });
+const { LESSONS, SOUTH_ROUTE } = pages.exports;
 const skyBox = { window: {} };
 vm.runInNewContext(read('sky.js'), skyBox);
 const SKY = skyBox.window.SKY;
+
+// Значок сайта. На сайте — файлами (поисковикам нужен значок по адресу, старому Chrome — .ico из npm run images),
+// в однофайловой версии — внутри страницы.
+const ICON = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#10172e"/><path d="M16 5l2.6 7.4L26 15l-7.4 2.6L16 25l-2.6-7.4L6 15l7.4-2.6z" fill="#6cc4ff"/></svg>';
+const iconLinks = (root) => [
+  `<link rel="icon" href="${root}favicon.ico" sizes="48x48">`,
+  `<link rel="icon" href="${root}icon.svg" type="image/svg+xml">`,
+  `<link rel="apple-touch-icon" href="${root}apple-touch-icon.png">`,
+].join('\n');
+const iconInline = `<link rel="icon" href="data:image/svg+xml,${ICON.replace(/"/g, "'").replace(/[<>#]/g, encodeURIComponent)}">`;
+
+// Для текста в атрибуте и в <title>.
+const esc = (s) => s.replace(/&(?![#\w]+;)/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+
+// Теги для поисковиков и соцсетей. Адреса — только полные: относительные в canonical и hreflang поисковики не принимают.
+// rel — путь страницы внутри языка: '', 'app/', 'lessons/uma/'. x-default (язык не подошёл): для главной — корень
+// сайта (он сам выбирает язык), для остальных — английская версия.
+function seoHead(t, rel, title, description) {
+  const url = (l) => `${SITE}/${l}/${rel}`;
+  return [
+    `<link rel="canonical" href="${url(t.lang)}">`,
+    ...langs.map((l) => `<link rel="alternate" hreflang="${l}" href="${url(l)}">`),
+    `<link rel="alternate" hreflang="x-default" href="${rel ? url('en') : SITE + '/'}">`,
+    '<meta property="og:type" content="website">',
+    `<meta property="og:site_name" content="${esc(t.page.title)}">`,
+    `<meta property="og:title" content="${esc(title)}">`,
+    `<meta property="og:description" content="${esc(description)}">`,
+    `<meta property="og:url" content="${url(t.lang)}">`,
+    `<meta property="og:image" content="${SITE}/og-${t.lang}.png">`,
+    '<meta property="og:image:width" content="1200">',
+    '<meta property="og:image:height" content="630">',
+    `<meta property="og:locale" content="${t.ogLocale}">`,
+    '<meta name="twitter:card" content="summary_large_image">',
+  ].join('\n');
+}
 
 // Иконки разделов: в нижних вкладках приложения и на карточках главной.
 const ICONS = {
@@ -69,7 +108,6 @@ function render(tpl, t, vars) {
 }
 
 const fill = (s, vars) => s.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m));
-const lessonTitle = (t, L) => (t.lessons[L.id] && t.lessons[L.id].title) || t.cons[L.cons[0]].name;
 
 // Картинки для главной — по настоящим координатам, в той же проекции, что карта (стереографическая).
 function figure(t, south) {
@@ -157,9 +195,12 @@ function figure(t, south) {
 }
 
 fs.mkdirSync(DIST, { recursive: true });
+const sitemap = [];
 for (const lang of langs) {
   const t = texts[lang];
   const other = langs[(langs.indexOf(lang) + 1) % langs.length];
+  pages.exports.setTexts(t);
+  const sky = new pages.exports.Sky(SKY);
 
   // Тексты языка — JSON, оформленный как скрипт (window.TEXT, как window.SKY в sky.js).
   const textJs = `// Сгенерировано tools/build.js из texts/*.csv. Не редактировать вручную.\nwindow.TEXT = ${safeJs(JSON.stringify(t))};\n`;
@@ -173,7 +214,9 @@ for (const lang of langs) {
   write(path.join(PUB, lang, 'app', 'index.html'), render(app, t, {
     ...v,
     lang,
-    alternates: langs.map((l) => `<link rel="alternate" hreflang="${l}" href="../../${l}/app/">`).join('\n'),
+    pageTitle: esc(t.page.appTitle),
+    icons: iconLinks('../../'),
+    head: seoHead(t, 'app/', t.page.appTitle, t.page.description),
     otherLangHref: `../../${other}/app/`,
     otherLangCode: other,
     brandTag: 'a',
@@ -181,8 +224,10 @@ for (const lang of langs) {
   }));
 
   // Один файл: всё внутри, ссылка на другой язык — на соседний файл, главной страницы нет.
+  // Его не индексируют: это копия приложения для телефона без интернета.
   let single = render(app.replace(/\?v=\{\{\w+\}\}/g, ''), t, {
-    lang, alternates: '', otherLangHref: `star-atlas-${other}.html`, otherLangCode: other, brandTag: 'div', brandHref: '',
+    lang, pageTitle: esc(t.page.title), icons: iconInline, head: '<meta name="robots" content="noindex">',
+    otherLangHref: `star-atlas-${other}.html`, otherLangCode: other, brandTag: 'div', brandHref: '',
   });
   single = single
     .replace('<link rel="stylesheet" href="../../style.css">', () => `<style>\n${read('style.css')}\n</style>`)
@@ -198,21 +243,75 @@ for (const lang of langs) {
   const home = render(template('home.html'), t, {
     ...v,
     lang,
-    alternates: langs.map((l) => `<link rel="alternate" hreflang="${l}" href="../${l}/">`).join('\n'),
+    icons: iconLinks('../'),
+    head: seoHead(t, '', t.home.title, t.page.description),
     otherLangHref: `../${other}/`,
     otherLangCode: other,
     firstLesson: LESSONS[0].id,
-    lessons: safeJs(JSON.stringify(LESSONS.map((L) => [L.id, lessonTitle(t, L)]))),
+    lessons: safeJs(JSON.stringify(LESSONS.map((L) => [L.id, pages.exports.lessonTitle(sky, L)]))),
     southOrder: JSON.stringify(SOUTH_ROUTE.map((s) => s.id)),
     figure: figure(t, false),
     figureSouth: figure(t, true),
+    program: pages.exports.programHtml(sky),
     defaultLat: t.defaultLat,
     offlineHref: `../${singleName}`,
     offlineLink: fill(t.home.download, { size: mb }),
   });
   write(path.join(PUB, lang, 'index.html'), home);
-  console.log(`${lang}: главная ${kb(home)}, text.js ${kb(textJs)}, south.js ${kb(southJs)}, dist/${singleName} ${kb(single)}`);
+  sitemap.push(`${SITE}/${lang}/`, `${SITE}/${lang}/app/`);
+
+  // Страницы уроков. Папку — заново: урок могли переименовать.
+  fs.rmSync(path.join(PUB, lang, 'lessons'), { recursive: true, force: true });
+  const lessonTpl = template('lesson.html');
+  let lessonBytes = 0;
+  LESSONS.forEach((L, i) => {
+    const slug = pages.exports.lessonSlug(L), p = pages.exports.lessonPage(sky, i);
+    const title = `${p.title} · ${t.page.brand}`;
+    const html = render(lessonTpl, t, {
+      ...v,
+      lang,
+      title: esc(title),
+      description: esc(p.description),
+      icons: iconLinks('../../../'),
+      head: seoHead(t, `lessons/${slug}/`, title, p.description),
+      otherLangHref: `../../../${other}/lessons/${slug}/`,
+      otherLangCode: other,
+      body: p.body,
+    });
+    write(path.join(PUB, lang, 'lessons', slug, 'index.html'), html);
+    lessonBytes = Math.max(lessonBytes, Buffer.byteLength(html));
+    sitemap.push(`${SITE}/${lang}/lessons/${slug}/`);
+  });
+  console.log(`${lang}: главная ${kb(home)}, text.js ${kb(textJs)}, south.js ${kb(southJs)}, dist/${singleName} ${kb(single)}, ` +
+    `${LESSONS.length} страниц уроков (самая большая ${Math.round(lessonBytes / 1024)} КБ)`);
+  if (!fs.existsSync(path.join(PUB, `og-${lang}.png`))) console.log(`Внимание: нет public/og-${lang}.png (картинка для соцсетей) — npm run images`);
 }
+
+// Для поисковиков: список страниц, robots.txt со ссылкой на него, значок и страница «нет такой страницы».
+write(path.join(PUB, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+  sitemap.map((u) => `<url><loc>${u}</loc></url>`).join('\n') + '\n</urlset>\n');
+write(path.join(PUB, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
+write(path.join(PUB, 'icon.svg'), ICON + '\n');
+// 404.html GitHub Pages показывает по любому неизвестному адресу, поэтому ссылки в ней — полные.
+write(path.join(PUB, '404.html'), `<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>${langs.map((l) => texts[l].site.notFound).join(' · ')}</title>
+${iconLinks(SITE + '/')}
+<style>
+  body { margin: 0; padding: 60px 20px; background: #0b1020; color: #e7ecff; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; text-align: center; }
+  a { color: #6cc4ff; }
+  p { margin: 0 0 24px; }
+</style>
+</head>
+<body>
+${langs.map((l) => `<p lang="${l}"><b>${texts[l].site.notFound}</b><br><a href="${SITE}/${l}/">${texts[l].site.toHome}</a></p>`).join('\n')}
+</body>
+</html>
+`);
 // Прежнее имя офлайн-файла (до разделения по языкам).
 if (fs.existsSync(path.join(DIST, 'star-atlas.html'))) fs.unlinkSync(path.join(DIST, 'star-atlas.html'));
-console.log(`app.js ${kb(read('app.js'))}, sky.js ${kb(read('sky.js'))}`);
+console.log(`app.js ${kb(read('app.js'))}, sky.js ${kb(read('sky.js'))}, sitemap.xml: ${sitemap.length} адресов (${SITE})`);
